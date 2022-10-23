@@ -49,7 +49,7 @@ class FetchedObjectsControllerTests: XCTestCase {
         let _ = sut.performFetch()
 
         // then
-        assertThat(fetchedResultsControllerMock.performFetchCalled == true)
+        XCTAssertTrue(fetchedResultsControllerMock.performFetchCalled)
     }
 
     // MARK: NumberOfSections
@@ -62,7 +62,7 @@ class FetchedObjectsControllerTests: XCTestCase {
         let numberOfSections = sut.numberOfSections
 
         // then
-        assertThat(numberOfSections, equalTo(sections.count))
+        XCTAssertEqual(numberOfSections, sections.count)
     }
 
     // MARK: NumberOfObjectsInSection
@@ -79,7 +79,7 @@ class FetchedObjectsControllerTests: XCTestCase {
         let gotNumberOfObjects = sut.numberOfObjects(inSection: 0)
 
         // then
-        assertThat(gotNumberOfObjects, equalTo(numberOfObjects))
+        XCTAssertEqual(gotNumberOfObjects, numberOfObjects)
     }
 
     // MARK: GetObjectAtIndexPath
@@ -93,8 +93,8 @@ class FetchedObjectsControllerTests: XCTestCase {
         let _ = sut.getObject(at: indexPath)
 
         // then
-        assertThat(fetchedResultsControllerMock.objectAtIndexPathCalled == true)
-        assertThat(fetchedResultsControllerMock._indexPath, equalTo(indexPath))
+        XCTAssertTrue(fetchedResultsControllerMock.objectAtIndexPathCalled)
+        XCTAssertEqual(fetchedResultsControllerMock._indexPath, indexPath)
     }
     
     // MARK: SectionNameInSection
@@ -111,7 +111,7 @@ class FetchedObjectsControllerTests: XCTestCase {
         let gotSectionName = sut.sectionName(inSection: 0)
 
         // then
-        assertThat(gotSectionName, equalTo(sectionName))
+        XCTAssertEqual(gotSectionName, sectionName)
     }
 
     // MARK: ObserveChanges Inserted
@@ -151,7 +151,7 @@ class FetchedObjectsControllerTests: XCTestCase {
                                                           newIndexPath: newIndexPath)
         // then
         wait(for: [expectation], timeout: 3)
-        assertThat(insertedIndexPath, equalTo(newIndexPath))
+        XCTAssertEqual(insertedIndexPath, newIndexPath)
     }
 
     // MARK: ObserveChanges Deleted
@@ -192,7 +192,7 @@ class FetchedObjectsControllerTests: XCTestCase {
 
         // then
         wait(for: [expectation], timeout: 3)
-        assertThat(deletedIndexPath, equalTo(atIndexPath))
+        XCTAssertEqual(deletedIndexPath, atIndexPath)
     }
 
     // MARK: ObserveChanges Updated
@@ -233,7 +233,7 @@ class FetchedObjectsControllerTests: XCTestCase {
 
         // then
         wait(for: [expectation], timeout: 3)
-        assertThat(updatedIndexPath, equalTo(atIndexPath))
+        XCTAssertEqual(updatedIndexPath, atIndexPath)
     }
 
     // MARK: ObserveChanges Moved
@@ -277,8 +277,8 @@ class FetchedObjectsControllerTests: XCTestCase {
 
         // then
         wait(for: [expectation], timeout: 3)
-        assertThat(fromIndexPath, equalTo(atIndexPath))
-        assertThat(toIndexPath, equalTo(newIndexPath))
+        XCTAssertEqual(fromIndexPath, atIndexPath)
+        XCTAssertEqual(toIndexPath, newIndexPath)
 
     }
 
