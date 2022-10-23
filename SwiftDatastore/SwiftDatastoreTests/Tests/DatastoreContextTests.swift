@@ -6,7 +6,6 @@
 //
 
 import XCTest
-import Hamcrest
 import CoreData
 
 @testable import SwiftDatastore
@@ -48,7 +47,7 @@ class DatastoreContextTests: XCTestCase {
         
         // then
         wait(for: [expectation], timeout: 2)
-        assertThat(managedObjectContextMock.performCalled == true)
+        XCTAssertTrue(managedObjectContextMock.performCalled)
     }
     
     // MARK: Perform Completion
@@ -66,6 +65,6 @@ class DatastoreContextTests: XCTestCase {
         
         // then
         wait(for: [expectation], timeout: 2)
-        assertThat(managedObjectContextMock.performCalled == true)
+        XCTAssertTrue(managedObjectContextMock.performCalled)
     }
 }
