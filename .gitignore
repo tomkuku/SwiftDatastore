@@ -1,0 +1,11 @@
+Pods
+Podfile.lock
+Datastore.xcodeproj/xcuserdata
+Datastore.xcworkspace
+DemoApp/DemoApp.xcodeproj/project.xcworkspace
+DemoApp/DemoApp.xcodeproj/xcuserdata
+DemoAppCocoaPods/**/xcuserdata
+DemoApp/DemoApp.xcodeproj/*.xcworkspace
+DemoAppCocoaPods/DemoAppCocoaPods.xcworkspace
+Datastore/Datastore.xcodeproj/xcuserdata
+SwiftDatastore/SwiftDatastore.xcworkspace
