@@ -44,12 +44,12 @@ class DatastoreContextClosureTests: XCTestCase {
         numberOfDeletedObjects = try sut.deleteMany(TestObject.self, where: (\.$name ^= "e"))
 
         // then
-        assertThat(numberOfDeletedObjects, equalTo(0))
-        assertThat(mock._batchDeleteRequestResultType, equalTo(.resultTypeObjectIDs))
-        assertThat(mock._predicate?.predicateFormat, equalTo("name BEGINSWITH \"e\""))
-        assertThat(mock.executeRequestCalled == true)
-        assertThat(mock.mergeChangesCalled == false)
-        assertThat(mock._objectIDsToMerge, nilValue())
+        XCTAssertEqual(numberOfDeletedObjects, 0)
+        XCTAssertEqual(mock._batchDeleteRequestResultType, .resultTypeObjectIDs)
+        XCTAssertEqual(mock._predicate?.predicateFormat, "name BEGINSWITH \"e\"")
+        XCTAssertTrue(mock.executeRequestCalled)
+        XCTAssertFalse(mock.mergeChangesCalled)
+        XCTAssertNil(mock._objectIDsToMerge)
     }
 
     func test_deleteMany_withObjectsToDelete() throws {
@@ -67,12 +67,12 @@ class DatastoreContextClosureTests: XCTestCase {
         numberOfDeletedObjects = try sut.deleteMany(TestObject.self, where: (\.$age >= 44))
 
         // then
-        assertThat(numberOfDeletedObjects, equalTo(objectIDsToDelete.count))
-        assertThat(mock._batchDeleteRequestResultType, equalTo(.resultTypeObjectIDs))
-        assertThat(mock._predicate?.predicateFormat, equalTo("age >= 44"))
-        assertThat(mock.executeRequestCalled == true)
-        assertThat(mock.mergeChangesCalled == true)
-        assertThat(mock._objectIDsToMerge?.count, equalTo(objectIDsToDelete.count))
+        XCTAssertEqual(numberOfDeletedObjects, objectIDsToDelete.count)
+        XCTAssertEqual(mock._batchDeleteRequestResultType, .resultTypeObjectIDs)
+        XCTAssertEqual(mock._predicate?.predicateFormat, "age >= 44")
+        XCTAssertTrue(mock.executeRequestCalled)
+        XCTAssertTrue(mock.mergeChangesCalled)
+        XCTAssertEqual(mock._objectIDsToMerge?.count, objectIDsToDelete.count)
     }
 
     // MARK: UpdateMany
@@ -93,12 +93,12 @@ class DatastoreContextClosureTests: XCTestCase {
                                                                      .init(\.$name, "Jim")])
 
         // then
-        assertThat(numberOfUpdatedObjects, equalTo(0))
-        assertThat(mock.executeRequestCalled == true)
-        assertThat(mock._batchUpdateRequestResultType, equalTo(.updatedObjectIDsResultType))
-        assertThat(mock._predicate?.predicateFormat, equalTo("isDefective != 0"))
-        assertThat(mock._batchUpdateRequestPropertiesToUpdate?.count, equalTo(2))
-        assertThat(mock.mergeChangesCalled == false)
+        XCTAssertEqual(numberOfUpdatedObjects, 0)
+        XCTAssertTrue(mock.executeRequestCalled)
+        XCTAssertEqual(mock._batchUpdateRequestResultType, .updatedObjectIDsResultType)
+        XCTAssertEqual(mock._predicate?.predicateFormat, "isDefective != 0")
+        XCTAssertEqual(mock._batchUpdateRequestPropertiesToUpdate?.count, 2)
+        XCTAssertFalse(mock.mergeChangesCalled)
     }
 
     func test_updateMany_withObjectsToUpdate() throws {
@@ -119,13 +119,13 @@ class DatastoreContextClosureTests: XCTestCase {
                                                                      .init(\.$name, "Jim")])
 
         // then
-        assertThat(numberOfUpdatedObjects, equalTo(objectIDsToUpdate.count))
-        assertThat(mock.executeRequestCalled == true)
-        assertThat(mock._batchUpdateRequestResultType, equalTo(.updatedObjectIDsResultType))
-        assertThat(mock._predicate?.predicateFormat, equalTo("height > 178.5"))
-        assertThat(mock._batchUpdateRequestPropertiesToUpdate?.count, equalTo(2))
-        assertThat(mock.mergeChangesCalled == true)
-        assertThat(mock._objectIDsToMerge?.count, equalTo(objectIDsToUpdate.count))
+        XCTAssertEqual(numberOfUpdatedObjects, objectIDsToUpdate.count)
+        XCTAssertTrue(mock.executeRequestCalled)
+        XCTAssertEqual(mock._batchUpdateRequestResultType, .updatedObjectIDsResultType)
+        XCTAssertEqual(mock._predicate?.predicateFormat, "height > 178.5")
+        XCTAssertEqual(mock._batchUpdateRequestPropertiesToUpdate?.count, 2)
+        XCTAssertTrue(mock.mergeChangesCalled)
+        XCTAssertEqual(mock._objectIDsToMerge?.count, objectIDsToUpdate.count)
     }
 
     // MARK: CreateObject
@@ -134,9 +134,9 @@ class DatastoreContextClosureTests: XCTestCase {
         let _: TestObject = try sut.createObject()
 
         // then
-        assertThat(mock.getEntityDescriptionCalled == true)
-        assertThat(mock.createManagedObjectCalled == true)
-        assertThat(mock.obtainPermanentIDsCalled == true)
+        XCTAssertTrue(mock.getEntityDescriptionCalled)
+        XCTAssertTrue(mock.createManagedObjectCalled)
+        XCTAssertTrue(mock.obtainPermanentIDsCalled)
     }
 
     // MARK: DeleteObject
@@ -148,7 +148,7 @@ class DatastoreContextClosureTests: XCTestCase {
         sut.deleteObject(objectDelete)
 
         // then
-        assertThat(mock.deleteCalled == true)
+        XCTAssertTrue(mock.deleteCalled)
     }
 
     // MARK: Count
@@ -157,9 +157,9 @@ class DatastoreContextClosureTests: XCTestCase {
         let numberOfObjects = try sut.count(TestObject.self, where: \.$name |= "e")
 
         // then
-        assertThat(mock.countObjectsCalled == true)
-        assertThat(numberOfObjects, equalTo(0))
-        assertThat(mock._predicate?.predicateFormat, equalTo("name ENDSWITH \"e\""))
+        XCTAssertTrue(mock.countObjectsCalled)
+        XCTAssertEqual(numberOfObjects, 0)
+        XCTAssertEqual(mock._predicate?.predicateFormat, "name ENDSWITH \"e\"")
     }
 
     func test_count_fromNotEmptyStore() throws {
@@ -171,9 +171,9 @@ class DatastoreContextClosureTests: XCTestCase {
         let numberOfObjects = try sut.count(TestObject.self, where: (\.$name ?= "Tom"))
 
         // then
-        assertThat(mock.countObjectsCalled == true)
-        assertThat(numberOfObjects, equalTo(numberOfObjectsToCount))
-        assertThat(mock._predicate?.predicateFormat, equalTo("name CONTAINS \"Tom\""))
+        XCTAssertTrue(mock.countObjectsCalled)
+        XCTAssertEqual(numberOfObjects, numberOfObjectsToCount)
+        XCTAssertEqual(mock._predicate?.predicateFormat, "name CONTAINS \"Tom\"")
     }
 
     // MARK: Convert
@@ -185,7 +185,7 @@ class DatastoreContextClosureTests: XCTestCase {
         let _ = try sut.convert(existingObject: objectToConvert)
 
         // then
-        assertThat(mock.existingObjectCalled == true)
+        XCTAssertTrue(mock.existingObjectCalled)
     }
 
     // MARK: Fetch
@@ -194,11 +194,11 @@ class DatastoreContextClosureTests: XCTestCase {
         let fetchedObjects: [TestObject] = try sut.fetch(where: nil, orderBy: [], offset: 0, limit: 0)
 
         // then
-        assertThat(fetchedObjects, empty())
-        assertThat(mock._fetchLimit, equalTo(0))
-        assertThat(mock._fetchOffset, equalTo(0))
-        assertThat(mock._predicate, equalTo(nil))
-        assertThat(mock._sorts?.count, equalTo(0))
+        XCTAssertTrue(fetchedObjects.isEmpty)
+        XCTAssertEqual(mock._fetchLimit, 0)
+        XCTAssertEqual(mock._fetchOffset, 0)
+        XCTAssertNil(mock._predicate)
+        XCTAssertEqual(mock._sorts?.count, 0)
     }
 
     func test_fetch_fromNotEmptyStore() throws {
@@ -213,8 +213,8 @@ class DatastoreContextClosureTests: XCTestCase {
         let fetchedObjects: [TestObject] = try sut.fetch(where: nil, orderBy: [], offset: 0, limit: 0)
 
         // then
-        assertThat(fetchedObjects.count, equalTo(3))
-        assertThat(mock.executeFetchRequestCalled ==  true)
+        XCTAssertEqual(fetchedObjects.count, 3)
+        XCTAssertTrue(mock.executeFetchRequestCalled)
     }
 
     func test_fetch_fromEmptyStore_withParameters() throws {
@@ -229,12 +229,12 @@ class DatastoreContextClosureTests: XCTestCase {
                                                      limit: 999)
 
         // then
-        assertThat(fetchedObjects, empty())
-        assertThat(mock._fetchLimit, equalTo(999))
-        assertThat(mock._fetchOffset, equalTo(999))
-        assertThat(mock._predicate, equalTo(NSPredicate(format: "age > 30")))
-        assertThat(mock._sorts?.count, equalTo(2))
-        assertThat(mock._sorts, equalTo(expectedSortDescriptors))
+        XCTAssertTrue(fetchedObjects.isEmpty)
+        XCTAssertEqual(mock._fetchLimit, 999)
+        XCTAssertEqual(mock._fetchOffset, 999)
+        XCTAssertEqual(mock._predicate, NSPredicate(format: "age > 30"))
+        XCTAssertEqual(mock._sorts?.count, 2)
+        XCTAssertEqual(mock._sorts, expectedSortDescriptors)
     }
 
     // MARK: FetchFirst
@@ -251,12 +251,12 @@ class DatastoreContextClosureTests: XCTestCase {
                                                         orderBy: [.desc(\.$salary)])
 
         // then
-        assertThat(fetchedObject, not(nil))
-        assertThat(mock._fetchLimit, equalTo(1))
-        assertThat(mock._fetchOffset, equalTo(0))
-        assertThat(mock._predicate?.predicateFormat, equalTo(expectedPredicate))
-        assertThat(mock._sorts?.count, equalTo(1))
-        assertThat(mock._sorts?.first, equalTo(NSSortDescriptor(key: "salary", ascending: false)))
+        XCTAssertNotNil(fetchedObject)
+        XCTAssertEqual(mock._fetchLimit, 1)
+        XCTAssertEqual(mock._fetchOffset, 0)
+        XCTAssertEqual(mock._predicate?.predicateFormat, expectedPredicate)
+        XCTAssertEqual(mock._sorts?.count, 1)
+        XCTAssertEqual(mock._sorts?.first, NSSortDescriptor(key: "salary", ascending: false))
     }
 
     // MARK: FetchProperties
@@ -285,16 +285,16 @@ class DatastoreContextClosureTests: XCTestCase {
                                                                         .init(\.$age)])
 
         // then
-        assertThat(mock._propertiesToFetch?.count, equalTo(2))
-        assertThat(mock._propertiesToFetch?.first, equalTo(nameKey))
-        assertThat(mock._sorts, equalTo([NSSortDescriptor(key: "salary", ascending: false)]))
-        assertThat(mock._predicate?.predicateFormat, equalTo("age > 30"))
-        assertThat(mock._fetchOffset, equalTo(18))
-        assertThat(mock._fetchLimit, equalTo(99))
-        assertThat(fetchedProperties.count, equalTo(2))
-        assertThat(fetchedProperties.first?.keys.count, equalTo(2))
-        assertThat(fetchedProperties.first?[nameKey] as? String, equalTo("Tom"))
-        assertThat(fetchedProperties.last?[ageKey] as? Int, nilValue())
+        XCTAssertEqual(mock._propertiesToFetch?.count, 2)
+        XCTAssertEqual(mock._propertiesToFetch?.first, nameKey)
+        XCTAssertEqual(mock._sorts, [NSSortDescriptor(key: "salary", ascending: false)])
+        XCTAssertEqual(mock._predicate?.predicateFormat, "age > 30")
+        XCTAssertEqual(mock._fetchOffset, 18)
+        XCTAssertEqual(mock._fetchLimit, 99)
+        XCTAssertEqual(fetchedProperties.count, 2)
+        XCTAssertEqual(fetchedProperties.first?.keys.count, 2)
+        XCTAssertEqual(fetchedProperties.first?[nameKey] as? String, "Tom")
+        XCTAssertNil(fetchedProperties.last?[ageKey] as? Int)
     }
 
     // MARK: RevertChanges
@@ -303,7 +303,7 @@ class DatastoreContextClosureTests: XCTestCase {
         sut.revertChanges()
 
         // then
-        assertThat(mock.rollbackCalled == true)
+        XCTAssertTrue(mock.rollbackCalled)
     }
 
     // MARK: SaveChanges
@@ -317,10 +317,10 @@ class DatastoreContextClosureTests: XCTestCase {
         let gotSavedChanges = try sut.saveChanges()
         
         // then
-        assertThat(mock.saveCalled == true)
-        assertThat(gotSavedChanges.insertedObjects.count, equalTo(0))
-        assertThat(gotSavedChanges.updatedObjects.count, equalTo(1))
-        assertThat(gotSavedChanges.deletedObjects.count, equalTo(2))
+        XCTAssertTrue(mock.saveCalled)
+        XCTAssertEqual(gotSavedChanges.insertedObjects.count, 0)
+        XCTAssertEqual(gotSavedChanges.updatedObjects.count, 1)
+        XCTAssertEqual(gotSavedChanges.deletedObjects.count, 2)
     }
     
     // MARK: RefreshChanges
@@ -337,7 +337,7 @@ class DatastoreContextClosureTests: XCTestCase {
         sut.refresh(using: changes)
         
         // then
-        assertThat(mock.existingObjectCalled == true)
-        assertThat(mock.refreshCalled == true)
+        XCTAssertTrue(mock.existingObjectCalled)
+        XCTAssertTrue(mock.refreshCalled)
     }
 }
