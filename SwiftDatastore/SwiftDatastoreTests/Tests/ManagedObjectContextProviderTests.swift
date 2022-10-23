@@ -39,9 +39,9 @@ class ManagedObjectContextProviderTests: XCTestCase {
                                                pocController: pocControllerMock)
         
         // then
-        assertThat(pocControllerMock.createCalled == true)
-        assertThat(pocControllerMock.destroyPersistentStoreCalled == false)
-        assertThat(pocControllerMock.addPersistentStoreCalled == true)
+        XCTAssertTrue(pocControllerMock.createCalled)
+        XCTAssertFalse(pocControllerMock.destroyPersistentStoreCalled)
+        XCTAssertTrue(pocControllerMock.addPersistentStoreCalled)
     }
     
     func test_create_with_destoryStoreDuringCreating() throws {
@@ -55,9 +55,9 @@ class ManagedObjectContextProviderTests: XCTestCase {
                                                pocController: pocControllerMock)
         
         // then
-        assertThat(pocControllerMock.createCalled == true)
-        assertThat(pocControllerMock.destroyPersistentStoreCalled == true)
-        assertThat(pocControllerMock.addPersistentStoreCalled == true)
+        XCTAssertTrue(pocControllerMock.createCalled)
+        XCTAssertTrue(pocControllerMock.destroyPersistentStoreCalled)
+        XCTAssertTrue(pocControllerMock.addPersistentStoreCalled)
     }
     
     func test_get_mainContext() throws {
@@ -74,11 +74,11 @@ class ManagedObjectContextProviderTests: XCTestCase {
         let context = sut.viewContext
         
         // then
-        assertThat(context.concurrencyType, equalTo(.mainQueueConcurrencyType))
-        assertThat(context.persistentStoreCoordinator == pocControllerMock.poc)
-        assertThat(pocControllerMock.createCalled == true)
-        assertThat(pocControllerMock.destroyPersistentStoreCalled == true)
-        assertThat(pocControllerMock.addPersistentStoreCalled == true)
+        XCTAssertEqual(context.concurrencyType, .mainQueueConcurrencyType)
+        XCTAssertEqual(context.persistentStoreCoordinator, pocControllerMock.poc)
+        XCTAssertTrue(pocControllerMock.createCalled)
+        XCTAssertTrue(pocControllerMock.destroyPersistentStoreCalled)
+        XCTAssertTrue(pocControllerMock.addPersistentStoreCalled)
     }
     
     func test_createNewPrivateContext() throws {
@@ -95,11 +95,11 @@ class ManagedObjectContextProviderTests: XCTestCase {
         let context = sut.createNewPrivateContext()
         
         // then
-        assertThat(context.concurrencyType, equalTo(.privateQueueConcurrencyType))
-        assertThat(context.persistentStoreCoordinator == pocControllerMock.poc)
-        assertThat(pocControllerMock.createCalled == true)
-        assertThat(pocControllerMock.destroyPersistentStoreCalled == true)
-        assertThat(pocControllerMock.addPersistentStoreCalled == true)
+        XCTAssertEqual(context.concurrencyType, .privateQueueConcurrencyType)
+        XCTAssertEqual(context.persistentStoreCoordinator, pocControllerMock.poc)
+        XCTAssertTrue(pocControllerMock.createCalled)
+        XCTAssertTrue(pocControllerMock.destroyPersistentStoreCalled)
+        XCTAssertTrue(pocControllerMock.addPersistentStoreCalled)
     }
     
     // MARK: BundleMock
