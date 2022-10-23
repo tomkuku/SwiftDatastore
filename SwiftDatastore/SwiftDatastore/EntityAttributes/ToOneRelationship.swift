@@ -13,6 +13,7 @@ public enum Relationship {
     @propertyWrapper
     public final class ToOne<T>: EntityProperty<T?>, EntityPropertyKeyPath where T: DatastoreObject {
         
+        // swiftlint:disable:next nesting
         public typealias KeyPathType = T
 
         // MARK: Properties        

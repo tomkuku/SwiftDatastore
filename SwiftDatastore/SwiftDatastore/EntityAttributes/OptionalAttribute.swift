@@ -13,6 +13,7 @@ extension Attribute {
     @propertyWrapper
     public final class Optional<T>: EntityProperty<T?>, EntityPropertyKeyPath {
         
+        // swiftlint:disable:next nesting
         public typealias KeyPathType = T
         
         // MARK: Properties

@@ -12,6 +12,7 @@ public enum Attribute {
     @propertyWrapper
     public final class NotOptional<T>: EntityProperty<T>, EntityPropertyKeyPath {
         
+        // swiftlint:disable:next nesting
         public typealias KeyPathType = T
         
         // MARK: Properties

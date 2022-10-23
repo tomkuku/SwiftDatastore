@@ -13,6 +13,7 @@ extension Relationship {
     @propertyWrapper
     public final class ToMany<T>: EntityProperty<Set<T>>, EntityPropertyKeyPath where T: DatastoreObject {
         
+        // swiftlint:disable:next nesting
         public typealias KeyPathType = T
 
         // MARK: Properties
