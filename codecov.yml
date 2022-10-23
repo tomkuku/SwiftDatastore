@@ -1,3 +1,5 @@
-# sample regex patterns
+# Ignore
 ignore:
   - "SwiftDatastore/SwiftDatastoreTests"
+  - "SwiftDatastore/TestApp"
+  - "SwiftDatastore/TestAppTests"
