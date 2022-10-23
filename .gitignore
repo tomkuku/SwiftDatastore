@@ -10,3 +10,4 @@ DemoAppCocoaPods/DemoAppCocoaPods.xcworkspace
 Datastore/Datastore.xcodeproj/xcuserdata
 SwiftDatastore/SwiftDatastore.xcworkspace
 .DS_Store
+SwiftDatastore/SwiftDatastore.xcodeproj/*.xcworkspace
