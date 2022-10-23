@@ -17,7 +17,7 @@ test_app:
 
 define exec-xcodebuild
 	xcodebuild test \
-	-project $(1).xcodedproj \
+	-project $(1).xcodeproj \
 	-scheme $(2) \
 	-destination platform=$(PLATFORM),name=$(DEVICE),OS=$(IOS_VERSION) \
 	-enableCodeCoverage $(3)
