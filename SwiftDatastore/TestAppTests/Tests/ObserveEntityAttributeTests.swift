@@ -28,7 +28,7 @@ class ObserveEntityAttributeTests: XCTestCase {
         
         let datastore = try SwiftDatastore(storingType: .test,
                                            storeName: "demoapp.background.context.tests",
-                                           datamodelName: "DemoApp")
+                                           datamodelName: "TestApp")
         
         viewContext = datastore.sharedViewContext
         sut = datastore.createNewContext()

@@ -25,7 +25,7 @@ class FetchedObjectsControllerTests: XCTestCase {
         
         let datastore = try SwiftDatastore(storingType: .test,
                                            storeName: "demoapp.fetched.objects.controller.tests",
-                                           datamodelName: "DemoApp")
+                                           datamodelName: "TestApp")
         
         viewContext = datastore.sharedViewContext
         datastoreContext = datastore.createNewContext()

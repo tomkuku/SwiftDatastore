@@ -25,7 +25,6 @@ class EntityAttributesTests: XCTestCase {
     let testStringValue = "apple"
     let testURLValue = URL(string: "https://www.apple.com")!
     
-    
     override func setUpWithError() throws {
         try super.setUpWithError()
         

@@ -5,34 +5,22 @@ on:
   pull_request:
     types: [synchronize, opened, edited, reopened]
 
-env:
-  DATASTORE_SCHEME: Datastore
-  DEMO_APP_SCHEME: DemoApp
-  XCRESULT_PATH: '~/DerivedData/Logs/Test/*.xcresult'
-  XCRESULT_XML_SCRIPT: xccov-to-sonarqube-generic.sh
-
 jobs:  
-  datastore-build-and-test:
+  swift-datastore-build-and-test:
     runs-on: macos-latest
     steps:
     - uses: actions/checkout@v1
-    - name: Pods Installation
-      run: |
-        pod install --project-directory='SwiftDatastore'
     - name: Build and Test
       run: |
-        make -B framework
+        make -B swift_datastore
     - name: Upload coverage to Codecov.io
       continue-on-error: false
       uses: codecov/codecov-action@v1.2.1
  
-  demo-app-build-and-test:
+  test-app-build-and-test:
     runs-on: macos-latest
     steps:
     - uses: actions/checkout@v1
-    - name: Pods Installation
-      run: |
-        pod install --project-directory='DemoAppCocoaPods' 
     - name: Build and Test
       run: |
-        make -B demo_app_cocoa_pods
+        make -B test_app

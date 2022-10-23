@@ -9,11 +9,11 @@ DEVICE = 'iPhone 12'
 PLATFORM = 'iOS Simulator'
 IOS_VERSION = 15.2
 
-framework:
-	$(call exec-xcodebuild, SwiftDatastore/SwiftDatastore, Debug, YES)
+swift_datastore:
+	$(call exec-xcodebuild, SwiftDatastore/SwiftDatastore, SwiftDatastore-Debug, YES)
 
-demo_app_cocoa_pods:
-	$(call exec-xcodebuild, DemoAppCocoaPods/DemoAppCocoaPods, Debug, NO)
+test_app:
+	$(call exec-xcodebuild, SwiftDatastore/SwiftDatastore, TestApp-Debug, NO)
 
 define exec-xcodebuild
 	xcodebuild test \

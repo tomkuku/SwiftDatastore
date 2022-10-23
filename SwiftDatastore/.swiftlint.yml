@@ -1,6 +1,6 @@
 excluded:
-  - Pods
   - SwiftDatastoreTests
+  - TestApp/Requireds
 
 force_cast: warning
 force_try: warning

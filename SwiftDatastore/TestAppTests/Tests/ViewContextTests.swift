@@ -22,7 +22,7 @@ class ViewContextTests: XCTestCase {
         
         let datastore = try SwiftDatastore(storingType: .test,
                                            storeName: "demoapp.view.context.tests",
-                                           datamodelName: "DemoApp")
+                                           datamodelName: "TestApp")
         
         sut = datastore.sharedViewContext
         datastoreContext = datastore.createNewContext()
