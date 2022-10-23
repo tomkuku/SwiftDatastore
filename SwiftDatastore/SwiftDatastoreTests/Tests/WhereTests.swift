@@ -8,7 +8,6 @@
 import Foundation
 import CoreData
 import XCTest
-import Hamcrest
 
 @testable import SwiftDatastore
 
@@ -31,7 +30,7 @@ class WhereTests: XCTestCase {
         sut = \.$age > age
         
         // then
-        assertThat(sut.predicateFormat, equalTo("age > \(age)"))
+        XCTAssertEqual(sut.predicateFormat, "age > \(age)")
     }
     
     func test_greaterThanOrEqualTo() {
@@ -42,7 +41,7 @@ class WhereTests: XCTestCase {
         sut = \.$wight >= wigth
         
         // then
-        assertThat(sut.predicateFormat, equalTo("wight >= \(wigth)"))
+        XCTAssertEqual(sut.predicateFormat, "wight >= \(wigth)")
     }
     
     func test_lessThan() {
@@ -53,7 +52,7 @@ class WhereTests: XCTestCase {
         sut = \.$height < height
         
         // then
-        assertThat(sut.predicateFormat, equalTo("height < \(height)"))
+        XCTAssertEqual(sut.predicateFormat, "height < \(height)")
     }
     
     func test_lessThanOrEqualTo() {
@@ -65,7 +64,7 @@ class WhereTests: XCTestCase {
         sut = \.$dateBirth <= date
         
         // then
-        assertThat(sut.predicate, equalTo(expectedPredicate))
+        XCTAssertEqual(sut.predicate, expectedPredicate)
     }
     
     func test_equalTo() {
@@ -76,7 +75,7 @@ class WhereTests: XCTestCase {
         sut = \.$isDefective == isDefective
         
         // then
-        assertThat(sut.predicateFormat, equalTo("isDefective == 0"))
+        XCTAssertEqual(sut.predicateFormat, "isDefective == 0")
     }
     
     func test_equalTo_nil() {
@@ -84,7 +83,7 @@ class WhereTests: XCTestCase {
         sut = \.$salary == nil
         
         // then
-        assertThat(sut.predicateFormat, equalTo("salary == <null>"))
+        XCTAssertEqual(sut.predicateFormat, "salary == <null>")
     }
     
     func test_notEqualTo() {
@@ -95,7 +94,7 @@ class WhereTests: XCTestCase {
         sut = \.$uuid != uuid
         
         // then
-        assertThat(sut.predicateFormat, equalTo("uuid != \(uuid)"))
+        XCTAssertEqual(sut.predicateFormat, "uuid != \(uuid)")
     }
     
     func test_notEqualTo_nil() {
@@ -103,7 +102,7 @@ class WhereTests: XCTestCase {
         sut = \.$uuid != nil
         
         // then
-        assertThat(sut.predicateFormat, equalTo("uuid != <null>"))
+        XCTAssertEqual(sut.predicateFormat, "uuid != <null>")
     }
     
     func test_contains() {
@@ -114,7 +113,7 @@ class WhereTests: XCTestCase {
         sut = \.$name ?= namePrefix
 
         // then
-        assertThat(sut.predicateFormat, equalTo("name CONTAINS \"\(namePrefix)\""))
+        XCTAssertEqual(sut.predicateFormat, "name CONTAINS \"\(namePrefix)\"")
     }
 
     func test_beginsWith() {
@@ -125,7 +124,7 @@ class WhereTests: XCTestCase {
         sut = \.$name ^= namePrefix
 
         // then
-        assertThat(sut.predicateFormat, equalTo("name BEGINSWITH \"\(namePrefix)\""))
+        XCTAssertEqual(sut.predicateFormat, "name BEGINSWITH \"\(namePrefix)\"")
     }
 
     func test_endsWith() {
@@ -136,7 +135,7 @@ class WhereTests: XCTestCase {
         sut = \.$name |= namePrefix
 
         // then
-        assertThat(sut.predicateFormat, equalTo("name ENDSWITH \"\(namePrefix)\""))
+        XCTAssertEqual(sut.predicateFormat, "name ENDSWITH \"\(namePrefix)\"")
     }
 
     func test_and() {
@@ -148,7 +147,7 @@ class WhereTests: XCTestCase {
         sut = \.$age >= age && \.$height < height
 
         // then
-        assertThat(sut.predicateFormat, equalTo("age >= 25 AND height < 183.8"))
+        XCTAssertEqual(sut.predicateFormat, "age >= 25 AND height < 183.8")
     }
 
     func test_or() {
@@ -159,7 +158,7 @@ class WhereTests: XCTestCase {
         sut = (\.$isDefective == true) || (\.$name ^= string)
 
         // then
-        assertThat(sut.predicateFormat, equalTo("isDefective == 1 OR name BEGINSWITH \"My\""))
+        XCTAssertEqual(sut.predicateFormat, "isDefective == 1 OR name BEGINSWITH \"My\"")
     }
 }
 

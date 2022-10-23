@@ -6,7 +6,6 @@
 //
 
 import XCTest
-import Hamcrest
 import CoreData
 
 @testable import SwiftDatastore
@@ -38,11 +37,11 @@ class ManagedObjectObserverTests: XCTestCase {
         
         // then
         wait(for: [expectation], timeout: 2)
-        assertThat(delegateClient._change, nilValue())
-        assertThat(managedObjectWrapperMock.addObserverCalled == true)
+        XCTAssertNil(delegateClient._change)
+        XCTAssertTrue(managedObjectWrapperMock.addObserverCalled)
         
         let gotValue = delegateClient._newValue as? Int
-        assertThat(gotValue, equalTo(1))
+        XCTAssertEqual(gotValue, 1)
     }
     
     func test_observe_with_changeKind() {
@@ -69,11 +68,11 @@ class ManagedObjectObserverTests: XCTestCase {
         
         // then
         wait(for: [expectation], timeout: 2)
-        assertThat(delegateClient._change, nilValue())
-        assertThat(managedObjectWrapperMock.addObserverCalled == true)
+        XCTAssertNil(delegateClient._change)
+        XCTAssertTrue(managedObjectWrapperMock.addObserverCalled)
         
         let gotValue = delegateClient._newValue as? Int
-        assertThat(gotValue, equalTo(1))
+        XCTAssertEqual(gotValue, 1)
     }
     
     func test_removeObserver() {
@@ -85,7 +84,7 @@ class ManagedObjectObserverTests: XCTestCase {
         sut.removeObserver(forKey: "aaa")
         
         // then
-        assertThat(managedObjectWrapperMock.removeObserverCalled == true)
+        XCTAssertTrue(managedObjectWrapperMock.removeObserverCalled)
     }
     
     func test_removeObserver_while_deinit() {
@@ -101,7 +100,7 @@ class ManagedObjectObserverTests: XCTestCase {
         sut = nil
         
         // then
-        assertThat(managedObjectWrapperMock.removeObserverCalled == true)
+        XCTAssertTrue(managedObjectWrapperMock.removeObserverCalled)
     }
     
     // MARK: TestDelegateClient

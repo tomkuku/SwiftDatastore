@@ -7,7 +7,6 @@
 
 import XCTest
 import CoreData
-import Hamcrest
 
 @testable import SwiftDatastore
 
@@ -45,8 +44,8 @@ class EnumAttributeTests: XCTestCase {
         let gotValue = sut.wrappedValue
         
         // then
-        assertThat(mock.getValueCalled == true)
-        assertThat(gotValue, nilValue())
+        XCTAssertTrue(mock.getValueCalled)
+        XCTAssertNil(gotValue)
     }
     
     func test_get_notNilValue() {
@@ -57,9 +56,8 @@ class EnumAttributeTests: XCTestCase {
         let gotValue = sut.wrappedValue
         
         // then
-        assertThat(mock.getValueCalled == true)
-        
-        assertThat(gotValue, equalTo(.one))
+        XCTAssertTrue(mock.getValueCalled)
+        XCTAssertEqual(gotValue, .one)
     }
     
     func test_set_notNilvalue() {
@@ -72,8 +70,8 @@ class EnumAttributeTests: XCTestCase {
         // then
         let setValue = mock._value as? Int
         
-        assertThat(mock.setValueCalled == true)
-        assertThat(setValue, equalTo(1))
+        XCTAssertTrue(mock.setValueCalled)
+        XCTAssertEqual(setValue, 1)
     }
     
     func test_set_nilValue() {
@@ -86,8 +84,8 @@ class EnumAttributeTests: XCTestCase {
         // then
         let setValue = mock._value as? Int
         
-        assertThat(mock.setValueCalled == true)
-        assertThat(setValue, nilValue())
+        XCTAssertTrue(mock.setValueCalled)
+        XCTAssertNil(setValue)
     }
     
     func test_observe_value() {
@@ -112,7 +110,7 @@ class EnumAttributeTests: XCTestCase {
         
         // then
         wait(for: [expectation], timeout: 2)
-        assertThat(gotNewValue, equalTo(.two))
+        XCTAssertEqual(gotNewValue, .two)
     }
     
     func test_observe_nilValue() {
@@ -130,7 +128,7 @@ class EnumAttributeTests: XCTestCase {
         
         // then
         wait(for: [expectation], timeout: 2)
-        assertThat(gotNewValue, nilValue())
+        XCTAssertNil(gotNewValue)
     }
     
     // MARK: TestEnum

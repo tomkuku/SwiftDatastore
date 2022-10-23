@@ -7,7 +7,6 @@
 
 import Foundation
 import XCTest
-import Hamcrest
 import Combine
 
 @testable import SwiftDatastore
@@ -83,9 +82,9 @@ class EntityPropertyTests: XCTestCase {
         sut.observe( { _ in } )
         
         // then
-        assertThat(observerMock.addObserverNumberOfCalled, equalTo(1))
-        assertThat(sut.isObserving == true)
-        assertThat(sut.observervingBlocks.count, equalTo(2))
+        XCTAssertEqual(observerMock.addObserverNumberOfCalled, 1)
+        XCTAssertTrue(sut.isObserving)
+        XCTAssertEqual(sut.observervingBlocks.count, 2)
     }
     
     func test_observe_usingPublisher() {
@@ -94,9 +93,9 @@ class EntityPropertyTests: XCTestCase {
         let _ = sut.newValuePublisher
         
         // then
-        assertThat(observerMock.addObserverNumberOfCalled, equalTo(1))
-        assertThat(sut.isObserving == true)
-        assertThat(sut.observervingBlocks, empty())
+        XCTAssertEqual(observerMock.addObserverNumberOfCalled, 1)
+        XCTAssertTrue(sut.isObserving)
+        XCTAssertTrue(sut.observervingBlocks.isEmpty)
     }
     
     func test_deinit_whenObserve() {
@@ -107,7 +106,7 @@ class EntityPropertyTests: XCTestCase {
         sut = nil
 
         // then
-        assertThat(observerMock.removeObserverNumberOfCalled, equalTo(1))
+        XCTAssertEqual(observerMock.removeObserverNumberOfCalled, 1)
     }
 
     func test_deinit_whenNotObserve() {
@@ -115,6 +114,6 @@ class EntityPropertyTests: XCTestCase {
         sut = nil
 
         // then
-        assertThat(observerMock.removeObserverNumberOfCalled, equalTo(0))
+        XCTAssertEqual(observerMock.removeObserverNumberOfCalled, 0)
     }
 }

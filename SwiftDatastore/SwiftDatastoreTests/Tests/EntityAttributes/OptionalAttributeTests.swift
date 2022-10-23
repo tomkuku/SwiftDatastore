@@ -7,7 +7,6 @@
 
 import XCTest
 import CoreData
-import Hamcrest
 
 @testable import SwiftDatastore
 
@@ -47,8 +46,8 @@ class OptionalAttributeTests: XCTestCase {
         let gotValue = sut.wrappedValue
         
         // then
-        assertThat(mock.getValueCalled == true)
-        assertThat(gotValue, nilValue())
+        XCTAssertTrue(mock.getValueCalled)
+        XCTAssertNil(gotValue)
     }
     
     func test_getSetValue() {
@@ -60,8 +59,8 @@ class OptionalAttributeTests: XCTestCase {
         let gotValue = sut.wrappedValue
         
         // then
-        assertThat(mock.getValueCalled == true)
-        assertThat(gotValue, equalTo(setValue))
+        XCTAssertTrue(mock.getValueCalled)
+        XCTAssertEqual(gotValue, setValue)
     }
     
     func test_setValue() {
@@ -74,8 +73,8 @@ class OptionalAttributeTests: XCTestCase {
         let setValue = mock._value as? Int
         
         // then
-        assertThat(mock.setValueCalled == true)
-        assertThat(setValue, equalTo(valueToSet))
+        XCTAssertTrue(mock.setValueCalled)
+        XCTAssertEqual(setValue, valueToSet)
     }
     
     func test_setNilValue() {
@@ -90,8 +89,8 @@ class OptionalAttributeTests: XCTestCase {
         let setValue = mock._value as? Int
         
         // then
-        assertThat(mock.setValueCalled == true)
-        assertThat(setValue, nilValue())
+        XCTAssertTrue(mock.setValueCalled)
+        XCTAssertNil(setValue)
     }
     
     func test_observe_value() {
@@ -117,7 +116,7 @@ class OptionalAttributeTests: XCTestCase {
         
         // then
         wait(for: [expectation], timeout: 2)
-        assertThat(gotNewValue, equalTo(newValue))
+        XCTAssertEqual(gotNewValue, newValue)
     }
     
     func test_observe_nilValue() {
@@ -135,6 +134,6 @@ class OptionalAttributeTests: XCTestCase {
         
         // then
         wait(for: [expectation], timeout: 2)
-        assertThat(gotNewValue, nilValue())
+        XCTAssertNil(gotNewValue)
     }
 }

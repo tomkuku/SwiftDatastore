@@ -303,8 +303,8 @@
 				819F568428F4548100703CEB /* ManagedObjectContextProviderTests.swift */,
 				81AE3FE628D0AA53002E2560 /* DatastoreContextClosureTests.swift */,
 				818FDF9828A13ED90060CEE5 /* FetchedObjectsControllerTests.swift */,
-				81B3E34628AAD57900EF87D3 /* OrderByTests.swift */,
 				81E3C31128EBAE3F00927613 /* ManagedObjectObserverTests.swift */,
+				81B3E34628AAD57900EF87D3 /* OrderByTests.swift */,
 				81B3E34428AAD07100EF87D3 /* WhereTests.swift */,
 				813D96B528837FD400292BE5 /* EntityAttributes */,
 			);

@@ -7,7 +7,6 @@
 
 import XCTest
 import CoreData
-import Hamcrest
 
 @testable import SwiftDatastore
 
@@ -45,8 +44,8 @@ class ToOneRelationshipTests: XCTestCase {
         let gotValue = sut.wrappedValue
 
         // then
-        assertThat(mock.getValueCalled == true)
-        assertThat(gotValue, nilValue())
+        XCTAssertTrue(mock.getValueCalled)
+        XCTAssertNil(gotValue)
     }
 
     func test_get_notNilObject() {
@@ -61,7 +60,7 @@ class ToOneRelationshipTests: XCTestCase {
         }
 
         // then
-        assertThat(mock.getValueCalled == true)
+        XCTAssertTrue(mock.getValueCalled)
 
         XCTAssertTrue(type(of: gotValue) == TestObject.self)
     }
@@ -76,7 +75,7 @@ class ToOneRelationshipTests: XCTestCase {
         sut.wrappedValue = objectToSet
 
         // then
-        assertThat(mock.setValueCalled == true)
+        XCTAssertTrue(mock.setValueCalled)
 
         guard let _ = mock._value as? NSManagedObject else {
             XCTFail()
@@ -94,8 +93,8 @@ class ToOneRelationshipTests: XCTestCase {
         // then
         let setValue = mock._value as? TestObject
 
-        assertThat(mock.setValueCalled == true)
-        assertThat(setValue, nilValue())
+        XCTAssertTrue(mock.setValueCalled)
+        XCTAssertNil(setValue)
     }
     
     func test_observe_value() {
@@ -120,6 +119,6 @@ class ToOneRelationshipTests: XCTestCase {
         
         // then
         wait(for: [expectation], timeout: 2)
-        assertThat(gotNewValue, not(nil))
+        XCTAssertNotNil(gotNewValue)
     }
 }

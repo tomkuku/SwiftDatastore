@@ -8,7 +8,6 @@
 import Foundation
 import CoreData
 import XCTest
-import Hamcrest
 import Combine
 
 @testable import SwiftDatastore

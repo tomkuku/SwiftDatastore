@@ -7,7 +7,6 @@
 
 import XCTest
 import CoreData
-import Hamcrest
 
 @testable import SwiftDatastore
 
@@ -49,8 +48,8 @@ class NotOptionalAttributeTests: XCTestCase {
         let gotValue = sut.wrappedValue
         
         // then
-        assertThat(mock.getValueCalled == true)
-        assertThat(gotValue, equalTo(setValue))
+        XCTAssertTrue(mock.getValueCalled)
+        XCTAssertEqual(gotValue, setValue)
     }
     
     func test_setValue() {
@@ -63,8 +62,8 @@ class NotOptionalAttributeTests: XCTestCase {
         // then
         let setValue = mock._value as! Int
         
-        assertThat(mock.setValueCalled == true)
-        assertThat(setValue, equalTo(valueToSet))
+        XCTAssertTrue(mock.setValueCalled)
+        XCTAssertEqual(setValue, valueToSet)
     }
     
     func test_observe() {
@@ -89,6 +88,6 @@ class NotOptionalAttributeTests: XCTestCase {
         
         // then
         wait(for: [expectation], timeout: 2)
-        assertThat(gotNewValue, equalTo(newValue))
+        XCTAssertEqual(gotNewValue, newValue)
     }
 }

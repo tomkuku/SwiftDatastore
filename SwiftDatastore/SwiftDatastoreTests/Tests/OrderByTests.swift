@@ -7,7 +7,6 @@
 
 import Foundation
 import XCTest
-import Hamcrest
 
 @testable import SwiftDatastore
 
@@ -21,7 +20,7 @@ class OrderByTests: XCTestCase {
         let orderBy = OrderBy.asc(\TestObject.$name)
 
         // then
-        assertThat(orderBy.sortDescriptor, equalTo(expectedSortDescriptor))
+        XCTAssertEqual(orderBy.sortDescriptor, expectedSortDescriptor)
     }
     
     func test_desc() {
@@ -32,6 +31,6 @@ class OrderByTests: XCTestCase {
         let orderBy = OrderBy.desc(\TestObject.$dateBirth)
 
         // then
-        assertThat(orderBy.sortDescriptor, equalTo(expectedSortDescriptor))
+        XCTAssertEqual(orderBy.sortDescriptor, expectedSortDescriptor)
     }
 }

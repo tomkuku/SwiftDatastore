@@ -6,7 +6,6 @@
 //
 
 import XCTest
-import Hamcrest
 import CoreData
 
 @testable import SwiftDatastore

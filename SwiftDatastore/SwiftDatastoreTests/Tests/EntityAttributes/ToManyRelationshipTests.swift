@@ -7,7 +7,6 @@
 
 import XCTest
 import CoreData
-import Hamcrest
 
 @testable import SwiftDatastore
 
@@ -47,8 +46,8 @@ class ToManyRelationshipTests: XCTestCase {
         let gotSet = sut.wrappedValue
 
         // then
-        assertThat(mock.mutableSetValueCalled == true)
-        assertThat(gotSet, empty())
+        XCTAssertTrue(mock.mutableSetValueCalled)
+        XCTAssertTrue(gotSet.isEmpty)
     }
 
     func test_get_notEmptySet() {
@@ -64,8 +63,8 @@ class ToManyRelationshipTests: XCTestCase {
         let gotSet = sut.wrappedValue
 
         // then
-        assertThat(mock.mutableSetValueCalled == true)
-        assertThat(gotSet.count, equalTo(mutableSet.count))
+        XCTAssertTrue(mock.mutableSetValueCalled)
+        XCTAssertEqual(gotSet.count, mutableSet.count)
     }
 
     func test_set_emptySet() {
@@ -80,8 +79,8 @@ class ToManyRelationshipTests: XCTestCase {
         sut.wrappedValue = setToSet
 
         // then
-        assertThat(mock.mutableSetValueCalled == true)
-        assertThat(mock._mutableSet.allObjects, empty())
+        XCTAssertTrue(mock.mutableSetValueCalled)
+        XCTAssertTrue(mock._mutableSet.allObjects.isEmpty)
         
         mock._mutableSet.allObjects.forEach {
             guard let _ = $0 as? NSManagedObject else {
@@ -103,8 +102,8 @@ class ToManyRelationshipTests: XCTestCase {
         sut.wrappedValue = setToSet
 
         // then
-        assertThat(mock.mutableSetValueCalled == true)
-        assertThat(mock._mutableSet.allObjects.count, equalTo(setToSet.count))
+        XCTAssertTrue(mock.mutableSetValueCalled)
+        XCTAssertEqual(mock._mutableSet.allObjects.count, setToSet.count)
     }
     
     func test_observe_notEmptySet() {
@@ -133,7 +132,7 @@ class ToManyRelationshipTests: XCTestCase {
 
         // then
         wait(for: [expectation], timeout: 2)
-        assertThat(gotNewValue?.count, equalTo(2))
+        XCTAssertEqual(gotNewValue?.count, 2)
     }
     
     func test_observe_emptySet() {
@@ -151,6 +150,6 @@ class ToManyRelationshipTests: XCTestCase {
 
         // then
         wait(for: [expectation], timeout: 2)
-        assertThat(gotNewValue, empty())
+        XCTAssertTrue(gotNewValue.isEmpty)
     }
 }
