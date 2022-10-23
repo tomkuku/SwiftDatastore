@@ -6,7 +6,6 @@
 //
 
 import XCTest
-import Hamcrest
 
 @testable import SwiftDatastore
 
@@ -37,11 +36,11 @@ class ViewContextTests: XCTestCase {
         let fetchedObjects: [TestObject] = try sut.fetch(where: nil, orderBy: [], offset: 0, limit: 0)
         
         // then
-        assertThat(fetchedObjects, empty())
-        assertThat(mock._fetchLimit, equalTo(0))
-        assertThat(mock._fetchOffset, equalTo(0))
-        assertThat(mock._predicate, equalTo(nil))
-        assertThat(mock._sorts?.count, equalTo(0))
+        XCTAssertTrue(fetchedObjects.isEmpty)
+        XCTAssertEqual(mock._fetchLimit, 0)
+        XCTAssertEqual(mock._fetchOffset, 0)
+        XCTAssertNil(mock._predicate)
+        XCTAssertEqual(mock._sorts?.count, 0)
     }
     
     func test_fetch_fromNotEmptyStore() throws {
@@ -56,8 +55,8 @@ class ViewContextTests: XCTestCase {
         let fetchedObjects: [TestObject] = try sut.fetch(where: nil, orderBy: [], offset: 0, limit: 0)
         
         // then
-        assertThat(fetchedObjects.count, equalTo(3))
-        assertThat(mock.executeFetchRequestCalled ==  true)
+        XCTAssertEqual(fetchedObjects.count, 3)
+        XCTAssertTrue(mock.executeFetchRequestCalled)
     }
     
     func test_fetch_fromEmptyStore_withParameters() throws {
@@ -72,12 +71,12 @@ class ViewContextTests: XCTestCase {
                                                          limit: 999)
         
         // then
-        assertThat(fetchedObjects, empty())
-        assertThat(mock._fetchLimit, equalTo(999))
-        assertThat(mock._fetchOffset, equalTo(999))
-        assertThat(mock._predicate, equalTo(NSPredicate(format: "age > 30")))
-        assertThat(mock._sorts?.count, equalTo(2))
-        assertThat(mock._sorts, equalTo(expectedSortDescriptors))
+        XCTAssertTrue(fetchedObjects.isEmpty)
+        XCTAssertEqual(mock._fetchLimit, 999)
+        XCTAssertEqual(mock._fetchOffset, 999)
+        XCTAssertEqual(mock._predicate, NSPredicate(format: "age > 30"))
+        XCTAssertEqual(mock._sorts?.count, 2)
+        XCTAssertEqual(mock._sorts, expectedSortDescriptors)
     }
     
     // MARK: FetchFirst
@@ -94,12 +93,12 @@ class ViewContextTests: XCTestCase {
                                                             orderBy: [.desc(\.$salary)])
         
         // then
-        assertThat(fetchedObject, not(nil))
-        assertThat(mock._fetchLimit, equalTo(1))
-        assertThat(mock._fetchOffset, equalTo(0))
-        assertThat(mock._predicate?.predicateFormat, equalTo(expectedPredicate))
-        assertThat(mock._sorts?.count, equalTo(1))
-        assertThat(mock._sorts?.first, equalTo(NSSortDescriptor(key: "salary", ascending: false)))
+        XCTAssertNotNil(fetchedObject)
+        XCTAssertEqual(mock._fetchLimit, 1)
+        XCTAssertEqual(mock._fetchOffset, 0)
+        XCTAssertEqual(mock._predicate?.predicateFormat, expectedPredicate)
+        XCTAssertEqual(mock._sorts?.count, 1)
+        XCTAssertEqual(mock._sorts?.first, NSSortDescriptor(key: "salary", ascending: false))
     }
     
     // MARK: Count
@@ -108,9 +107,9 @@ class ViewContextTests: XCTestCase {
         let numberOfObjects = try sut.count(TestObject.self, where: \.$name |= "e")
         
         // then
-        assertThat(mock.countObjectsCalled == true)
-        assertThat(numberOfObjects, equalTo(0))
-        assertThat(mock._predicate?.predicateFormat, equalTo("name ENDSWITH \"e\""))
+        XCTAssertTrue(mock.countObjectsCalled)
+        XCTAssertEqual(numberOfObjects, 0)
+        XCTAssertEqual(mock._predicate?.predicateFormat, "name ENDSWITH \"e\"")
     }
     
     func test_count_fromNotEmptyStore() throws {
@@ -122,8 +121,8 @@ class ViewContextTests: XCTestCase {
         let numberOfObjects = try sut.count(TestObject.self, where: (\.$name ?= "Tom"))
         
         // then
-        assertThat(mock.countObjectsCalled == true)
-        assertThat(numberOfObjects, equalTo(numberOfObjectsToCount))
-        assertThat(mock._predicate?.predicateFormat, equalTo("name CONTAINS \"Tom\""))
+        XCTAssertTrue(mock.countObjectsCalled)
+        XCTAssertEqual(numberOfObjects, numberOfObjectsToCount)
+        XCTAssertEqual(mock._predicate?.predicateFormat, "name CONTAINS \"Tom\"")
     }
 }
