@@ -7,7 +7,6 @@
 
 import XCTest
 import SwiftDatastore
-import Hamcrest
 import UIKit
 
 @testable import DemoAppCocoaPods
@@ -86,15 +85,15 @@ class EntityAttributesTests: XCTestCase {
     }
     
     private func get_optionalAttributes_nilValues(of testObject: TestOptionalObject) {
-        assertThat(testObject.bool, nilValue())
-        assertThat(testObject.data, nilValue())
-        assertThat(testObject.date, nilValue())
-        assertThat(testObject.double, nilValue())
-        assertThat(testObject.float, nilValue())
-        assertThat(testObject.id, nilValue())
-        assertThat(testObject.int, nilValue())
-        assertThat(testObject.string, nilValue())
-        assertThat(testObject.url, nilValue())
+        XCTAssertNil(testObject.bool)
+        XCTAssertNil(testObject.data)
+        XCTAssertNil(testObject.date)
+        XCTAssertNil(testObject.double)
+        XCTAssertNil(testObject.float)
+        XCTAssertNil(testObject.id)
+        XCTAssertNil(testObject.int)
+        XCTAssertNil(testObject.string)
+        XCTAssertNil(testObject.url)
     }
     
     private func set_optionalAttributes_values(of testObject: TestOptionalObject) {
@@ -110,15 +109,15 @@ class EntityAttributesTests: XCTestCase {
     }
     
     private func get_optionalAttributes_values(of testObject: TestOptionalObject) {
-        assertThat(testObject.bool, equalTo(testBoolValue))
-        assertThat(testObject.data, equalTo(testDataValue))
-        assertThat(testObject.date, equalTo(testDateValue))
-        assertThat(testObject.double, equalTo(testDoubleValue))
-        assertThat(testObject.float, equalTo(testFloatValue))
-        assertThat(testObject.id, equalTo(testIDValue))
-        assertThat(testObject.int, equalTo(testIntValue))
-        assertThat(testObject.string, equalTo(testStringValue))
-        assertThat(testObject.url, equalTo(testURLValue))
+        XCTAssertEqual(testObject.bool, testBoolValue)
+        XCTAssertEqual(testObject.data, testDataValue)
+        XCTAssertEqual(testObject.date, testDateValue)
+        XCTAssertEqual(testObject.double, testDoubleValue)
+        XCTAssertEqual(testObject.float, testFloatValue)
+        XCTAssertEqual(testObject.id, testIDValue)
+        XCTAssertEqual(testObject.int, testIntValue)
+        XCTAssertEqual(testObject.string, testStringValue)
+        XCTAssertEqual(testObject.url, testURLValue)
     }
     
     private func set_notOptionalAttributes_values(of testObject: TestNotOptionalObject) {
@@ -134,15 +133,15 @@ class EntityAttributesTests: XCTestCase {
     }
     
     private func get_notOptionalAttributes_values(of testObject: TestNotOptionalObject) {
-        assertThat(testObject.bool, equalTo(testBoolValue))
-        assertThat(testObject.data, equalTo(testDataValue))
-        assertThat(testObject.date, equalTo(testDateValue))
-        assertThat(testObject.double, equalTo(testDoubleValue))
-        assertThat(testObject.float, equalTo(testFloatValue))
-        assertThat(testObject.id, equalTo(testIDValue))
-        assertThat(testObject.int, equalTo(testIntValue))
-        assertThat(testObject.string, equalTo(testStringValue))
-        assertThat(testObject.url, equalTo(testURLValue))
+        XCTAssertEqual(testObject.bool, testBoolValue)
+        XCTAssertEqual(testObject.data, testDataValue)
+        XCTAssertEqual(testObject.date, testDateValue)
+        XCTAssertEqual(testObject.double, testDoubleValue)
+        XCTAssertEqual(testObject.float, testFloatValue)
+        XCTAssertEqual(testObject.id, testIDValue)
+        XCTAssertEqual(testObject.int, testIntValue)
+        XCTAssertEqual(testObject.string, testStringValue)
+        XCTAssertEqual(testObject.url, testURLValue)
     }
     
     private func set_relationshipToMany_values(of relationshipObject: TestRelationshipObject,
@@ -153,7 +152,7 @@ class EntityAttributesTests: XCTestCase {
     }
     
     private func get_relationshipToMany_values(of testObject: TestRelationshipObject) {
-        assertThat(testObject.toOne, not(nil))
-        assertThat(testObject.toMany.count, equalTo(3))
+        XCTAssertNotNil(testObject.toOne)
+        XCTAssertEqual(testObject.toMany.count, 3)
     }
 }

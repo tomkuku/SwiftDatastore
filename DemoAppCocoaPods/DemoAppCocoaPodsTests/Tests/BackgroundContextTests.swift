@@ -7,7 +7,6 @@
 
 import XCTest
 import SwiftDatastore
-import Hamcrest
 
 @testable import DemoAppCocoaPods
 
@@ -89,7 +88,7 @@ class BackgroundContextTests: XCTestCase {
         
         let employee: Employee = try viewContext.fetchFirst(orderBy: [.asc(\.$salary)])!
         
-        assertThat(employee.salary, equalTo(3000))
+        XCTAssertEqual(employee.salary, 3000)
     }
     
     // MARK: Delete Object
@@ -118,8 +117,8 @@ class BackgroundContextTests: XCTestCase {
         let employees: [Employee] = try viewContext.fetch()
         let companies: [Company] = try viewContext.fetch()
         
-        assertThat(employees, empty())
-        assertThat(companies, empty())
+        XCTAssertTrue(employees.isEmpty)
+        XCTAssertTrue(companies.isEmpty)
     }
     
     // MARK: Delete Many
@@ -160,11 +159,11 @@ class BackgroundContextTests: XCTestCase {
         
         let employees: [Employee] = try viewContext.fetch()
         
-        assertThat(employees.count, equalTo(2))
-        assertThat(numberOfDeletedObjects, equalTo(2))
+        XCTAssertEqual(employees.count, 2)
+        XCTAssertEqual(numberOfDeletedObjects, 2)
         
         employees.forEach {
-            assertThat($0.salary!, greaterThanOrEqualTo(triggerSalary))
+            XCTAssertGreaterThanOrEqual($0.salary!, triggerSalary)
         }
     }
     
@@ -209,11 +208,11 @@ class BackgroundContextTests: XCTestCase {
         
         let employees: [Employee] = try viewContext.fetch()
         
-        assertThat(employees.count, equalTo(4))
-        assertThat(numberOfUpdatedObjects, equalTo(2))
+        XCTAssertEqual(employees.count, 4)
+        XCTAssertEqual(numberOfUpdatedObjects, 2)
         
         employees.forEach {
-            assertThat($0.salary!, greaterThanOrEqualTo(triggerSalary))
+            XCTAssertGreaterThanOrEqual($0.salary!, triggerSalary)
         }
     }
     
@@ -255,7 +254,7 @@ class BackgroundContextTests: XCTestCase {
         
         // then
         wait(for: [expectation], timeout: 2)
-        assertThat(convertedEmplyeeSalary, equalTo(4000))
+        XCTAssertEqual(convertedEmplyeeSalary, 4000)
     }
     
     // MARK: Refresh
@@ -332,7 +331,7 @@ class BackgroundContextTests: XCTestCase {
 
         wait(for: [mergeExpectation], timeout: 2)
         
-        assertThat(changedEmployee2?.salary, equalTo(8888))
-        assertThat(deletedEmployee2?.salary, nilValue())
+        XCTAssertEqual(changedEmployee2?.salary, 8888)
+        XCTAssertNil(deletedEmployee2?.salary)
     }
 }

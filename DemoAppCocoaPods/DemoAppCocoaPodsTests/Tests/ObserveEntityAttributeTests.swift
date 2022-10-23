@@ -9,7 +9,6 @@ import XCTest
 import Combine
 
 import SwiftDatastore
-import Hamcrest
 
 @testable import DemoAppCocoaPods
 
@@ -77,7 +76,7 @@ class ObserveEntityAttributeTests: XCTestCase {
         
         // then
         wait(for: [observerExpectation], timeout: 2)
-        assertThat(newSalary, equalTo(nil))
+        XCTAssertEqual(newSalary, nil)
     }
     
     // MARK: NotOptionalAttribute
@@ -115,7 +114,7 @@ class ObserveEntityAttributeTests: XCTestCase {
         
         // then
         wait(for: [observerExpectation], timeout: 2)
-        assertThat(newId, equalTo(expectedID))
+        XCTAssertEqual(newId, expectedID)
     }
     
     // MARK: EnumAttribute
@@ -153,7 +152,7 @@ class ObserveEntityAttributeTests: XCTestCase {
         
         // then
         wait(for: [observerExpectation], timeout: 2)
-        assertThat(newPosition, equalTo(expectedPosition))
+        XCTAssertEqual(newPosition, expectedPosition)
     }
     
     // MARK: ToOneRelationship
@@ -192,7 +191,7 @@ class ObserveEntityAttributeTests: XCTestCase {
         
         // then
         wait(for: [observerExpectation], timeout: 2)
-        assertThat(newCompany.datastoreObjectID, equalTo(company.datastoreObjectID))
+        XCTAssertEqual(newCompany.datastoreObjectID, company.datastoreObjectID)
     }
     
     // MARK: ToManyRelationship
@@ -235,8 +234,8 @@ class ObserveEntityAttributeTests: XCTestCase {
         
         // then
         wait(for: [observerExpectation], timeout: 4)
-        assertThat(newEmployees.count, equalTo(employees.count))
-        assertThat(company.employees.count, equalTo(employees.count))
+        XCTAssertEqual(newEmployees.count, employees.count)
+        XCTAssertEqual(company.employees.count, employees.count)
     }
     
     func test_observe_toManyRelationship_removeObjects() {
@@ -279,8 +278,8 @@ class ObserveEntityAttributeTests: XCTestCase {
         
         // then
         wait(for: [observerExpectation], timeout: 4)
-        assertThat(newEmployees.count, equalTo(1))
-        assertThat(company.employees.count, equalTo(1))
+        XCTAssertEqual(newEmployees.count, 1)
+        XCTAssertEqual(company.employees.count, 1)
     }
     
     func test_observe_toManyRelationship_removeAllObjects() {
@@ -321,8 +320,8 @@ class ObserveEntityAttributeTests: XCTestCase {
         
         // then
         wait(for: [observerExpectation], timeout: 4)
-        assertThat(newEmployees, empty())
-        assertThat(company.employees, empty())
+        XCTAssertTrue(newEmployees.isEmpty)
+        XCTAssertTrue(company.employees.isEmpty)
     }
     
     func test_observe_toManyRelationship_insertObjects() {
@@ -366,7 +365,7 @@ class ObserveEntityAttributeTests: XCTestCase {
         
         // then
         wait(for: [observerExpectation], timeout: 4)
-        assertThat(newEmployees.count, equalTo(5))
-        assertThat(company.employees.count, equalTo(5))        
+        XCTAssertEqual(newEmployees.count, 5)
+        XCTAssertEqual(company.employees.count, 5)
     }
 }

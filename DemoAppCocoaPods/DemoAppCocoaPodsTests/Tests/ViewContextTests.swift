@@ -5,7 +5,6 @@
 //  Created by Kukułka Tomasz on 23/07/2022.
 //
 import XCTest
-import Hamcrest
 import CoreData
 import SwiftDatastore
 import UIKit
@@ -67,9 +66,9 @@ class ViewContextTests: XCTestCase {
                                                         orderBy: [.asc(\.$salary)])
         
         // then
-        assertThat(fetchedEmployee.first?.isInvalid, equalTo(true))
-        assertThat(fetchedEmployee.first?.salary, equalTo(1620.00))
-        assertThat(fetchedEmployee.count, equalTo(2))
+        XCTAssertEqual(fetchedEmployee.first?.isInvalid, true)
+        XCTAssertEqual(fetchedEmployee.first?.salary, 1620.00)
+        XCTAssertEqual(fetchedEmployee.count, 2)
     }
     
     // MARK: FetchFirst
@@ -104,7 +103,7 @@ class ViewContextTests: XCTestCase {
         let fetchedEmployee: Employee? = try sut.fetchFirst(orderBy: [.desc(\.$salary)])
         
         // then
-        assertThat(fetchedEmployee?.salary, equalTo(3000))
+        XCTAssertEqual(fetchedEmployee?.salary, 3000)
     }
     
     // MARK: Count
@@ -133,6 +132,6 @@ class ViewContextTests: XCTestCase {
         let numberOfEmployees = try sut.count(Employee.self, where: \.$salary > 1000)
         
         // then
-        assertThat(numberOfEmployees, equalTo(2))
+        XCTAssertEqual(numberOfEmployees, 2)
     }
 }

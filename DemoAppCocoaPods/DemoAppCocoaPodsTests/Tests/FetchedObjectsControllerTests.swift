@@ -7,7 +7,6 @@
 
 import XCTest
 import SwiftDatastore
-import Hamcrest
 
 @testable import DemoAppCocoaPods
 
@@ -73,7 +72,7 @@ class FetchedObjectsControllerTests: XCTestCase {
         let numberOfSections = sut.numberOfSections
         
         // then
-        assertThat(numberOfSections, equalTo(2))
+        XCTAssertEqual(numberOfSections, 2)
     }
     
     // MARK: NumberOfObjectsInSection
@@ -101,7 +100,7 @@ class FetchedObjectsControllerTests: XCTestCase {
         let numberOfObjectsSection = sut.numberOfObjects(inSection: 0)
         
         // then
-        assertThat(numberOfObjectsSection, equalTo(2))
+        XCTAssertEqual(numberOfObjectsSection, 2)
     }
     
     // MARK: GetObjectAtIndexPath
@@ -137,7 +136,7 @@ class FetchedObjectsControllerTests: XCTestCase {
         let objectAtIndexPath = sut.getObject(at: indexPath)
         
         // then
-        assertThat(objectAtIndexPath.salary, equalTo(3000))
+        XCTAssertEqual(objectAtIndexPath.salary, 3000)
     }
     
     // MARK: SectionNameInSection
@@ -165,7 +164,7 @@ class FetchedObjectsControllerTests: XCTestCase {
         let numberOfObjectsSection = sut.sectionName(inSection: 0)
         
         // then
-        assertThat(numberOfObjectsSection, equalTo("0"))
+        XCTAssertEqual(numberOfObjectsSection, "0")
     }
     
     // MARK: ObserveChanges Inserted
@@ -216,8 +215,8 @@ class FetchedObjectsControllerTests: XCTestCase {
         
         // then
         wait(for: [observeChangesExpectation], timeout: 3)
-        assertThat(insertedEmployee?.salary, equalTo(3000))
-        assertThat(insertedEmployeeIndexPath, equalTo(IndexPath(row: 2, section: 0)))
+        XCTAssertEqual(insertedEmployee?.salary, 3000)
+        XCTAssertEqual(insertedEmployeeIndexPath, IndexPath(row: 2, section: 0))
     }
     
     // MARK: ObserveChanges Deleted
@@ -265,7 +264,7 @@ class FetchedObjectsControllerTests: XCTestCase {
         
         // then
         wait(for: [observeChangesExpectation], timeout: 3)
-        assertThat(deletedEmployeeIndexPath, equalTo(IndexPath(row: 1, section: 0)))
+        XCTAssertEqual(deletedEmployeeIndexPath, IndexPath(row: 1, section: 0))
     }
     
     // MARK: ObserveChanges Updated
@@ -315,8 +314,8 @@ class FetchedObjectsControllerTests: XCTestCase {
         
         // then
         wait(for: [observeChangesExpectation], timeout: 3)
-        assertThat(updatedEmployee?.salary, equalTo(2000))
-        assertThat(updatedEmployeeIndexPath, equalTo(IndexPath(row: 1, section: 0)))
+        XCTAssertEqual(updatedEmployee?.salary, 2000)
+        XCTAssertEqual(updatedEmployeeIndexPath, IndexPath(row: 1, section: 0))
     }
     
     // MARK: ObserveChanges Moved
@@ -372,8 +371,8 @@ class FetchedObjectsControllerTests: XCTestCase {
         
         // then
         wait(for: [observeChangesExpectation], timeout: 3)
-        assertThat(movedEmployee?.salary, equalTo(50000))
-        assertThat(fromIndexPath, equalTo(IndexPath(row: 0, section: 0)))
-        assertThat(toIndexPath, equalTo(IndexPath(row: 2, section: 0)))
+        XCTAssertEqual(movedEmployee?.salary, 50000)
+        XCTAssertEqual(fromIndexPath, IndexPath(row: 0, section: 0))
+        XCTAssertEqual(toIndexPath, IndexPath(row: 2, section: 0))
     }
 }
