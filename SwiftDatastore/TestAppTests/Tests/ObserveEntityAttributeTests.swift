@@ -1,6 +1,6 @@
 //
 //  ObserveEntityAttributeTests.swift
-//  DemoAppCocoaPodsTests
+//  DemoAppTests
 //
 //  Created by Kukułka Tomasz on 02/10/2022.
 //
@@ -10,7 +10,7 @@ import Combine
 
 import SwiftDatastore
 
-@testable import DemoAppCocoaPods
+@testable import TestApp
 
 class ObserveEntityAttributeTests: XCTestCase {
     

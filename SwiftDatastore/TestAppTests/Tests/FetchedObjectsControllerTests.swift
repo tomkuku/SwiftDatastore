@@ -8,7 +8,7 @@
 import XCTest
 import SwiftDatastore
 
-@testable import DemoAppCocoaPods
+@testable import TestApp
 
 class FetchedObjectsControllerTests: XCTestCase {
     
@@ -376,3 +376,4 @@ class FetchedObjectsControllerTests: XCTestCase {
         XCTAssertEqual(toIndexPath, IndexPath(row: 2, section: 0))
     }
 }
+

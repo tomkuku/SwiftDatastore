@@ -1,6 +1,6 @@
 //
 //  EntityAttributesTests.swift
-//  DemoAppCocoaPodsTests
+//  DemoAppTests
 //
 //  Created by Kukułka Tomasz on 11/10/2022.
 //
@@ -9,7 +9,7 @@ import XCTest
 import SwiftDatastore
 import UIKit
 
-@testable import DemoAppCocoaPods
+@testable import TestApp
 
 class EntityAttributesTests: XCTestCase {
     

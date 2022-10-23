@@ -10,7 +10,6 @@ env:
   DEMO_APP_SCHEME: DemoApp
   XCRESULT_PATH: '~/DerivedData/Logs/Test/*.xcresult'
   XCRESULT_XML_SCRIPT: xccov-to-sonarqube-generic.sh
-  SONAR_XML_OUTPUT: sonarqube-generic-coverage.xml
 
 jobs:  
   datastore-build-and-test:
@@ -22,7 +21,7 @@ jobs:
         pod install --project-directory='SwiftDatastore'
     - name: Build and Test
       run: |
-        make -B datastore
+        make -B framework
     - name: Upload coverage to Codecov.io
       continue-on-error: false
       uses: codecov/codecov-action@v1.2.1

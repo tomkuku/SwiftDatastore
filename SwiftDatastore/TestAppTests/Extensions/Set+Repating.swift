@@ -1,6 +1,6 @@
 //
 //  Set+Repating.swift
-//  DemoAppCocoaPodsTests
+//  DemoAppTests
 //
 //  Created by Kukułka Tomasz on 11/10/2022.
 //

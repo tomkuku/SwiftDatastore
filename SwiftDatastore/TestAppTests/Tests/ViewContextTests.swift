@@ -9,7 +9,7 @@ import CoreData
 import SwiftDatastore
 import UIKit
 
-@testable import DemoAppCocoaPods
+@testable import TestApp
 
 class ViewContextTests: XCTestCase {
     

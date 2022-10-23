@@ -8,7 +8,7 @@
 import XCTest
 import SwiftDatastore
 
-@testable import DemoAppCocoaPods
+@testable import TestApp
 
 class BackgroundContextTests: XCTestCase {
     
