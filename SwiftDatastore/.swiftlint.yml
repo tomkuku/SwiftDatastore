@@ -1,0 +1,38 @@
+excluded:
+  - SwiftDatastoreTests
+  - TestApp/Requireds
+  - TestAppTests/Tests
+
+force_cast: warning
+force_try: warning
+
+vertical_whitespace:
+  severity: error
+
+unused_import:
+  severity: error
+
+line_length:
+    warning: 130
+    error: 150
+    ignores_comments: true
+
+file_length:
+  warning: 500
+  error: 1200
+
+identifier_name:
+  min_length:
+    error: 2
+  max_length:
+    warning: 30
+    error: 35
+
+opt_in_rules:
+  - unused_import
+
+disabled_rules:
+  - trailing_whitespace
+  - inclusive_language
+
+reporter: "xcode"

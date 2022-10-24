@@ -1,0 +1,12 @@
+Pods
+Podfile.lock
+Datastore.xcodeproj/xcuserdata
+Datastore.xcworkspace
+Datastore/Datastore.xcodeproj/xcuserdata
+SwiftDatastore/SwiftDatastore.xcworkspace
+.DS_Store
+SwiftDatastore/SwiftDatastore.xcodeproj/*.xcworkspace
+TestApps/CocoaPodsApp/CocoaPodsApp.xcodeproj/xcuserdata
+TestApps/CocoaPodsApp/CocoaPodsApp.xcodeproj/project.xcworkspace/xcshareddata
+TestApps/CocoaPodsApp/CocoaPodsApp.xcodeproj/project.xcworkspace
+TestApps/CocoaPodsApp/CocoaPodsApp.xcworkspace
