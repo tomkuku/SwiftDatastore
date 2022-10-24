@@ -1,0 +1,37 @@
+name: Build and Test
+
+on: 
+  push:
+  pull_request:
+    types: [synchronize, opened, edited, reopened]
+
+jobs:  
+  swift-datastore-build-and-test:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Build and Test
+      run: |
+        make -B swift_datastore
+    - name: Upload coverage to Codecov.io
+      continue-on-error: false
+      uses: codecov/codecov-action@v1.2.1
+ 
+  test-app-build-and-test:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Build and Test
+      run: |
+        make -B test_app
+
+  cocoa_pods_test-app-build-and-test:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Pod Install
+      run: |
+        pod install --project-directory='TestApps/CocoaPodsApp'
+    - name: Build and Test
+      run: |
+        make -B cocoa_pods_test_app

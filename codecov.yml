@@ -1,0 +1,5 @@
+# Ignore
+ignore:
+  - "SwiftDatastore/SwiftDatastoreTests"
+  - "SwiftDatastore/DemoApp"
+  - "SwiftDatastore/DemoAppTests"
