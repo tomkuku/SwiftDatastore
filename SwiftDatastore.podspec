@@ -8,7 +8,7 @@
 Pod::Spec.new do |spec|
 
   spec.name           = "SwiftDatastore"
-  spec.version        = "0.0.1"
+  spec.version        = "0.0.5"
   spec.summary        = "Elegeant and easy way to store data in Swift."
   spec.description    = "SwiftDatastore is a wrapper to CoreData. It has been created to add opportunity to use CoreData methods and objects in easy way."
   spec.homepage       = "https://github.com/tomkuku/SwiftDatastore"
@@ -18,7 +18,7 @@ Pod::Spec.new do |spec|
   spec.swift_version  = "5.5"
   spec.platform       = :ios, "13.0"
 
-  spec.source         = { :path => 'SwiftDatastore' }
+  spec.source         = { :git => 'https://github.com/tomkuku/SwiftDatastore.git', :tag => "0.0.5" }
 
   spec.source_files   = "SwiftDatastore/SwiftDatastore/**/*.swift"
 end
