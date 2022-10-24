@@ -567,7 +567,7 @@
 		813D96632881F7F600292BE5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				BuildIndependentTargetsInParallel = 1;
+				BuildIndependentTargetsInParallel = NO;
 				LastSwiftUpdateCheck = 1400;
 				LastUpgradeCheck = 1330;
 				TargetAttributes = {
@@ -1174,7 +1174,7 @@
 				813D967D2881F7F600292BE5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		813D967E2881F7F600292BE5 /* Build configuration list for PBXNativeTarget "SwiftDatastore" */ = {
 			isa = XCConfigurationList;
@@ -1183,7 +1183,7 @@
 				813D96802881F7F600292BE5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		813D96812881F7F600292BE5 /* Build configuration list for PBXNativeTarget "SwiftDatastoreTests" */ = {
 			isa = XCConfigurationList;
@@ -1192,7 +1192,7 @@
 				813D96832881F7F600292BE5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		813F0A7029060120007469DF /* Build configuration list for PBXNativeTarget "TestApp" */ = {
 			isa = XCConfigurationList;
@@ -1201,7 +1201,7 @@
 				813F0A6B29060120007469DF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		813F0A7129060120007469DF /* Build configuration list for PBXNativeTarget "TestAppTests" */ = {
 			isa = XCConfigurationList;
@@ -1210,7 +1210,7 @@
 				813F0A6D29060120007469DF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 
