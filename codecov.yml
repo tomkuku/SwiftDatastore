@@ -1,5 +1,5 @@
 # Ignore
 ignore:
   - "SwiftDatastore/SwiftDatastoreTests"
-  - "SwiftDatastore/DemoApp"
-  - "SwiftDatastore/DemoAppTests"
+  - "SwiftDatastore/TestApp"
+  - "SwiftDatastore/TestAppTests"
