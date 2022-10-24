@@ -29,6 +29,9 @@ jobs:
     runs-on: macos-latest
     steps:
     - uses: actions/checkout@v1
+    - name: Pod Install
+      run: |
+        pod install --project-directory='TestApps/CocoaPodsApp'
     - name: Build and Test
       run: |
         make -B cocoa_pods_test_app
