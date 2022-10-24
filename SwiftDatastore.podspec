@@ -18,9 +18,7 @@ Pod::Spec.new do |spec|
   spec.swift_version  = "5.5"
   spec.platform       = :ios, "13.0"
 
-  spec.source         = { :path => '.' }
+  spec.source         = { :path => 'SwiftDatastore' }
 
-  spec.source_files   = "SwiftDatastore/**/*.swift"
-  spec.exclude_files  = [ 'SwiftDatastoreTests/**/*', 'TestApp/**/*', 'TestAppTests/**/*' ]
-  spec.weak_framework = 'XCTest'
+  spec.source_files   = "SwiftDatastore/SwiftDatastore/**/*.swift"
 end
