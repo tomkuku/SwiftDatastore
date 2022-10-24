@@ -14,7 +14,7 @@
 
 <p align="center">
 <img alt="Swift Versions" src="https://img.shields.io/badge/Swift->=_5.5-orange?logo=swift&style=flat" />
-<img alt="Platforms" src="https://img.shields.io/badge/platforms-iOS_|_watchOS-yellowgreen?style=flat&logo=apple&name=platforms&color=lightgrey" />
+<img alt="Platforms" src="https://img.shields.io/badge/platforms-iOS_+13.0-yellowgreen?style=flat&logo=apple&name=platforms&color=lightgrey" />
 </p>
 
 </br>
@@ -22,9 +22,9 @@
 ### What is SwiftDatastore and why should I use it?
 `SwiftDatastore` is a wrapper to CoreData. It has been created to add opportunity to use `CoreData` methods and objects in easy way. For example to store value of person's age in CoreData's datamodel we need to choose Int16-64 but then in code we want use this property in easy way - as Int so every time we need to convert it to Int what is uncomfortable.
 
-`SwiftDatastore` has set of `PropertyWrappers` which allow you for get and set value without converting types manually every time. You decide what type you want, SwiftDatastore do the rest for you.
+`SwiftDatastore` has set of `PropertyWrappers` which allow you for getting and setting value without converting types manually every time. You decide what type you want, `SwiftDatastore` does the rest for you.
 
-`SwiftDatastore` also has wide set of prepared generic methods so you don't need to make any own implementations. Full list of method is below.
+`SwiftDatastore` also has wide set of prepared generic methods so you don't need to make any own implementations. What is import each method is tested ✅. Full list of methods is below.
 
 Just try it 😊!
 
@@ -149,7 +149,8 @@ class Employee: DatastoreObject {
 
 ## Attributes
 Each attribute is `property wrapper`.
-Name of variable must be the same as name of this attribute in `datamodel`.
+
+⚠️ Name of variable must be the same as name of this attribute in `datamodel`.
 
 ### `NotOptional`
 It represents single attribute of entity which mustn't return nil value.
@@ -223,20 +224,13 @@ class Employee: DatastoreObject {
 employee.position = .developer
 ```
 
-👌 If you need a constant `Attribute` property, use `private(set)` access modifier.
-
-``` Swift
-
-class Employee: DatastoreObject {
-    @Attribute.NotOptional var id: Position?
-}
-
-// ...
-
-employee.position = .developer
-```
+***
 
 ## Relationship
+Each attribute is `property wrapper`.
+
+⚠️ Name of variable must be the same as name of this attribute in `datamodel`.
+
 ### `ToOne`
 It represents `one-to-one` relationship beetwen SwiftDatastore's entities.
 
@@ -288,8 +282,10 @@ company.employess.remove(employee)
 ## Using SwiftDatastore's
 You must create SwiftDatastore instacne. One instacne represents one store which stores objects from one datamodel.
 ``` Swift
-let swiftDatastore = SwiftDatastore(storeName: "yourAppStoreName", datamodelName: "MyAppDatamodel")
+let swiftDatastore = try SwiftDatastore(storeName: "yourAppStoreName", datamodelName: "MyAppDatamodel")
 ```
+⚠️ Creating SwiftDatastore instance may throw an exception.
+
 It creates `SQLite file` with name: `"yourAppStoreName"` which stores objects from `xcdatamodel` with name `"MyAppDatamodel"`.
 It allows you to create more than one store for different model in one app.
 
