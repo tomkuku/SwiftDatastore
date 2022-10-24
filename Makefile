@@ -10,15 +10,18 @@ PLATFORM = 'iOS Simulator'
 IOS_VERSION = 15.2
 
 swift_datastore:
-	$(call exec-xcodebuild, SwiftDatastore/SwiftDatastore, SwiftDatastore-Debug, YES)
+	$(call exec-xcodebuild, project, SwiftDatastore/SwiftDatastore.xcodeproj, SwiftDatastore-Debug, YES)
 
 test_app:
-	$(call exec-xcodebuild, SwiftDatastore/SwiftDatastore, TestApp-Debug, NO)
+	$(call exec-xcodebuild, project, SwiftDatastore/SwiftDatastore.xcodeproj, TestApp-Debug, NO)
+
+cocoa_pods_test_app:
+	$(call exec-xcodebuild, workspace, TestApps/CocoaPodsApp/CocoaPodsApp.xcworkspace, Debug, NO)
 
 define exec-xcodebuild
 	xcodebuild test \
-	-project $(1).xcodeproj \
-	-scheme $(2) \
+	-$(1) $(2) \
+	-scheme $(3) \
 	-destination platform=$(PLATFORM),name=$(DEVICE),OS=$(IOS_VERSION) \
-	-enableCodeCoverage $(3)
+	-enableCodeCoverage $(4)
 endef
