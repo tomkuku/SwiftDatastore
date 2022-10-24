@@ -24,3 +24,11 @@ jobs:
     - name: Build and Test
       run: |
         make -B test_app
+
+  cocoa_pods_test-app-build-and-test:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Build and Test
+      run: |
+        make -B cocoa_pods_test_app
