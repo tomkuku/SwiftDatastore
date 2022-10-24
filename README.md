@@ -13,7 +13,7 @@
 </p>
 
 <p align="center">
-<img alt="Swift Versions" src="https://img.shields.io/badge/Swift-=>_5.5-orange?logo=swift&style=flat" />
+<img alt="Swift Versions" src="https://img.shields.io/badge/Swift->=_5.5-orange?logo=swift&style=flat" />
 <img alt="Platforms" src="https://img.shields.io/badge/platforms-iOS_|_watchOS-yellowgreen?style=flat&logo=apple&name=platforms&color=lightgrey" />
 </p>
 
