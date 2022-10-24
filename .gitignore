@@ -2,11 +2,6 @@ Pods
 Podfile.lock
 Datastore.xcodeproj/xcuserdata
 Datastore.xcworkspace
-DemoApp/DemoApp.xcodeproj/project.xcworkspace
-DemoApp/DemoApp.xcodeproj/xcuserdata
-DemoAppCocoaPods/**/xcuserdata
-DemoApp/DemoApp.xcodeproj/*.xcworkspace
-DemoAppCocoaPods/DemoAppCocoaPods.xcworkspace
 Datastore/Datastore.xcodeproj/xcuserdata
 SwiftDatastore/SwiftDatastore.xcworkspace
 .DS_Store
@@ -14,3 +9,4 @@ SwiftDatastore/SwiftDatastore.xcodeproj/*.xcworkspace
 TestApps/CocoaPodsApp/CocoaPodsApp.xcodeproj/xcuserdata
 TestApps/CocoaPodsApp/CocoaPodsApp.xcodeproj/project.xcworkspace/xcshareddata
 TestApps/CocoaPodsApp/CocoaPodsApp.xcodeproj/project.xcworkspace
+TestApps/CocoaPodsApp/CocoaPodsApp.xcworkspace
