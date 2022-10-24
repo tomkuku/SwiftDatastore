@@ -20,7 +20,7 @@ Pod::Spec.new do |spec|
 
   spec.source         = { :path => '.' }
 
-  spec.source_files   = "SwiftDatastore/SwiftDatastore/**/*.swift"
+  spec.source_files   = "SwiftDatastore/**/*.swift"
   spec.exclude_files  = [ 'SwiftDatastoreTests/**/*', 'TestApp/**/*', 'TestAppTests/**/*' ]
   spec.weak_framework = 'XCTest'
 end
