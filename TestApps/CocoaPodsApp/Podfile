@@ -4,7 +4,7 @@ use_frameworks!
 
 target 'CocoaPodsApp' do
 
-  pod 'SwiftDatastore', :path => '../..'
+  pod 'SwiftDatastore', :git => 'https://github.com/tomkuku/SwiftDatastore.git', :tag => "0.0.5"
 
   target 'CocoaPodsAppTests' do
     inherit! :search_paths

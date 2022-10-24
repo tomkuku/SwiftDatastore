@@ -5,9 +5,9 @@
 #  Created by Kukułka Tomasz on 02/08/2022.
 #
 
-DEVICE = 'iPhone 12'
+DEVICE = 'iPhone 14'
 PLATFORM = 'iOS Simulator'
-IOS_VERSION = 15.2
+IOS_VERSION = 16.0
 
 swift_datastore:
 	$(call exec-xcodebuild, -project SwiftDatastore/SwiftDatastore.xcodeproj, SwiftDatastore-Debug, YES)
