@@ -80,6 +80,7 @@
 		81BCA54728C5450D00E12923 /* ManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BCA54328C5450D00E12923 /* ManagedObject.swift */; };
 		81C9623B29060F4C006A0068 /* Employee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C9623A29060F4C006A0068 /* Employee.swift */; };
 		81D40A5228CD178E009C7838 /* SwiftDatastore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D40A5128CD178E009C7838 /* SwiftDatastore.swift */; };
+		81D8F0332906778B002A5D86 /* SwiftDatastore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 813D966C2881F7F600292BE5 /* SwiftDatastore.framework */; };
 		81DCE09328856449000E70B8 /* ManagedObjectWrapperMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DCE09128856449000E70B8 /* ManagedObjectWrapperMock.swift */; };
 		81DCE09428856449000E70B8 /* ManagedObjectContextMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DCE09228856449000E70B8 /* ManagedObjectContextMock.swift */; };
 		81E3C31228EBAE3F00927613 /* ManagedObjectObserverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E3C31128EBAE3F00927613 /* ManagedObjectObserverTests.swift */; };
@@ -218,6 +219,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81D8F0332906778B002A5D86 /* SwiftDatastore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -858,7 +860,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
