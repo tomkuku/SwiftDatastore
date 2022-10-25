@@ -11,10 +11,14 @@
 <a href="https://github.com/tomkuku/SwiftDatastore/blob/main/LICENSE.md">
 <img alt="License" src="https://img.shields.io/github/license/tomkuku/SwiftDatastore?color=blue" /></a>
 </p>
-
+</br>
 <p align="center">
 <img alt="Swift Versions" src="https://img.shields.io/badge/Swift->=_5.5-orange?logo=swift&style=flat" />
 <img alt="Platforms" src="https://img.shields.io/badge/platforms-iOS_+13.0-yellowgreen?style=flat&logo=apple&name=platforms&color=lightgrey" />
+</p>
+</br>
+<p align="center">
+<img alt="Swift Versions" src="https://img.shields.io/badge/cocoapods-0.1.0-informational?logo=cocoapods&style=flat" />
 </p>
 
 </br>
