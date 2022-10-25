@@ -1,6 +1,6 @@
 #
 #  Makefile
-#  Datastore
+#  SwiftDatastore
 #
 #  Created by Kukułka Tomasz on 02/08/2022.
 #

@@ -18,7 +18,7 @@
 </p>
 </br>
 <p align="center">
-<img alt="Swift Versions" src="https://img.shields.io/badge/cocoapods-0.0.5-informational?logo=cocoapods&style=flat" />
+<img alt="Swift Versions" src="https://img.shields.io/badge/cocoapods-0.1.0-informational?logo=cocoapods&style=flat" />
 </p>
 
 </br>
