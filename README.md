@@ -6,19 +6,20 @@
 <img alt="Build Status" src="https://img.shields.io/github/workflow/status/tomkuku/SwiftDatastore/Build%20and%20Test/main?logo=github" /></a>
 <a href="https://github.com/tomkuku/SwiftDatastore/commits">
 <img alt="Last Commit" src="https://img.shields.io/github/last-commit/tomkuku/SwiftDatastore?logo=git" /></a>
-<a href="https://github.com/tomkuku/SwiftDatastore/actions">
+<a href="https://app.codecov.io/gh/tomkuku/SwiftDatastore">
 <img alt="Code coverage" src="https://codecov.io/github/tomkuku/SwiftDatastore/coverage.svg?branch=main" /></a>
 <a href="https://github.com/tomkuku/SwiftDatastore/blob/main/LICENSE.md">
 <img alt="License" src="https://img.shields.io/github/license/tomkuku/SwiftDatastore?color=blue" /></a>
 </p>
 </br>
 <p align="center">
-<img alt="Swift Versions" src="https://img.shields.io/badge/Swift->=_5.5-orange?logo=swift&style=flat" />
+<a herf="https://github.com/tomkuku/SwiftDatastore/blob/main/LICENSE.md">
+<img alt="Swift" src="https://img.shields.io/badge/Swift->=_5.5-orange?logo=swift&style=flat" /></a>
 <img alt="Platforms" src="https://img.shields.io/badge/platforms-iOS_+13.0-yellowgreen?style=flat&logo=apple&name=platforms&color=lightgrey" />
 </p>
 </br>
 <p align="center">
-<img alt="Swift Versions" src="https://img.shields.io/badge/cocoapods-0.1.0-informational?logo=cocoapods&style=flat" />
+<img alt="CocoaPods" src="https://img.shields.io/badge/CocoaPods-compatible-informational?logo=cocoapods&style=flat" />
 </p>
 
 </br>
@@ -76,9 +77,9 @@ Just try it 😊!
 
 ## Installation
 ### **[CocoaPods](http://cocoapods.org)**
-In `Podfile` in the target in which you want to use  SwiftDatastore add:
+In your `Podfile` in the target in which you want to use SwiftDatastore add:
 ``` ruby
-pod 'SwiftDatastore', '~> 1.0.0'
+pod 'SwiftDatastore'
 ```
 
 and then run:

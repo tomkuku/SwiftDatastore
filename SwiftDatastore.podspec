@@ -1,5 +1,6 @@
 #
 #  SwiftDatastore.podspec
+#  SwiftDatastore
 #
 #  Created by Kukułka Tomasz on 24/10/2022.
 #
@@ -17,7 +18,7 @@ Pod::Spec.new do |spec|
   spec.swift_version  = "5.5"
   spec.platform       = :ios, "13.0"
 
-  spec.source         = { :git => 'https://github.com/tomkuku/SwiftDatastore.git', :tag => "0.1.0" }
+  spec.source         = { :git => 'https://github.com/tomkuku/SwiftDatastore.git', :tag => spec.version.to_s }
 
   spec.source_files   = "SwiftDatastore/SwiftDatastore/**/*.swift"
 end
