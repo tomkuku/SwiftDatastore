@@ -10,7 +10,8 @@ import SwiftDatastore
 
 final class TestRelationshipObject: DatastoreObject {
     @Relationship.ToOne var toOne: TestOptionalObject?
-    @Relationship.ToMany var toMany: Set<TestOptionalObject>
+//    @Relationship.ToMany var toMany: Set<TestOptionalObject>
+    @Relationship.ToMany.Ordered(by: [.asc(\.$string)]) var toMany: [TestOptionalObject]
     
     override class var entityName: String {
         "TestRelationshipEntity"

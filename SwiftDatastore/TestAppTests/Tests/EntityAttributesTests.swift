@@ -56,10 +56,10 @@ class EntityAttributesTests: XCTestCase {
                                                toOneObject: optionalObject,
                                                toManyObjects: optionalObjects)
             self.get_relationshipToMany_values(of: relationshipObject)
-            
+
             self.set_optionalAttributes_values(of: optionalObject)
             self.get_optionalAttributes_values(of: optionalObject)
-            
+
             self.set_notOptionalAttributes_values(of: notOptionalObject)
             self.get_notOptionalAttributes_values(of: notOptionalObject)
         } success: {
@@ -68,7 +68,7 @@ class EntityAttributesTests: XCTestCase {
             XCTFail(error.localizedDescription)
         }
         
-        wait(for: [expectation], timeout: 2)
+        wait(for: [expectation], timeout: 10)
     }
     
     private func set_optionalAttributes_nilValues(of testObject: TestOptionalObject) {
@@ -147,7 +147,7 @@ class EntityAttributesTests: XCTestCase {
                                                toOneObject: TestOptionalObject,
                                                toManyObjects: Set<TestOptionalObject>) {
         relationshipObject.toOne = toOneObject
-        relationshipObject.toMany = toManyObjects
+        relationshipObject.toMany = Array(toManyObjects)
     }
     
     private func get_relationshipToMany_values(of testObject: TestRelationshipObject) {

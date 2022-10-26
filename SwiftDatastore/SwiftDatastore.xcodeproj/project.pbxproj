@@ -46,6 +46,7 @@
 		8147F43C28F9A455004C7CCF /* EntityPropertyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8147F43B28F9A455004C7CCF /* EntityPropertyTests.swift */; };
 		8153A65928F22F460025C0FE /* SwiftDatastoreError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8153A65828F22F460025C0FE /* SwiftDatastoreError.swift */; };
 		8163AC1728A1172C000527B9 /* FetchedObjectsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8163AC1528A1166C000527B9 /* FetchedObjectsController.swift */; };
+		817125822909986C00EAD88A /* ToManyRelationshipOrdered.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817125812909986C00EAD88A /* ToManyRelationshipOrdered.swift */; };
 		8164078029107BBF004057BC /* ManagedObjectKeyValueMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8164077F29107BBF004057BC /* ManagedObjectKeyValueMock.swift */; };
 		8171C819290C314B0085FFB2 /* PrimaryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8171C818290C314B0085FFB2 /* PrimaryType.swift */; };
 		8176663D289DD93C00123071 /* ViewContextTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8176663C289DD93C00123071 /* ViewContextTests.swift */; };
@@ -157,6 +158,7 @@
 		8147F43B28F9A455004C7CCF /* EntityPropertyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityPropertyTests.swift; sourceTree = "<group>"; };
 		8153A65828F22F460025C0FE /* SwiftDatastoreError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDatastoreError.swift; sourceTree = "<group>"; };
 		8163AC1528A1166C000527B9 /* FetchedObjectsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchedObjectsController.swift; sourceTree = "<group>"; };
+		817125812909986C00EAD88A /* ToManyRelationshipOrdered.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToManyRelationshipOrdered.swift; sourceTree = "<group>"; };
 		8164077F29107BBF004057BC /* ManagedObjectKeyValueMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedObjectKeyValueMock.swift; sourceTree = "<group>"; };
 		8171C818290C314B0085FFB2 /* PrimaryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryType.swift; sourceTree = "<group>"; };
 		8176663C289DD93C00123071 /* ViewContextTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewContextTests.swift; sourceTree = "<group>"; };
@@ -447,6 +449,7 @@
 				81BCA53428C544FC00E12923 /* EnumAttribute.swift */,
 				81BCA53328C544FC00E12923 /* ToOneRelationship.swift */,
 				81BCA52F28C544FC00E12923 /* ToManyRelationship.swift */,
+				817125812909986C00EAD88A /* ToManyRelationshipOrdered.swift */,
 			);
 			path = EntityAttributes;
 			sourceTree = "<group>";
@@ -682,6 +685,8 @@
 				81BCA54628C5450D00E12923 /* KeyPath+KeyPathString.swift in Sources */,
 				81B2DABD28DDC51500E5BB76 /* ManagedObjectObserver.swift in Sources */,
 				81D40A5228CD178E009C7838 /* SwiftDatastore.swift in Sources */,
+				81A2850C2899EF4300832D00 /* AsynchronousFetchRequest.swift in Sources */,
+				817125822909986C00EAD88A /* ToManyRelationshipOrdered.swift in Sources */,
 				81905DBB290FB61100BD7053 /* Set+DatastoreInit.swift in Sources */,
 				81BCA53A28C544FC00E12923 /* OptionalAttribute.swift in Sources */,
 				813D969A28820E2100292BE5 /* ManagedObjectContext.swift in Sources */,
