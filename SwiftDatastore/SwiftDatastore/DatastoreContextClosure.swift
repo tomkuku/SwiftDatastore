@@ -90,24 +90,23 @@ extension SwiftDatastoreContext.Closure {
     }
     
     // MARK: FetchProperties
-    // swiftlint:disable:next function_parameter_count
-    public func fetchProperties<T>(
+    public func fetch<T>(
         _ fetchable: T.Type,
-        where: Where<T>?,
-        orderBy: [OrderBy<T>],
-        offset: Int?,
-        limit: Int?,
-        propertiesToFetch: [PropetyToFetch<T>]
+        properties: [PropetyToFetch<T>],
+        where: Where<T>? = nil,
+        orderBy: [OrderBy<T>]? = nil,
+        offset: Int? = nil,
+        limit: Int? = nil
     ) throws -> [[String: Any?]] where T: DatastoreObject {
-        guard !propertiesToFetch.isEmpty else {
+        guard !properties.isEmpty else {
             return []
         }
         
         let fetchRequest = NSFetchRequest<NSDictionary>(entityName: T.entityName)
-        fetchRequest.propertiesToFetch = propertiesToFetch.map { $0.key }
+        fetchRequest.propertiesToFetch = properties.map { $0.key }
         fetchRequest.resultType = .dictionaryResultType
         fetchRequest.predicate = `where`?.predicate
-        fetchRequest.sortDescriptors = orderBy.map { $0.sortDescriptor }
+        fetchRequest.sortDescriptors = orderBy?.map { $0.sortDescriptor }
         fetchRequest.fetchOffset = offset ?? fetchRequest.fetchOffset
         fetchRequest.fetchLimit = limit ?? fetchRequest.fetchLimit
         

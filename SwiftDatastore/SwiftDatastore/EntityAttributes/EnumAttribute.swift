@@ -14,7 +14,7 @@ extension Attribute {
         
         // swiftlint:disable:next nesting
         public typealias KeyPathType = T
-
+        
         // MARK: Properties
         public var wrappedValue: T? {
             get {
