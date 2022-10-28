@@ -18,7 +18,7 @@
 </p>
 </br>
 <p align="center">
-<img alt="Swift Versions" src="https://img.shields.io/badge/cocoapods-0.1.0-informational?logo=cocoapods&style=flat" />
+<img alt="Swift Versions" src="https://img.shields.io/badge/cocoapods-compatible-informational?logo=cocoapods&style=flat" />
 </p>
 
 </br>
@@ -78,7 +78,7 @@ Just try it 😊!
 ### **[CocoaPods](http://cocoapods.org)**
 In `Podfile` in the target in which you want to use  SwiftDatastore add:
 ``` ruby
-pod 'SwiftDatastore', '~> 1.0.0'
+pod 'SwiftDatastore',
 ```
 
 and then run:
@@ -429,21 +429,25 @@ datastoreContext.perform { context in
 ```
 
 ### `fetchProperties`
-Fetches properties which keyPaths you passed as method's paramters.
+Fetches only properties which keyPaths you passed as method's paramters.
 
-Parameter `propertiesToFetch` is required and is an array of `PropertyToFetch`. `PropertyToFetch` struct ensures that entered key is correct.
+Return type is an array of `Dictionary<String, Any?>`.
 
-Return value is an array of `Dictionary<String, Any?>`.
+ℹ️ Parameter `properties` is required and is an array of `PropertyToFetch`. `PropertyToFetch` struct ensures that entered property is stored by DatastoreObject.
 
-If you pass empty `propertiesToFetch` array this method will do nothing and return empty array.
+⚠️ You can fetch only values types like: String, Int, Data, Bool etc.
+You can not fetch any Relationships.
+
+ℹ️ If you pass empty `propertiesToFetch` array this method will do nothing and return empty array.
 
 ℹ️ This method returns properties values which objects has been saved in SQLite database.
 ``` Swift
+var properties: [[String: Any?]] = []
+
 datastoreContext.perform { context in
-    let properties = try context.fetchProperties(Employee.self,
-                                                 orderBy: [.asc(\.$salary)],
-                                                 propertiesToFetch: [.init(\.$salary),
-                                                                            .init(\.$id)])
+    properties = try context.fetch(Employee.self,
+                                   properties: [.init(\.$salary), .init(\.$id)],
+                                   orderBy: [.asc(\.$salary)])
     let firstSalary = fetchedProperties.first?["salary"] as? Float
 }
 ```
