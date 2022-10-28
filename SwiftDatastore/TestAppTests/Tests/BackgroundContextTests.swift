@@ -56,6 +56,45 @@ class BackgroundContextTests: XCTestCase {
         wait(for: [expectation], timeout: 2)
     }
     
+    // MARK: FetchProperties
+    func test_fetchProperties() throws {
+        // given
+        let saveExpectation = XCTestExpectation()
+        let fetchExpectation = XCTestExpectation()
+        var fetchedProperties: [[String: Any?]] = []
+        
+        sut.perform { context in
+            let employee1: Employee = try context.createObject()
+            employee1.name = "John"
+            employee1.salary = 1620.00
+            
+            let employee2: Employee = try context.createObject()
+            employee2.name = "Tom"
+            employee2.salary = 4450.00
+            
+            try context.saveChanges()
+        } success: {
+            saveExpectation.fulfill()
+        }
+        
+        wait(for: [saveExpectation], timeout: 2)
+        
+        // when
+        sut.perform { context in
+            fetchedProperties = try context.fetch(Employee.self,
+                                                  properties: [.init(\.$name), .init(\.$salary), .init(\.$id)],
+                                                  orderBy: [.asc(\.$salary)])
+        } success: {
+            fetchExpectation.fulfill()
+        }
+        
+        // then
+        wait(for: [fetchExpectation], timeout: 2)
+        XCTAssertEqual(fetchedProperties.count, 2)
+        XCTAssertEqual(fetchedProperties.first?.count, 3)
+        XCTAssertEqual(fetchedProperties.first?["name"] as? String, "John")
+    }
+    
     // MARK: Revert Changes
     func test_revertChanges() throws {
         // given

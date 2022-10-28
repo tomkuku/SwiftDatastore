@@ -42,12 +42,11 @@
 		813F0A9729060290007469DF /* BackgroundContextTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813F0A9529060290007469DF /* BackgroundContextTests.swift */; };
 		813F0A9B2906029A007469DF /* Set+Repating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813F0A9A2906029A007469DF /* Set+Repating.swift */; };
 		813F0A9C2906029A007469DF /* XCTestExpectation+FulfillmentCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813F0A9929060299007469DF /* XCTestExpectation+FulfillmentCount.swift */; };
-		813F0AA129060457007469DF /* TestApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 813F0A772906016A007469DF /* TestApp.xcdatamodeld */; };
-		813F0AA229060457007469DF /* TestModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 813F0A792906016A007469DF /* TestModel.xcdatamodeld */; };
 		8147F43A28F9A1E1004C7CCF /* EntityProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8147F43928F9A1E1004C7CCF /* EntityProperty.swift */; };
 		8147F43C28F9A455004C7CCF /* EntityPropertyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8147F43B28F9A455004C7CCF /* EntityPropertyTests.swift */; };
 		8153A65928F22F460025C0FE /* SwiftDatastoreError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8153A65828F22F460025C0FE /* SwiftDatastoreError.swift */; };
 		8163AC1728A1172C000527B9 /* FetchedObjectsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8163AC1528A1166C000527B9 /* FetchedObjectsController.swift */; };
+		8171C819290C314B0085FFB2 /* PrimaryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8171C818290C314B0085FFB2 /* PrimaryType.swift */; };
 		8176663D289DD93C00123071 /* ViewContextTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8176663C289DD93C00123071 /* ViewContextTests.swift */; };
 		81766641289EE76300123071 /* BatchUpdateResultMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81766640289EE76300123071 /* BatchUpdateResultMock.swift */; };
 		81780AC628D486170078EB8E /* PropertyToFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81780AC528D486170078EB8E /* PropertyToFetch.swift */; };
@@ -157,6 +156,7 @@
 		8147F43B28F9A455004C7CCF /* EntityPropertyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityPropertyTests.swift; sourceTree = "<group>"; };
 		8153A65828F22F460025C0FE /* SwiftDatastoreError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDatastoreError.swift; sourceTree = "<group>"; };
 		8163AC1528A1166C000527B9 /* FetchedObjectsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchedObjectsController.swift; sourceTree = "<group>"; };
+		8171C818290C314B0085FFB2 /* PrimaryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryType.swift; sourceTree = "<group>"; };
 		8176663C289DD93C00123071 /* ViewContextTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewContextTests.swift; sourceTree = "<group>"; };
 		81766640289EE76300123071 /* BatchUpdateResultMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatchUpdateResultMock.swift; sourceTree = "<group>"; };
 		81780AC528D486170078EB8E /* PropertyToFetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyToFetch.swift; sourceTree = "<group>"; };
@@ -425,6 +425,7 @@
 			children = (
 				81BCA52D28C544FC00E12923 /* DatastoreObject.swift */,
 				81780AC528D486170078EB8E /* PropertyToFetch.swift */,
+				8171C818290C314B0085FFB2 /* PrimaryType.swift */,
 				81B78FCB28CA0CA200D3E6F5 /* PropertyToUpdate.swift */,
 				81BCA52C28C544FC00E12923 /* OrderBy.swift */,
 				819F567E28F347D700703CEB /* SavedChanges.swift */,
@@ -686,6 +687,7 @@
 				81BCA53628C544FC00E12923 /* OrderBy.swift in Sources */,
 				819F568128F4532900703CEB /* PocController.swift in Sources */,
 				81780AC628D486170078EB8E /* PropertyToFetch.swift in Sources */,
+				8171C819290C314B0085FFB2 /* PrimaryType.swift in Sources */,
 				81BCA53828C544FC00E12923 /* ToManyRelationship.swift in Sources */,
 				819F568328F4534100703CEB /* MomController.swift in Sources */,
 				819F567F28F347D700703CEB /* SavedChanges.swift in Sources */,
@@ -754,10 +756,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				813F0AA229060457007469DF /* TestModel.xcdatamodeld in Sources */,
 				813F0A9029060267007469DF /* ViewContextTests.swift in Sources */,
 				813F0A9729060290007469DF /* BackgroundContextTests.swift in Sources */,
-				813F0AA129060457007469DF /* TestApp.xcdatamodeld in Sources */,
 				813F0A9B2906029A007469DF /* Set+Repating.swift in Sources */,
 				813F0A9129060267007469DF /* EntityAttributesTests.swift in Sources */,
 				813F0A9C2906029A007469DF /* XCTestExpectation+FulfillmentCount.swift in Sources */,

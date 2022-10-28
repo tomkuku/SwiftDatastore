@@ -271,18 +271,17 @@ class DatastoreContextClosureTests: XCTestCase {
         let dictornay2 = NSMutableDictionary()
         dictornay2[nameKey] = "Jane"
         dictornay2[ageKey] = nil
-
+        
         mock._fetchRequestResult = [dictornay1, dictornay2]
-
+        
         // when
-        let fetchedProperties = try sut.fetchProperties(TestObject.self,
-                                                    where: \.$age > 30,
-                                                    orderBy: [.desc(\.$salary)],
-                                                    offset: 18,
-                                                    limit: 99,
-                                                    propertiesToFetch: [.init(\.$name),
-                                                                        .init(\.$age)])
-
+        let fetchedProperties = try sut.fetch(TestObject.self,
+                                              properties: [.init(\.$name), .init(\.$age)],
+                                              where: \.$age > 30,
+                                              orderBy: [.desc(\.$salary)],
+                                              offset: 18,
+                                              limit: 99)
+        
         // then
         XCTAssertEqual(mock._propertiesToFetch?.count, 2)
         XCTAssertEqual(mock._propertiesToFetch?.first, nameKey)
