@@ -42,8 +42,6 @@
 		813F0A9729060290007469DF /* BackgroundContextTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813F0A9529060290007469DF /* BackgroundContextTests.swift */; };
 		813F0A9B2906029A007469DF /* Set+Repating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813F0A9A2906029A007469DF /* Set+Repating.swift */; };
 		813F0A9C2906029A007469DF /* XCTestExpectation+FulfillmentCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813F0A9929060299007469DF /* XCTestExpectation+FulfillmentCount.swift */; };
-		813F0AA129060457007469DF /* TestApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 813F0A772906016A007469DF /* TestApp.xcdatamodeld */; };
-		813F0AA229060457007469DF /* TestModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 813F0A792906016A007469DF /* TestModel.xcdatamodeld */; };
 		8147F43A28F9A1E1004C7CCF /* EntityProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8147F43928F9A1E1004C7CCF /* EntityProperty.swift */; };
 		8147F43C28F9A455004C7CCF /* EntityPropertyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8147F43B28F9A455004C7CCF /* EntityPropertyTests.swift */; };
 		8153A65928F22F460025C0FE /* SwiftDatastoreError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8153A65828F22F460025C0FE /* SwiftDatastoreError.swift */; };
@@ -758,10 +756,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				813F0AA229060457007469DF /* TestModel.xcdatamodeld in Sources */,
 				813F0A9029060267007469DF /* ViewContextTests.swift in Sources */,
 				813F0A9729060290007469DF /* BackgroundContextTests.swift in Sources */,
-				813F0AA129060457007469DF /* TestApp.xcdatamodeld in Sources */,
 				813F0A9B2906029A007469DF /* Set+Repating.swift in Sources */,
 				813F0A9129060267007469DF /* EntityAttributesTests.swift in Sources */,
 				813F0A9C2906029A007469DF /* XCTestExpectation+FulfillmentCount.swift in Sources */,
