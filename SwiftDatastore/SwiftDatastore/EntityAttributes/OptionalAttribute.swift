@@ -11,10 +11,12 @@ import Combine
 extension Attribute {
  
     @propertyWrapper
-    public final class Optional<T>: EntityProperty<T?>, EntityPropertyKeyPath {
+    public final class Optional<T>: EntityProperty<T?>, EntityPropertyKeyPath, EntityPropertyValueType {
         
-        // swiftlint:disable:next nesting
+        // swiftlint:disable nesting
         public typealias KeyPathType = T
+        public typealias ValueType = T
+        // swiftlint:enable nesting
         
         // MARK: Properties
         public var wrappedValue: T? {

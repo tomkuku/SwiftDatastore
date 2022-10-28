@@ -10,7 +10,7 @@ import Foundation
 public struct PropetyToFetch<T> where T: DatastoreObject {
     let key: String
 
-    public init<E>(_ keyPath: KeyPath<T, E>) where E: EntityPropertyKeyPath {
+    public init<E>(_ keyPath: KeyPath<T, E>) where E: EntityPropertyKeyPath & EntityPropertyValueType {
         key = keyPath.keyPathString
     }
 }

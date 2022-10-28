@@ -19,6 +19,7 @@ final class Employee: DatastoreObject {
     @Attribute.Optional var isInvalid: Bool?
     @Attribute.Enum var position: Position?
     @Attribute.Optional var salary: Float?
+    @Attribute.Optional var name: String?
     @Attribute.Optional var avatarImageData: Data?
     @Relationship.ToOne var company: Company?
     
