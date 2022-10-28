@@ -4,7 +4,7 @@ use_frameworks!
 
 target 'CocoaPodsApp' do
 
-  pod 'SwiftDatastore'
+  pod 'SwiftDatastore', '~> 0.1.1'
 
   target 'CocoaPodsAppTests' do
     inherit! :search_paths
