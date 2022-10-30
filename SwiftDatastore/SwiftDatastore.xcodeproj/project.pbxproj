@@ -80,6 +80,7 @@
 		81C9623B29060F4C006A0068 /* Employee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C9623A29060F4C006A0068 /* Employee.swift */; };
 		81D40A5228CD178E009C7838 /* SwiftDatastore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D40A5128CD178E009C7838 /* SwiftDatastore.swift */; };
 		81D8F0332906778B002A5D86 /* SwiftDatastore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 813D966C2881F7F600292BE5 /* SwiftDatastore.framework */; };
+		81D99800290EC14800FC180A /* DatastoreObjectID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D997FF290EC14800FC180A /* DatastoreObjectID.swift */; };
 		81DCE09328856449000E70B8 /* ManagedObjectWrapperMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DCE09128856449000E70B8 /* ManagedObjectWrapperMock.swift */; };
 		81DCE09428856449000E70B8 /* ManagedObjectContextMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DCE09228856449000E70B8 /* ManagedObjectContextMock.swift */; };
 		81E3C31228EBAE3F00927613 /* ManagedObjectObserverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E3C31128EBAE3F00927613 /* ManagedObjectObserverTests.swift */; };
@@ -191,6 +192,7 @@
 		81BCA54328C5450D00E12923 /* ManagedObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObject.swift; sourceTree = "<group>"; };
 		81C9623A29060F4C006A0068 /* Employee.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Employee.swift; sourceTree = "<group>"; };
 		81D40A5128CD178E009C7838 /* SwiftDatastore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDatastore.swift; sourceTree = "<group>"; };
+		81D997FF290EC14800FC180A /* DatastoreObjectID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatastoreObjectID.swift; sourceTree = "<group>"; };
 		81DCE09128856449000E70B8 /* ManagedObjectWrapperMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObjectWrapperMock.swift; sourceTree = "<group>"; };
 		81DCE09228856449000E70B8 /* ManagedObjectContextMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObjectContextMock.swift; sourceTree = "<group>"; };
 		81E3C31128EBAE3F00927613 /* ManagedObjectObserverTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedObjectObserverTests.swift; sourceTree = "<group>"; };
@@ -269,10 +271,10 @@
 				811A212C28D9BECD00585565 /* DatastoreContextClosure.swift */,
 				8163AC1528A1166C000527B9 /* FetchedObjectsController.swift */,
 				81B2DABC28DDC51500E5BB76 /* ManagedObjectObserver.swift */,
-				81BCA53F28C5450D00E12923 /* Extensions */,
 				81BCA52B28C544FC00E12923 /* Core */,
 				81BCA52E28C544FC00E12923 /* EntityAttributes */,
 				813D968A2881FAB400292BE5 /* Config */,
+				81BCA53F28C5450D00E12923 /* Extensions */,
 			);
 			path = SwiftDatastore;
 			sourceTree = "<group>";
@@ -424,6 +426,7 @@
 			isa = PBXGroup;
 			children = (
 				81BCA52D28C544FC00E12923 /* DatastoreObject.swift */,
+				81D997FF290EC14800FC180A /* DatastoreObjectID.swift */,
 				81780AC528D486170078EB8E /* PropertyToFetch.swift */,
 				8171C818290C314B0085FFB2 /* PrimaryType.swift */,
 				81B78FCB28CA0CA200D3E6F5 /* PropertyToUpdate.swift */,
@@ -669,6 +672,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81D99800290EC14800FC180A /* DatastoreObjectID.swift in Sources */,
 				81BCA53B28C544FC00E12923 /* NotOptionalAttribute.swift in Sources */,
 				8163AC1728A1172C000527B9 /* FetchedObjectsController.swift in Sources */,
 				818FDF9B28A149790060CEE5 /* FetchedResultsController.swift in Sources */,

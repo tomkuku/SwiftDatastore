@@ -19,15 +19,14 @@ open class DatastoreObject {
     
     private let managedObjectObserver: ManagedObjectObserverLogic
     
+    public let datastoreObjectID: DatastoreObjectID
+    
     // MARK: Init
     public required init(managedObjectWrapper: ManagedObjectWrapperLogic) {
         self.managedObjectWrapper = managedObjectWrapper
+        self.datastoreObjectID = DatastoreObjectID(managedObjectID: managedObjectWrapper.object.objectID)
         managedObjectObserver = ManagedObjectObserver(managedObjectWrapper: managedObjectWrapper)
         config()
-    }
-    
-    public var datastoreObjectID: NSManagedObjectID {
-        managedObjectWrapper.object.objectID
     }
     
     // MARK: Public
