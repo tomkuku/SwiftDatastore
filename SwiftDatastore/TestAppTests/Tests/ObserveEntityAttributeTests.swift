@@ -191,7 +191,7 @@ class ObserveEntityAttributeTests: XCTestCase {
         
         // then
         wait(for: [observerExpectation], timeout: 2)
-        XCTAssertEqual(newCompany.datastoreObjectID, company.datastoreObjectID)
+        XCTAssertEqual(newCompany.objectID, company.objectID)
     }
     
     // MARK: ToManyRelationship

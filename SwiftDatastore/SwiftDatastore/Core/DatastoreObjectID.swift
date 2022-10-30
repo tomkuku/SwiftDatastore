@@ -9,7 +9,6 @@ import Foundation
 import CoreData
 
 public final class DatastoreObjectID: CustomStringConvertible {
-    
     private let managedObjectID: NSManagedObjectID
     
     public var description: String {
