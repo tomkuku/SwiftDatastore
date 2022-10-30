@@ -20,3 +20,9 @@ public final class DatastoreObjectID: CustomStringConvertible {
         self.managedObjectID = managedObjectID
     }
 }
+
+extension DatastoreObjectID: Equatable {
+    public static func == (lhs: DatastoreObjectID, rhs: DatastoreObjectID) -> Bool {
+        lhs.managedObjectID == rhs.managedObjectID
+    }
+}
