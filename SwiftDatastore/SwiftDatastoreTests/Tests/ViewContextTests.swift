@@ -104,12 +104,12 @@ class ViewContextTests: XCTestCase {
     // MARK: Count
     func test_count_fromEmptyStore() throws {
         // when
-        let numberOfObjects = try sut.count(TestObject.self, where: \.$name |= "e")
+        let numberOfObjects = try sut.count(TestObject.self, where: \.$age == 34)
         
         // then
         XCTAssertTrue(mock.countObjectsCalled)
         XCTAssertEqual(numberOfObjects, 0)
-        XCTAssertEqual(mock._predicate?.predicateFormat, "name ENDSWITH \"e\"")
+        XCTAssertEqual(mock._predicate?.predicateFormat, "age == 34")
     }
     
     func test_count_fromNotEmptyStore() throws {
@@ -118,11 +118,11 @@ class ViewContextTests: XCTestCase {
         mock._numberOfObjectsToCount = numberOfObjectsToCount
         
         // when
-        let numberOfObjects = try sut.count(TestObject.self, where: (\.$name ?= "Tom"))
+        let numberOfObjects = try sut.count(TestObject.self, where: (\.$age == 34))
         
         // then
         XCTAssertTrue(mock.countObjectsCalled)
         XCTAssertEqual(numberOfObjects, numberOfObjectsToCount)
-        XCTAssertEqual(mock._predicate?.predicateFormat, "name CONTAINS \"Tom\"")
+        XCTAssertEqual(mock._predicate?.predicateFormat, "age == 34")
     }
 }
