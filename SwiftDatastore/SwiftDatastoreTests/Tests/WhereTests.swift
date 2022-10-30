@@ -23,36 +23,28 @@ class WhereTests: XCTestCase {
     }
     
     func test_greatThat() {
-        // given
-        let age = 25
-        
+
         // when
-        sut = \.$age > age
+        sut = \.$age > 25
         
         // then
-        XCTAssertEqual(sut.predicateFormat, "age > \(age)")
+        XCTAssertEqual(sut.predicateFormat, "age > 25")
     }
     
     func test_greaterThanOrEqualTo() {
-        // given
-        let wigth: Float = 55.8
-        
         // when
-        sut = \.$wight >= wigth
+        sut = \.$wight >= 25.8
         
         // then
-        XCTAssertEqual(sut.predicateFormat, "wight >= \(wigth)")
+        XCTAssertEqual(sut.predicateFormat, "wight >= 25.8")
     }
     
     func test_lessThan() {
-        // given
-        let height: Double = 176.3
-        
         // when
-        sut = \.$height < height
+        sut = \.$height < 176.3
         
         // then
-        XCTAssertEqual(sut.predicateFormat, "height < \(height)")
+        XCTAssertEqual(sut.predicateFormat, "height < 176.3")
     }
     
     func test_lessThanOrEqualTo() {
@@ -104,61 +96,21 @@ class WhereTests: XCTestCase {
         // then
         XCTAssertEqual(sut.predicateFormat, "uuid != <null>")
     }
-    
-    func test_contains() {
-        // given
-        let namePrefix = "My"
-
-        // when
-        sut = \.$name ?= namePrefix
-
-        // then
-        XCTAssertEqual(sut.predicateFormat, "name CONTAINS \"\(namePrefix)\"")
-    }
-
-    func test_beginsWith() {
-        // given
-        let namePrefix = "My"
-
-        // when
-        sut = \.$name ^= namePrefix
-
-        // then
-        XCTAssertEqual(sut.predicateFormat, "name BEGINSWITH \"\(namePrefix)\"")
-    }
-
-    func test_endsWith() {
-        // given
-        let namePrefix = "My"
-
-        // when
-        sut = \.$name |= namePrefix
-
-        // then
-        XCTAssertEqual(sut.predicateFormat, "name ENDSWITH \"\(namePrefix)\"")
-    }
 
     func test_and() {
-        // given
-        let age = 25
-        let height: Double = 183.8
-
         // when
-        sut = \.$age >= age && \.$height < height
+        sut = \.$age >= 25 && \.$height < 183.8
 
         // then
         XCTAssertEqual(sut.predicateFormat, "age >= 25 AND height < 183.8")
     }
 
     func test_or() {
-        // given
-        let string = "My"
-
         // when
-        sut = (\.$isDefective == true) || (\.$name ^= string)
-
+        sut = \.$salary >= 700 || \.$age == 21
+        
         // then
-        XCTAssertEqual(sut.predicateFormat, "isDefective == 1 OR name BEGINSWITH \"My\"")
+        XCTAssertEqual(sut.predicateFormat, "salary >= 700 OR age == 21")
     }
 }
 

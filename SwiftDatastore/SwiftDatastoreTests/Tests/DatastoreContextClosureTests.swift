@@ -40,12 +40,12 @@ class DatastoreContextClosureTests: XCTestCase {
         var numberOfDeletedObjects = Int.max
 
         // when
-        numberOfDeletedObjects = try sut.deleteMany(TestObject.self, where: (\.$name ^= "e"))
+        numberOfDeletedObjects = try sut.deleteMany(TestObject.self, where: \.$age == 34)
 
         // then
         XCTAssertEqual(numberOfDeletedObjects, 0)
         XCTAssertEqual(mock._batchDeleteRequestResultType, .resultTypeObjectIDs)
-        XCTAssertEqual(mock._predicate?.predicateFormat, "name BEGINSWITH \"e\"")
+        XCTAssertEqual(mock._predicate?.predicateFormat, "age == 34")
         XCTAssertTrue(mock.executeRequestCalled)
         XCTAssertFalse(mock.mergeChangesCalled)
         XCTAssertNil(mock._objectIDsToMerge)
@@ -153,12 +153,12 @@ class DatastoreContextClosureTests: XCTestCase {
     // MARK: Count
     func test_count_fromEmptyStore() throws {
         // when
-        let numberOfObjects = try sut.count(TestObject.self, where: \.$name |= "e")
+        let numberOfObjects = try sut.count(TestObject.self, where: \.$age == 34)
 
         // then
         XCTAssertTrue(mock.countObjectsCalled)
         XCTAssertEqual(numberOfObjects, 0)
-        XCTAssertEqual(mock._predicate?.predicateFormat, "name ENDSWITH \"e\"")
+        XCTAssertEqual(mock._predicate?.predicateFormat, "age == 34")
     }
 
     func test_count_fromNotEmptyStore() throws {
@@ -167,12 +167,12 @@ class DatastoreContextClosureTests: XCTestCase {
         mock._numberOfObjectsToCount = numberOfObjectsToCount
 
         // when
-        let numberOfObjects = try sut.count(TestObject.self, where: (\.$name ?= "Tom"))
+        let numberOfObjects = try sut.count(TestObject.self, where: \.$age == 34)
         
         // then
         XCTAssertTrue(mock.countObjectsCalled)
         XCTAssertEqual(numberOfObjects, numberOfObjectsToCount)
-        XCTAssertEqual(mock._predicate?.predicateFormat, "name CONTAINS \"Tom\"")
+        XCTAssertEqual(mock._predicate?.predicateFormat, "age == 34")
     }
 
     // MARK: Convert

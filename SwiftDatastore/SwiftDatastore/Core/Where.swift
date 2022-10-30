@@ -62,32 +62,6 @@ public func != <R, V>(lhs: KeyPath<R, V>,
     Where(keyPath: lhs, value: rhs, type: .notEqualTo)
 }
 
-// MARK: Contains
-infix operator ?=
-
-public func ?= <R, V>(
-    lhs: KeyPath<R, V>,
-    rhs: String
-) -> Where<R> where R: DatastoreObject, V: EntityPropertyKeyPath, V.KeyPathType == String {
-    Where(keyPath: lhs, value: rhs, type: .contains)
-}
-
-// MARK: BeginsWith
-public func ^= <R, V>(
-    lhs: KeyPath<R, V>,
-    rhs: String
-) -> Where<R> where R: DatastoreObject, V: EntityPropertyKeyPath, V.KeyPathType == String {
-    Where(keyPath: lhs, value: rhs, type: .beginsWith)
-}
-
-// MARK: EndsWith
-public func |= <R, V>(
-    lhs: KeyPath<R, V>,
-    rhs: String
-) -> Where<R> where R: DatastoreObject, V: EntityPropertyKeyPath, V.KeyPathType == String {
-    Where(keyPath: lhs, value: rhs, type: .endsWith)
-}
-
 // MARK: Compound
 public func && <T>(lhs: Where<T>, rhs: Where<T>) -> Where<T> where T: DatastoreObject {
     return Where<T>(predicate: NSCompoundPredicate(type: .and,
@@ -107,3 +81,4 @@ fileprivate extension NSComparisonPredicate {
                   type: type)
     }
 }
+
