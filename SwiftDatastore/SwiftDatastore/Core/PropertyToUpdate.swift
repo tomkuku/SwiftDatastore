@@ -1,6 +1,6 @@
 //
 //  PropertyToUpdate.swift
-//  Datastore
+//  SwiftDatastore
 //
 //  Created by Kukułka Tomasz on 08/09/2022.
 //
@@ -11,7 +11,10 @@ public struct PropertyToUpdate<T> where T: DatastoreObject {
     let key: String
     let value: Any
     
-    public init<V>(_ keyPath: KeyPath<T, V>, _ value: V.KeyPathType) where V: EntityPropertyKeyPath {
+    public init<V>(
+        _ keyPath: KeyPath<T, V>,
+        _ value: V.KeyPathType
+    ) where V: EntityPropertyKeyPath & EntityPropertyValueType {
         self.key = keyPath.keyPathString
         self.value = value
     }
