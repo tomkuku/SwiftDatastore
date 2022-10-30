@@ -11,6 +11,7 @@
 		8117F45828A2592800C11067 /* FetchedResultsControllerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8117F45728A2592800C11067 /* FetchedResultsControllerMock.swift */; };
 		811A212B28D9BDC700585565 /* DatastoreContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811A212A28D9BDC700585565 /* DatastoreContext.swift */; };
 		811A212D28D9BECD00585565 /* DatastoreContextClosure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811A212C28D9BECD00585565 /* DatastoreContextClosure.swift */; };
+		81293671290E9AD300D5E456 /* ContextObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81293670290E9AD300D5E456 /* ContextObserver.swift */; };
 		813D96752881F7F600292BE5 /* SwiftDatastore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 813D966C2881F7F600292BE5 /* SwiftDatastore.framework */; };
 		813D967B2881F7F600292BE5 /* SwiftDatastore.h in Headers */ = {isa = PBXBuildFile; fileRef = 813D966F2881F7F600292BE5 /* SwiftDatastore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		813D968C2881FDA100292BE5 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813D968B2881FDA100292BE5 /* Logger.swift */; };
@@ -117,6 +118,7 @@
 		8117F45728A2592800C11067 /* FetchedResultsControllerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchedResultsControllerMock.swift; sourceTree = "<group>"; };
 		811A212A28D9BDC700585565 /* DatastoreContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatastoreContext.swift; sourceTree = "<group>"; };
 		811A212C28D9BECD00585565 /* DatastoreContextClosure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatastoreContextClosure.swift; sourceTree = "<group>"; };
+		81293670290E9AD300D5E456 /* ContextObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextObserver.swift; sourceTree = "<group>"; };
 		813D966C2881F7F600292BE5 /* SwiftDatastore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftDatastore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		813D966F2881F7F600292BE5 /* SwiftDatastore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftDatastore.h; sourceTree = "<group>"; };
 		813D96742881F7F600292BE5 /* SwiftDatastoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftDatastoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -267,6 +269,7 @@
 				8153A65828F22F460025C0FE /* SwiftDatastoreError.swift */,
 				811A212A28D9BDC700585565 /* DatastoreContext.swift */,
 				811A212C28D9BECD00585565 /* DatastoreContextClosure.swift */,
+				81293670290E9AD300D5E456 /* ContextObserver.swift */,
 				8163AC1528A1166C000527B9 /* FetchedObjectsController.swift */,
 				81B2DABC28DDC51500E5BB76 /* ManagedObjectObserver.swift */,
 				81BCA53F28C5450D00E12923 /* Extensions */,
@@ -671,6 +674,7 @@
 			files = (
 				81BCA53B28C544FC00E12923 /* NotOptionalAttribute.swift in Sources */,
 				8163AC1728A1172C000527B9 /* FetchedObjectsController.swift in Sources */,
+				81293671290E9AD300D5E456 /* ContextObserver.swift in Sources */,
 				818FDF9B28A149790060CEE5 /* FetchedResultsController.swift in Sources */,
 				813D968C2881FDA100292BE5 /* Logger.swift in Sources */,
 				81BCA54428C5450D00E12923 /* IndexPath+String.swift in Sources */,

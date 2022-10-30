@@ -21,7 +21,7 @@ public final class SwiftDatastoreContext {
     // MARK: Perform
     public func perform(block: @escaping (_ context: Closure) throws -> Void,
                         success: (() -> Void)? = nil,
-                        failure: ((_ error: Error) -> Void)? = nil) {
+                        failure: ((_  error: Error) -> Void)? = nil) {
         context.perform {
             do {
                 try block(self.closure)
