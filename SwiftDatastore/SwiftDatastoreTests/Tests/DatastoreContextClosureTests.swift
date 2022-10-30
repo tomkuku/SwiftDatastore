@@ -168,7 +168,7 @@ class DatastoreContextClosureTests: XCTestCase {
 
         // when
         let numberOfObjects = try sut.count(TestObject.self, where: (\.$name ?= "Tom"))
-
+        
         // then
         XCTAssertTrue(mock.countObjectsCalled)
         XCTAssertEqual(numberOfObjects, numberOfObjectsToCount)
@@ -191,7 +191,7 @@ class DatastoreContextClosureTests: XCTestCase {
     func test_fetch_fromEmptyStore_withNoParameters() throws {
         // when
         let fetchedObjects: [TestObject] = try sut.fetch(where: nil, orderBy: [], offset: 0, limit: 0)
-
+        
         // then
         XCTAssertTrue(fetchedObjects.isEmpty)
         XCTAssertEqual(mock._fetchLimit, 0)
@@ -210,7 +210,7 @@ class DatastoreContextClosureTests: XCTestCase {
 
         // when
         let fetchedObjects: [TestObject] = try sut.fetch(where: nil, orderBy: [], offset: 0, limit: 0)
-
+        
         // then
         XCTAssertEqual(fetchedObjects.count, 3)
         XCTAssertTrue(mock.executeFetchRequestCalled)
