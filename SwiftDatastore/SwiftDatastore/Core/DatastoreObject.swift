@@ -19,12 +19,13 @@ open class DatastoreObject {
     
     private let managedObjectObserver: ManagedObjectObserverLogic
     
-    public let datastoreObjectID: DatastoreObjectID
+    public private(set) lazy var objectID: DatastoreObjectID = {
+        DatastoreObjectID(managedObjectID: managedObjectWrapper.object.objectID)
+    }()
     
     // MARK: Init
     public required init(managedObjectWrapper: ManagedObjectWrapperLogic) {
         self.managedObjectWrapper = managedObjectWrapper
-        self.datastoreObjectID = DatastoreObjectID(managedObjectID: managedObjectWrapper.object.objectID)
         managedObjectObserver = ManagedObjectObserver(managedObjectWrapper: managedObjectWrapper)
         config()
     }
