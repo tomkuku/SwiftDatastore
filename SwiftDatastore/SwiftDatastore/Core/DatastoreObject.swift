@@ -1,6 +1,6 @@
 //
 //  Entity.swift
-//  DatabaseApi
+//  SwiftDatastore
 //
 //  Created by Tomasz Kukułka on 16/07/2022.
 //
