@@ -25,7 +25,7 @@ jobs:
       run: |
         make -B test_app
 
-  cocoa_pods_test-app-build-and-test:
+  cocoa-pods-test-app-build-and-test:
     runs-on: macos-latest
     steps:
     - uses: actions/checkout@v1
