@@ -6,10 +6,16 @@
 //
 
 import Foundation
+import CoreData
 
 extension KeyPath where Root: DatastoreObject, Value: EntityPropertyKeyPath {
     var keyPathString: String {
-        let object = Root.init(managedObjectWrapper: ManagedObjectWrapper())
+        let entityDescription = NSEntityDescription()
+        entityDescription.name = "-"
+        
+        let managedObject = NSManagedObject(entity: entityDescription, insertInto: nil)
+        
+        let object = Root(managedObject: managedObject)
         return object[keyPath: self].key
     }
 }

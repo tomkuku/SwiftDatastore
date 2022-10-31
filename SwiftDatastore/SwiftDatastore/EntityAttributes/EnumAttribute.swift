@@ -18,13 +18,14 @@ extension Attribute {
         // MARK: Properties
         public var wrappedValue: T? {
             get {
-                guard let rawValue: T.RawValue = managedObjectWrapper.getValue(forKey: key) else {
+                guard let rawValue: T.RawValue = getManagedObjectValueForKey() else {
                     Logger.log.debug("RawValue is nil.")
                     return nil
                 }
                 return T.init(rawValue: rawValue)
-            } set {
-                managedObjectWrapper.set(newValue?.rawValue, forKey: key)
+            }
+            set {
+                setManagedObjectValueForKey(value: newValue?.rawValue)
             }
         }
         

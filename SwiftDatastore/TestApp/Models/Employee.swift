@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftDatastore
+import CoreData
 
 enum Position: Int {
     case developer
@@ -24,6 +25,6 @@ final class Employee: DatastoreObject {
     @Relationship.ToOne var company: Company?
     
     override func objectDidCreate() {
-        id = UUID()
+        id = UUID()        
     }
 }

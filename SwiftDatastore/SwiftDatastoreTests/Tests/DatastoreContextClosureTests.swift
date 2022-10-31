@@ -177,6 +177,8 @@ class DatastoreContextClosureTests: XCTestCase {
 
     // MARK: Convert
     func test_convertExistingObject() throws {
+        let entity = PersistentStoreCoordinatorMock.shared.entityDescription        
+        
         // given
         let objectToConvert = TestObject()
 

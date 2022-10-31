@@ -16,65 +16,53 @@ class EnumAttributeTests: XCTestCase {
     typealias SutType = Attribute.Enum<TestEnum>
     
     var sut: SutType!
-    var mock: ManagedObjectWrapperMock!
+    var mock: ManagedObjectKeyValueMock!
     var observerMock: ManagedObjectObserverMock!
     
     // MARK: Setup
     override func setUp() {
         super.setUp()
-        mock = ManagedObjectWrapperMock()
-        sut = SutType()
-        sut.managedObjectWrapper = mock
-        
+        mock = ManagedObjectKeyValueMock()
         observerMock = ManagedObjectObserverMock()
-        
+        sut = SutType()
+        sut.managedObject = mock
         sut.managedObjectObserver = observerMock
     }
     
     override func tearDown() {
-        mock = nil
         sut = nil
+        mock = nil
         observerMock = nil
         super.tearDown()
     }
     
     // MARK: Tests
-    func test_get_nilValue() {
+    func test_getNilValue() {
         // when
         let gotValue = sut.wrappedValue
         
         // then
-        XCTAssertTrue(mock.getValueCalled)
+        XCTAssertTrue(mock.primitiveValueCalled)
+        XCTAssertTrue(mock.willAccessValueCalled)
+        XCTAssertTrue(mock.didAccessValueCalled)
         XCTAssertNil(gotValue)
     }
     
-    func test_get_notNilValue() {
+    func test_getNotNilValue() {
         // given
-        mock._value = 1
+        mock._primitiveValue = 1
         
         // when
         let gotValue = sut.wrappedValue
         
         // then
-        XCTAssertTrue(mock.getValueCalled)
+        XCTAssertTrue(mock.primitiveValueCalled)
+        XCTAssertTrue(mock.willAccessValueCalled)
+        XCTAssertTrue(mock.didAccessValueCalled)
         XCTAssertEqual(gotValue, .one)
     }
     
-    func test_set_notNilvalue() {
-        // given
-        let caseToSet = TestEnum.one
-        
-        // when
-        sut.wrappedValue = caseToSet
-        
-        // then
-        let setValue = mock._value as? Int
-        
-        XCTAssertTrue(mock.setValueCalled)
-        XCTAssertEqual(setValue, 1)
-    }
-    
-    func test_set_nilValue() {
+    func test_setNilValue() {
         // given
         let caseToSet: TestEnum? = nil
         
@@ -82,10 +70,28 @@ class EnumAttributeTests: XCTestCase {
         sut.wrappedValue = caseToSet
         
         // then
-        let setValue = mock._value as? Int
+        let setValue = mock._primitiveValue as? Int
         
-        XCTAssertTrue(mock.setValueCalled)
+        XCTAssertTrue(mock.setPrimitiveValueCalled)
+        XCTAssertTrue(mock.willChangeValueCalled)
+        XCTAssertTrue(mock.didChangeValueCalled)
         XCTAssertNil(setValue)
+    }
+    
+    func test_setNotNilvalue() {
+        // given
+        let caseToSet = TestEnum.one
+        
+        // when
+        sut.wrappedValue = caseToSet
+        
+        // then
+        let setValue = mock._primitiveValue as? Int
+        
+        XCTAssertTrue(mock.setPrimitiveValueCalled)
+        XCTAssertTrue(mock.willChangeValueCalled)
+        XCTAssertTrue(mock.didChangeValueCalled)
+        XCTAssertEqual(setValue, 1)
     }
     
     func test_observe_value() {
@@ -95,7 +101,7 @@ class EnumAttributeTests: XCTestCase {
         
         let expectation = XCTestExpectation()
         expectation.expectedFulfillmentCount = 2
-                
+        
         sut.observe { newValue in
             gotNewValue = newValue
             expectation.fulfill()

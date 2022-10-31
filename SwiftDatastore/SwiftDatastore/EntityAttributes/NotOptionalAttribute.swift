@@ -20,10 +20,10 @@ public enum Attribute {
         // MARK: Properties
         public var wrappedValue: T {
             get {
-                managedObjectWrapper.getValue(forKey: key).unsafelyUnwrapped
+                getManagedObjectValueForKey().unsafelyUnwrapped
             }
             set {
-                managedObjectWrapper.set(newValue, forKey: key)
+                setManagedObjectValueForKey(value: newValue)
             }
         }
         

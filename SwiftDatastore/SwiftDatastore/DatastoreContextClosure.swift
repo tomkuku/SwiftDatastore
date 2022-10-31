@@ -34,14 +34,14 @@ extension SwiftDatastoreContext.Closure {
         let managedObject = context.createManagedObject(forEntity: entity)
         try context.obtainPermanentIDs(for: [managedObject])
         
-        let object = T.create(from: managedObject)
+        let object = T(managedObject: managedObject)
         object.objectDidCreate()
         return object
     }
     
     // MARK: Delete
     public func deleteObject<T>(_ object: T) where T: DatastoreObject {
-        context.delete(object.managedObjectWrapper.object)
+        context.delete(object.managedObject)
     }
     
     // MARK: SaveChanges
@@ -78,9 +78,7 @@ extension SwiftDatastoreContext.Closure {
         
         let objects = try context.execute(fetchRequest: fetchRequest)
         
-        return objects.map {
-            T.create(from: $0)
-        }
+        return objects.mapToArray()
     }
     
     // MARK: FetchFirst
@@ -190,9 +188,9 @@ extension SwiftDatastoreContext.Closure {
     
     // MARK: ConvertExistingObject
     public func convert<T>(existingObject object: T) throws -> T where T: DatastoreObject {
-        let managedObjectId = object.managedObjectWrapper.object.objectID
+        let managedObjectId = object.managedObject.objectID
         let managedObject = try context.existingObject(with: managedObjectId)
-        return T.create(from: managedObject)
+        return T(managedObject: managedObject)
     }
     
     // MARK: Refresh

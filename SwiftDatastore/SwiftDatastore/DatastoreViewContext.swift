@@ -32,9 +32,7 @@ public final class SwiftDatastoreViewContext {
         
         let objects = try context.execute(fetchRequest: fetchRequest)
         
-        return objects.map {
-            T.create(from: $0)
-        }
+        return objects.mapToArray()
     }
     
     // MARK: FetchFirst
