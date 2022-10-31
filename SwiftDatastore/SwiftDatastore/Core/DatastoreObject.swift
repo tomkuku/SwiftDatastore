@@ -15,18 +15,18 @@ open class DatastoreObject {
         String(describing: Self.self)
     }
     
-    internal let managedObjectWrapper: ManagedObjectWrapperLogic
+    internal let managedObject: NSManagedObject
     
     private let managedObjectObserver: ManagedObjectObserverLogic
     
     public private(set) lazy var objectID: DatastoreObjectID = {
-        DatastoreObjectID(managedObjectID: managedObjectWrapper.object.objectID)
+        DatastoreObjectID(managedObjectID: managedObject.objectID)
     }()
     
     // MARK: Init
-    public required init(managedObjectWrapper: ManagedObjectWrapperLogic) {
-        self.managedObjectWrapper = managedObjectWrapper
-        managedObjectObserver = ManagedObjectObserver(managedObjectWrapper: managedObjectWrapper)
+    public required init(managedObject: NSManagedObject) {
+        self.managedObject = managedObject
+        self.managedObjectObserver = ManagedObjectObserver(managedObject: managedObject)
         config()
     }
     
@@ -45,7 +45,7 @@ open class DatastoreObject {
                 continue
             }
             
-            attribute.managedObjectWrapper = self.managedObjectWrapper
+            attribute.managedObject = self.managedObject
             attribute.managedObjectObserver = self.managedObjectObserver
             
             if attribute.key == "" {
@@ -55,20 +55,13 @@ open class DatastoreObject {
     }
 }
 
-extension DatastoreObject {
-    static func create(from managedObject: NSManagedObject) -> Self {
-        let managedObjectWrapper = ManagedObjectWrapper(managedObject: managedObject)
-        return .init(managedObjectWrapper: managedObjectWrapper)
-    }
-}
-
 // MARK: Hashable
 extension DatastoreObject: Hashable {
     public func hash(into hasher: inout Hasher) {
-        hasher.combine(managedObjectWrapper.object.objectID)
+        hasher.combine(managedObject.objectID)
     }
     
     public static func == (lhs: DatastoreObject, rhs: DatastoreObject) -> Bool {
-        lhs.managedObjectWrapper.object.objectID == rhs.managedObjectWrapper.object.objectID
+        lhs.managedObject.objectID == rhs.managedObject.objectID
     }
 }

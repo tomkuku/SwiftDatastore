@@ -17,24 +17,24 @@ class EntityPropertyTests: XCTestCase {
     
     var sut: SutType!
     
-    var managedObjectWrapperMock: ManagedObjectWrapperMock!
+    var managedObjectMock: ManagedObjectMock!
     var observerMock: ManagedObjectObserverMock!
     var cancellable: Set<AnyCancellable> = []
     
     // MARK: Setup
     override func setUp() {
         super.setUp()
-        managedObjectWrapperMock = ManagedObjectWrapperMock()
+        managedObjectMock = ManagedObjectMock()
         observerMock = ManagedObjectObserverMock()
         
         sut = SutType()
-        sut.managedObjectWrapper = managedObjectWrapperMock
+        sut.managedObject = managedObjectMock
         sut.managedObjectObserver = observerMock
     }
     
     override func tearDown() {
         sut = nil
-        managedObjectWrapperMock = nil
+        managedObjectMock = nil
         observerMock = nil
         super.tearDown()
     }
@@ -101,18 +101,18 @@ class EntityPropertyTests: XCTestCase {
     func test_deinit_whenObserve() {
         // given
         sut.observe( { _ in } )
-
+        
         // when
         sut = nil
-
+        
         // then
         XCTAssertEqual(observerMock.removeObserverNumberOfCalled, 1)
     }
-
+    
     func test_deinit_whenNotObserve() {
         // when
         sut = nil
-
+        
         // then
         XCTAssertEqual(observerMock.removeObserverNumberOfCalled, 0)
     }

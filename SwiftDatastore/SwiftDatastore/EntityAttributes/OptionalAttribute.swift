@@ -21,10 +21,10 @@ extension Attribute {
         // MARK: Properties
         public var wrappedValue: T? {
             get {
-                managedObjectWrapper.getValue(forKey: key)
+                getManagedObjectValueForKey()
             }
             set {
-                managedObjectWrapper.set(newValue, forKey: key)
+                setManagedObjectValueForKey(value: newValue)
             }
         }
         

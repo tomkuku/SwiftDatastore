@@ -19,14 +19,14 @@ public enum Relationship {
         // MARK: Properties        
         public var wrappedValue: T? {
             get {
-                guard let managedObject: NSManagedObject = managedObjectWrapper.getValue(forKey: key) else {
+                guard let managedObject: NSManagedObject = getManagedObjectValueForKey() else {
                     Logger.log.debug("ManagedObject is nil.")
                     return nil
                 }
-                return T.create(from: managedObject)
+                return T(managedObject: managedObject)
             }
             set {
-                managedObjectWrapper.set(newValue?.managedObjectWrapper.object, forKey: key)
+                setManagedObjectValueForKey(value: newValue?.managedObject)
             }
         }
         
@@ -42,7 +42,7 @@ public enum Relationship {
             var object: T?
             
             if let managedObject = newValue as? NSManagedObject {
-                object = T.create(from: managedObject)
+                object = T(managedObject: managedObject)
             }
             
             informAboutNewValue(object)

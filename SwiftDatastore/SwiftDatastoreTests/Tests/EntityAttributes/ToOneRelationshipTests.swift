@@ -11,90 +11,87 @@ import CoreData
 @testable import SwiftDatastore
 
 class ToOneRelationshipTests: XCTestCase {
-
+    
     // MARK: Properties
     typealias SutType = Relationship.ToOne<TestObject>
-
+    
     var sut: SutType!
-    var mock: ManagedObjectWrapperMock!
+    var mock: ManagedObjectKeyValueMock!
     var observerMock: ManagedObjectObserverMock!
-
+    
     // MARK: Setup
     override func setUp() {
         super.setUp()
-        mock = ManagedObjectWrapperMock()
-        sut = SutType()
-        sut.managedObjectWrapper = mock
-        
+        mock = ManagedObjectKeyValueMock()
         observerMock = ManagedObjectObserverMock()
-        
+        sut = SutType()
+        sut.managedObject = mock
         sut.managedObjectObserver = observerMock
     }
-
+    
     override func tearDown() {
         mock = nil
         sut = nil
         observerMock = nil
         super.tearDown()
     }
-
+    
     // MARK: Tests
-    func test_get_nilObject() {
+    func test_getNilObject() {
         // when
         let gotValue = sut.wrappedValue
-
+        
         // then
-        XCTAssertTrue(mock.getValueCalled)
+        XCTAssertTrue(mock.primitiveValueCalled)
+        XCTAssertTrue(mock.willAccessValueCalled)
+        XCTAssertTrue(mock.didAccessValueCalled)
         XCTAssertNil(gotValue)
     }
-
-    func test_get_notNilObject() {
+    
+    func test_getNotNilObject() {
         // given
         let managedObject = createNewManagedObject()
-        mock._value = managedObject
-
+        mock._primitiveValue = managedObject
+        
         // when
         guard let gotValue = sut.wrappedValue else {
             XCTFail("Got value is nil.")
             return
         }
-
+        
         // then
-        XCTAssertTrue(mock.getValueCalled)
-
+        XCTAssertTrue(mock.primitiveValueCalled)
+        XCTAssertTrue(mock.willAccessValueCalled)
+        XCTAssertTrue(mock.didAccessValueCalled)
         XCTAssertTrue(type(of: gotValue) == TestObject.self)
     }
-
-    func test_set_value() {
-        // given
-        let managedObjectWrapperMock = ManagedObjectWrapperMock()
-        managedObjectWrapperMock._managedObject = createNewManagedObject()
-        let objectToSet = TestObject(managedObjectWrapper: managedObjectWrapperMock)
-
-        // when
-        sut.wrappedValue = objectToSet
-
-        // then
-        XCTAssertTrue(mock.setValueCalled)
-
-        guard let _ = mock._value as? NSManagedObject else {
-            XCTFail()
-            return
-        }
-    }
-
-    func test_set_nilValue() {
+    
+    func test_setNilValue() {
         // given
         let valueToSet: TestObject? = nil
-
+        
         // when
         sut.wrappedValue = valueToSet
-
+        
         // then
-        let setValue = mock._value as? TestObject
-
-        XCTAssertTrue(mock.setValueCalled)
-        XCTAssertNil(setValue)
+        XCTAssertNil(mock._primitiveValue as? TestObject)
+        XCTAssertTrue(mock.setPrimitiveValueCalled)
+        XCTAssertTrue(mock.willChangeValueCalled)
+        XCTAssertTrue(mock.didChangeValueCalled)
+    }
+    
+    func test_setNotNilValue() {
+        // given
+        let objectToSet = TestObject()
+        
+        // when
+        sut.wrappedValue = objectToSet
+        
+        // then
+        XCTAssertTrue(mock.setPrimitiveValueCalled)
+        XCTAssertTrue(mock.willChangeValueCalled)
+        XCTAssertTrue(mock.didChangeValueCalled)
+        XCTAssertNotNil(mock._primitiveValue as? NSManagedObject)
     }
     
     func test_observe_value() {

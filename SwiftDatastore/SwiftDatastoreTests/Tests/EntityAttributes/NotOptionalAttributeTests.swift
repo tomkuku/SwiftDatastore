@@ -16,18 +16,16 @@ class NotOptionalAttributeTests: XCTestCase {
     typealias SutType = Attribute.NotOptional<Int>
     
     var sut: SutType!
-    var mock: ManagedObjectWrapperMock!
+    var mock: ManagedObjectKeyValueMock!
     var observerMock: ManagedObjectObserverMock!
     
     // MARK: Setup
     override func setUp() {
         super.setUp()
-        mock = ManagedObjectWrapperMock()
-        sut = SutType()
-        sut.managedObjectWrapper = mock
-        
+        mock = ManagedObjectKeyValueMock()
         observerMock = ManagedObjectObserverMock()
-        
+        sut = SutType()
+        sut.managedObject = mock
         sut.managedObjectObserver = observerMock
     }
     
@@ -39,16 +37,18 @@ class NotOptionalAttributeTests: XCTestCase {
     }
     
     // MARK: Tests
-    func test_getSetValue() {
+    func test_getValue() {
         // given
         let setValue = 3
-        mock._value = setValue
+        mock._primitiveValue = setValue
         
         // when
         let gotValue = sut.wrappedValue
         
         // then
-        XCTAssertTrue(mock.getValueCalled)
+        XCTAssertTrue(mock.primitiveValueCalled)
+        XCTAssertTrue(mock.willAccessValueCalled)
+        XCTAssertTrue(mock.didAccessValueCalled)
         XCTAssertEqual(gotValue, setValue)
     }
     
@@ -60,9 +60,11 @@ class NotOptionalAttributeTests: XCTestCase {
         sut.wrappedValue = valueToSet
         
         // then
-        let setValue = mock._value as! Int
+        let setValue = mock._primitiveValue as! Int
         
-        XCTAssertTrue(mock.setValueCalled)
+        XCTAssertTrue(mock.setPrimitiveValueCalled)
+        XCTAssertTrue(mock.willChangeValueCalled)
+        XCTAssertTrue(mock.didChangeValueCalled)
         XCTAssertEqual(setValue, valueToSet)
     }
     
