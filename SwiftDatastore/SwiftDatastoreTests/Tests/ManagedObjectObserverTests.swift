@@ -11,20 +11,30 @@ import CoreData
 @testable import SwiftDatastore
 
 class ManagedObjectObserverTests: XCTestCase {
-
+    
     var sut: ManagedObjectObserver!
+    var managedObjectMock: ManagedObjectKeyValueMock!
+    
+    override func setUp() {
+        super.setUp()
+        managedObjectMock = ManagedObjectKeyValueMock()
+        sut = ManagedObjectObserver(managedObject: managedObjectMock)
+    }
+    
+    override func tearDown() {
+        sut = nil
+        managedObjectMock = nil
+        super.tearDown()
+    }
     
     // MARK: Tests
-    func test_observe_without_changeKind() {
+    func test_observeWithoutChangeKind() {
         // given
         let expectation = XCTestExpectation()
         
         let delegateClient = TestDelegateClient()
         delegateClient.expectation = expectation
-                
-        let managedObjectWrapperMock = ManagedObjectWrapperMock()
         
-        sut = ManagedObjectObserver(managedObjectWrapper: managedObjectWrapperMock)
         sut.addObserver(forKey: "aaa", delegate: delegateClient)
         
         let change: [NSKeyValueChangeKey: Any] = [.newKey: 1, .oldKey: 2]
@@ -38,22 +48,20 @@ class ManagedObjectObserverTests: XCTestCase {
         // then
         wait(for: [expectation], timeout: 2)
         XCTAssertNil(delegateClient._change)
-        XCTAssertTrue(managedObjectWrapperMock.addObserverCalled)
+        XCTAssertTrue(managedObjectMock.addObserverCalled)
         
         let gotValue = delegateClient._newValue as? Int
         XCTAssertEqual(gotValue, 1)
     }
     
-    func test_observe_with_changeKind() {
+    func test_observeWithChangeKind() {
         // given
         let expectation = XCTestExpectation()
         
         let delegateClient = TestDelegateClient()
         delegateClient.expectation = expectation
-                
-        let managedObjectWrapperMock = ManagedObjectWrapperMock()
         
-        sut = ManagedObjectObserver(managedObjectWrapper: managedObjectWrapperMock)
+        
         sut.addObserver(forKey: "aaa", delegate: delegateClient)
         
         let change: [NSKeyValueChangeKey: Any] = [.newKey: 1,
@@ -69,30 +77,23 @@ class ManagedObjectObserverTests: XCTestCase {
         // then
         wait(for: [expectation], timeout: 2)
         XCTAssertNil(delegateClient._change)
-        XCTAssertTrue(managedObjectWrapperMock.addObserverCalled)
+        XCTAssertTrue(managedObjectMock.addObserverCalled)
         
         let gotValue = delegateClient._newValue as? Int
         XCTAssertEqual(gotValue, 1)
     }
     
     func test_removeObserver() {
-        // given
-        let managedObjectWrapperMock = ManagedObjectWrapperMock()
-        sut = ManagedObjectObserver(managedObjectWrapper: managedObjectWrapperMock)
-        
         // when
         sut.removeObserver(forKey: "aaa")
         
         // then
-        XCTAssertTrue(managedObjectWrapperMock.removeObserverCalled)
+        XCTAssertTrue(managedObjectMock.removeObserverCalled)
     }
     
-    func test_removeObserver_while_deinit() {
+    func test_removeObserverWhileDeinit() {
         // given
         let delegateClient = TestDelegateClient()
-        
-        let managedObjectWrapperMock = ManagedObjectWrapperMock()
-        sut = ManagedObjectObserver(managedObjectWrapper: managedObjectWrapperMock)
         
         sut.addObserver(forKey: "aaa", delegate: delegateClient)
         
@@ -100,7 +101,7 @@ class ManagedObjectObserverTests: XCTestCase {
         sut = nil
         
         // then
-        XCTAssertTrue(managedObjectWrapperMock.removeObserverCalled)
+        XCTAssertTrue(managedObjectMock.removeObserverCalled)
     }
     
     // MARK: TestDelegateClient

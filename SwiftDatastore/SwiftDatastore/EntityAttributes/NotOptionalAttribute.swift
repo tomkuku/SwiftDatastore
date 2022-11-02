@@ -20,10 +20,10 @@ public enum Attribute {
         // MARK: Properties
         public var wrappedValue: T {
             get {
-                managedObjectWrapper.getValue(forKey: key).unsafelyUnwrapped
+                getManagedObjectValueForKey().unsafelyUnwrapped
             }
             set {
-                managedObjectWrapper.set(newValue, forKey: key)
+                setManagedObjectValueForKey(value: newValue)
             }
         }
         
@@ -37,7 +37,7 @@ public enum Attribute {
         
         override func handleObservedPropertyDidChangeValue(_ newValue: Any?, change: NSKeyValueChange?) {
             guard let newValue = newValue as? T else {
-                print("observedPropertyDidChangeValue a new value is nil!")
+                Logger.log.error("observedPropertyDidChangeValue a new value is nil!")
                 return
             }
             

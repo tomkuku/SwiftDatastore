@@ -20,13 +20,13 @@ final class TestObject: DatastoreObject {
     @Attribute.NotOptional var isDefective: Bool
     @Attribute.Optional var dateBirth: Date?
     
-    required init(managedObjectWrapper: ManagedObjectWrapperLogic) {
-        super.init(managedObjectWrapper: managedObjectWrapper)
+    required init(managedObject: NSManagedObject) {
+        super.init(managedObject: managedObject)
     }
 }
 
 extension TestObject {
     convenience init() {
-        self.init(managedObjectWrapper: ManagedObjectWrapperMock())
+        self.init(managedObject: PersistentStoreCoordinatorMock.shared.managedObject)
     }
 }
