@@ -94,7 +94,25 @@ class EnumAttributeTests: XCTestCase {
         XCTAssertEqual(setValue, 1)
     }
     
-    func test_observe_value() {
+    func test_observeNilValue() {
+        // given
+        let expectation = XCTestExpectation()
+        var gotNewValue: TestEnum?
+        
+        sut.observe { newValue in
+            gotNewValue = newValue
+            expectation.fulfill()
+        }
+        
+        // when
+        sut.observedPropertyDidChangeValue(nil, change: nil)
+        
+        // then
+        wait(for: [expectation], timeout: 2)
+        XCTAssertNil(gotNewValue)
+    }
+    
+    func test_observeValue() {
         // given
         let newValue = 2
         var gotNewValue: TestEnum?
@@ -117,24 +135,6 @@ class EnumAttributeTests: XCTestCase {
         // then
         wait(for: [expectation], timeout: 2)
         XCTAssertEqual(gotNewValue, .two)
-    }
-    
-    func test_observe_nilValue() {
-        // given
-        let expectation = XCTestExpectation()
-        var gotNewValue: TestEnum?
-        
-        sut.observe { newValue in
-            gotNewValue = newValue
-            expectation.fulfill()
-        }
-        
-        // when
-        sut.observedPropertyDidChangeValue(nil, change: nil)
-        
-        // then
-        wait(for: [expectation], timeout: 2)
-        XCTAssertNil(gotNewValue)
     }
     
     // MARK: TestEnum

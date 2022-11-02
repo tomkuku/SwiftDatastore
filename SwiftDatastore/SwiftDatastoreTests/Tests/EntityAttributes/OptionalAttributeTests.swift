@@ -97,7 +97,7 @@ class OptionalAttributeTests: XCTestCase {
         XCTAssertEqual(setValue, valueToSet)
     }
     
-    func test_observe_value() {
+    func test_observeValue() {
         // given
         let newValue = 2
         var gotNewValue: Int?
@@ -123,7 +123,7 @@ class OptionalAttributeTests: XCTestCase {
         XCTAssertEqual(gotNewValue, newValue)
     }
     
-    func test_observe_nilValue() {
+    func test_observeNilValue() {
         // given
         let expectation = XCTestExpectation()
         var gotNewValue: Int?

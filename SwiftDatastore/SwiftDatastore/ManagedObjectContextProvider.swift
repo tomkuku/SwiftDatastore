@@ -70,7 +70,7 @@ final class ManagedObjectContextProvider {
             let url = budle.url(forResource: resourceName, withExtension: `extension`),
             let mom = momController.createModel(contentsOf: url)
         else {
-            throw SwiftDatastoreError.entityNotFound
+            throw SwiftDatastoreError.managedObjectModelNotFound
         }
         
         return mom

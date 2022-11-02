@@ -94,7 +94,7 @@ class ToOneRelationshipTests: XCTestCase {
         XCTAssertNotNil(mock._primitiveValue as? NSManagedObject)
     }
     
-    func test_observe_value() {
+    func test_observealue() {
         // given
         let newValue = createNewManagedObject()
         var gotNewValue: TestObject?
