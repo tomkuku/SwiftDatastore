@@ -67,46 +67,53 @@ class ToManyRelationshipTests: XCTestCase {
         XCTAssertTrue(mock.didAccessValueCalled)
     }
     
-    func test_set_emptySet() {
+    func test_setEmptySet() {
         // given
-        let testObject1 = TestObject()
-        
-        mock._mutableSet = NSMutableSet(array: [testObject1])
-        
-        let setToSet = Set<TestObject>()
+        mock._mutableSet = NSMutableSet(array: [createNewManagedObject()])
         
         // when
-        sut.wrappedValue = setToSet
+        sut.wrappedValue = Set<TestObject>()
         
         // then
         XCTAssertTrue(mock.mutableSetValueCalled)
+        XCTAssertTrue(mock.willChangeValueSetCalled)
+        XCTAssertTrue(mock.didChangeValueSetCalled)
         XCTAssertTrue(mock._mutableSet.allObjects.isEmpty)
-        
-        mock._mutableSet.allObjects.forEach {
-            guard let _ = $0 as? NSManagedObject else {
-                XCTFail()
-                return
-            }
-        }
     }
     
-    func test_set_notEmptySet() {
+    func test_setNotEmptySet() {
         // given
-        let testObject1 = TestObject()
-        let testObject2 = TestObject()
-        let testObject3 = TestObject()
-        
-        let setToSet = Set([testObject1, testObject2, testObject3])
+        let setToSet = Set([TestObject(), TestObject(), TestObject()])
         
         // when
         sut.wrappedValue = setToSet
         
         // then
         XCTAssertTrue(mock.mutableSetValueCalled)
+        XCTAssertTrue(mock.willChangeValueSetCalled)
+        XCTAssertTrue(mock.didChangeValueSetCalled)
         XCTAssertEqual(mock._mutableSet.allObjects.count, setToSet.count)
     }
     
-    func test_observe_notEmptySet() {
+    func test_observeEmptySet() {
+        // given
+        let expectation = XCTestExpectation()
+        var gotNewValue = Set([TestObject()])
+        
+        sut.observe { newObjects in
+            gotNewValue = newObjects
+            expectation.fulfill()
+        }
+        
+        // when
+        sut.observedPropertyDidChangeValue(3, change: .replacement)
+        
+        // then
+        wait(for: [expectation], timeout: 2)
+        XCTAssertTrue(gotNewValue.isEmpty)
+    }
+    
+    func test_observeNotEmptySet() {
         // given
         let managedObject1 = Set(arrayLiteral: createNewManagedObject())
         let managedObject2 = Set(arrayLiteral: createNewManagedObject())
@@ -133,23 +140,5 @@ class ToManyRelationshipTests: XCTestCase {
         // then
         wait(for: [expectation], timeout: 2)
         XCTAssertEqual(gotNewValue?.count, 2)
-    }
-    
-    func test_observe_emptySet() {
-        // given
-        let expectation = XCTestExpectation()
-        var gotNewValue: Set<TestObject> = [TestObject()]
-        
-        sut.observe { newObjects in
-            gotNewValue = newObjects
-            expectation.fulfill()
-        }
-        
-        // when
-        sut.observedPropertyDidChangeValue(3, change: .replacement)
-        
-        // then
-        wait(for: [expectation], timeout: 2)
-        XCTAssertTrue(gotNewValue.isEmpty)
     }
 }

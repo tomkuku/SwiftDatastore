@@ -13,12 +13,11 @@ import CoreData
 class ManagedObjectObserverTests: XCTestCase {
     
     var sut: ManagedObjectObserver!
-    var managedObjectMock: ManagedObjectMock!
+    var managedObjectMock: ManagedObjectKeyValueMock!
     
     override func setUp() {
         super.setUp()
-        
-        managedObjectMock = ManagedObjectMock()
+        managedObjectMock = ManagedObjectKeyValueMock()
         sut = ManagedObjectObserver(managedObject: managedObjectMock)
     }
     
@@ -29,7 +28,7 @@ class ManagedObjectObserverTests: XCTestCase {
     }
     
     // MARK: Tests
-    func test_observe_without_changeKind() {
+    func test_observeWithoutChangeKind() {
         // given
         let expectation = XCTestExpectation()
         
@@ -55,7 +54,7 @@ class ManagedObjectObserverTests: XCTestCase {
         XCTAssertEqual(gotValue, 1)
     }
     
-    func test_observe_with_changeKind() {
+    func test_observeWithChangeKind() {
         // given
         let expectation = XCTestExpectation()
         
@@ -92,7 +91,7 @@ class ManagedObjectObserverTests: XCTestCase {
         XCTAssertTrue(managedObjectMock.removeObserverCalled)
     }
     
-    func test_removeObserver_while_deinit() {
+    func test_removeObserverWhileDeinit() {
         // given
         let delegateClient = TestDelegateClient()
         

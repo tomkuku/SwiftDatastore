@@ -22,7 +22,8 @@ class ManagedObjectKeyValueMock: ManagedObjectKeyValue {
     var didChangeValueCalled = false
     var willChangeValueSetCalled = false
     var didChangeValueSetCalled = false
-    
+    var addObserverCalled = false
+    var removeObserverCalled = false
     
     func primitiveValue(forKey key: String) -> Any? {
         primitiveValueCalled = true
@@ -65,5 +66,18 @@ class ManagedObjectKeyValueMock: ManagedObjectKeyValue {
                         withSetMutation inMutationKind: NSKeyValueSetMutationKind,
                         using inObjects: Set<AnyHashable>) {
         didChangeValueSetCalled = true
+    }
+    
+    func addObserver(_ observer: NSObject,
+                     forKeyPath keyPath: String,
+                     options: NSKeyValueObservingOptions,
+                     context: UnsafeMutableRawPointer?) {
+        addObserverCalled = true
+    }
+    
+    func removeObserver(_ observer: NSObject,
+                        forKeyPath keyPath: String,
+                        context: UnsafeMutableRawPointer?) {
+        removeObserverCalled = true
     }
 }

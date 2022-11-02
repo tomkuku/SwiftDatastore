@@ -19,26 +19,23 @@ protocol ManagedObjectObserverLogic {
 
 final class ManagedObjectObserver: NSObject, ManagedObjectObserverLogic {
     
-    private weak var managedObject: NSManagedObject?
+    private weak var managedObject: ManagedObjectKeyValue?
     private var observers: [String: ManagedObjectObserverDelegate] = [:]
     
-    init(managedObject: NSManagedObject) {
+    init(managedObject: ManagedObjectKeyValue) {
         self.managedObject = managedObject
     }
     
     func addObserver(forKey key: String, delegate: ManagedObjectObserverDelegate) {
         observers[key] = delegate
         
-        managedObject?.addObserver(self,
-                                   forKeyPath: key,
-                                   options: [.new],
-                                   context: nil)
+        managedObject?.addObserver(self, forKeyPath: key, options: [.new], context: nil)
     }
     
     func removeObserver(forKey key: String) {
         observers.removeValue(forKey: key)
         
-        managedObject?.removeObserver(self, forKeyPath: key)
+        managedObject?.removeObserver(self, forKeyPath: key, context: nil)
     }
     
     deinit {

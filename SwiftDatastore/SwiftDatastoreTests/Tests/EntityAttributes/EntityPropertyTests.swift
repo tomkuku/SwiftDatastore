@@ -17,24 +17,21 @@ class EntityPropertyTests: XCTestCase {
     
     var sut: SutType!
     
-    var managedObjectMock: ManagedObjectMock!
     var observerMock: ManagedObjectObserverMock!
     var cancellable: Set<AnyCancellable> = []
     
     // MARK: Setup
     override func setUp() {
         super.setUp()
-        managedObjectMock = ManagedObjectMock()
         observerMock = ManagedObjectObserverMock()
         
         sut = SutType()
-        sut.managedObject = managedObjectMock
+        sut.managedObject = PersistentStoreCoordinatorMock.shared.managedObject
         sut.managedObjectObserver = observerMock
     }
     
     override func tearDown() {
         sut = nil
-        managedObjectMock = nil
         observerMock = nil
         super.tearDown()
     }
@@ -76,7 +73,7 @@ class EntityPropertyTests: XCTestCase {
         wait(for: [expectation], timeout: 2)
     }
     
-    func test_observe_usingClosures() {
+    func test_observeUsingClosures() {
         // when
         sut.observe( { _ in } )
         sut.observe( { _ in } )
@@ -87,7 +84,7 @@ class EntityPropertyTests: XCTestCase {
         XCTAssertEqual(sut.observervingBlocks.count, 2)
     }
     
-    func test_observe_usingPublisher() {
+    func test_observeUsingPublisher() {
         // when
         let _ = sut.newValuePublisher
         let _ = sut.newValuePublisher
@@ -98,7 +95,7 @@ class EntityPropertyTests: XCTestCase {
         XCTAssertTrue(sut.observervingBlocks.isEmpty)
     }
     
-    func test_deinit_whenObserve() {
+    func test_deinitWhenObserve() {
         // given
         sut.observe( { _ in } )
         
@@ -109,11 +106,32 @@ class EntityPropertyTests: XCTestCase {
         XCTAssertEqual(observerMock.removeObserverNumberOfCalled, 1)
     }
     
-    func test_deinit_whenNotObserve() {
+    func test_deinitWhenNotObserve() {
         // when
         sut = nil
         
         // then
         XCTAssertEqual(observerMock.removeObserverNumberOfCalled, 0)
+    }
+    
+    func test_handleObservedPropertyDidChangeValueCalled() {
+        // given
+        let subclassMock = EntityPropertySubclassMock()
+        
+        // when
+        subclassMock.observedPropertyDidChangeValue(nil, change: nil)
+        
+        // then
+        XCTAssertTrue(subclassMock.handleObservedPropertyDidChangeValueCalled)
+    }
+    
+    final class EntityPropertySubclassMock: EntityProperty<Int> {
+        var handleObservedPropertyDidChangeValueCalled = false
+        
+        override func handleObservedPropertyDidChangeValue(_ newValue: Any?, change: NSKeyValueChange?) {
+            super.handleObservedPropertyDidChangeValue(newValue, change: change)
+            
+            handleObservedPropertyDidChangeValueCalled = true
+        }
     }
 }
