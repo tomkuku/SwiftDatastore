@@ -7,43 +7,60 @@
 
 import Foundation
 import Combine
+import CoreData
 
 protocol EntityPropertyLogic: AnyObject {
-    var managedObjectWrapper: ManagedObjectWrapperLogic! { get set }
+    var managedObject: ManagedObjectKeyValue! { get set }
     var key: String { get set }
     var managedObjectObserver: ManagedObjectObserverLogic! { get set }
 }
 
-public class EntityProperty<T>: EntityPropertyLogic, ManagedObjectObserverDelegate {    
-    typealias PassthroughSubjectType = PassthroughSubject<T, Never>
-        
-    var managedObjectWrapper: ManagedObjectWrapperLogic!
+public class EntityProperty<T>: EntityPropertyLogic, ManagedObjectObserverDelegate {
+    var managedObject: ManagedObjectKeyValue!
     var managedObjectObserver: ManagedObjectObserverLogic!
     
     var observervingBlocks: [(T) -> Void] = []
-    var newValuePassthroughSubject: PassthroughSubjectType?
     var isObserving = false
+    
+    let newValuePassthroughSubject = PassthroughSubject<T, Never>()
     
     public var key: String = ""
     
     public lazy var newValuePublisher: AnyPublisher<T, Never> = {
-        let newValueSubject: PassthroughSubjectType
+        addObserverIfNeeded()
         
-        if let subject = newValuePassthroughSubject {
-            newValueSubject = subject
-        } else {
-            let subject = PassthroughSubjectType()
-            newValuePassthroughSubject = subject
-            newValueSubject = subject
-            
-            addObserverIfNeeded()
-        }
-        
-        return newValueSubject.eraseToAnyPublisher()
+        return newValuePassthroughSubject.eraseToAnyPublisher()
     }()
     
     deinit {
         removeObserverIfNeeded()
+    }
+    
+    // MARK: ManagedObjectObserverDelegate
+    func observedPropertyDidChangeValue(_ newValue: Any?, change: NSKeyValueChange?) {
+        handleObservedPropertyDidChangeValue(newValue, change: change)
+    }
+    
+    // MARK: Internal
+    func getManagedObjectValueForKey<T>() -> T? {
+        defer {
+            managedObject.didAccessValue(forKey: key)
+        }
+        managedObject.willAccessValue(forKey: key)
+        return managedObject.primitiveValue(forKey: key) as? T
+    }
+    
+    func setManagedObjectValueForKey<T>(value: T?) {
+        defer {
+            managedObject.didChangeValue(forKey: key)
+        }
+        managedObject.willChangeValue(forKey: key)
+        guard let newValue = value else {
+            managedObject.setPrimitiveValue(nil, forKey: key)
+            return
+        }
+        managedObject.setPrimitiveValue(newValue, forKey: key)
+        
     }
     
     public func observe(_ block: @escaping (_ newValue: T) -> Void) {
@@ -53,7 +70,7 @@ public class EntityProperty<T>: EntityPropertyLogic, ManagedObjectObserverDelega
     }
     
     func informAboutNewValue(_ newValue: T) {
-        newValuePassthroughSubject?.send(newValue)
+        newValuePassthroughSubject.send(newValue)
         
         observervingBlocks.forEach {
             $0(newValue)
@@ -62,11 +79,6 @@ public class EntityProperty<T>: EntityPropertyLogic, ManagedObjectObserverDelega
     
     func handleObservedPropertyDidChangeValue(_ newValue: Any?, change: NSKeyValueChange?) {
         // method to override
-    }
-    
-    // MARK: ManagedObjectObserverDelegate
-    func observedPropertyDidChangeValue(_ newValue: Any?, change: NSKeyValueChange?) {
-        handleObservedPropertyDidChangeValue(newValue, change: change)
     }
     
     // MARK: Private

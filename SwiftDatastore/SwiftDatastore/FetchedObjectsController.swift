@@ -63,7 +63,7 @@ extension FetchedObjectsController: FetchedResultsControllerDelegate {
             return
         }
         
-        let object = T.create(from: managedObject)
+        let object = T(managedObject: managedObject)
         var change: FetchedObjectsChangeType<T>?
         
         switch (type, indexPath, newIndexPath) {
@@ -140,7 +140,7 @@ extension FetchedObjectsController {
         guard let managedObject = fetchedResultsController?.object(at: indexPath) else {
             Logger.log.fatal("No object at indexPath: \(indexPath)!")
         }
-        return T.create(from: managedObject)
+        return T(managedObject: managedObject)
     }
     
     // MARK: ObserveChanges

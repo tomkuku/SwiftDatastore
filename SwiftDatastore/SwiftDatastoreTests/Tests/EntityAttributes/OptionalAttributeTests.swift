@@ -16,18 +16,16 @@ class OptionalAttributeTests: XCTestCase {
     typealias SutType = Attribute.Optional<Int>
     
     var sut: SutType!
-    var mock: ManagedObjectWrapperMock!
+    var mock: ManagedObjectKeyValueMock!
     var observerMock: ManagedObjectObserverMock!
     
     // MARK: Setup
     override func setUp() {
         super.setUp()
-        mock = ManagedObjectWrapperMock()
-        sut = SutType()
-        sut.managedObjectWrapper = mock
-        
+        mock = ManagedObjectKeyValueMock()
         observerMock = ManagedObjectObserverMock()
-        
+        sut = SutType()
+        sut.managedObject = mock
         sut.managedObjectObserver = observerMock
     }
     
@@ -39,65 +37,71 @@ class OptionalAttributeTests: XCTestCase {
     }
     
     // MARK: Tests
-    func test_getNotSetValue() {
-        // given
-        
+    func test_getNilValue() {
         // when
         let gotValue = sut.wrappedValue
         
         // then
-        XCTAssertTrue(mock.getValueCalled)
+        XCTAssertTrue(mock.primitiveValueCalled)
+        XCTAssertTrue(mock.willAccessValueCalled)
+        XCTAssertTrue(mock.didAccessValueCalled)
         XCTAssertNil(gotValue)
     }
     
-    func test_getSetValue() {
+    func test_getNotNilValue() {
         // given
         let setValue = 3
-        mock._value = setValue
+        mock._primitiveValue = setValue
         
         // when
         let gotValue = sut.wrappedValue
         
         // then
-        XCTAssertTrue(mock.getValueCalled)
+        XCTAssertTrue(mock.primitiveValueCalled)
+        XCTAssertTrue(mock.willAccessValueCalled)
+        XCTAssertTrue(mock.didAccessValueCalled)
         XCTAssertEqual(gotValue, setValue)
-    }
-    
-    func test_setValue() {
-        // given
-        let valueToSet = 3
-        
-        // when
-        sut.wrappedValue = valueToSet
-        
-        let setValue = mock._value as? Int
-        
-        // then
-        XCTAssertTrue(mock.setValueCalled)
-        XCTAssertEqual(setValue, valueToSet)
     }
     
     func test_setNilValue() {
         // given
         let valueToSet: Int? = nil
         
-        mock._value = 3
+        mock._primitiveValue = 3
         
         // when
         sut.wrappedValue = valueToSet
         
-        let setValue = mock._value as? Int
+        let setValue = mock._primitiveValue as? Int
         
         // then
-        XCTAssertTrue(mock.setValueCalled)
+        XCTAssertTrue(mock.setPrimitiveValueCalled)
+        XCTAssertTrue(mock.willChangeValueCalled)
+        XCTAssertTrue(mock.didChangeValueCalled)
         XCTAssertNil(setValue)
     }
     
-    func test_observe_value() {
+    func test_setNotNilValue() {
+        // given
+        let valueToSet = 3
+        
+        // when
+        sut.wrappedValue = valueToSet
+        
+        let setValue = mock._primitiveValue as? Int
+        
+        // then
+        XCTAssertTrue(mock.setPrimitiveValueCalled)
+        XCTAssertTrue(mock.willChangeValueCalled)
+        XCTAssertTrue(mock.didChangeValueCalled)
+        XCTAssertEqual(setValue, valueToSet)
+    }
+    
+    func test_observeValue() {
         // given
         let newValue = 2
         var gotNewValue: Int?
-
+        
         
         let expectation = XCTestExpectation()
         expectation.expectedFulfillmentCount = 2
@@ -119,7 +123,7 @@ class OptionalAttributeTests: XCTestCase {
         XCTAssertEqual(gotNewValue, newValue)
     }
     
-    func test_observe_nilValue() {
+    func test_observeNilValue() {
         // given
         let expectation = XCTestExpectation()
         var gotNewValue: Int?

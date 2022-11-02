@@ -14,7 +14,6 @@
 		813D96752881F7F600292BE5 /* SwiftDatastore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 813D966C2881F7F600292BE5 /* SwiftDatastore.framework */; };
 		813D967B2881F7F600292BE5 /* SwiftDatastore.h in Headers */ = {isa = PBXBuildFile; fileRef = 813D966F2881F7F600292BE5 /* SwiftDatastore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		813D968C2881FDA100292BE5 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813D968B2881FDA100292BE5 /* Logger.swift */; };
-		813D96932881FF4100292BE5 /* ManagedObjectWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813D96922881FF4100292BE5 /* ManagedObjectWrapper.swift */; };
 		813D96952882006C00292BE5 /* NotOptionalAttributeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813D96942882006C00292BE5 /* NotOptionalAttributeTests.swift */; };
 		813D9698288202B300292BE5 /* OptionalAttributeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813D9697288202B300292BE5 /* OptionalAttributeTests.swift */; };
 		813D969A28820E2100292BE5 /* ManagedObjectContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813D969928820E2100292BE5 /* ManagedObjectContext.swift */; };
@@ -42,10 +41,12 @@
 		813F0A9729060290007469DF /* BackgroundContextTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813F0A9529060290007469DF /* BackgroundContextTests.swift */; };
 		813F0A9B2906029A007469DF /* Set+Repating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813F0A9A2906029A007469DF /* Set+Repating.swift */; };
 		813F0A9C2906029A007469DF /* XCTestExpectation+FulfillmentCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813F0A9929060299007469DF /* XCTestExpectation+FulfillmentCount.swift */; };
+		81421A0B29125D750058974E /* ManagedObjectKeyValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81421A0A29125D750058974E /* ManagedObjectKeyValue.swift */; };
 		8147F43A28F9A1E1004C7CCF /* EntityProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8147F43928F9A1E1004C7CCF /* EntityProperty.swift */; };
 		8147F43C28F9A455004C7CCF /* EntityPropertyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8147F43B28F9A455004C7CCF /* EntityPropertyTests.swift */; };
 		8153A65928F22F460025C0FE /* SwiftDatastoreError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8153A65828F22F460025C0FE /* SwiftDatastoreError.swift */; };
 		8163AC1728A1172C000527B9 /* FetchedObjectsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8163AC1528A1166C000527B9 /* FetchedObjectsController.swift */; };
+		8164078029107BBF004057BC /* ManagedObjectKeyValueMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8164077F29107BBF004057BC /* ManagedObjectKeyValueMock.swift */; };
 		8171C819290C314B0085FFB2 /* PrimaryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8171C818290C314B0085FFB2 /* PrimaryType.swift */; };
 		8176663D289DD93C00123071 /* ViewContextTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8176663C289DD93C00123071 /* ViewContextTests.swift */; };
 		81766641289EE76300123071 /* BatchUpdateResultMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81766640289EE76300123071 /* BatchUpdateResultMock.swift */; };
@@ -54,11 +55,11 @@
 		818A3F2B28D919AB00C6D02A /* DatastoreViewContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818A3F2A28D919AB00C6D02A /* DatastoreViewContext.swift */; };
 		818FDF9928A13ED90060CEE5 /* FetchedObjectsControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818FDF9828A13ED90060CEE5 /* FetchedObjectsControllerTests.swift */; };
 		818FDF9B28A149790060CEE5 /* FetchedResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818FDF9A28A149790060CEE5 /* FetchedResultsController.swift */; };
+		81905DBB290FB61100BD7053 /* Set+DatastoreInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81905DBA290FB61100BD7053 /* Set+DatastoreInit.swift */; };
 		819F567F28F347D700703CEB /* SavedChanges.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819F567E28F347D700703CEB /* SavedChanges.swift */; };
 		819F568128F4532900703CEB /* PocController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819F568028F4532900703CEB /* PocController.swift */; };
 		819F568328F4534100703CEB /* MomController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819F568228F4534100703CEB /* MomController.swift */; };
 		819F568528F4548100703CEB /* ManagedObjectContextProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819F568428F4548100703CEB /* ManagedObjectContextProviderTests.swift */; };
-		81A2850C2899EF4300832D00 /* AsynchronousFetchRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A2850B2899EF4300832D00 /* AsynchronousFetchRequest.swift */; };
 		81AE3FE728D0AA53002E2560 /* DatastoreContextClosureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AE3FE628D0AA53002E2560 /* DatastoreContextClosureTests.swift */; };
 		81B2DABD28DDC51500E5BB76 /* ManagedObjectObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B2DABC28DDC51500E5BB76 /* ManagedObjectObserver.swift */; };
 		81B3E34528AAD07100EF87D3 /* WhereTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B3E34428AAD07100EF87D3 /* WhereTests.swift */; };
@@ -76,13 +77,11 @@
 		81BCA53E28C544FC00E12923 /* Where.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BCA53528C544FC00E12923 /* Where.swift */; };
 		81BCA54428C5450D00E12923 /* IndexPath+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BCA54028C5450D00E12923 /* IndexPath+String.swift */; };
 		81BCA54628C5450D00E12923 /* KeyPath+KeyPathString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BCA54228C5450D00E12923 /* KeyPath+KeyPathString.swift */; };
-		81BCA54728C5450D00E12923 /* ManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BCA54328C5450D00E12923 /* ManagedObject.swift */; };
 		81C9623B29060F4C006A0068 /* Employee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C9623A29060F4C006A0068 /* Employee.swift */; };
 		81D40A5228CD178E009C7838 /* SwiftDatastore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D40A5128CD178E009C7838 /* SwiftDatastore.swift */; };
 		81D8F0332906778B002A5D86 /* SwiftDatastore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 813D966C2881F7F600292BE5 /* SwiftDatastore.framework */; };
 		81D99800290EC14800FC180A /* DatastoreObjectID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D997FF290EC14800FC180A /* DatastoreObjectID.swift */; };
 		81D99802290EC65100FC180A /* DatastoreObjectIDTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D99801290EC65100FC180A /* DatastoreObjectIDTests.swift */; };
-		81DCE09328856449000E70B8 /* ManagedObjectWrapperMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DCE09128856449000E70B8 /* ManagedObjectWrapperMock.swift */; };
 		81DCE09428856449000E70B8 /* ManagedObjectContextMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DCE09228856449000E70B8 /* ManagedObjectContextMock.swift */; };
 		81E3C31228EBAE3F00927613 /* ManagedObjectObserverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E3C31128EBAE3F00927613 /* ManagedObjectObserverTests.swift */; };
 		81E3C31428EC2DE700927613 /* ManagedObjectObserverMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E3C31328EC2DE700927613 /* ManagedObjectObserverMock.swift */; };
@@ -123,7 +122,6 @@
 		813D966F2881F7F600292BE5 /* SwiftDatastore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftDatastore.h; sourceTree = "<group>"; };
 		813D96742881F7F600292BE5 /* SwiftDatastoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftDatastoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		813D968B2881FDA100292BE5 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
-		813D96922881FF4100292BE5 /* ManagedObjectWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedObjectWrapper.swift; sourceTree = "<group>"; };
 		813D96942882006C00292BE5 /* NotOptionalAttributeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotOptionalAttributeTests.swift; sourceTree = "<group>"; };
 		813D9697288202B300292BE5 /* OptionalAttributeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionalAttributeTests.swift; sourceTree = "<group>"; };
 		813D969928820E2100292BE5 /* ManagedObjectContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedObjectContext.swift; sourceTree = "<group>"; };
@@ -154,10 +152,12 @@
 		813F0A9529060290007469DF /* BackgroundContextTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundContextTests.swift; sourceTree = "<group>"; };
 		813F0A9929060299007469DF /* XCTestExpectation+FulfillmentCount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestExpectation+FulfillmentCount.swift"; sourceTree = "<group>"; };
 		813F0A9A2906029A007469DF /* Set+Repating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Set+Repating.swift"; sourceTree = "<group>"; };
+		81421A0A29125D750058974E /* ManagedObjectKeyValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedObjectKeyValue.swift; sourceTree = "<group>"; };
 		8147F43928F9A1E1004C7CCF /* EntityProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityProperty.swift; sourceTree = "<group>"; };
 		8147F43B28F9A455004C7CCF /* EntityPropertyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityPropertyTests.swift; sourceTree = "<group>"; };
 		8153A65828F22F460025C0FE /* SwiftDatastoreError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDatastoreError.swift; sourceTree = "<group>"; };
 		8163AC1528A1166C000527B9 /* FetchedObjectsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchedObjectsController.swift; sourceTree = "<group>"; };
+		8164077F29107BBF004057BC /* ManagedObjectKeyValueMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedObjectKeyValueMock.swift; sourceTree = "<group>"; };
 		8171C818290C314B0085FFB2 /* PrimaryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryType.swift; sourceTree = "<group>"; };
 		8176663C289DD93C00123071 /* ViewContextTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewContextTests.swift; sourceTree = "<group>"; };
 		81766640289EE76300123071 /* BatchUpdateResultMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatchUpdateResultMock.swift; sourceTree = "<group>"; };
@@ -168,11 +168,11 @@
 		818A3F2A28D919AB00C6D02A /* DatastoreViewContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatastoreViewContext.swift; sourceTree = "<group>"; };
 		818FDF9828A13ED90060CEE5 /* FetchedObjectsControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchedObjectsControllerTests.swift; sourceTree = "<group>"; };
 		818FDF9A28A149790060CEE5 /* FetchedResultsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchedResultsController.swift; sourceTree = "<group>"; };
+		81905DBA290FB61100BD7053 /* Set+DatastoreInit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Set+DatastoreInit.swift"; sourceTree = "<group>"; };
 		819F567E28F347D700703CEB /* SavedChanges.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedChanges.swift; sourceTree = "<group>"; };
 		819F568028F4532900703CEB /* PocController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocController.swift; sourceTree = "<group>"; };
 		819F568228F4534100703CEB /* MomController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MomController.swift; sourceTree = "<group>"; };
 		819F568428F4548100703CEB /* ManagedObjectContextProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedObjectContextProviderTests.swift; sourceTree = "<group>"; };
-		81A2850B2899EF4300832D00 /* AsynchronousFetchRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsynchronousFetchRequest.swift; sourceTree = "<group>"; };
 		81AE3FE628D0AA53002E2560 /* DatastoreContextClosureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatastoreContextClosureTests.swift; sourceTree = "<group>"; };
 		81B2DABC28DDC51500E5BB76 /* ManagedObjectObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedObjectObserver.swift; sourceTree = "<group>"; };
 		81B3E34428AAD07100EF87D3 /* WhereTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhereTests.swift; sourceTree = "<group>"; };
@@ -190,12 +190,10 @@
 		81BCA53528C544FC00E12923 /* Where.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Where.swift; sourceTree = "<group>"; };
 		81BCA54028C5450D00E12923 /* IndexPath+String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IndexPath+String.swift"; sourceTree = "<group>"; };
 		81BCA54228C5450D00E12923 /* KeyPath+KeyPathString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KeyPath+KeyPathString.swift"; sourceTree = "<group>"; };
-		81BCA54328C5450D00E12923 /* ManagedObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObject.swift; sourceTree = "<group>"; };
 		81C9623A29060F4C006A0068 /* Employee.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Employee.swift; sourceTree = "<group>"; };
 		81D40A5128CD178E009C7838 /* SwiftDatastore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDatastore.swift; sourceTree = "<group>"; };
 		81D997FF290EC14800FC180A /* DatastoreObjectID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatastoreObjectID.swift; sourceTree = "<group>"; };
 		81D99801290EC65100FC180A /* DatastoreObjectIDTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatastoreObjectIDTests.swift; sourceTree = "<group>"; };
-		81DCE09128856449000E70B8 /* ManagedObjectWrapperMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObjectWrapperMock.swift; sourceTree = "<group>"; };
 		81DCE09228856449000E70B8 /* ManagedObjectContextMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObjectContextMock.swift; sourceTree = "<group>"; };
 		81E3C31128EBAE3F00927613 /* ManagedObjectObserverTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedObjectObserverTests.swift; sourceTree = "<group>"; };
 		81E3C31328EC2DE700927613 /* ManagedObjectObserverMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedObjectObserverMock.swift; sourceTree = "<group>"; };
@@ -295,8 +293,7 @@
 		813D968A2881FAB400292BE5 /* Config */ = {
 			isa = PBXGroup;
 			children = (
-				81A2850B2899EF4300832D00 /* AsynchronousFetchRequest.swift */,
-				813D96922881FF4100292BE5 /* ManagedObjectWrapper.swift */,
+				81421A0A29125D750058974E /* ManagedObjectKeyValue.swift */,
 				818FDF9A28A149790060CEE5 /* FetchedResultsController.swift */,
 				819F568028F4532900703CEB /* PocController.swift */,
 				819F568228F4534100703CEB /* MomController.swift */,
@@ -309,12 +306,12 @@
 			isa = PBXGroup;
 			children = (
 				81F41951289A6FE100146133 /* PersistentStoreCoordinatorMock.swift */,
-				81DCE09128856449000E70B8 /* ManagedObjectWrapperMock.swift */,
 				81DCE09228856449000E70B8 /* ManagedObjectContextMock.swift */,
 				81B9A5B92892BB9C00D46D5D /* BatchDeleteResultMock.swift */,
-				81E3C31328EC2DE700927613 /* ManagedObjectObserverMock.swift */,
 				81766640289EE76300123071 /* BatchUpdateResultMock.swift */,
+				81E3C31328EC2DE700927613 /* ManagedObjectObserverMock.swift */,
 				8117F45728A2592800C11067 /* FetchedResultsControllerMock.swift */,
+				8164077F29107BBF004057BC /* ManagedObjectKeyValueMock.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -459,7 +456,7 @@
 			children = (
 				81BCA54028C5450D00E12923 /* IndexPath+String.swift */,
 				81BCA54228C5450D00E12923 /* KeyPath+KeyPathString.swift */,
-				81BCA54328C5450D00E12923 /* ManagedObject.swift */,
+				81905DBA290FB61100BD7053 /* Set+DatastoreInit.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -675,6 +672,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81421A0B29125D750058974E /* ManagedObjectKeyValue.swift in Sources */,
 				81D99800290EC14800FC180A /* DatastoreObjectID.swift in Sources */,
 				81BCA53B28C544FC00E12923 /* NotOptionalAttribute.swift in Sources */,
 				8163AC1728A1172C000527B9 /* FetchedObjectsController.swift in Sources */,
@@ -684,11 +682,10 @@
 				81BCA54628C5450D00E12923 /* KeyPath+KeyPathString.swift in Sources */,
 				81B2DABD28DDC51500E5BB76 /* ManagedObjectObserver.swift in Sources */,
 				81D40A5228CD178E009C7838 /* SwiftDatastore.swift in Sources */,
-				81A2850C2899EF4300832D00 /* AsynchronousFetchRequest.swift in Sources */,
+				81905DBB290FB61100BD7053 /* Set+DatastoreInit.swift in Sources */,
 				81BCA53A28C544FC00E12923 /* OptionalAttribute.swift in Sources */,
 				813D969A28820E2100292BE5 /* ManagedObjectContext.swift in Sources */,
 				811A212D28D9BECD00585565 /* DatastoreContextClosure.swift in Sources */,
-				813D96932881FF4100292BE5 /* ManagedObjectWrapper.swift in Sources */,
 				81BCA53D28C544FC00E12923 /* EnumAttribute.swift in Sources */,
 				81BCA53928C544FC00E12923 /* EntityPropertyKeyPath.swift in Sources */,
 				81BCA53628C544FC00E12923 /* OrderBy.swift in Sources */,
@@ -706,7 +703,6 @@
 				8147F43A28F9A1E1004C7CCF /* EntityProperty.swift in Sources */,
 				8153A65928F22F460025C0FE /* SwiftDatastoreError.swift in Sources */,
 				81BCA53E28C544FC00E12923 /* Where.swift in Sources */,
-				81BCA54728C5450D00E12923 /* ManagedObject.swift in Sources */,
 				811A212B28D9BDC700585565 /* DatastoreContext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -719,6 +715,7 @@
 				8115F866288814EF00FF80C1 /* EnumAttributeTests.swift in Sources */,
 				813D9698288202B300292BE5 /* OptionalAttributeTests.swift in Sources */,
 				8176663D289DD93C00123071 /* ViewContextTests.swift in Sources */,
+				8164078029107BBF004057BC /* ManagedObjectKeyValueMock.swift in Sources */,
 				813D969C2882188D00292BE5 /* ToOneRelationshipTests.swift in Sources */,
 				81D99802290EC65100FC180A /* DatastoreObjectIDTests.swift in Sources */,
 				81B3E34528AAD07100EF87D3 /* WhereTests.swift in Sources */,
@@ -738,7 +735,6 @@
 				81E3C31228EBAE3F00927613 /* ManagedObjectObserverTests.swift in Sources */,
 				81DCE09428856449000E70B8 /* ManagedObjectContextMock.swift in Sources */,
 				81F41952289A6FE100146133 /* PersistentStoreCoordinatorMock.swift in Sources */,
-				81DCE09328856449000E70B8 /* ManagedObjectWrapperMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

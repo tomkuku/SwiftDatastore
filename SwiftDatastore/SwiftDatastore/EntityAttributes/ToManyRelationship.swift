@@ -15,45 +15,43 @@ extension Relationship {
         
         // swiftlint:disable:next nesting
         public typealias KeyPathType = T
-
+        
         // MARK: Properties
         public var wrappedValue: Set<T> {
             get {
                 defer {
-                    managedObjectWrapper.object.didAccessValue(forKey: key)
+                    managedObject.didAccessValue(forKey: key)
                 }
                 
-                managedObjectWrapper.object.willAccessValue(forKey: key)
+                managedObject.willAccessValue(forKey: key)
                 
                 guard
-                    let managedObjects = managedObjectWrapper.mutableSetValue(forKey: key).allObjects as? [NSManagedObject]
+                    let managedObjects = managedObject.mutableSetValue(forKey: key).allObjects as? [NSManagedObject]
                 else {
                     Logger.log.debug("No managedObjects.")
                     return []
                 }
                 
-                return Set(managedObjects.map {
-                    T.create(from: $0)
-                })
+                return managedObjects.mapToSet()
             }
             set {
-                let set = managedObjectWrapper.mutableSetValue(forKey: key)
-                let objects = newValue.map { $0.managedObjectWrapper.object }
+                let set = managedObject.mutableSetValue(forKey: key)
+                let objects = newValue.map { $0.managedObject }
                 let newSet = Set(objects)
                 
-                managedObjectWrapper.object.willChangeValue(forKey: key,
-                                                            withSetMutation: .set,
-                                                            using: [])
+                managedObject.willChangeValue(forKey: key,
+                                              withSetMutation: .set,
+                                              using: [])
                 
                 set.removeAllObjects()
                 
                 newValue.forEach {
-                    set.add($0.managedObjectWrapper.object)
+                    set.add($0.managedObject)
                 }
                 
-                managedObjectWrapper.object.didChangeValue(forKey: key,
-                                                           withSetMutation: .set,
-                                                           using: newSet)
+                managedObject.didChangeValue(forKey: key,
+                                             withSetMutation: .set,
+                                             using: newSet)
             }
         }
         
@@ -74,20 +72,22 @@ extension Relationship {
             
             switch changeKind {
             case .replacement:
-                let objects = Set(changedManagedObjects.map {
-                    T.create(from: $0)
-                })
+                let objects: Set<T> = changedManagedObjects.mapToSet()
                 
                 changedManagedObjects.removeAll()
                 
                 informAboutNewValue(objects)
                 
             case .insertion, .removal:
-                if let newValues = newValue as? Set<NSManagedObject>,
-                   newValues.count == 1,
-                   let firstValue = newValues.first {
-                    changedManagedObjects.insert(firstValue)
+                guard
+                    let newValues = newValue as? Set<NSManagedObject>,
+                    newValues.count == 1,
+                    let firstValue = newValues.first
+                else {
+                    return
                 }
+                changedManagedObjects.insert(firstValue)
+                
             default:
                 break
             }
