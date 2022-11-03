@@ -54,6 +54,7 @@
 		81780AC628D486170078EB8E /* PropertyToFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81780AC528D486170078EB8E /* PropertyToFetch.swift */; };
 		8179E97C28CF3938007D4C8D /* DatastoreContextTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8179E97B28CF3938007D4C8D /* DatastoreContextTests.swift */; };
 		818A3F2B28D919AB00C6D02A /* DatastoreViewContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818A3F2A28D919AB00C6D02A /* DatastoreViewContext.swift */; };
+		818C1B9229143D5500B930D2 /* ToManyOrderedRelationshipTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818C1B9129143D5500B930D2 /* ToManyOrderedRelationshipTests.swift */; };
 		818FDF9928A13ED90060CEE5 /* FetchedObjectsControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818FDF9828A13ED90060CEE5 /* FetchedObjectsControllerTests.swift */; };
 		818FDF9B28A149790060CEE5 /* FetchedResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818FDF9A28A149790060CEE5 /* FetchedResultsController.swift */; };
 		81905DBB290FB61100BD7053 /* Set+DatastoreInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81905DBA290FB61100BD7053 /* Set+DatastoreInit.swift */; };
@@ -168,6 +169,7 @@
 		8184F56E28C53D65003F180A /* libswift_Concurrency.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libswift_Concurrency.tbd; path = usr/lib/swift/libswift_Concurrency.tbd; sourceTree = SDKROOT; };
 		8184F57028C53D7F003F180A /* libswift_Concurrency.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libswift_Concurrency.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk/usr/lib/swift/libswift_Concurrency.tbd; sourceTree = DEVELOPER_DIR; };
 		818A3F2A28D919AB00C6D02A /* DatastoreViewContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatastoreViewContext.swift; sourceTree = "<group>"; };
+		818C1B9129143D5500B930D2 /* ToManyOrderedRelationshipTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToManyOrderedRelationshipTests.swift; sourceTree = "<group>"; };
 		818FDF9828A13ED90060CEE5 /* FetchedObjectsControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchedObjectsControllerTests.swift; sourceTree = "<group>"; };
 		818FDF9A28A149790060CEE5 /* FetchedResultsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchedResultsController.swift; sourceTree = "<group>"; };
 		81905DBA290FB61100BD7053 /* Set+DatastoreInit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Set+DatastoreInit.swift"; sourceTree = "<group>"; };
@@ -335,6 +337,7 @@
 				8115F865288814EF00FF80C1 /* EnumAttributeTests.swift */,
 				813D969B2882188D00292BE5 /* ToOneRelationshipTests.swift */,
 				813D96AF2882E92100292BE5 /* ToManyRelationshipTests.swift */,
+				818C1B9129143D5500B930D2 /* ToManyOrderedRelationshipTests.swift */,
 			);
 			path = EntityAttributes;
 			sourceTree = "<group>";
@@ -732,6 +735,7 @@
 				81D99802290EC65100FC180A /* DatastoreObjectIDTests.swift in Sources */,
 				81B3E34528AAD07100EF87D3 /* WhereTests.swift in Sources */,
 				81F41957289AD1C100146133 /* XCTestCase+createNewManagedObject.swift in Sources */,
+				818C1B9229143D5500B930D2 /* ToManyOrderedRelationshipTests.swift in Sources */,
 				813D96AD2882E74A00292BE5 /* TestObject.swift in Sources */,
 				818FDF9928A13ED90060CEE5 /* FetchedObjectsControllerTests.swift in Sources */,
 				81AE3FE728D0AA53002E2560 /* DatastoreContextClosureTests.swift in Sources */,

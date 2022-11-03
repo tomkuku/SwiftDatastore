@@ -39,7 +39,7 @@ extension Relationship.ToMany {
                 let newObjects = newValue.map { $0.managedObject }
 
                 managedObject.willChange(.setting,
-                                         valuesAt: orderedSet.arrayIndexSet,
+                                         valuesAt: IndexSet(),
                                          forKey: key)
                 
                 orderedSet.removeAllObjects()
@@ -84,7 +84,7 @@ extension Relationship.ToMany {
                     newValues.count == 1,
                     let firstValue = newValues.first
                 else {
-                    Logger.log.error("newValue: \(String(describing: newValue)) is not array with size equal to 1")
+                    Logger.log.error("newValue: \(newValue.debugDescription) is not array with size equal to 1")
                     return
                 }
                 changedManagedObjects.append(firstValue)
