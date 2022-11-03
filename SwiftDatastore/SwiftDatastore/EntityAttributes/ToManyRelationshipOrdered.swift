@@ -64,25 +64,9 @@ extension Relationship.ToMany {
         }
         
         private var changedManagedObjects: [NSManagedObject] = []
-        private lazy var sortDescriptors = orderBy.map { $0.sortDescriptor }
         
-        private let orderBy: [OrderBy<T>]
-        
-        public init(by orderBy: [OrderBy<T>]) {
-            self.orderBy = orderBy
-        }
-        
-        private func sort(_ managedObjects: [NSManagedObject]) -> [NSManagedObject] {
-            let array = NSArray(objects: managedObjects)
-            
-            let aaa = array.sortedArray(using: sortDescriptors)
-            
-            guard let sortedArray = array.sortedArray(using: sortDescriptors).first as? [NSManagedObject] else {
-                Logger.log.error("sortedArray is nil")
-                return []
-            }
-            
-            return sortedArray
+        public override init() {
+            // public init
         }
         
         override func handleObservedPropertyDidChangeValue(_ newValue: Any?, change: NSKeyValueChange?) {
