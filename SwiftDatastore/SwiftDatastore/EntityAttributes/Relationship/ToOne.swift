@@ -1,6 +1,6 @@
 //
-//  ToOneRelationship.swift
-//  Datastore
+//  ToOne.swift
+//  SwiftDatastore
 //
 //  Created by Kukułka Tomasz on 01/08/2022.
 //

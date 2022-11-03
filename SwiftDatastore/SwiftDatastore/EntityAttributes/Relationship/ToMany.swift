@@ -1,6 +1,6 @@
 //
-//  ToManyRelationship.swift
-//  Datastore
+//  ToMany.swift
+//  SwiftDatastore
 //
 //  Created by Kukułka Tomasz on 01/08/2022.
 //
@@ -37,7 +37,6 @@ extension Relationship {
             set {
                 let set = managedObject.mutableSetValue(forKey: key)
                 let objects = newValue.map { $0.managedObject }
-                let newSet = Set(objects)
                 
                 managedObject.willChangeValue(forKey: key,
                                               withSetMutation: .set,
@@ -45,13 +44,13 @@ extension Relationship {
                 
                 set.removeAllObjects()
                 
-                newValue.forEach {
-                    set.add($0.managedObject)
+                objects.forEach {
+                    set.add($0)
                 }
                 
                 managedObject.didChangeValue(forKey: key,
                                              withSetMutation: .set,
-                                             using: newSet)
+                                             using: Set(objects))
             }
         }
         
@@ -69,6 +68,8 @@ extension Relationship {
             guard let changeKind = change else {
                 return
             }
+            
+            print(changeKind.rawValue, newValue)
             
             switch changeKind {
             case .replacement:

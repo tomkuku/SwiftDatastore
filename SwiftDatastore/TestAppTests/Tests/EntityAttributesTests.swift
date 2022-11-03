@@ -147,7 +147,7 @@ class EntityAttributesTests: XCTestCase {
                                                toOneObject: TestOptionalObject,
                                                toManyObjects: Set<TestOptionalObject>) {
         relationshipObject.toOne = toOneObject
-        relationshipObject.toMany = Array(toManyObjects)
+        relationshipObject.toMany = toManyObjects
     }
     
     private func get_relationshipToMany_values(of testObject: TestRelationshipObject) {
