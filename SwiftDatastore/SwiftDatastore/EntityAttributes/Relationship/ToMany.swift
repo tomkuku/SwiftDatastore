@@ -69,8 +69,6 @@ extension Relationship {
                 return
             }
             
-            print(changeKind.rawValue, newValue)
-            
             switch changeKind {
             case .replacement:
                 let objects: Set<T> = changedManagedObjects.mapToSet()

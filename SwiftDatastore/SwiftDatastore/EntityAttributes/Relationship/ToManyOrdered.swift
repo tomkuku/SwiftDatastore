@@ -43,7 +43,10 @@ extension Relationship.ToMany {
                                          forKey: key)
                 
                 orderedSet.removeAllObjects()
-                orderedSet.addObjects(from: newObjects)
+                
+                newObjects.forEach {
+                    orderedSet.add($0)
+                }
                 
                 managedObject.didChange(.setting,
                                         valuesAt: orderedSet.arrayIndexSet,
@@ -63,30 +66,29 @@ extension Relationship.ToMany {
         
         override func handleObservedPropertyDidChangeValue(_ newValue: Any?, change: NSKeyValueChange?) {
             guard let changeKind = change else {
+                Logger.log.error("No change kind")
                 return
             }
             
-//            switch changeKind {
-//            case .replacement:
-//                let sortedObjects = sort(changedManagedObjects)
-//                
-//                let objects = sortedObjects.map {
-//                    T.create(from: $0)
-//                }
-//                
-//                changedManagedObjects.removeAll()
-//                
-//                informAboutNewValue(objects)
-//                
-//            case .insertion, .removal:
-//                if let newValues = newValue as? Set<NSManagedObject>,
-//                   newValues.count == 1,
-//                   let firstValue = newValues.first {
-//                    changedManagedObjects.append(firstValue)
-//                }
-//            default:
-//                break
-//            }
+            switch changeKind {
+            case .setting:
+                let objects: [T] = changedManagedObjects.mapToArray()
+                
+                changedManagedObjects.removeAll()
+                
+                informAboutNewValue(objects)
+                
+            default:
+                guard
+                    let newValues = newValue as? [NSManagedObject],
+                    newValues.count == 1,
+                    let firstValue = newValues.first
+                else {
+                    Logger.log.error("newValue: \(String(describing: newValue)) is not array with size equal to 1")
+                    return
+                }
+                changedManagedObjects.append(firstValue)
+            }
         }
     }
 }

@@ -368,4 +368,50 @@ class ObserveEntityAttributeTests: XCTestCase {
         XCTAssertEqual(newEmployees.count, 5)
         XCTAssertEqual(company.employees.count, 5)
     }
+    
+    // MARK: ToManyRelationship
+    func test_observe_toManyOrdered_set() {
+        // given
+        var employee: Employee!
+        var cars: [Car] = []
+        var car: [Car] = []
+        let observerExpectation = XCTestExpectation(fulfillmentCount: 2)
+        
+        sut.perform { context in
+            cars = try .init(repating: 3) {
+                try context.createObject()
+            }
+            
+            employee = try context.createObject()
+            try context.saveChanges()
+        } success: {
+            self.expectation.fulfill()
+        } failure: { error in
+            fatalError(error.localizedDescription)
+        }
+        
+        wait(for: [expectation], timeout: 2)
+        
+        employee.$cars.observe { newValue in
+            observerExpectation.fulfill()
+        }
+        
+        employee.$cars
+            .newValuePublisher
+            .sink { newValue in
+                car = newValue
+                observerExpectation.fulfill()
+            }
+            .store(in: &cancellable)
+        
+        // when
+        sut.perform { context in
+            employee.cars = cars
+        }
+        
+        // then
+        wait(for: [observerExpectation], timeout: 4)
+        XCTAssertEqual(car.count, cars.count)
+        XCTAssertEqual(employee.cars.count, cars.count)
+    }
 }
