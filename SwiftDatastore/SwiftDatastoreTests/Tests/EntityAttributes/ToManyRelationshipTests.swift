@@ -115,30 +115,23 @@ class ToManyRelationshipTests: XCTestCase {
     
     func test_observeNotEmptySet() {
         // given
-        let managedObject1 = Set(arrayLiteral: createNewManagedObject())
-        let managedObject2 = Set(arrayLiteral: createNewManagedObject())
-        
-        var gotNewValue: Set<TestObject>?
+        var closureNewValue: Set<TestObject>?
         
         let expectation = XCTestExpectation()
-        expectation.expectedFulfillmentCount = 2
         
         sut.observe { newObjects in
-            gotNewValue = newObjects
+            closureNewValue = newObjects
             expectation.fulfill()
         }
         
-        sut.observe { _ in
-            expectation.fulfill()
-        }
+        let newSet = Set([createNewManagedObject(), createNewManagedObject()])
         
         // when
-        sut.observedPropertyDidChangeValue(managedObject1, change: .insertion)
-        sut.observedPropertyDidChangeValue(managedObject2, change: .insertion)
-        sut.observedPropertyDidChangeValue(3, change: .replacement)
+        sut.observedPropertyDidChangeValue(newSet, change: .insertion)
+        sut.observedPropertyDidChangeValue(nil, change: .replacement)
         
         // then
         wait(for: [expectation], timeout: 2)
-        XCTAssertEqual(gotNewValue?.count, 2)
+        XCTAssertEqual(closureNewValue?.count, 2)
     }
 }

@@ -36,21 +36,18 @@ extension Relationship {
             }
             set {
                 let set = managedObject.mutableSetValue(forKey: key)
-                let objects = newValue.map { $0.managedObject }
+                let newObjects = newValue.map { $0.managedObject }
                 
                 managedObject.willChangeValue(forKey: key,
                                               withSetMutation: .set,
                                               using: [])
                 
                 set.removeAllObjects()
-                
-                objects.forEach {
-                    set.add($0)
-                }
+                set.addObjects(from: newObjects)
                 
                 managedObject.didChangeValue(forKey: key,
                                              withSetMutation: .set,
-                                             using: Set(objects))
+                                             using: Set(newObjects))
             }
         }
         
@@ -73,22 +70,15 @@ extension Relationship {
             case .replacement:
                 let objects: Set<T> = changedManagedObjects.mapToSet()
                 
-                changedManagedObjects.removeAll()
-                
                 informAboutNewValue(objects)
                 
-            case .insertion, .removal:
-                guard
-                    let newValues = newValue as? Set<NSManagedObject>,
-                    newValues.count == 1,
-                    let firstValue = newValues.first
-                else {
+            default:
+                guard let objects = newValue as? Set<NSManagedObject> else {
+                    Logger.log.error("No new values as a set of NSManagedObject")
                     return
                 }
-                changedManagedObjects.insert(firstValue)
                 
-            default:
-                break
+                changedManagedObjects = objects
             }
         }
     }

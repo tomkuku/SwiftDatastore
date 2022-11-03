@@ -43,10 +43,7 @@ extension Relationship.ToMany {
                                          forKey: key)
                 
                 orderedSet.removeAllObjects()
-                
-                newObjects.forEach {
-                    orderedSet.add($0)
-                }
+                orderedSet.addObjects(from: newObjects)
                 
                 managedObject.didChange(.setting,
                                         valuesAt: orderedSet.arrayIndexSet,
@@ -74,20 +71,15 @@ extension Relationship.ToMany {
             case .setting:
                 let objects: [T] = changedManagedObjects.mapToArray()
                 
-                changedManagedObjects.removeAll()
-                
                 informAboutNewValue(objects)
                 
             default:
-                guard
-                    let newValues = newValue as? [NSManagedObject],
-                    newValues.count == 1,
-                    let firstValue = newValues.first
-                else {
-                    Logger.log.error("newValue: \(newValue.debugDescription) is not array with size equal to 1")
+                guard let objects = newValue as? [NSManagedObject] else {
+                    Logger.log.error("No new values as an array of NSManagedObject")
                     return
                 }
-                changedManagedObjects.append(firstValue)
+                
+                changedManagedObjects = objects
             }
         }
     }

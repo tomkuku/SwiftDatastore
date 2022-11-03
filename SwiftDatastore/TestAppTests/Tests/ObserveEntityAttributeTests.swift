@@ -194,7 +194,7 @@ class ObserveEntityAttributeTests: XCTestCase {
         XCTAssertEqual(newCompany.objectID, company.objectID)
     }
     
-    // MARK: ToManyRelationship
+    // MARK: ToMany
     func test_observe_toManyRelationship_setObjects() {
         // given
         var company: Company!
@@ -369,7 +369,7 @@ class ObserveEntityAttributeTests: XCTestCase {
         XCTAssertEqual(company.employees.count, 5)
     }
     
-    // MARK: ToManyRelationship
+    // MARK: ToManyOrdered
     func test_observe_toManyOrdered_set() {
         // given
         var employee: Employee!
@@ -414,4 +414,98 @@ class ObserveEntityAttributeTests: XCTestCase {
         XCTAssertEqual(car.count, cars.count)
         XCTAssertEqual(employee.cars.count, cars.count)
     }
+    
+    func test_observe_toManyOrdered_remove() {
+        // given
+        var employee: Employee!
+        var cars: [Car] = []
+        var car: [Car] = []
+        let observerExpectation = XCTestExpectation(fulfillmentCount: 2)
+        
+        sut.perform { context in
+            cars = try .init(repating: 3) {
+                try context.createObject()
+            }
+            
+            employee = try context.createObject()
+            employee.cars = cars
+            try context.saveChanges()
+        } success: {
+            self.expectation.fulfill()
+        } failure: { error in
+            fatalError(error.localizedDescription)
+        }
+        
+        wait(for: [expectation], timeout: 2)
+        
+        employee.$cars.observe { newValue in
+            observerExpectation.fulfill()
+        }
+        
+        employee.$cars
+            .newValuePublisher
+            .sink { newValue in
+                car = newValue
+                observerExpectation.fulfill()
+            }
+            .store(in: &cancellable)
+        
+        // when
+        sut.perform { context in
+            employee.cars.removeLast()
+        }
+        
+        // then
+        wait(for: [observerExpectation], timeout: 4)
+        XCTAssertEqual(car.count, 2)
+        XCTAssertEqual(employee.cars.count, 2)
+    }
+    
+    func test_observe_toManyOrdered_insert() {
+        // given
+        var employee: Employee!
+        var cars: [Car] = []
+        var car: [Car] = []
+        let observerExpectation = XCTestExpectation(fulfillmentCount: 2)
+        
+        sut.perform { context in
+            cars = try .init(repating: 3) {
+                try context.createObject()
+            }
+            
+            employee = try context.createObject()
+            employee.cars = cars
+            try context.saveChanges()
+        } success: {
+            self.expectation.fulfill()
+        } failure: { error in
+            fatalError(error.localizedDescription)
+        }
+        
+        wait(for: [expectation], timeout: 2)
+        
+        employee.$cars.observe { newValue in
+            observerExpectation.fulfill()
+        }
+        
+        employee.$cars
+            .newValuePublisher
+            .sink { newValue in
+                car = newValue
+                observerExpectation.fulfill()
+            }
+            .store(in: &cancellable)
+        
+        // when
+        sut.perform { context in
+            let car: Car = try context.createObject()
+            employee.cars.append(car)
+        }
+        
+        // then
+        wait(for: [observerExpectation], timeout: 4)
+        XCTAssertEqual(car.count, 4)
+        XCTAssertEqual(employee.cars.count, 4)
+    }
 }
+

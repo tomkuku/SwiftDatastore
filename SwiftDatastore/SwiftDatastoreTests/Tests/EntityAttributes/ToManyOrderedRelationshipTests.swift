@@ -112,9 +112,6 @@ final class ToManyOrderedRelationshipTests: XCTestCase {
 
     func test_observeNotEmptySet() {
         // given
-        let managedObject1 = createNewManagedObject()
-        let managedObject2 = createNewManagedObject()
-
         var gotNewValue: [TestObject]?
 
         let expectation = XCTestExpectation()
@@ -129,9 +126,10 @@ final class ToManyOrderedRelationshipTests: XCTestCase {
             expectation.fulfill()
         }
 
+        let newArra = [createNewManagedObject(), createNewManagedObject()]
+        
         // when
-        sut.observedPropertyDidChangeValue([managedObject1], change: .insertion)
-        sut.observedPropertyDidChangeValue([managedObject2], change: .replacement)
+        sut.observedPropertyDidChangeValue(newArra, change: .replacement)
         sut.observedPropertyDidChangeValue(3, change: .setting)
 
         // then
