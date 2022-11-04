@@ -3,3 +3,16 @@ ignore:
   - "SwiftDatastore/SwiftDatastoreTests"
   - "SwiftDatastore/TestApp"
   - "SwiftDatastore/TestAppTests"
+
+comment:
+  layout: "reach, diff"
+  behavior: "default"
+
+coverage:
+  range: 70...90
+
+  status:
+    project:
+      default:
+        target: 80%
+        threshold: "1%"
