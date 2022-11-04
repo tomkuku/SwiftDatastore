@@ -10,7 +10,7 @@ codecov:
 
 comment:
   layout: "reach, diff"
-  behavior: "default"
+  behavior: "new"
 
 coverage:
   range: 70...90
