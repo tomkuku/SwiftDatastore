@@ -12,6 +12,7 @@ import Foundation
 class ManagedObjectKeyValueMock: ManagedObjectKeyValue {
     var _primitiveValue: Any?
     var _mutableSet = NSMutableSet()
+    var _mutableOrderedSet = NSMutableOrderedSet()
     
     var primitiveValueCalled = false
     var setPrimitiveValueCalled = false
@@ -24,6 +25,9 @@ class ManagedObjectKeyValueMock: ManagedObjectKeyValue {
     var didChangeValueSetCalled = false
     var addObserverCalled = false
     var removeObserverCalled = false
+    var mutableOrderedSetValueCalled = false
+    var willChangeValueOrderedSetCalled = false
+    var didChangeValueOrderedSetCalled = false
     
     func primitiveValue(forKey key: String) -> Any? {
         primitiveValueCalled = true
@@ -38,6 +42,11 @@ class ManagedObjectKeyValueMock: ManagedObjectKeyValue {
     func mutableSetValue(forKey key: String) -> NSMutableSet {
         mutableSetValueCalled = true
         return _mutableSet
+    }
+    
+    func mutableOrderedSetValue(forKey key: String) -> NSMutableOrderedSet {
+        mutableOrderedSetValueCalled = true
+        return _mutableOrderedSet
     }
     
     func willAccessValue(forKey key: String?) {
@@ -66,6 +75,18 @@ class ManagedObjectKeyValueMock: ManagedObjectKeyValue {
                         withSetMutation inMutationKind: NSKeyValueSetMutationKind,
                         using inObjects: Set<AnyHashable>) {
         didChangeValueSetCalled = true
+    }
+    
+    func willChange(_ changeKind: NSKeyValueChange,
+                    valuesAt indexes: IndexSet,
+                    forKey key: String) {
+        willChangeValueOrderedSetCalled = true
+    }
+    
+    func didChange(_ changeKind: NSKeyValueChange,
+                   valuesAt indexes: IndexSet,
+                   forKey key: String) {
+        didChangeValueOrderedSetCalled = true
     }
     
     func addObserver(_ observer: NSObject,
