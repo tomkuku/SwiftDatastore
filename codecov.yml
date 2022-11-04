@@ -3,7 +3,3 @@ ignore:
   - "SwiftDatastore/SwiftDatastoreTests"
   - "SwiftDatastore/TestApp"
   - "SwiftDatastore/TestAppTests"
-
-coverage:
-  status:
-    patch: off

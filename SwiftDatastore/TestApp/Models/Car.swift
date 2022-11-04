@@ -16,6 +16,6 @@ final class Car: DatastoreObject {
     }
     
     override class var entityName: String {
-        "EntityName"
+        "Car"
     }
 }

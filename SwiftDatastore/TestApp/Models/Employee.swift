@@ -23,6 +23,7 @@ final class Employee: DatastoreObject {
     @Attribute.Optional var name: String?
     @Attribute.Optional var avatarImageData: Data?
     @Relationship.ToOne var company: Company?
+    @Relationship.ToMany.Ordered var cars: [Car]
     
     override func objectDidCreate() {
         id = UUID()        

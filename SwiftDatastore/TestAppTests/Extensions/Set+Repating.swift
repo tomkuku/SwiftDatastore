@@ -15,3 +15,11 @@ extension Set {
         self = Set(array)
     }
 }
+
+extension Array {
+    init(repating: Int, block: () throws -> Element) throws {
+        self = try (0..<repating).map { _ -> Element in
+            try block()
+        }
+    }
+}
