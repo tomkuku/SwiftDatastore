@@ -3,3 +3,20 @@ ignore:
   - "SwiftDatastore/SwiftDatastoreTests"
   - "SwiftDatastore/TestApp"
   - "SwiftDatastore/TestAppTests"
+
+codecov:
+  allow_pseudo_compare: True
+  allow_coverage_offsets: True
+
+comment:
+  layout: "reach, diff"
+  behavior: "default"
+
+coverage:
+  range: 70...90
+
+  status:
+    project:
+      default:
+        target: 80%
+        threshold: "1%"
