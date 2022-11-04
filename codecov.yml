@@ -4,13 +4,9 @@ ignore:
   - "SwiftDatastore/TestApp"
   - "SwiftDatastore/TestAppTests"
 
-codecov:
-  allow_pseudo_compare: True
-  allow_coverage_offsets: True
-
 comment:
   layout: "reach, diff"
-  behavior: "new"
+  behavior: "default"
 
 coverage:
   range: 70...90
