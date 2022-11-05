@@ -8,7 +8,7 @@
 import Foundation
 import CoreData
 
-class BatchUpdateRequestMock: NSBatchUpdateResult {
+final class BatchUpdateRequestMock: NSBatchUpdateResult {
     
     var _result: [NSManagedObjectID] = []
     

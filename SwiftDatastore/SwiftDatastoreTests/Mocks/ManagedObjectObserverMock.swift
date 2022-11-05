@@ -9,7 +9,7 @@ import Foundation
 
 @testable import SwiftDatastore
 
-class ManagedObjectObserverMock: ManagedObjectObserverLogic {
+final class ManagedObjectObserverMock: ManagedObjectObserverLogic {
     var _removeObserverKey: String?
     var _addObserverForKey: String?
     

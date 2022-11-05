@@ -16,12 +16,17 @@ public enum FetchedObjectsChangeType<T> where T: DatastoreObject {
     case moved(T, IndexPath, IndexPath)
 }
 
+typealias FetchedResultsController1 = NSFetchedResultsController<NSManagedObject>
+
 public final class FetchedObjectsController<T> where T: DatastoreObject {
     
     typealias ChangesPassthroughSubjectType = PassthroughSubject<FetchedObjectsChangeType<T>, Never>
     
     // MARK: Properties
-    private let fetchedResultsController: FetchedResultsController?
+    let fetchedResultsController: FetchedResultsController1
+    // swiftlint:disable:next identifier_name
+    let fetchedResultsControllerHandler = FetchedResultsControllerHandler()
+    
     private let changesPassthroughSubject = ChangesPassthroughSubjectType()
     
     private var changeBlocks: [(FetchedObjectsChangeType<T>) -> Void] = []
@@ -30,13 +35,13 @@ public final class FetchedObjectsController<T> where T: DatastoreObject {
         changesPassthroughSubject.eraseToAnyPublisher()
     }()
     
-    internal init(fetchedResultsController: FetchedResultsController,
-                  context: NSManagedObjectContext,
-                  predicate: NSPredicate?,
-                  sortDescriptors: [NSSortDescriptor],
-                  sectionNameKeyPath: String?) {
-        self.fetchedResultsController = fetchedResultsController
-        
+    internal init(
+        fetchedResultsController: FetchedResultsController1.Type = FetchedResultsController1.self,
+        context: NSManagedObjectContext,
+        predicate: NSPredicate?,
+        sortDescriptors: [NSSortDescriptor],
+        sectionNameKeyPath: String?
+    ) {
         guard !sortDescriptors.isEmpty else {
             Logger.log.fatal("SortDescriptors mustn't be empty!")
         }
@@ -45,15 +50,21 @@ public final class FetchedObjectsController<T> where T: DatastoreObject {
         fetchRequest.predicate = predicate
         fetchRequest.sortDescriptors = sortDescriptors
         
-        self.fetchedResultsController?.create(fetchRequest: fetchRequest,
-                                              context: context,
-                                              sectionNameKeyPath: sectionNameKeyPath)
-        self.fetchedResultsController?.delegate = self
+        self.fetchedResultsController = fetchedResultsController.init(
+            fetchRequest: fetchRequest,
+            managedObjectContext: context,
+            sectionNameKeyPath: sectionNameKeyPath,
+            cacheName: nil)
+        self.fetchedResultsController.delegate = fetchedResultsControllerHandler
+        
+        fetchedResultsControllerHandler.changeClosure = { [weak self] in
+            self?.controller(didChange: $0, at: $1, for: $2, newIndexPath: $3)
+        }
     }
 }
 
 // MARK: NSFetchedResultsControllerDelegate
-extension FetchedObjectsController: FetchedResultsControllerDelegate {
+extension FetchedObjectsController {
     func controller(didChange anObject: Any,
                     at indexPath: IndexPath?,
                     for type: NSFetchedResultsChangeType,
@@ -101,25 +112,33 @@ extension FetchedObjectsController {
     
     // MARK: NumberOfSections
     public var numberOfSections: Int {
-        fetchedResultsController?.sections?.count ?? 0
+        fetchedResultsController.sections?.count ?? 0
     }
     
     // MARK: init
     public convenience init<V>(viewContext: SwiftDatastoreViewContext,
                                where: Where<T>? = nil,
                                orderBy: [OrderBy<T>],
-                               groupBy: KeyPath<T, V>?) where V: EntityPropertyKeyPath {
-        self.init(fetchedResultsController: FetchedResultsController(),
-                  context: viewContext.context,
+                               groupBy: KeyPath<T, V>) where V: EntityPropertyKeyPath {
+        self.init(context: viewContext.context,
                   predicate: `where`?.predicate,
                   sortDescriptors: orderBy.map { $0.sortDescriptor },
-                  sectionNameKeyPath: groupBy?.keyPathString)
+                  sectionNameKeyPath: groupBy.keyPathString)
+    }
+    
+    public convenience init(viewContext: SwiftDatastoreViewContext,
+                            where: Where<T>? = nil,
+                            orderBy: [OrderBy<T>]) {
+        self.init(context: viewContext.context,
+                  predicate: `where`?.predicate,
+                  sortDescriptors: orderBy.map { $0.sortDescriptor },
+                  sectionNameKeyPath: nil)
     }
     
     // MARK: PerformFetch
     public func performFetch() {
         do {
-            try fetchedResultsController?.performFetch()
+            try fetchedResultsController.performFetch()
         } catch {
             Logger.log.error("Performing fetch failed with error: \(error.localizedDescription)!")
         }
@@ -127,19 +146,17 @@ extension FetchedObjectsController {
     
     // MARK: SectionName
     public func sectionName(inSection section: Int) -> String? {
-        return fetchedResultsController?.sections?[section].name
+        return fetchedResultsController.sections?[section].name
     }
     
     // MARK: NumberOfObjectsInSection
     public func numberOfObjects(inSection section: Int) -> Int {
-        return fetchedResultsController?.sections?[section].numberOfObjects ?? 0
+        return fetchedResultsController.sections?[section].numberOfObjects ?? 0
     }
     
     // MARK: GetObjectAtIndexPath
     public func getObject(at indexPath: IndexPath) -> T {
-        guard let managedObject = fetchedResultsController?.object(at: indexPath) else {
-            Logger.log.fatal("No object at indexPath: \(indexPath)!")
-        }
+        let managedObject = fetchedResultsController.object(at: indexPath)
         return T(managedObject: managedObject)
     }
     
