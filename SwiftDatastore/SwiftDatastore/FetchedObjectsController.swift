@@ -119,11 +119,11 @@ extension FetchedObjectsController {
     public convenience init<V>(viewContext: SwiftDatastoreViewContext,
                                where: Where<T>? = nil,
                                orderBy: [OrderBy<T>],
-                               groupBy: KeyPath<T, V>?) where V: EntityPropertyKeyPath {
+                               groupBy: KeyPath<T, V>) where V: EntityPropertyKeyPath {
         self.init(context: viewContext.context,
                   predicate: `where`?.predicate,
                   sortDescriptors: orderBy.map { $0.sortDescriptor },
-                  sectionNameKeyPath: groupBy?.keyPathString)
+                  sectionNameKeyPath: groupBy.keyPathString)
     }
     
     public convenience init(viewContext: SwiftDatastoreViewContext,
