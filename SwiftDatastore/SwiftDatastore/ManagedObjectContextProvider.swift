@@ -23,22 +23,23 @@ final class ManagedObjectContextProvider {
         return moc
     }()
     
-    var poc: NSPersistentStoreCoordinator
+    let poc: NSPersistentStoreCoordinator
     
-    init(storeName: String,
-         managedObjectModelName: String,
-         destoryStoreDuringCreating: Bool = false,
-         fileManager: FileManager = .default,
-         bundle: Bundle = .main,
-         momController: MomController = MomController()
-    ) throws {
+    init<T>(persistentStoreCoordinatorType: T.Type = NSPersistentStoreCoordinator.self,
+            storeName: String,
+            managedObjectModelName: String,
+            destoryStoreDuringCreating: Bool = false,
+            fileManager: FileManager = .default,
+            bundle: Bundle = .main,
+            momController: MomController = MomController()
+    ) throws where T: NSPersistentStoreCoordinator {
         let mom = try Self.createManagedObjectModel(momController: momController,
-                                                bundle: bundle,
-                                                modelFileName: managedObjectModelName)
+                                                    bundle: bundle,
+                                                    modelFileName: managedObjectModelName)
         
-        let storeURL = Self.createPersistentStoreURL(fileManager: fileManager, storeName: storeName)
+        let storeURL = Self.createPersistentStoreURL(fileManager: fileManager, storeFileName: storeName)
         
-        self.poc = NSPersistentStoreCoordinator(managedObjectModel: mom)
+        self.poc = persistentStoreCoordinatorType.init(managedObjectModel: mom)
         
         try setupPoc(destroyPersistentStore: destoryStoreDuringCreating, storeURL: storeURL)
     }
@@ -65,10 +66,11 @@ final class ManagedObjectContextProvider {
         return mom
     }
     
-    private static func createPersistentStoreURL(fileManager: FileManager, storeName: String) -> URL {
-        let storeFileName = "\(storeName).\(Constant.sqliteFileExtension)"
-        let documentsDirectoryUrl = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
-        return documentsDirectoryUrl.appendingPathComponent(storeFileName)
+    private static func createPersistentStoreURL(fileManager: FileManager, storeFileName: String) -> URL {
+        var storeUrl = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        storeUrl.appendPathComponent(storeFileName)
+        storeUrl.appendPathExtension(Constant.sqliteFileExtension)
+        return storeUrl
     }
     
     private func setupPoc(destroyPersistentStore: Bool, storeURL: URL) throws {

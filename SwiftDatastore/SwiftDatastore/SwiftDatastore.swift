@@ -18,9 +18,10 @@ public final class SwiftDatastore {
     public private(set) lazy var sharedViewContext = SwiftDatastoreViewContext(context: contextProvider.viewContext)
     
     public init(storingType: StoringType = .app, storeName: String, datamodelName: String) throws {
-        contextProvider = try .init(storeName: storeName,
-                                    managedObjectModelName: datamodelName,
-                                    destoryStoreDuringCreating: storingType == .test)
+        contextProvider = try ManagedObjectContextProvider(
+            storeName: storeName,
+            managedObjectModelName: datamodelName,
+            destoryStoreDuringCreating: storingType == .test)
     }
     
     public func createNewContext() -> SwiftDatastoreContext {
