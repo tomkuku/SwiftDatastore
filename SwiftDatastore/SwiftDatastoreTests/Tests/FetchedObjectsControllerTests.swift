@@ -64,7 +64,7 @@ class FetchedObjectsControllerTests: XCTestCase {
         sut = SutType(viewContext: viewContext,
                       where: \.$name == "abc",
                       orderBy: [.asc(\.$age)],
-                      groupBy: .init(\.$salary))
+                      groupBy: \.$salary)
         
         // then
         let fetchRequest = sut.fetchedResultsController.fetchRequest
