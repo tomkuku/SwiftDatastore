@@ -81,4 +81,3 @@ fileprivate extension NSComparisonPredicate {
                   type: type)
     }
 }
-

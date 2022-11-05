@@ -24,6 +24,7 @@ public final class FetchedObjectsController<T> where T: DatastoreObject {
     
     // MARK: Properties
     let fetchedResultsController: FetchedResultsController1
+    // swiftlint:disable:next identifier_name
     let fetchedResultsControllerHandler = FetchedResultsControllerHandler()
     
     private let changesPassthroughSubject = ChangesPassthroughSubjectType()
