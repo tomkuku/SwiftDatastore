@@ -6,7 +6,7 @@
 <img alt="Build Status" src="https://img.shields.io/github/workflow/status/tomkuku/SwiftDatastore/Build%20and%20Test/main?logo=github" /></a>
 <a href="https://github.com/tomkuku/SwiftDatastore/commits">
 <img alt="Last Commit" src="https://img.shields.io/github/last-commit/tomkuku/SwiftDatastore?logo=git" /></a>
-<a href="https://github.com/tomkuku/SwiftDatastore/actions">
+<a href="https://app.codecov.io/gh/tomkuku/SwiftDatastore">
 <img alt="Code coverage" src="https://codecov.io/github/tomkuku/SwiftDatastore/coverage.svg?branch=main" /></a>
 <a href="https://github.com/tomkuku/SwiftDatastore/blob/main/LICENSE.md">
 <img alt="License" src="https://img.shields.io/github/license/tomkuku/SwiftDatastore?color=blue" /></a>
@@ -18,7 +18,7 @@
 </p>
 </br>
 <p align="center">
-<img alt="Swift Versions" src="https://img.shields.io/badge/cocoapods-compatible-informational?logo=cocoapods&style=flat" />
+<img alt="CocoaPods" src="https://img.shields.io/badge/CocoaPods-compatible-informational?logo=cocoapods&style=flat" />
 </p>
 
 </br>
@@ -45,6 +45,7 @@ Just try it 😊!
     - [Relationship](#relationship)
         - [`ToOne`](#toone)
         - [`ToMany`](#tomany)
+        - [`ToMany.Ordered`](#tomany.ordered)
 - [Using SwiftDatastore's](#using-swiftdatastores)
 - [SwiftDatastore’s operations](#swiftdatastores-operations)
     - [`perform`](#perform)
@@ -270,7 +271,7 @@ class Employee: DatastoreObject {
 // ...
 
 company.employees = [employee1, employee2, ...]
-company.employess.insert(employee7)
+company.employess.insert(employee3)
 
 employee.company = company
 ```
@@ -279,6 +280,26 @@ employee.company = company
 
 ``` Swift
 company.employess.remove(employee)
+```
+
+### `ToMany.Ordered`
+It represents `one-to-many` relationship where objects are stored in ordered which is `Array<Object>`.
+
+Whay Array instead of OrederedSet? By default Swift doesn't have OrderedSet collection. You can use it by adding other frameworks which supply ordered collections. To avoid names conflicts SwiftDatastore uses Array. 
+
+``` Swift
+class Employee: DatastoreObject {
+    @Relationship.ToMany.Ordered var tasks: [Task]
+}
+
+class Task: DatastoreObject {
+    @Relationship.ToOne var employee: Employee?
+}
+
+// ...
+
+company.tasks = [task1, task2, ...]
+company.employee = employee
 ```
 
 ***
