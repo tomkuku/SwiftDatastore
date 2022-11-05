@@ -14,7 +14,7 @@ enum TestError: Error {
     case test
 }
 
-class ManagedObjectContextMock: ManagedObjectContext {
+final class ManagedObjectContextMock: ManagedObjectContext {
     var _hasChanges: Bool = false
     var _fetchRequestResult: [NSFetchRequestResult]!
     var _propertiesToFetch: [String]?

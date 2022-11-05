@@ -9,7 +9,7 @@ import Foundation
 
 @testable import SwiftDatastore
 
-class ManagedObjectKeyValueMock: ManagedObjectKeyValue {
+final class ManagedObjectKeyValueMock: ManagedObjectKeyValue {
     var _primitiveValue: Any?
     var _mutableSet = NSMutableSet()
     var _mutableOrderedSet = NSMutableOrderedSet()
