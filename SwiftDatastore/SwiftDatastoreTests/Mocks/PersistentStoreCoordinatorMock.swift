@@ -8,7 +8,7 @@
 import Foundation
 import CoreData
 
-class PersistentStoreCoordinatorMock {
+final class PersistentStoreCoordinatorMock {
     
     var managedObject: NSManagedObject {
         return NSManagedObject(entity: entityDescription,
