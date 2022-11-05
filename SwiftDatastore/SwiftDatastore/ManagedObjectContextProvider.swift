@@ -10,64 +10,54 @@ import CoreData
 
 final class ManagedObjectContextProvider {
     private enum Constant {
-        static let storeType = NSSQLiteStoreType
-        static let storeExtension = "sqlite"
+        static let sqliteStoreType = NSSQLiteStoreType
+        static let sqliteFileExtension = "sqlite"
         static let managedObjectModelExtension = "momd"
     }
     
     // MARK: Properties
     private(set) lazy var viewContext: ManagedObjectContext = {
         let moc = ManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
-        moc.persistentStoreCoordinator = pocController.poc
+        moc.persistentStoreCoordinator = poc
         moc.automaticallyMergesChangesFromParent = true
         return moc
     }()
     
-    private let storeName: String
-    private let managedObjectModelName: String
-    private let fileManager: FileManager
-    private let budle: Bundle
-    private let momController: MomController
-    private let pocController: PocController
+    let poc: NSPersistentStoreCoordinator
     
-    init(
-        storeName: String,
-        managedObjectModelName: String,
-        destoryStoreDuringCreating: Bool = false,
-        fileManager: FileManager = .default,
-        budle: Bundle = .main,
-        momController: MomController = MomController(),
-        pocController: PocController = PocController()
-    ) throws {
-        self.storeName = storeName
-        self.managedObjectModelName = managedObjectModelName
-        self.fileManager = fileManager
-        self.budle = budle
-        self.momController = momController
-        self.pocController = pocController
+    init<T>(persistentStoreCoordinatorType: T.Type = NSPersistentStoreCoordinator.self,
+            storeName: String,
+            managedObjectModelName: String,
+            destoryStoreDuringCreating: Bool = false,
+            fileManager: FileManager = .default,
+            bundle: Bundle = .main,
+            momController: MomController = MomController()
+    ) throws where T: NSPersistentStoreCoordinator {
+        let mom = try Self.createManagedObjectModel(momController: momController,
+                                                    bundle: bundle,
+                                                    modelFileName: managedObjectModelName)
         
-        let model = try createManagedObjectModel()
-        let persistentStoreURL = createPersistentStoreURL()
+        let storeURL = Self.createPersistentStoreURL(fileManager: fileManager, storeFileName: storeName)
         
-        try setupPoc(managedObjectModel: model,
-                     persistentStoreURL: persistentStoreURL,
-                     destroyPersistentStore: destoryStoreDuringCreating)
+        self.poc = persistentStoreCoordinatorType.init(managedObjectModel: mom)
+        
+        try setupPoc(destroyPersistentStore: destoryStoreDuringCreating, storeURL: storeURL)
     }
     
     public func createNewPrivateContext() -> ManagedObjectContext {
         let moc = ManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
-        moc.persistentStoreCoordinator = pocController.poc
+        moc.persistentStoreCoordinator = poc
         moc.automaticallyMergesChangesFromParent = true
         return moc
     }
     
     // MARK: Private
-    private func createManagedObjectModel() throws -> NSManagedObjectModel {
-        let resourceName = managedObjectModelName
-        let `extension` = Constant.managedObjectModelExtension
-        
+    private static func createManagedObjectModel(momController: MomController,
+                                                 bundle: Bundle,
+                                                 modelFileName: String) throws -> NSManagedObjectModel {
         guard
-            let url = budle.url(forResource: resourceName, withExtension: `extension`),
+            let url = bundle.url(forResource: modelFileName,
+                                 withExtension: Constant.managedObjectModelExtension),
             let mom = momController.createModel(contentsOf: url)
         else {
             throw SwiftDatastoreError.managedObjectModelNotFound
@@ -76,25 +66,24 @@ final class ManagedObjectContextProvider {
         return mom
     }
     
-    private func createPersistentStoreURL() -> URL {
-        let storeFileName = "\(storeName).\(Constant.storeExtension)"
-        let documentsDirectoryUrl = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
-        return documentsDirectoryUrl.appendingPathComponent(storeFileName)
+    private static func createPersistentStoreURL(fileManager: FileManager, storeFileName: String) -> URL {
+        var storeUrl = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        storeUrl.appendPathComponent(storeFileName)
+        storeUrl.appendPathExtension(Constant.sqliteFileExtension)
+        return storeUrl
     }
     
-    private func setupPoc(managedObjectModel: NSManagedObjectModel,
-                          persistentStoreURL: URL,
-                          destroyPersistentStore: Bool) throws {
-        pocController.create(with: managedObjectModel)
-        
+    private func setupPoc(destroyPersistentStore: Bool, storeURL: URL) throws {
         if destroyPersistentStore {
-            try pocController.destroyPersistentStore(at: persistentStoreURL,
-                                           ofType: Constant.storeType)
+            try poc.destroyPersistentStore(at: storeURL, ofType: Constant.sqliteStoreType)
+            
             Logger.log.debug("PersistentStore was destroyed.")
         }
         
-        try pocController.addPersistentStore(ofType: Constant.storeType,
-                                   at: persistentStoreURL)
+        try poc.addPersistentStore(ofType: Constant.sqliteStoreType,
+                                   configurationName: nil,
+                                   at: storeURL)
+        
         Logger.log.debug("PersistentStore was added.")
     }
 }
