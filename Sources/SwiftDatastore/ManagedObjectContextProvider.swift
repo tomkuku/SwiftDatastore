@@ -60,7 +60,7 @@ final class ManagedObjectContextProvider {
                                  withExtension: Constant.managedObjectModelExtension),
             let mom = momController.createModel(contentsOf: url)
         else {
-            throw SwiftDatastoreError.managedObjectModelNotFound
+            throw SwiftDatastoreError.ModelFileNotFound(modelFileName)
         }
         
         return mom

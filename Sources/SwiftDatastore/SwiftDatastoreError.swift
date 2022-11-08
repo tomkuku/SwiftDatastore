@@ -7,16 +7,29 @@
 
 import Foundation
 
-public enum SwiftDatastoreError: Error, LocalizedError {
-    case entityNotFound
-    case managedObjectModelNotFound
+public enum SwiftDatastoreError {
     
-    public var errorDescription: String? {
-        switch self {
-        case .entityNotFound:
-            return "Entity with name not found!"
-        case .managedObjectModelNotFound:
-            return "ManagedObjectModel's name not found!"
+    public struct EntityNotFound: Error, LocalizedError {
+        let entityName: String
+        
+        public var errorDescription: String? {
+            "Entity with name: \(entityName) not found!"
+        }
+        
+        init(_ name: String) {
+            self.entityName = name
+        }
+    }
+    
+    public struct ModelFileNotFound: Error, LocalizedError {
+        let modelName: String
+        
+        public var errorDescription: String? {
+            "ManagedObjectModel's with name: \(modelName) not found!"
+        }
+        
+        init(_ name: String) {
+            self.modelName = name
         }
     }
 }
