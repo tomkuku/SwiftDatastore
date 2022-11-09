@@ -5,14 +5,21 @@ ignore:
   - "SwiftDatastore/TestAppTests"
 
 comment:
-  layout: "reach, diff"
-  behavior: "default"
+  require_base: true
+  layout: [reach, diff, header, feedback]
+  behavior: "new"
 
 coverage:
-  range: 70...90
+  range: 80...90
+  allow_coverage_offsets: true
 
   status:
     project:
       default:
-        target: 80%
-        threshold: "1%"
+        target: 85%
+        threshold: "0.5%"
+
+    patch:
+      default:
+        target: 85%
+        threshold: "0.5%"
