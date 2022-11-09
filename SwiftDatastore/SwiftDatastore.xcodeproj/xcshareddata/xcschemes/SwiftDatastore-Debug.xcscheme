@@ -38,11 +38,6 @@
                BlueprintName = "SwiftDatastoreTests"
                ReferencedContainer = "container:SwiftDatastore.xcodeproj">
             </BuildableReference>
-            <SkippedTests>
-               <Test
-                  Identifier = "FetchedObjectsControllerTests">
-               </Test>
-            </SkippedTests>
          </TestableReference>
       </Testables>
    </TestAction>
