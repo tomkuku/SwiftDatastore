@@ -7,6 +7,9 @@ on:
   pull_request:
     types: [opened, reopened, synchronize]
 
+env:
+  SCRIPTS_DIR: ci_scripts
+
 jobs:  
   swift-datastore:
     runs-on: macos-latest
@@ -16,9 +19,8 @@ jobs:
       run: |
         make -B swift_datastore
     - name: Validate codecov.yml
-      continue-on-error: false
       run: |
-        curl -X POST --data-binary @codecov.yml https://codecov.io/validate
+        bash ${{env.SCRIPTS_DIR}}/codecov_validation.sh
     - name: Upload coverage to Codecov.io
       continue-on-error: false
       uses: codecov/codecov-action@v1.2.1

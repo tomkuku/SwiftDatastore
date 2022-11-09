@@ -2,7 +2,7 @@
 codecov:
   allow_pseudo_compare: true
   allow_coverage_offsets: true
-  require_ci_tco_pass: true
+  require_ci_to_pass: true
   bot: "tomkuku"
 
 ignore:
