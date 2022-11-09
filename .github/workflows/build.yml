@@ -16,6 +16,7 @@ jobs:
       run: |
         make -B swift_datastore
     - name: Validate codecov.yml
+      continue-on-error: false
       run: |
         curl -X POST --data-binary @codecov.yml https://codecov.io/validate
     - name: Upload coverage to Codecov.io
