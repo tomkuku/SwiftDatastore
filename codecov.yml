@@ -5,16 +5,14 @@ ignore:
   - "SwiftDatastore/TestAppTests"
 
 comment:
-  layout: 
-    - reach
-    - diff
-    - files
-    - header
-    - feedback
+  require_head: true
+  layout: [reach, diff, files, header, feedback]
   behavior: "new"
 
 coverage:
   range: 80...90
+  allow_pseudo_compare: true
+  allow_coverage_offsets: true
 
   status:
     project:
