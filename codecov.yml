@@ -20,9 +20,13 @@ coverage:
   range: 80...90
   allow_pseudo_compare: true
   allow_coverage_offsets: true
-  
+
   status:
     project:
       default:
         target: 85%
         threshold: "0.5%"
+
+    patch:
+      default:
+        target: 85%
