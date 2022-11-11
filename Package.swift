@@ -16,8 +16,8 @@ let package = Package(
     targets: [
         .target(
             name: "SwiftDatastore",
-            path: "SwiftDatastore",
-            sources: ["SwiftDatastore"]
+            path: "SwiftDatastore/SwiftDatastore",
+            sources: ["SwiftDatastore/SwiftDatastore"]
         )
     ]
 )
