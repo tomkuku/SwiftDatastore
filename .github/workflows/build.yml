@@ -40,6 +40,14 @@ jobs:
     - name: Pod Install
       run: |
         pod install --project-directory='TestApps/CocoaPodsApp'
-    - name: Build and Test
+    - name: Build
       run: |
         make -B cocoa_pods_test_app
+
+  spm-test-app:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Build
+      run: |
+        make -B spm_test_app
