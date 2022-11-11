@@ -7,13 +7,13 @@
 
 DEVICE = 'iPhone 14'
 PLATFORM = 'iOS Simulator'
-IOS_VERSION = 16.1
+IOS_VERSION = 16.0
 ENABLE_CODE_COVERGAE = -enableCodeCoverage YES
 PROJECT = -project
 WORKSPACE = -workspace
 
 all: swift_datastore test_app cocoa_pods_test_app spm_test_app
-	
+
 
 swift_datastore:
 	$(call exec-xcodebuild, test, $(PROJECT) SwiftDatastore/SwiftDatastore.xcodeproj, SwiftDatastore-Debug, $(ENABLE_CODE_COVERGAE))
