@@ -1,8 +1,8 @@
 //
 //  ViewController.swift
-//  CocoaPodsApp
+//  SPMApp
 //
-//  Created by Kukułka Tomasz on 24/10/2022.
+//  Created by Kukułka Tomasz on 11/11/2022.
 //
 
 import UIKit

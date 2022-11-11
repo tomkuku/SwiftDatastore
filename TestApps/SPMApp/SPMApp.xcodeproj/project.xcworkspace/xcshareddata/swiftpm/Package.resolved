@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "swiftdatastore",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/tomkuku/SwiftDatastore.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "ab1761188285a6dc2ea6aa32a16265a3677cf3a4"
+      }
+    }
+  ],
+  "version" : 2
+}
