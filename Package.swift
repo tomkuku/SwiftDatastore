@@ -7,12 +7,15 @@ let package = Package(
     platforms: [
         .iOS(.v13)
     ],
-    dependencies: [
-        .package(url: "https://github.com/tomkuku/SwiftDatastore.git", 
-        from: "0.2.2")
+    products: [
+        .library(
+            name: "SwiftDatastore", 
+            targets: ["SwiftDatastore"]
+        )
     ],
     targets: [
         .target(
-            name: "SwiftDatastore")
+            name: "SwiftDatastore"
+        )
     ]
 )
