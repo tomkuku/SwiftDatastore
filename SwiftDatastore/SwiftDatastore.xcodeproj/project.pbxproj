@@ -41,7 +41,6 @@
 		81766641289EE76300123071 /* BatchUpdateResultMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81766640289EE76300123071 /* BatchUpdateResultMock.swift */; };
 		8179E97C28CF3938007D4C8D /* DatastoreContextTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8179E97B28CF3938007D4C8D /* DatastoreContextTests.swift */; };
 		81828452291EBEBB00118D5D /* SwiftDatastore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8182842C291EBEBB00118D5D /* SwiftDatastore.swift */; };
-		81828453291EBEBC00118D5D /* IndexPath+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8182842E291EBEBB00118D5D /* IndexPath+String.swift */; };
 		81828454291EBEBC00118D5D /* KeyPath+KeyPathString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8182842F291EBEBB00118D5D /* KeyPath+KeyPathString.swift */; };
 		81828455291EBEBC00118D5D /* Set+DatastoreInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81828430291EBEBB00118D5D /* Set+DatastoreInit.swift */; };
 		81828456291EBEBC00118D5D /* ManagedObjectContextProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81828431291EBEBB00118D5D /* ManagedObjectContextProvider.swift */; };
@@ -154,7 +153,6 @@
 		81766640289EE76300123071 /* BatchUpdateResultMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatchUpdateResultMock.swift; sourceTree = "<group>"; };
 		8179E97B28CF3938007D4C8D /* DatastoreContextTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatastoreContextTests.swift; sourceTree = "<group>"; };
 		8182842C291EBEBB00118D5D /* SwiftDatastore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftDatastore.swift; path = ../../Sources/SwiftDatastore/SwiftDatastore.swift; sourceTree = "<group>"; };
-		8182842E291EBEBB00118D5D /* IndexPath+String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IndexPath+String.swift"; sourceTree = "<group>"; };
 		8182842F291EBEBB00118D5D /* KeyPath+KeyPathString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KeyPath+KeyPathString.swift"; sourceTree = "<group>"; };
 		81828430291EBEBB00118D5D /* Set+DatastoreInit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Set+DatastoreInit.swift"; sourceTree = "<group>"; };
 		81828431291EBEBB00118D5D /* ManagedObjectContextProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ManagedObjectContextProvider.swift; path = ../../Sources/SwiftDatastore/ManagedObjectContextProvider.swift; sourceTree = "<group>"; };
@@ -419,7 +417,6 @@
 		8182842D291EBEBB00118D5D /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				8182842E291EBEBB00118D5D /* IndexPath+String.swift */,
 				8182842F291EBEBB00118D5D /* KeyPath+KeyPathString.swift */,
 				81828430291EBEBB00118D5D /* Set+DatastoreInit.swift */,
 			);
@@ -707,7 +704,6 @@
 				81828454291EBEBC00118D5D /* KeyPath+KeyPathString.swift in Sources */,
 				8182845D291EBEBC00118D5D /* NotOptionalAttribute.swift in Sources */,
 				8182845F291EBEBC00118D5D /* EnumAttribute.swift in Sources */,
-				81828453291EBEBC00118D5D /* IndexPath+String.swift in Sources */,
 				8182845C291EBEBC00118D5D /* ToManyOrdered.swift in Sources */,
 				81828466291EBEBC00118D5D /* FetchedResultsControllerHandler.swift in Sources */,
 				81828470291EBEBC00118D5D /* PrimaryType.swift in Sources */,

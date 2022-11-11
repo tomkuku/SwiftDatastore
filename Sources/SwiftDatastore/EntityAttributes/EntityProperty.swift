@@ -22,15 +22,19 @@ public class EntityProperty<T>: EntityPropertyLogic, ManagedObjectObserverDelega
     var observervingBlocks: [(T) -> Void] = []
     var isObserving = false
     
+#if os(iOS)
     let newValuePassthroughSubject = PassthroughSubject<T, Never>()
+#endif
     
     public var key: String = ""
     
+#if os(iOS)
     public lazy var newValuePublisher: AnyPublisher<T, Never> = {
         addObserverIfNeeded()
         
         return newValuePassthroughSubject.eraseToAnyPublisher()
     }()
+#endif
     
     deinit {
         removeObserverIfNeeded()
@@ -70,7 +74,9 @@ public class EntityProperty<T>: EntityPropertyLogic, ManagedObjectObserverDelega
     }
     
     func informAboutNewValue(_ newValue: T) {
+#if os(iOS)
         newValuePassthroughSubject.send(newValue)
+#endif
         
         observervingBlocks.forEach {
             $0(newValue)
