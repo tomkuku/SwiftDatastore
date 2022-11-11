@@ -18,7 +18,8 @@
 </p>
 </br>
 <p align="center">
-<img alt="CocoaPods" src="https://img.shields.io/badge/CocoaPods-compatible-informational?logo=cocoapods&style=flat" />
+<img alt="CocoaPods" src="https://img.shields.io/badge/CocoaPods-compatible-informational?logo=cocoapods&style=flat&color=informational" />
+<img alt="SMP" src="https://img.shields.io/badge/SPM-compatible-blue?logo=swift&style=flat&color=informational" />
 </p>
 
 </br>
@@ -36,6 +37,8 @@ Just try it 😊!
 
 ### **Table of Content**:
 - [Installation](#installation)
+    - [Swift Package Manager](#swift-package-manager)
+    - [CocoaPods](#cocoapods)
 - [Overview](#overview)
 - [Create DatastoreObject](#create-datastoreobject)
     - [Attributes](#attributes)
@@ -45,7 +48,7 @@ Just try it 😊!
     - [Relationship](#relationship)
         - [`ToOne`](#toone)
         - [`ToMany`](#tomany)
-        - [`ToMany.Ordered`](#tomany.ordered)
+        - [`ToMany.Ordered`](#tomanyordered)
 - [Using SwiftDatastore's](#using-swiftdatastores)
 - [SwiftDatastore’s operations](#swiftdatastores-operations)
     - [`perform`](#perform)
@@ -76,16 +79,30 @@ Just try it 😊!
 </br>
 
 ## Installation
+### **[Swift Package Manager](https://www.swift.org/package-manager/)**
+1. In your **Xcode's project** in navigation bar choose **File -> Add Packages...**
+2. Pase https://github.com/tomkuku/SwiftDatastore.git in search field.
+3. As **Dependency Rule** choose `Branch` and type `main`.
+4. Click `Add Package`.
+5. Choose `SwiftDatastore` **Package Product** in the target which you want to use it.
+6. Click `Add Package`.
+
 ### **[CocoaPods](http://cocoapods.org)**
 In `Podfile` in the target in which you want to use  SwiftDatastore add:
 ``` ruby
 pod 'SwiftDatastore',
 ```
 
-and then run:
+and then in **Terminal** run:
 ``` ruby
 pod install
 ```
+
+</br>
+
+***
+
+</br>
 
 ## Overview
 In the `CoreData` you create `NSManagedObject` on specific `NSManagedObjectContext`. And then you can use these objects on theirs contexts.

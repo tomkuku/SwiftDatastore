@@ -5,6 +5,8 @@
 //  Created by Kukułka Tomasz on 08/08/2022.
 //
 
+#if os(iOS)
+
 import Foundation
 import CoreData
 import Combine
@@ -92,7 +94,7 @@ extension FetchedObjectsController {
             
         default:
             // swiftlint:disable:next line_length
-            Logger.log.debug("No action when newIndexPath: \(newIndexPath?.string ?? "nil"), indexPath: \(indexPath?.string ?? "nil")")
+            Logger.log.debug("No action when newIndexPath: \(String(describing: newIndexPath)), indexPath: \(String(describing: indexPath))")
             return
         }
         
@@ -165,3 +167,4 @@ extension FetchedObjectsController {
         changeBlocks.append(block)
     }
 }
+#endif
