@@ -9,7 +9,7 @@ let package = Package(
     ],
     products: [
         .library(
-            name: "SwiftDatastore", 
+            name: "SwiftDatastore",
             targets: ["SwiftDatastore"]
         )
     ],
