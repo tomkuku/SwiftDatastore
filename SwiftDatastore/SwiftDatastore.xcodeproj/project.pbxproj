@@ -7,6 +7,38 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		81058397291EE4B8000A39C4 /* ManagedObjectContextProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81058372291EE4B8000A39C4 /* ManagedObjectContextProvider.swift */; };
+		81058398291EE4B8000A39C4 /* PropertyToFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81058374291EE4B8000A39C4 /* PropertyToFetch.swift */; };
+		81058399291EE4B8000A39C4 /* OrderBy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81058375291EE4B8000A39C4 /* OrderBy.swift */; };
+		8105839A291EE4B8000A39C4 /* DatastoreObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81058376291EE4B8000A39C4 /* DatastoreObject.swift */; };
+		8105839B291EE4B8000A39C4 /* DatastoreObjectID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81058377291EE4B8000A39C4 /* DatastoreObjectID.swift */; };
+		8105839C291EE4B8000A39C4 /* Where.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81058378291EE4B8000A39C4 /* Where.swift */; };
+		8105839D291EE4B8000A39C4 /* SavedChanges.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81058379291EE4B8000A39C4 /* SavedChanges.swift */; };
+		8105839E291EE4B8000A39C4 /* PrimaryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8105837A291EE4B8000A39C4 /* PrimaryType.swift */; };
+		8105839F291EE4B8000A39C4 /* PropertyToUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8105837B291EE4B8000A39C4 /* PropertyToUpdate.swift */; };
+		810583A0291EE4B8000A39C4 /* FetchedObjectsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8105837C291EE4B8000A39C4 /* FetchedObjectsController.swift */; };
+		810583A1291EE4B8000A39C4 /* ManagedObjectObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8105837D291EE4B8000A39C4 /* ManagedObjectObserver.swift */; };
+		810583A2291EE4B8000A39C4 /* FetchedResultsControllerHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8105837F291EE4B8000A39C4 /* FetchedResultsControllerHandler.swift */; };
+		810583A3291EE4B8000A39C4 /* MomController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81058380291EE4B8000A39C4 /* MomController.swift */; };
+		810583A4291EE4B8000A39C4 /* ManagedObjectKeyValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81058381291EE4B8000A39C4 /* ManagedObjectKeyValue.swift */; };
+		810583A5291EE4B8000A39C4 /* ManagedObjectContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81058382291EE4B8000A39C4 /* ManagedObjectContext.swift */; };
+		810583A6291EE4B8000A39C4 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81058383291EE4B8000A39C4 /* Logger.swift */; };
+		810583A7291EE4B8000A39C4 /* SwiftDatastore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81058384291EE4B8000A39C4 /* SwiftDatastore.swift */; };
+		810583A8291EE4B8000A39C4 /* OptionalAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81058386291EE4B8000A39C4 /* OptionalAttribute.swift */; };
+		810583A9291EE4B8000A39C4 /* EntityPropertyKeyPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81058387291EE4B8000A39C4 /* EntityPropertyKeyPath.swift */; };
+		810583AA291EE4B8000A39C4 /* ToOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81058389291EE4B8000A39C4 /* ToOne.swift */; };
+		810583AB291EE4B8000A39C4 /* ToMany.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8105838A291EE4B8000A39C4 /* ToMany.swift */; };
+		810583AC291EE4B8000A39C4 /* ToManyOrdered.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8105838B291EE4B8000A39C4 /* ToManyOrdered.swift */; };
+		810583AD291EE4B8000A39C4 /* NotOptionalAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8105838C291EE4B8000A39C4 /* NotOptionalAttribute.swift */; };
+		810583AE291EE4B8000A39C4 /* EntityProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8105838D291EE4B8000A39C4 /* EntityProperty.swift */; };
+		810583AF291EE4B8000A39C4 /* EnumAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8105838E291EE4B8000A39C4 /* EnumAttribute.swift */; };
+		810583B0291EE4B8000A39C4 /* KeyPath+KeyPathString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81058390291EE4B8000A39C4 /* KeyPath+KeyPathString.swift */; };
+		810583B1291EE4B8000A39C4 /* Set+DatastoreInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81058391291EE4B8000A39C4 /* Set+DatastoreInit.swift */; };
+		810583B2291EE4B8000A39C4 /* SwiftDatastoreError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81058392291EE4B8000A39C4 /* SwiftDatastoreError.swift */; };
+		810583B3291EE4B8000A39C4 /* DatastoreViewContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81058393291EE4B8000A39C4 /* DatastoreViewContext.swift */; };
+		810583B4291EE4B8000A39C4 /* SwiftDatastore.h in Headers */ = {isa = PBXBuildFile; fileRef = 81058394291EE4B8000A39C4 /* SwiftDatastore.h */; };
+		810583B5291EE4B8000A39C4 /* DatastoreContextClosure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81058395291EE4B8000A39C4 /* DatastoreContextClosure.swift */; };
+		810583B6291EE4B8000A39C4 /* DatastoreContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81058396291EE4B8000A39C4 /* DatastoreContext.swift */; };
 		8115F866288814EF00FF80C1 /* EnumAttributeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8115F865288814EF00FF80C1 /* EnumAttributeTests.swift */; };
 		8117F45828A2592800C11067 /* FetchedResultsControllerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8117F45728A2592800C11067 /* FetchedResultsControllerMock.swift */; };
 		813D96752881F7F600292BE5 /* SwiftDatastore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 813D966C2881F7F600292BE5 /* SwiftDatastore.framework */; };
@@ -40,38 +72,6 @@
 		8176663D289DD93C00123071 /* ViewContextTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8176663C289DD93C00123071 /* ViewContextTests.swift */; };
 		81766641289EE76300123071 /* BatchUpdateResultMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81766640289EE76300123071 /* BatchUpdateResultMock.swift */; };
 		8179E97C28CF3938007D4C8D /* DatastoreContextTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8179E97B28CF3938007D4C8D /* DatastoreContextTests.swift */; };
-		81828452291EBEBB00118D5D /* SwiftDatastore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8182842C291EBEBB00118D5D /* SwiftDatastore.swift */; };
-		81828454291EBEBC00118D5D /* KeyPath+KeyPathString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8182842F291EBEBB00118D5D /* KeyPath+KeyPathString.swift */; };
-		81828455291EBEBC00118D5D /* Set+DatastoreInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81828430291EBEBB00118D5D /* Set+DatastoreInit.swift */; };
-		81828456291EBEBC00118D5D /* ManagedObjectContextProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81828431291EBEBB00118D5D /* ManagedObjectContextProvider.swift */; };
-		81828457291EBEBC00118D5D /* SwiftDatastore.h in Headers */ = {isa = PBXBuildFile; fileRef = 81828432291EBEBB00118D5D /* SwiftDatastore.h */; };
-		81828458291EBEBC00118D5D /* OptionalAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81828434291EBEBB00118D5D /* OptionalAttribute.swift */; };
-		81828459291EBEBC00118D5D /* EntityPropertyKeyPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81828435291EBEBB00118D5D /* EntityPropertyKeyPath.swift */; };
-		8182845A291EBEBC00118D5D /* ToOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81828437291EBEBB00118D5D /* ToOne.swift */; };
-		8182845B291EBEBC00118D5D /* ToMany.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81828438291EBEBB00118D5D /* ToMany.swift */; };
-		8182845C291EBEBC00118D5D /* ToManyOrdered.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81828439291EBEBB00118D5D /* ToManyOrdered.swift */; };
-		8182845D291EBEBC00118D5D /* NotOptionalAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8182843A291EBEBB00118D5D /* NotOptionalAttribute.swift */; };
-		8182845E291EBEBC00118D5D /* EntityProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8182843B291EBEBB00118D5D /* EntityProperty.swift */; };
-		8182845F291EBEBC00118D5D /* EnumAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8182843C291EBEBB00118D5D /* EnumAttribute.swift */; };
-		81828460291EBEBC00118D5D /* ManagedObjectObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8182843D291EBEBB00118D5D /* ManagedObjectObserver.swift */; };
-		81828461291EBEBC00118D5D /* SwiftDatastoreError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8182843E291EBEBB00118D5D /* SwiftDatastoreError.swift */; };
-		81828462291EBEBC00118D5D /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8182843F291EBEBB00118D5D /* Logger.swift */; };
-		81828463291EBEBC00118D5D /* FetchedObjectsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81828440291EBEBB00118D5D /* FetchedObjectsController.swift */; };
-		81828464291EBEBC00118D5D /* DatastoreContextClosure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81828441291EBEBB00118D5D /* DatastoreContextClosure.swift */; };
-		81828465291EBEBC00118D5D /* DatastoreContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81828442291EBEBB00118D5D /* DatastoreContext.swift */; };
-		81828466291EBEBC00118D5D /* FetchedResultsControllerHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81828444291EBEBB00118D5D /* FetchedResultsControllerHandler.swift */; };
-		81828467291EBEBC00118D5D /* MomController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81828445291EBEBB00118D5D /* MomController.swift */; };
-		81828468291EBEBC00118D5D /* ManagedObjectKeyValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81828446291EBEBB00118D5D /* ManagedObjectKeyValue.swift */; };
-		81828469291EBEBC00118D5D /* ManagedObjectContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81828447291EBEBB00118D5D /* ManagedObjectContext.swift */; };
-		8182846A291EBEBC00118D5D /* PropertyToFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81828449291EBEBB00118D5D /* PropertyToFetch.swift */; };
-		8182846B291EBEBC00118D5D /* OrderBy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8182844A291EBEBB00118D5D /* OrderBy.swift */; };
-		8182846C291EBEBC00118D5D /* DatastoreObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8182844B291EBEBB00118D5D /* DatastoreObject.swift */; };
-		8182846D291EBEBC00118D5D /* DatastoreObjectID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8182844C291EBEBB00118D5D /* DatastoreObjectID.swift */; };
-		8182846E291EBEBC00118D5D /* Where.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8182844D291EBEBB00118D5D /* Where.swift */; };
-		8182846F291EBEBC00118D5D /* SavedChanges.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8182844E291EBEBB00118D5D /* SavedChanges.swift */; };
-		81828470291EBEBC00118D5D /* PrimaryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8182844F291EBEBB00118D5D /* PrimaryType.swift */; };
-		81828471291EBEBC00118D5D /* PropertyToUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81828450291EBEBB00118D5D /* PropertyToUpdate.swift */; };
-		81828472291EBEBC00118D5D /* DatastoreViewContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81828451291EBEBB00118D5D /* DatastoreViewContext.swift */; };
 		818C1B9229143D5500B930D2 /* ToManyOrderedRelationshipTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818C1B9129143D5500B930D2 /* ToManyOrderedRelationshipTests.swift */; };
 		818FDF9928A13ED90060CEE5 /* FetchedObjectsControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818FDF9828A13ED90060CEE5 /* FetchedObjectsControllerTests.swift */; };
 		819F568528F4548100703CEB /* ManagedObjectContextProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819F568428F4548100703CEB /* ManagedObjectContextProviderTests.swift */; };
@@ -115,6 +115,38 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		81058372291EE4B8000A39C4 /* ManagedObjectContextProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObjectContextProvider.swift; sourceTree = "<group>"; };
+		81058374291EE4B8000A39C4 /* PropertyToFetch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyToFetch.swift; sourceTree = "<group>"; };
+		81058375291EE4B8000A39C4 /* OrderBy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderBy.swift; sourceTree = "<group>"; };
+		81058376291EE4B8000A39C4 /* DatastoreObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatastoreObject.swift; sourceTree = "<group>"; };
+		81058377291EE4B8000A39C4 /* DatastoreObjectID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatastoreObjectID.swift; sourceTree = "<group>"; };
+		81058378291EE4B8000A39C4 /* Where.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Where.swift; sourceTree = "<group>"; };
+		81058379291EE4B8000A39C4 /* SavedChanges.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedChanges.swift; sourceTree = "<group>"; };
+		8105837A291EE4B8000A39C4 /* PrimaryType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrimaryType.swift; sourceTree = "<group>"; };
+		8105837B291EE4B8000A39C4 /* PropertyToUpdate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyToUpdate.swift; sourceTree = "<group>"; };
+		8105837C291EE4B8000A39C4 /* FetchedObjectsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedObjectsController.swift; sourceTree = "<group>"; };
+		8105837D291EE4B8000A39C4 /* ManagedObjectObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObjectObserver.swift; sourceTree = "<group>"; };
+		8105837F291EE4B8000A39C4 /* FetchedResultsControllerHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedResultsControllerHandler.swift; sourceTree = "<group>"; };
+		81058380291EE4B8000A39C4 /* MomController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomController.swift; sourceTree = "<group>"; };
+		81058381291EE4B8000A39C4 /* ManagedObjectKeyValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObjectKeyValue.swift; sourceTree = "<group>"; };
+		81058382291EE4B8000A39C4 /* ManagedObjectContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObjectContext.swift; sourceTree = "<group>"; };
+		81058383291EE4B8000A39C4 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		81058384291EE4B8000A39C4 /* SwiftDatastore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftDatastore.swift; sourceTree = "<group>"; };
+		81058386291EE4B8000A39C4 /* OptionalAttribute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionalAttribute.swift; sourceTree = "<group>"; };
+		81058387291EE4B8000A39C4 /* EntityPropertyKeyPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityPropertyKeyPath.swift; sourceTree = "<group>"; };
+		81058389291EE4B8000A39C4 /* ToOne.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToOne.swift; sourceTree = "<group>"; };
+		8105838A291EE4B8000A39C4 /* ToMany.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToMany.swift; sourceTree = "<group>"; };
+		8105838B291EE4B8000A39C4 /* ToManyOrdered.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToManyOrdered.swift; sourceTree = "<group>"; };
+		8105838C291EE4B8000A39C4 /* NotOptionalAttribute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotOptionalAttribute.swift; sourceTree = "<group>"; };
+		8105838D291EE4B8000A39C4 /* EntityProperty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityProperty.swift; sourceTree = "<group>"; };
+		8105838E291EE4B8000A39C4 /* EnumAttribute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnumAttribute.swift; sourceTree = "<group>"; };
+		81058390291EE4B8000A39C4 /* KeyPath+KeyPathString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KeyPath+KeyPathString.swift"; sourceTree = "<group>"; };
+		81058391291EE4B8000A39C4 /* Set+DatastoreInit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Set+DatastoreInit.swift"; sourceTree = "<group>"; };
+		81058392291EE4B8000A39C4 /* SwiftDatastoreError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftDatastoreError.swift; sourceTree = "<group>"; };
+		81058393291EE4B8000A39C4 /* DatastoreViewContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatastoreViewContext.swift; sourceTree = "<group>"; };
+		81058394291EE4B8000A39C4 /* SwiftDatastore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwiftDatastore.h; sourceTree = "<group>"; };
+		81058395291EE4B8000A39C4 /* DatastoreContextClosure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatastoreContextClosure.swift; sourceTree = "<group>"; };
+		81058396291EE4B8000A39C4 /* DatastoreContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatastoreContext.swift; sourceTree = "<group>"; };
 		8115F865288814EF00FF80C1 /* EnumAttributeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumAttributeTests.swift; sourceTree = "<group>"; };
 		8117F45728A2592800C11067 /* FetchedResultsControllerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchedResultsControllerMock.swift; sourceTree = "<group>"; };
 		813D966C2881F7F600292BE5 /* SwiftDatastore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftDatastore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -152,38 +184,6 @@
 		8176663C289DD93C00123071 /* ViewContextTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewContextTests.swift; sourceTree = "<group>"; };
 		81766640289EE76300123071 /* BatchUpdateResultMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatchUpdateResultMock.swift; sourceTree = "<group>"; };
 		8179E97B28CF3938007D4C8D /* DatastoreContextTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatastoreContextTests.swift; sourceTree = "<group>"; };
-		8182842C291EBEBB00118D5D /* SwiftDatastore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftDatastore.swift; path = ../../Sources/SwiftDatastore/SwiftDatastore.swift; sourceTree = "<group>"; };
-		8182842F291EBEBB00118D5D /* KeyPath+KeyPathString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KeyPath+KeyPathString.swift"; sourceTree = "<group>"; };
-		81828430291EBEBB00118D5D /* Set+DatastoreInit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Set+DatastoreInit.swift"; sourceTree = "<group>"; };
-		81828431291EBEBB00118D5D /* ManagedObjectContextProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ManagedObjectContextProvider.swift; path = ../../Sources/SwiftDatastore/ManagedObjectContextProvider.swift; sourceTree = "<group>"; };
-		81828432291EBEBB00118D5D /* SwiftDatastore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SwiftDatastore.h; path = ../../Sources/SwiftDatastore/SwiftDatastore.h; sourceTree = "<group>"; };
-		81828434291EBEBB00118D5D /* OptionalAttribute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionalAttribute.swift; sourceTree = "<group>"; };
-		81828435291EBEBB00118D5D /* EntityPropertyKeyPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityPropertyKeyPath.swift; sourceTree = "<group>"; };
-		81828437291EBEBB00118D5D /* ToOne.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToOne.swift; sourceTree = "<group>"; };
-		81828438291EBEBB00118D5D /* ToMany.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToMany.swift; sourceTree = "<group>"; };
-		81828439291EBEBB00118D5D /* ToManyOrdered.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToManyOrdered.swift; sourceTree = "<group>"; };
-		8182843A291EBEBB00118D5D /* NotOptionalAttribute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotOptionalAttribute.swift; sourceTree = "<group>"; };
-		8182843B291EBEBB00118D5D /* EntityProperty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityProperty.swift; sourceTree = "<group>"; };
-		8182843C291EBEBB00118D5D /* EnumAttribute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnumAttribute.swift; sourceTree = "<group>"; };
-		8182843D291EBEBB00118D5D /* ManagedObjectObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ManagedObjectObserver.swift; path = ../../Sources/SwiftDatastore/ManagedObjectObserver.swift; sourceTree = "<group>"; };
-		8182843E291EBEBB00118D5D /* SwiftDatastoreError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftDatastoreError.swift; path = ../../Sources/SwiftDatastore/SwiftDatastoreError.swift; sourceTree = "<group>"; };
-		8182843F291EBEBB00118D5D /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Logger.swift; path = ../../Sources/SwiftDatastore/Logger.swift; sourceTree = "<group>"; };
-		81828440291EBEBB00118D5D /* FetchedObjectsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FetchedObjectsController.swift; path = ../../Sources/SwiftDatastore/FetchedObjectsController.swift; sourceTree = "<group>"; };
-		81828441291EBEBB00118D5D /* DatastoreContextClosure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DatastoreContextClosure.swift; path = ../../Sources/SwiftDatastore/DatastoreContextClosure.swift; sourceTree = "<group>"; };
-		81828442291EBEBB00118D5D /* DatastoreContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DatastoreContext.swift; path = ../../Sources/SwiftDatastore/DatastoreContext.swift; sourceTree = "<group>"; };
-		81828444291EBEBB00118D5D /* FetchedResultsControllerHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedResultsControllerHandler.swift; sourceTree = "<group>"; };
-		81828445291EBEBB00118D5D /* MomController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomController.swift; sourceTree = "<group>"; };
-		81828446291EBEBB00118D5D /* ManagedObjectKeyValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObjectKeyValue.swift; sourceTree = "<group>"; };
-		81828447291EBEBB00118D5D /* ManagedObjectContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObjectContext.swift; sourceTree = "<group>"; };
-		81828449291EBEBB00118D5D /* PropertyToFetch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyToFetch.swift; sourceTree = "<group>"; };
-		8182844A291EBEBB00118D5D /* OrderBy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderBy.swift; sourceTree = "<group>"; };
-		8182844B291EBEBB00118D5D /* DatastoreObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatastoreObject.swift; sourceTree = "<group>"; };
-		8182844C291EBEBB00118D5D /* DatastoreObjectID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatastoreObjectID.swift; sourceTree = "<group>"; };
-		8182844D291EBEBB00118D5D /* Where.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Where.swift; sourceTree = "<group>"; };
-		8182844E291EBEBB00118D5D /* SavedChanges.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedChanges.swift; sourceTree = "<group>"; };
-		8182844F291EBEBB00118D5D /* PrimaryType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrimaryType.swift; sourceTree = "<group>"; };
-		81828450291EBEBB00118D5D /* PropertyToUpdate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyToUpdate.swift; sourceTree = "<group>"; };
-		81828451291EBEBB00118D5D /* DatastoreViewContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DatastoreViewContext.swift; path = ../../Sources/SwiftDatastore/DatastoreViewContext.swift; sourceTree = "<group>"; };
 		8184F56E28C53D65003F180A /* libswift_Concurrency.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libswift_Concurrency.tbd; path = usr/lib/swift/libswift_Concurrency.tbd; sourceTree = SDKROOT; };
 		8184F57028C53D7F003F180A /* libswift_Concurrency.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libswift_Concurrency.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk/usr/lib/swift/libswift_Concurrency.tbd; sourceTree = DEVELOPER_DIR; };
 		818C1B9129143D5500B930D2 /* ToManyOrderedRelationshipTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToManyOrderedRelationshipTests.swift; sourceTree = "<group>"; };
@@ -237,10 +237,90 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		81058371291EE4B8000A39C4 /* SwiftDatastore */ = {
+			isa = PBXGroup;
+			children = (
+				81058394291EE4B8000A39C4 /* SwiftDatastore.h */,
+				81058383291EE4B8000A39C4 /* Logger.swift */,
+				81058384291EE4B8000A39C4 /* SwiftDatastore.swift */,
+				81058392291EE4B8000A39C4 /* SwiftDatastoreError.swift */,
+				8105837D291EE4B8000A39C4 /* ManagedObjectObserver.swift */,
+				81058372291EE4B8000A39C4 /* ManagedObjectContextProvider.swift */,
+				8105837C291EE4B8000A39C4 /* FetchedObjectsController.swift */,
+				81058393291EE4B8000A39C4 /* DatastoreViewContext.swift */,
+				81058396291EE4B8000A39C4 /* DatastoreContext.swift */,
+				81058395291EE4B8000A39C4 /* DatastoreContextClosure.swift */,
+				81058373291EE4B8000A39C4 /* Core */,
+				8105837E291EE4B8000A39C4 /* Config */,
+				81058385291EE4B8000A39C4 /* EntityAttributes */,
+				8105838F291EE4B8000A39C4 /* Extensions */,
+			);
+			name = SwiftDatastore;
+			path = ../Sources/SwiftDatastore;
+			sourceTree = "<group>";
+		};
+		81058373291EE4B8000A39C4 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				81058374291EE4B8000A39C4 /* PropertyToFetch.swift */,
+				81058375291EE4B8000A39C4 /* OrderBy.swift */,
+				81058376291EE4B8000A39C4 /* DatastoreObject.swift */,
+				81058377291EE4B8000A39C4 /* DatastoreObjectID.swift */,
+				81058378291EE4B8000A39C4 /* Where.swift */,
+				81058379291EE4B8000A39C4 /* SavedChanges.swift */,
+				8105837A291EE4B8000A39C4 /* PrimaryType.swift */,
+				8105837B291EE4B8000A39C4 /* PropertyToUpdate.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		8105837E291EE4B8000A39C4 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				8105837F291EE4B8000A39C4 /* FetchedResultsControllerHandler.swift */,
+				81058380291EE4B8000A39C4 /* MomController.swift */,
+				81058381291EE4B8000A39C4 /* ManagedObjectKeyValue.swift */,
+				81058382291EE4B8000A39C4 /* ManagedObjectContext.swift */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		81058385291EE4B8000A39C4 /* EntityAttributes */ = {
+			isa = PBXGroup;
+			children = (
+				81058386291EE4B8000A39C4 /* OptionalAttribute.swift */,
+				81058387291EE4B8000A39C4 /* EntityPropertyKeyPath.swift */,
+				81058388291EE4B8000A39C4 /* Relationship */,
+				8105838C291EE4B8000A39C4 /* NotOptionalAttribute.swift */,
+				8105838D291EE4B8000A39C4 /* EntityProperty.swift */,
+				8105838E291EE4B8000A39C4 /* EnumAttribute.swift */,
+			);
+			path = EntityAttributes;
+			sourceTree = "<group>";
+		};
+		81058388291EE4B8000A39C4 /* Relationship */ = {
+			isa = PBXGroup;
+			children = (
+				81058389291EE4B8000A39C4 /* ToOne.swift */,
+				8105838A291EE4B8000A39C4 /* ToMany.swift */,
+				8105838B291EE4B8000A39C4 /* ToManyOrdered.swift */,
+			);
+			path = Relationship;
+			sourceTree = "<group>";
+		};
+		8105838F291EE4B8000A39C4 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				81058390291EE4B8000A39C4 /* KeyPath+KeyPathString.swift */,
+				81058391291EE4B8000A39C4 /* Set+DatastoreInit.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		813D96622881F7F600292BE5 = {
 			isa = PBXGroup;
 			children = (
-				8182842B291EBEA100118D5D /* SwiftDatastore */,
+				81058371291EE4B8000A39C4 /* SwiftDatastore */,
 				813D96782881F7F600292BE5 /* SwiftDatastoreTests */,
 				813F0A442906011F007469DF /* TestApp */,
 				813F0A5B29060120007469DF /* TestAppTests */,
@@ -393,89 +473,6 @@
 			path = Requireds;
 			sourceTree = "<group>";
 		};
-		8182842B291EBEA100118D5D /* SwiftDatastore */ = {
-			isa = PBXGroup;
-			children = (
-				81828432291EBEBB00118D5D /* SwiftDatastore.h */,
-				8182843F291EBEBB00118D5D /* Logger.swift */,
-				8182842C291EBEBB00118D5D /* SwiftDatastore.swift */,
-				81828451291EBEBB00118D5D /* DatastoreViewContext.swift */,
-				81828442291EBEBB00118D5D /* DatastoreContext.swift */,
-				81828441291EBEBB00118D5D /* DatastoreContextClosure.swift */,
-				8182843E291EBEBB00118D5D /* SwiftDatastoreError.swift */,
-				81828440291EBEBB00118D5D /* FetchedObjectsController.swift */,
-				81828431291EBEBB00118D5D /* ManagedObjectContextProvider.swift */,
-				8182843D291EBEBB00118D5D /* ManagedObjectObserver.swift */,
-				81828443291EBEBB00118D5D /* Config */,
-				81828448291EBEBB00118D5D /* Core */,
-				81828433291EBEBB00118D5D /* EntityAttributes */,
-				8182842D291EBEBB00118D5D /* Extensions */,
-			);
-			path = SwiftDatastore;
-			sourceTree = "<group>";
-		};
-		8182842D291EBEBB00118D5D /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				8182842F291EBEBB00118D5D /* KeyPath+KeyPathString.swift */,
-				81828430291EBEBB00118D5D /* Set+DatastoreInit.swift */,
-			);
-			name = Extensions;
-			path = ../../Sources/SwiftDatastore/Extensions;
-			sourceTree = "<group>";
-		};
-		81828433291EBEBB00118D5D /* EntityAttributes */ = {
-			isa = PBXGroup;
-			children = (
-				81828434291EBEBB00118D5D /* OptionalAttribute.swift */,
-				81828435291EBEBB00118D5D /* EntityPropertyKeyPath.swift */,
-				81828436291EBEBB00118D5D /* Relationship */,
-				8182843A291EBEBB00118D5D /* NotOptionalAttribute.swift */,
-				8182843B291EBEBB00118D5D /* EntityProperty.swift */,
-				8182843C291EBEBB00118D5D /* EnumAttribute.swift */,
-			);
-			name = EntityAttributes;
-			path = ../../Sources/SwiftDatastore/EntityAttributes;
-			sourceTree = "<group>";
-		};
-		81828436291EBEBB00118D5D /* Relationship */ = {
-			isa = PBXGroup;
-			children = (
-				81828437291EBEBB00118D5D /* ToOne.swift */,
-				81828438291EBEBB00118D5D /* ToMany.swift */,
-				81828439291EBEBB00118D5D /* ToManyOrdered.swift */,
-			);
-			path = Relationship;
-			sourceTree = "<group>";
-		};
-		81828443291EBEBB00118D5D /* Config */ = {
-			isa = PBXGroup;
-			children = (
-				81828444291EBEBB00118D5D /* FetchedResultsControllerHandler.swift */,
-				81828445291EBEBB00118D5D /* MomController.swift */,
-				81828446291EBEBB00118D5D /* ManagedObjectKeyValue.swift */,
-				81828447291EBEBB00118D5D /* ManagedObjectContext.swift */,
-			);
-			name = Config;
-			path = ../../Sources/SwiftDatastore/Config;
-			sourceTree = "<group>";
-		};
-		81828448291EBEBB00118D5D /* Core */ = {
-			isa = PBXGroup;
-			children = (
-				81828449291EBEBB00118D5D /* PropertyToFetch.swift */,
-				8182844A291EBEBB00118D5D /* OrderBy.swift */,
-				8182844B291EBEBB00118D5D /* DatastoreObject.swift */,
-				8182844C291EBEBB00118D5D /* DatastoreObjectID.swift */,
-				8182844D291EBEBB00118D5D /* Where.swift */,
-				8182844E291EBEBB00118D5D /* SavedChanges.swift */,
-				8182844F291EBEBB00118D5D /* PrimaryType.swift */,
-				81828450291EBEBB00118D5D /* PropertyToUpdate.swift */,
-			);
-			name = Core;
-			path = ../../Sources/SwiftDatastore/Core;
-			sourceTree = "<group>";
-		};
 		81F41958289AD1C400146133 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -500,7 +497,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				81828457291EBEBC00118D5D /* SwiftDatastore.h in Headers */,
+				810583B4291EE4B8000A39C4 /* SwiftDatastore.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -688,37 +685,37 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8182845B291EBEBC00118D5D /* ToMany.swift in Sources */,
-				8182846F291EBEBC00118D5D /* SavedChanges.swift in Sources */,
-				8182846E291EBEBC00118D5D /* Where.swift in Sources */,
-				81828459291EBEBC00118D5D /* EntityPropertyKeyPath.swift in Sources */,
-				81828471291EBEBC00118D5D /* PropertyToUpdate.swift in Sources */,
-				81828461291EBEBC00118D5D /* SwiftDatastoreError.swift in Sources */,
-				81828460291EBEBC00118D5D /* ManagedObjectObserver.swift in Sources */,
-				81828455291EBEBC00118D5D /* Set+DatastoreInit.swift in Sources */,
-				81828456291EBEBC00118D5D /* ManagedObjectContextProvider.swift in Sources */,
-				8182845A291EBEBC00118D5D /* ToOne.swift in Sources */,
-				81828464291EBEBC00118D5D /* DatastoreContextClosure.swift in Sources */,
-				81828462291EBEBC00118D5D /* Logger.swift in Sources */,
-				81828463291EBEBC00118D5D /* FetchedObjectsController.swift in Sources */,
-				81828454291EBEBC00118D5D /* KeyPath+KeyPathString.swift in Sources */,
-				8182845D291EBEBC00118D5D /* NotOptionalAttribute.swift in Sources */,
-				8182845F291EBEBC00118D5D /* EnumAttribute.swift in Sources */,
-				8182845C291EBEBC00118D5D /* ToManyOrdered.swift in Sources */,
-				81828466291EBEBC00118D5D /* FetchedResultsControllerHandler.swift in Sources */,
-				81828470291EBEBC00118D5D /* PrimaryType.swift in Sources */,
-				81828468291EBEBC00118D5D /* ManagedObjectKeyValue.swift in Sources */,
-				81828467291EBEBC00118D5D /* MomController.swift in Sources */,
-				8182846A291EBEBC00118D5D /* PropertyToFetch.swift in Sources */,
-				8182846B291EBEBC00118D5D /* OrderBy.swift in Sources */,
-				8182845E291EBEBC00118D5D /* EntityProperty.swift in Sources */,
-				81828469291EBEBC00118D5D /* ManagedObjectContext.swift in Sources */,
-				81828458291EBEBC00118D5D /* OptionalAttribute.swift in Sources */,
-				81828452291EBEBB00118D5D /* SwiftDatastore.swift in Sources */,
-				81828472291EBEBC00118D5D /* DatastoreViewContext.swift in Sources */,
-				8182846D291EBEBC00118D5D /* DatastoreObjectID.swift in Sources */,
-				8182846C291EBEBC00118D5D /* DatastoreObject.swift in Sources */,
-				81828465291EBEBC00118D5D /* DatastoreContext.swift in Sources */,
+				81058398291EE4B8000A39C4 /* PropertyToFetch.swift in Sources */,
+				8105839C291EE4B8000A39C4 /* Where.swift in Sources */,
+				810583A3291EE4B8000A39C4 /* MomController.swift in Sources */,
+				8105839E291EE4B8000A39C4 /* PrimaryType.swift in Sources */,
+				81058397291EE4B8000A39C4 /* ManagedObjectContextProvider.swift in Sources */,
+				810583B6291EE4B8000A39C4 /* DatastoreContext.swift in Sources */,
+				810583AC291EE4B8000A39C4 /* ToManyOrdered.swift in Sources */,
+				8105839A291EE4B8000A39C4 /* DatastoreObject.swift in Sources */,
+				8105839F291EE4B8000A39C4 /* PropertyToUpdate.swift in Sources */,
+				810583AD291EE4B8000A39C4 /* NotOptionalAttribute.swift in Sources */,
+				810583B1291EE4B8000A39C4 /* Set+DatastoreInit.swift in Sources */,
+				810583AE291EE4B8000A39C4 /* EntityProperty.swift in Sources */,
+				810583AA291EE4B8000A39C4 /* ToOne.swift in Sources */,
+				810583B3291EE4B8000A39C4 /* DatastoreViewContext.swift in Sources */,
+				810583A6291EE4B8000A39C4 /* Logger.swift in Sources */,
+				810583A0291EE4B8000A39C4 /* FetchedObjectsController.swift in Sources */,
+				810583B2291EE4B8000A39C4 /* SwiftDatastoreError.swift in Sources */,
+				8105839D291EE4B8000A39C4 /* SavedChanges.swift in Sources */,
+				810583AF291EE4B8000A39C4 /* EnumAttribute.swift in Sources */,
+				810583A7291EE4B8000A39C4 /* SwiftDatastore.swift in Sources */,
+				810583AB291EE4B8000A39C4 /* ToMany.swift in Sources */,
+				8105839B291EE4B8000A39C4 /* DatastoreObjectID.swift in Sources */,
+				81058399291EE4B8000A39C4 /* OrderBy.swift in Sources */,
+				810583A1291EE4B8000A39C4 /* ManagedObjectObserver.swift in Sources */,
+				810583A4291EE4B8000A39C4 /* ManagedObjectKeyValue.swift in Sources */,
+				810583A5291EE4B8000A39C4 /* ManagedObjectContext.swift in Sources */,
+				810583B5291EE4B8000A39C4 /* DatastoreContextClosure.swift in Sources */,
+				810583B0291EE4B8000A39C4 /* KeyPath+KeyPathString.swift in Sources */,
+				810583A8291EE4B8000A39C4 /* OptionalAttribute.swift in Sources */,
+				810583A9291EE4B8000A39C4 /* EntityPropertyKeyPath.swift in Sources */,
+				810583A2291EE4B8000A39C4 /* FetchedResultsControllerHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
