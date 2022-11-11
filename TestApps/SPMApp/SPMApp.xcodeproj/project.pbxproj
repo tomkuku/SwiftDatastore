@@ -13,6 +13,7 @@
 		81A59F0A291EC3F0001F3678 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81A59F08291EC3F0001F3678 /* Main.storyboard */; };
 		81A59F0C291EC3F2001F3678 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81A59F0B291EC3F2001F3678 /* Assets.xcassets */; };
 		81A59F0F291EC3F2001F3678 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81A59F0D291EC3F2001F3678 /* LaunchScreen.storyboard */; };
+		81A59F1B291EE364001F3678 /* SwiftDatastore in Frameworks */ = {isa = PBXBuildFile; productRef = 81A59F1A291EE364001F3678 /* SwiftDatastore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81A59F1B291EE364001F3678 /* SwiftDatastore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +85,9 @@
 			dependencies = (
 			);
 			name = SPMApp;
+			packageProductDependencies = (
+				81A59F1A291EE364001F3678 /* SwiftDatastore */,
+			);
 			productName = SPMApp;
 			productReference = 81A59EFF291EC3F0001F3678 /* SPMApp.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +116,9 @@
 				Base,
 			);
 			mainGroup = 81A59EF6291EC3F0001F3678;
+			packageReferences = (
+				81A59F19291EE364001F3678 /* XCRemoteSwiftPackageReference "SwiftDatastore" */,
+			);
 			productRefGroup = 81A59F00291EC3F0001F3678 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -362,6 +370,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		81A59F19291EE364001F3678 /* XCRemoteSwiftPackageReference "SwiftDatastore" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/tomkuku/SwiftDatastore.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		81A59F1A291EE364001F3678 /* SwiftDatastore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 81A59F19291EE364001F3678 /* XCRemoteSwiftPackageReference "SwiftDatastore" */;
+			productName = SwiftDatastore;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 81A59EF7291EC3F0001F3678 /* Project object */;
 }

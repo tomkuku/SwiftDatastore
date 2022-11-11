@@ -6,14 +6,13 @@
 //
 
 import UIKit
+import SwiftDatastore
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        _ = try? SwiftDatastore(storeName: "", datamodelName: "")
     }
-
-
 }
-
