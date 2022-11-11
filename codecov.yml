@@ -3,7 +3,6 @@ codecov:
   allow_pseudo_compare: true
   allow_coverage_offsets: true
   require_ci_to_pass: true
-  bot: "tomkuku"
 
 ignore:
   - "SwiftDatastore/SwiftDatastoreTests"
@@ -13,7 +12,7 @@ ignore:
 comment:
   require_base: true
   layout: "header, reach, diff, files, feedback"
-  behavior: "new"
+  behavior: "default"
 
 coverage:
   range: 80...90
