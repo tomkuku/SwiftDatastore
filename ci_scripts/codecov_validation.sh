@@ -5,6 +5,8 @@
 #  Created by Kukułka Tomasz on 09/11/2022.
 #
 
+#!/bin/bash
+
 readonly output=`
 curl \
 -X POST  \
