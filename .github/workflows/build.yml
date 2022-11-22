@@ -52,7 +52,7 @@ jobs:
       run: |
         make -B spm_test_app
 
-  sonarcloud:
+  sonarcloud-scan:
     name: SonarCloud
     runs-on: macos-latest
     steps:
@@ -65,3 +65,4 @@ jobs:
           bash ${{env.SCRIPTS_DIR}}/sonar_scan.sh
         env: 
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        
