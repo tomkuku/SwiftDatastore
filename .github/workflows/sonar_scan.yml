@@ -1,0 +1,23 @@
+name: SonarCloud Scan
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  sonarcloud:
+    name: SonarCloud
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install scanner
+        run: |
+          brew install sonar-scanner
+      - name: Scan
+        run: |
+          bash ci_scripts/run_sonar.sh
+        env: 
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
