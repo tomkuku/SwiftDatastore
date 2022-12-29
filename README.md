@@ -3,16 +3,24 @@
 
 <p align="center">
 <a href="https://github.com/tomkuku/SwiftDatastore/actions">
-<img alt="Build Status" src="https://img.shields.io/github/workflow/status/tomkuku/SwiftDatastore/Build%20and%20Test/main?logo=github" /></a>
+<img alt="Build Status" src="https://img.shields.io/github/actions/workflow/status/tomkuku/SwiftDatastore/build.yml?branch=main&logo=github" />
+</a>
 <a href="https://github.com/tomkuku/SwiftDatastore/commits">
-<img alt="Last Commit" src="https://img.shields.io/github/last-commit/tomkuku/SwiftDatastore?logo=git" /></a>
+<img alt="Last Commit" src="https://img.shields.io/github/last-commit/tomkuku/SwiftDatastore?logo=git" />
+</a>
 <a href="https://app.codecov.io/gh/tomkuku/SwiftDatastore">
-<img alt="Code coverage" src="https://codecov.io/github/tomkuku/SwiftDatastore/coverage.svg?branch=main" /></a>
-<a href="https://github.com/tomkuku/SwiftDatastore/blob/main/LICENSE.md">
-<img alt="License" src="https://img.shields.io/github/license/tomkuku/SwiftDatastore?color=blue" /></a>
+<img alt="Code coverage" src="https://codecov.io/github/tomkuku/SwiftDatastore/coverage.svg?branch=main" />
+</a>
+<img alt="Quality Gate" src="https://sonarcloud.io/api/project_badges/measure?project=tomkuku_SwiftDatastore&metric=alert_status" />
+</a>
 </p>
+
 </br>
+
 <p align="center">
+<a href="https://github.com/tomkuku/SwiftDatastore/blob/main/LICENSE.md">
+<img alt="License" src="https://img.shields.io/github/license/tomkuku/SwiftDatastore?color=blue" />
+</a>
 <img alt="Swift Versions" src="https://img.shields.io/badge/Swift->=_5.5-orange?logo=swift&style=flat" />
 <img alt="Platforms" src="https://img.shields.io/badge/platforms-iOS_+13.0-yellowgreen?style=flat&logo=apple&name=platforms&color=lightgrey" />
 </p>
