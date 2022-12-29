@@ -52,17 +52,16 @@ jobs:
       run: |
         make -B spm_test_app
 
-  sonarcloud-scan:
+  sonarcloud:
     name: SonarCloud
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Install scanner
-        run: |
-          brew install sonar-scanner
-      - name: Scan
-        run: |
-          bash ${{env.SCRIPTS_DIR}}/sonar_scan.sh
-        env: 
+        with:
+          fetch-depth: 0
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         
