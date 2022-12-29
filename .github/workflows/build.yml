@@ -25,7 +25,7 @@ jobs:
         bash ${{env.SCRIPTS_DIR}}/codecov_validation.sh
     - name: Upload coverage to Codecov.io
       continue-on-error: false
-      uses: codecov/codecov-action@v1.2.1
+      uses: codecov/codecov-action@v3.1.1
  
   test-app:
     runs-on: macos-latest
