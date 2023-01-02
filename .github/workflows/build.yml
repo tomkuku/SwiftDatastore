@@ -26,43 +26,45 @@ jobs:
     - name: Upload coverage to Codecov.io
       continue-on-error: false
       uses: codecov/codecov-action@v1.2.1
+      env: 
+        CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
  
-  # test-app:
-  #   runs-on: macos-latest
-  #   steps:
-  #   - uses: actions/checkout@v1
-  #   - name: Build and Test
-  #     run: |
-  #       make -B test_app
+  test-app:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Build and Test
+      run: |
+        make -B test_app
 
-  # cocoa-pods-test-app:
-  #   runs-on: macos-latest
-  #   steps:
-  #   - uses: actions/checkout@v1
-  #   - name: Pod Install
-  #     run: |
-  #       pod install --project-directory='TestApps/CocoaPodsApp'
-  #   - name: Build
-  #     run: |
-  #       make -B cocoa_pods_test_app
+  cocoa-pods-test-app:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Pod Install
+      run: |
+        pod install --project-directory='TestApps/CocoaPodsApp'
+    - name: Build
+      run: |
+        make -B cocoa_pods_test_app
 
-  # spm-test-app:
-  #   runs-on: macos-latest
-  #   steps:
-  #   - uses: actions/checkout@v1
-  #   - name: Build
-  #     run: |
-  #       make -B spm_test_app
+  spm-test-app:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Build
+      run: |
+        make -B spm_test_app
 
-  # sonarcloud-scan:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #       with:
-  #         fetch-depth: 0
-  #     - name: SonarCloud Scan
-  #       uses: SonarSource/sonarcloud-github-action@master
-  #       env:
-  #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  #         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+  sonarcloud-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         
