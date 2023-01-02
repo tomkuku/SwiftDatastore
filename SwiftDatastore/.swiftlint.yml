@@ -4,23 +4,18 @@ included:
 excluded:
   - .
 
-force_cast: warning
-force_try: warning
+file_length:
+  warning: 400
+  error: 500
 
-vertical_whitespace:
-  severity: error
-
-unused_import:
-  severity: error
+cyclomatic_complexity:
+  - 10 # warning
+  - 11 # error
 
 line_length:
     warning: 130
     error: 150
     ignores_comments: true
-
-file_length:
-  warning: 500
-  error: 1200
 
 identifier_name:
   min_length:
@@ -29,10 +24,33 @@ identifier_name:
     warning: 30
     error: 35
 
-opt_in_rules:
-  - unused_import
+type_name:
+  excluded:
+    - T
 
-disabled_rules:
+vertical_whitespace:
+  severity: error
+
+duplicate_imports: error
+force_cast: error
+force_try: error
+
+opt_in_rules:
+  - switch_case_alignment
+  - switch_case_on_newline
+  - force_unwrapping
+  - closure_spacing
+  - vertical_parameter_alignment_on_call
+  - vertical_parameter_alignment
+  - unused_import
+  - operator_usage_whitespace
+  - void_return
+  - unused_optional_binding
+  - unused_enumerated
+  - unused_closure_parameter
+  - unneeded_break_in_switch
+
+disabled_rules: 
   - trailing_whitespace
   - inclusive_language
 
