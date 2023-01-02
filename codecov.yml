@@ -1,5 +1,6 @@
 
 codecov:
+  token: 4e66cfe0-5027-492b-ac4f-18a81a0cb771
   allow_pseudo_compare: true
   allow_coverage_offsets: true
   require_ci_to_pass: true
