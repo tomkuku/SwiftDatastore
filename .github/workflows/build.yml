@@ -6,6 +6,8 @@ on:
       - main
   pull_request:
     types: [opened, reopened, synchronize]
+  schedule:
+    - cron: 0 12 * * MON
 
 env:
   SCRIPTS_DIR: ci_scripts
@@ -24,6 +26,8 @@ jobs:
     - name: Upload coverage to Codecov.io
       continue-on-error: false
       uses: codecov/codecov-action@v1.2.1
+      env: 
+        CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
  
   test-app:
     runs-on: macos-latest
@@ -53,16 +57,14 @@ jobs:
         make -B spm_test_app
 
   sonarcloud-scan:
-    name: SonarCloud
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Install scanner
-        run: |
-          brew install sonar-scanner
-      - name: Scan
-        run: |
-          bash ${{env.SCRIPTS_DIR}}/sonar_scan.sh
-        env: 
+        with:
+          fetch-depth: 0
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         
