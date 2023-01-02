@@ -28,7 +28,7 @@ extension SwiftDatastoreContext.Closure {
     // MARK: Create
     public func createObject<T>() throws -> T where T: DatastoreObject {
         guard let entity = context.getEntityDescription(forName: T.entityName) else {
-            throw SwiftDatastoreError.entityNotFound
+            throw SwiftDatastoreError.EntityNotFound(T.entityName)
         }
         
         let managedObject = context.createManagedObject(forEntity: entity)

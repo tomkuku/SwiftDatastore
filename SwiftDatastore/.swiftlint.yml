@@ -50,8 +50,8 @@ opt_in_rules:
   - unused_closure_parameter
   - unneeded_break_in_switch
 
-disabled_rules: 
-  - trailing_whitespace
-  - inclusive_language
+# disabled_rules: 
+#   - trailing_whitespace
+#   - inclusive_language
 
 reporter: "xcode"
