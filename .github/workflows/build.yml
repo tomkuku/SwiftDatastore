@@ -22,13 +22,19 @@ jobs:
         make -B swift_datastore
     - name: Validate codecov.yml
       run: |
-        bash ${{env.SCRIPTS_DIR}}/codecov_validation.sh
+        bash ci_scripts/codecov_validation.sh
     - name: Upload coverage to Codecov.io
       continue-on-error: false
       uses: codecov/codecov-action@v1.2.1
       env: 
         CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
- 
+    - name: Danger
+      if: github.event_name == 'pull_request'
+      run: |
+        bash ci_scripts/run_danger.sh
+      env:
+        DANGER_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
   test-app:
     runs-on: macos-latest
     steps:

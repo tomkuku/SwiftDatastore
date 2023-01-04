@@ -1,8 +1,11 @@
-included:
-  - ../Sources/SwiftDatastore
-
 excluded:
-  - .
+  - Dangerfile.swift
+  - FAKE_OBJ.swift
+  - TestApps
+  - SwiftDatastore
+
+included:
+  - Sources
 
 file_length:
   warning: 400
@@ -42,7 +45,6 @@ opt_in_rules:
   - closure_spacing
   - vertical_parameter_alignment_on_call
   - vertical_parameter_alignment
-  - unused_import
   - operator_usage_whitespace
   - void_return
   - unused_optional_binding
