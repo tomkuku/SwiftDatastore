@@ -512,7 +512,7 @@
 				813D96682881F7F600292BE5 /* Sources */,
 				813D96692881F7F600292BE5 /* Frameworks */,
 				813D966A2881F7F600292BE5 /* Resources */,
-				818C670E2905CD0400CC205D /* ShellScript */,
+				818C670E2905CD0400CC205D /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -660,7 +660,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		818C670E2905CD0400CC205D /* ShellScript */ = {
+		818C670E2905CD0400CC205D /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
 			buildActionMask = 12;
@@ -670,13 +670,14 @@
 			);
 			inputPaths = (
 			);
+			name = SwiftLint;
 			outputFileListPaths = (
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if test -d \"/opt/homebrew/bin/\"; then\n  PATH=\"/opt/homebrew/bin/:${PATH}\"\nfi\n\nexport PATH\n\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"Error: SwiftLint not installed!\"\n  exit -1\nfi\n";
+			shellScript = "if test -d \"/opt/homebrew/bin/\"; then\n  PATH=\"/opt/homebrew/bin/:${PATH}\"\nfi\n\nexport PATH\n\nif which swiftlint >/dev/null; then\n  swiftlint lint --config \"../.swiftlint.yml\"\nelse\n  echo \"Error: SwiftLint not installed!\"\n  exit -1\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

@@ -1,3 +1,5 @@
+#!/bin/bash
+
 #
 #  codecov_validation.sh
 #  SwiftDatastore
