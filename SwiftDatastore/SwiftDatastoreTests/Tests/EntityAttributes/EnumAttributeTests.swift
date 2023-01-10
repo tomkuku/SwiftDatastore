@@ -25,6 +25,7 @@ class EnumAttributeTests: XCTestCase {
         mock = ManagedObjectKeyValueMock()
         observerMock = ManagedObjectObserverMock()
         sut = SutType()
+        sut.key = "test-key"
         sut.managedObject = mock
         sut.managedObjectObserver = observerMock
     }

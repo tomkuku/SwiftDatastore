@@ -24,7 +24,7 @@ class ToOneRelationshipTests: XCTestCase {
         super.setUp()
         mock = ManagedObjectKeyValueMock()
         observerMock = ManagedObjectObserverMock()
-        sut = SutType()
+        sut = SutType("")
         sut.managedObject = mock
         sut.managedObjectObserver = observerMock
     }

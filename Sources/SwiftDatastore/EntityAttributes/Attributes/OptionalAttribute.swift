@@ -7,11 +7,16 @@
 
 import Foundation
 import Combine
+import CoreData
+
+protocol PropertyDescriprtionCreatable {
+    func createPropertyDescription() -> NSPropertyDescription
+}
 
 extension Attribute {
  
     @propertyWrapper
-    public final class Optional<T>: EntityProperty<T?>, EntityPropertyKeyPath, EntityPropertyValueType {
+    public final class Optional<T>: EntityProperty<T?>, EntityPropertyKeyPath, EntityPropertyValueType, PropertyDescriprtionCreatable {
         
         // swiftlint:disable nesting
         public typealias KeyPathType = T
@@ -40,6 +45,14 @@ extension Attribute {
             let value = newValue as? T
             
             informAboutNewValue(value)
+        }
+        
+        func createPropertyDescription() -> NSPropertyDescription {
+            let desc = NSAttributeDescription()
+            desc.isOptional = true
+            desc.attributeType = .doubleAttributeType
+            desc.name = key
+            return desc
         }
     }
 }

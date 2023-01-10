@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		46F25440296C721200AEEC84 /* SwiftDatastoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F2543F296C721200AEEC84 /* SwiftDatastoreModel.swift */; };
 		81058397291EE4B8000A39C4 /* ManagedObjectContextProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81058372291EE4B8000A39C4 /* ManagedObjectContextProvider.swift */; };
 		81058398291EE4B8000A39C4 /* PropertyToFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81058374291EE4B8000A39C4 /* PropertyToFetch.swift */; };
 		81058399291EE4B8000A39C4 /* OrderBy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81058375291EE4B8000A39C4 /* OrderBy.swift */; };
@@ -115,6 +116,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		46F2543F296C721200AEEC84 /* SwiftDatastoreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDatastoreModel.swift; sourceTree = "<group>"; };
 		81058372291EE4B8000A39C4 /* ManagedObjectContextProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObjectContextProvider.swift; sourceTree = "<group>"; };
 		81058374291EE4B8000A39C4 /* PropertyToFetch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyToFetch.swift; sourceTree = "<group>"; };
 		81058375291EE4B8000A39C4 /* OrderBy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderBy.swift; sourceTree = "<group>"; };
@@ -237,12 +239,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		46F25441296C780500AEEC84 /* Attributes */ = {
+			isa = PBXGroup;
+			children = (
+				81058386291EE4B8000A39C4 /* OptionalAttribute.swift */,
+				8105838C291EE4B8000A39C4 /* NotOptionalAttribute.swift */,
+				8105838E291EE4B8000A39C4 /* EnumAttribute.swift */,
+			);
+			path = Attributes;
+			sourceTree = "<group>";
+		};
 		81058371291EE4B8000A39C4 /* SwiftDatastore */ = {
 			isa = PBXGroup;
 			children = (
 				81058394291EE4B8000A39C4 /* SwiftDatastore.h */,
 				81058383291EE4B8000A39C4 /* Logger.swift */,
 				81058384291EE4B8000A39C4 /* SwiftDatastore.swift */,
+				46F2543F296C721200AEEC84 /* SwiftDatastoreModel.swift */,
 				81058392291EE4B8000A39C4 /* SwiftDatastoreError.swift */,
 				8105837D291EE4B8000A39C4 /* ManagedObjectObserver.swift */,
 				81058372291EE4B8000A39C4 /* ManagedObjectContextProvider.swift */,
@@ -277,6 +290,7 @@
 		8105837E291EE4B8000A39C4 /* Config */ = {
 			isa = PBXGroup;
 			children = (
+				81058387291EE4B8000A39C4 /* EntityPropertyKeyPath.swift */,
 				8105837F291EE4B8000A39C4 /* FetchedResultsControllerHandler.swift */,
 				81058380291EE4B8000A39C4 /* MomController.swift */,
 				81058381291EE4B8000A39C4 /* ManagedObjectKeyValue.swift */,
@@ -288,12 +302,9 @@
 		81058385291EE4B8000A39C4 /* EntityAttributes */ = {
 			isa = PBXGroup;
 			children = (
-				81058386291EE4B8000A39C4 /* OptionalAttribute.swift */,
-				81058387291EE4B8000A39C4 /* EntityPropertyKeyPath.swift */,
-				81058388291EE4B8000A39C4 /* Relationship */,
-				8105838C291EE4B8000A39C4 /* NotOptionalAttribute.swift */,
 				8105838D291EE4B8000A39C4 /* EntityProperty.swift */,
-				8105838E291EE4B8000A39C4 /* EnumAttribute.swift */,
+				46F25441296C780500AEEC84 /* Attributes */,
+				81058388291EE4B8000A39C4 /* Relationship */,
 			);
 			path = EntityAttributes;
 			sourceTree = "<group>";
@@ -711,6 +722,7 @@
 				81058399291EE4B8000A39C4 /* OrderBy.swift in Sources */,
 				810583A1291EE4B8000A39C4 /* ManagedObjectObserver.swift in Sources */,
 				810583A4291EE4B8000A39C4 /* ManagedObjectKeyValue.swift in Sources */,
+				46F25440296C721200AEEC84 /* SwiftDatastoreModel.swift in Sources */,
 				810583A5291EE4B8000A39C4 /* ManagedObjectContext.swift in Sources */,
 				810583B5291EE4B8000A39C4 /* DatastoreContextClosure.swift in Sources */,
 				810583B0291EE4B8000A39C4 /* KeyPath+KeyPathString.swift in Sources */,

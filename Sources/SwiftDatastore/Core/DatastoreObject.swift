@@ -15,7 +15,9 @@ open class DatastoreObject {
         String(describing: Self.self)
     }
     
-    internal let managedObject: NSManagedObject
+    let managedObject: NSManagedObject
+    
+    static var entityDescription = NSEntityDescription(name: entityName)
     
     private let managedObjectObserver: ManagedObjectObserverLogic
     
@@ -51,6 +53,29 @@ open class DatastoreObject {
             if attribute.key == "" {
                 attribute.key = String(childName.dropFirst()) // delete '_' prefix
             }
+        }
+    }
+    
+    func createEntityDescription() {
+        let mirrored = Mirror(reflecting: self)
+        mirrored.children.forEach {
+            guard
+                let childName = $0.label,
+                let entityRelationship = mirrored.descendant(childName) as? EntityRelationship
+            else {
+                return
+            }
+            
+            guard
+                let relationshipDescription = entityRelationship.relationshipDescription,
+                let inverseRelationshipDescription = entityRelationship.inverseRelationshipDescription
+            else {
+                // Object without inverse
+                return
+            }
+            
+            inverseRelationshipDescription.destinationEntity = Self.entityDescription
+            Self.entityDescription.properties.append(relationshipDescription)
         }
     }
 }
