@@ -9,14 +9,10 @@ import Foundation
 import Combine
 import CoreData
 
-protocol PropertyDescriprtionCreatable {
-    func createPropertyDescription() -> NSPropertyDescription
-}
-
 extension Attribute {
  
     @propertyWrapper
-    public final class Optional<T>: EntityProperty<T?>, EntityPropertyKeyPath, EntityPropertyValueType, PropertyDescriprtionCreatable {
+    public final class Optional<T>: EntityProperty<T?>, EntityPropertyKeyPath, EntityPropertyValueType, PropertyDescriptionCreatable {
         
         // swiftlint:disable nesting
         public typealias KeyPathType = T

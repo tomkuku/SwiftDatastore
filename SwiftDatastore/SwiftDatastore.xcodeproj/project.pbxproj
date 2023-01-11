@@ -8,7 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		467B36BC296F38DE0040721D /* PropertyDescriptionCreatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467B36BB296F38DE0040721D /* PropertyDescriptionCreatable.swift */; };
+		467B36BE296F4E1A0040721D /* SwiftDatastoreModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467B36BD296F4E1A0040721D /* SwiftDatastoreModelTests.swift */; };
 		467B36C1296F56E80040721D /* InverseRelationshipDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467B36BF296F56D90040721D /* InverseRelationshipDescription.swift */; };
+		467B36C4296F57340040721D /* RelationshipProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467B36C2296F571E0040721D /* RelationshipProperty.swift */; };
 		46F25440296C721200AEEC84 /* SwiftDatastoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F2543F296C721200AEEC84 /* SwiftDatastoreModel.swift */; };
 		81058397291EE4B8000A39C4 /* ManagedObjectContextProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81058372291EE4B8000A39C4 /* ManagedObjectContextProvider.swift */; };
 		81058398291EE4B8000A39C4 /* PropertyToFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81058374291EE4B8000A39C4 /* PropertyToFetch.swift */; };
@@ -119,6 +121,7 @@
 
 /* Begin PBXFileReference section */
 		467B36BB296F38DE0040721D /* PropertyDescriptionCreatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyDescriptionCreatable.swift; sourceTree = "<group>"; };
+		467B36BD296F4E1A0040721D /* SwiftDatastoreModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDatastoreModelTests.swift; sourceTree = "<group>"; };
 		467B36BF296F56D90040721D /* InverseRelationshipDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InverseRelationshipDescription.swift; sourceTree = "<group>"; };
 		467B36C2296F571E0040721D /* RelationshipProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelationshipProperty.swift; sourceTree = "<group>"; };
 		46F2543F296C721200AEEC84 /* SwiftDatastoreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDatastoreModel.swift; sourceTree = "<group>"; };
@@ -419,6 +422,7 @@
 				81E3C31128EBAE3F00927613 /* ManagedObjectObserverTests.swift */,
 				81B3E34628AAD57900EF87D3 /* OrderByTests.swift */,
 				81B3E34428AAD07100EF87D3 /* WhereTests.swift */,
+				467B36BD296F4E1A0040721D /* SwiftDatastoreModelTests.swift */,
 				813D96B528837FD400292BE5 /* EntityAttributes */,
 			);
 			path = Tests;
@@ -758,6 +762,7 @@
 				81B3E34528AAD07100EF87D3 /* WhereTests.swift in Sources */,
 				81F41957289AD1C100146133 /* XCTestCase+createNewManagedObject.swift in Sources */,
 				818C1B9229143D5500B930D2 /* ToManyOrderedRelationshipTests.swift in Sources */,
+				467B36BE296F4E1A0040721D /* SwiftDatastoreModelTests.swift in Sources */,
 				813D96AD2882E74A00292BE5 /* TestObject.swift in Sources */,
 				818FDF9928A13ED90060CEE5 /* FetchedObjectsControllerTests.swift in Sources */,
 				81AE3FE728D0AA53002E2560 /* DatastoreContextClosureTests.swift in Sources */,
