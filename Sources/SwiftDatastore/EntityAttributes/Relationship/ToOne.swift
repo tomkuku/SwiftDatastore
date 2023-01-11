@@ -70,6 +70,7 @@ public enum Relationship {
             relationshipDescription.name = key
             relationshipDescription.minCount = 0
             relationshipDescription.maxCount = 1
+            relationshipDescription.isOptional = true
             return relationshipDescription
         }
     }

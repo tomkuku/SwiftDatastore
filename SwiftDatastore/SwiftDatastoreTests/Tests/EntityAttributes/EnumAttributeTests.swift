@@ -11,7 +11,6 @@ import CoreData
 @testable import SwiftDatastore
 
 class EnumAttributeTests: XCTestCase {
-    
     // MARK: Properties
     typealias SutType = Attribute.Enum<TestEnum>
     
@@ -136,11 +135,5 @@ class EnumAttributeTests: XCTestCase {
         // then
         wait(for: [expectation], timeout: 2)
         XCTAssertEqual(gotNewValue, .two)
-    }
-    
-    // MARK: TestEnum
-    enum TestEnum: Int {
-        case one = 1
-        case two = 2
     }
 }

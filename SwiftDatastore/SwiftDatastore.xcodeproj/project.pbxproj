@@ -11,6 +11,8 @@
 		467B36BE296F4E1A0040721D /* SwiftDatastoreModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467B36BD296F4E1A0040721D /* SwiftDatastoreModelTests.swift */; };
 		467B36C1296F56E80040721D /* InverseRelationshipDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467B36BF296F56D90040721D /* InverseRelationshipDescription.swift */; };
 		467B36C4296F57340040721D /* RelationshipProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467B36C2296F571E0040721D /* RelationshipProperty.swift */; };
+		467B36C7296F58BB0040721D /* AttributeProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467B36C5296F58B90040721D /* AttributeProperty.swift */; };
+		467B36C9296F61850040721D /* TestEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467B36C8296F61850040721D /* TestEnum.swift */; };
 		46F25440296C721200AEEC84 /* SwiftDatastoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F2543F296C721200AEEC84 /* SwiftDatastoreModel.swift */; };
 		81058397291EE4B8000A39C4 /* ManagedObjectContextProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81058372291EE4B8000A39C4 /* ManagedObjectContextProvider.swift */; };
 		81058398291EE4B8000A39C4 /* PropertyToFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81058374291EE4B8000A39C4 /* PropertyToFetch.swift */; };
@@ -124,6 +126,8 @@
 		467B36BD296F4E1A0040721D /* SwiftDatastoreModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDatastoreModelTests.swift; sourceTree = "<group>"; };
 		467B36BF296F56D90040721D /* InverseRelationshipDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InverseRelationshipDescription.swift; sourceTree = "<group>"; };
 		467B36C2296F571E0040721D /* RelationshipProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelationshipProperty.swift; sourceTree = "<group>"; };
+		467B36C5296F58B90040721D /* AttributeProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributeProperty.swift; sourceTree = "<group>"; };
+		467B36C8296F61850040721D /* TestEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestEnum.swift; sourceTree = "<group>"; };
 		46F2543F296C721200AEEC84 /* SwiftDatastoreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDatastoreModel.swift; sourceTree = "<group>"; };
 		81058372291EE4B8000A39C4 /* ManagedObjectContextProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObjectContextProvider.swift; sourceTree = "<group>"; };
 		81058374291EE4B8000A39C4 /* PropertyToFetch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyToFetch.swift; sourceTree = "<group>"; };
@@ -313,6 +317,7 @@
 			isa = PBXGroup;
 			children = (
 				8105838D291EE4B8000A39C4 /* EntityProperty.swift */,
+				467B36C5296F58B90040721D /* AttributeProperty.swift */,
 				467B36C2296F571E0040721D /* RelationshipProperty.swift */,
 				46F25441296C780500AEEC84 /* Attributes */,
 				81058388291EE4B8000A39C4 /* Relationship */,
@@ -392,6 +397,7 @@
 			isa = PBXGroup;
 			children = (
 				813D96AC2882E74A00292BE5 /* TestObject.swift */,
+				467B36C8296F61850040721D /* TestEnum.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -744,6 +750,7 @@
 				810583A9291EE4B8000A39C4 /* EntityPropertyKeyPath.swift in Sources */,
 				467B36BC296F38DE0040721D /* PropertyDescriptionCreatable.swift in Sources */,
 				810583A2291EE4B8000A39C4 /* FetchedResultsControllerHandler.swift in Sources */,
+				467B36C7296F58BB0040721D /* AttributeProperty.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -757,6 +764,7 @@
 				813D9698288202B300292BE5 /* OptionalAttributeTests.swift in Sources */,
 				8176663D289DD93C00123071 /* ViewContextTests.swift in Sources */,
 				8164078029107BBF004057BC /* ManagedObjectKeyValueMock.swift in Sources */,
+				467B36C9296F61850040721D /* TestEnum.swift in Sources */,
 				813D969C2882188D00292BE5 /* ToOneRelationshipTests.swift in Sources */,
 				81D99802290EC65100FC180A /* DatastoreObjectIDTests.swift in Sources */,
 				81B3E34528AAD07100EF87D3 /* WhereTests.swift in Sources */,

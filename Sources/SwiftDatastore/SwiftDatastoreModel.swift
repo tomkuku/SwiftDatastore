@@ -8,8 +8,18 @@
 import Foundation
 import CoreData
 
+protocol SwiftDatastoreModelLogic {
+    var managedObjectModel: NSManagedObjectModel { get }
+}
+
 public final class SwiftDatastoreModel {
     let entities: [NSEntityDescription]
+    
+    var managedObjectModel: NSManagedObjectModel {
+        let model = NSManagedObjectModel()
+        model.entities = entities
+        return model
+    }
     
     public init(from objectTypes: DatastoreObject.Type...) {
         let entityDescription = NSEntityDescription(name: "-")
@@ -25,7 +35,7 @@ public final class SwiftDatastoreModel {
     
     private func handleRelationships() {
         entities.forEach { entity in
-            entity.relationshipsByName.forEach { (name, relationship) in
+            entity.relationshipsByName.forEach { (_, relationship) in
                 guard let inverseRelationship = relationship as? InverseRelationshipDescription else {
                     return
                 }
@@ -52,11 +62,5 @@ public final class SwiftDatastoreModel {
         }
         
         return relationship.value
-    }
-    
-    func createModel() -> NSManagedObjectModel {
-        let model = NSManagedObjectModel()
-        model.entities = entities
-        return model
     }
 }

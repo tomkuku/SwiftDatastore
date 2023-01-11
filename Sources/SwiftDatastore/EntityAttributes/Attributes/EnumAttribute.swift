@@ -6,11 +6,14 @@
 //
 
 import Foundation
+import CoreData
+
+typealias EnumAttributeType = EntityPropertyKeyPath & PropertyDescriptionCreatable
 
 extension Attribute {
-    
+        
     @propertyWrapper
-    public final class Enum<T: RawRepresentable>: EntityProperty<T?>, EntityPropertyKeyPath {
+    public final class Enum<T>: EntityProperty<T?>, EnumAttributeType where T: RawRepresentable, T.RawValue: AttributeValueType {
         
         // swiftlint:disable:next nesting
         public typealias KeyPathType = T
@@ -45,6 +48,14 @@ extension Attribute {
             }
             
             informAboutNewValue(value)
+        }
+        
+        func createPropertyDescription() -> NSPropertyDescription {
+            let attribute = NSAttributeDescription()
+            attribute.isOptional = true
+            attribute.attributeType = T.RawValue.attributeType
+            attribute.name = key
+            return attribute
         }
     }
 }

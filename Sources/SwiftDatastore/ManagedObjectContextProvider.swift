@@ -23,7 +23,7 @@ final class ManagedObjectContextProvider {
         return moc
     }()
     
-    let poc: NSPersistentStoreCoordinator
+    let poc: NSPersistentStoreCoordinator // Internal access for tests
     
     init<T>(persistentStoreCoordinatorType: T.Type = NSPersistentStoreCoordinator.self,
             storeName: String,
@@ -40,6 +40,21 @@ final class ManagedObjectContextProvider {
         let storeURL = Self.createPersistentStoreURL(fileManager: fileManager, storeFileName: storeName)
         
         self.poc = persistentStoreCoordinatorType.init(managedObjectModel: mom)
+        
+        try setupPoc(destroyPersistentStore: destoryStoreDuringCreating, storeURL: storeURL)
+    }
+    
+    init<T>(persistentStoreCoordinatorType: T.Type = NSPersistentStoreCoordinator.self,
+            datastoreModel: SwiftDatastoreModel,
+            storeName: String,
+            destoryStoreDuringCreating: Bool = false,
+            fileManager: FileManager = .default
+    ) throws where T: NSPersistentStoreCoordinator {
+        let managedObjectModel = datastoreModel.managedObjectModel
+        
+        let storeURL = Self.createPersistentStoreURL(fileManager: fileManager, storeFileName: storeName)
+        
+        self.poc = persistentStoreCoordinatorType.init(managedObjectModel: managedObjectModel)
         
         try setupPoc(destroyPersistentStore: destoryStoreDuringCreating, storeURL: storeURL)
     }
