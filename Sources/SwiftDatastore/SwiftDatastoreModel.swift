@@ -9,17 +9,54 @@ import Foundation
 import CoreData
 
 public final class SwiftDatastoreModel {
-//    public static func create(from datastoreObjects: DatastoreObject...) -> NSManagedObjectModel {
-//        let entities = datastoreObjects.map {
-//            $0.createEntityDescription()
-//        }
-//        
-//        let first = datastoreObjects.first!
-//        let desc = first.createEntityDescription()
-//        desc.relationshipsByName
-//        
-//        let managedObjectModel = NSManagedObjectModel()
-////        managedObjectModel.entities = entities
-//        return managedObjectModel
-//    }
+    let entities: [NSEntityDescription]
+    
+    public init(from objectTypes: DatastoreObject.Type...) {
+        let entityDescription = NSEntityDescription(name: "-")
+        let managedObject = NSManagedObject(entity: entityDescription, insertInto: nil)
+        
+        entities = objectTypes.map {
+            let object = $0.init(managedObject: managedObject)
+            return object.createEntityDescription()
+        }
+        
+        handleRelationships()
+    }
+    
+    private func handleRelationships() {
+        entities.forEach { entity in
+            entity.relationshipsByName.forEach { (name, relationship) in
+                guard let inverseRelationship = relationship as? InverseRelationshipDescription else {
+                    return
+                }
+                
+                let destinationRelationship = findRelationship(forEntityName: inverseRelationship.invsereObjectName,
+                                                               propertyName: inverseRelationship.inversePropertyName)
+                
+                inverseRelationship.inverseRelationship = destinationRelationship
+                inverseRelationship.destinationEntity = destinationRelationship.entity
+                
+                destinationRelationship.inverseRelationship = inverseRelationship
+                destinationRelationship.destinationEntity = entity
+            }
+        }
+    }
+    
+    private func findRelationship(forEntityName entityName: String, propertyName: String) -> NSRelationshipDescription {
+        guard let entity = entities.first(where: { $0.name == entityName }) else {
+            Logger.log.fatal("No entity for name: \(entityName)")
+        }
+        
+        guard let relationship = entity.relationshipsByName.first(where: { $0.key == propertyName }) else {
+            Logger.log.fatal("No relationship for name: \(propertyName)")
+        }
+        
+        return relationship.value
+    }
+    
+    func createModel() -> NSManagedObjectModel {
+        let model = NSManagedObjectModel()
+        model.entities = entities
+        return model
+    }
 }

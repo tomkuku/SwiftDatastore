@@ -8,6 +8,11 @@
 import Foundation
 import CoreData
 
+struct EntityPropertiesContainer {
+    let entityName: String
+    let relationships: [(description: NSRelationshipDescription, inverse: (objectName: String, propertyName: String)?)]
+}
+
 open class DatastoreObject {
     
     // MARK: Properties
@@ -16,8 +21,6 @@ open class DatastoreObject {
     }
     
     let managedObject: NSManagedObject
-    
-    static var entityDescription = NSEntityDescription(name: entityName)
     
     private let managedObjectObserver: ManagedObjectObserverLogic
     
@@ -56,27 +59,23 @@ open class DatastoreObject {
         }
     }
     
-    func createEntityDescription() {
+    func createEntityDescription() -> NSEntityDescription {
         let mirrored = Mirror(reflecting: self)
-        mirrored.children.forEach {
+        let properties: [NSPropertyDescription] = mirrored.children.compactMap {
             guard
                 let childName = $0.label,
-                let entityRelationship = mirrored.descendant(childName) as? EntityRelationship
+                let propertyCreatable = mirrored.descendant(childName) as? PropertyDescriptionCreatable
             else {
-                return
+                return nil
             }
             
-            guard
-                let relationshipDescription = entityRelationship.relationshipDescription,
-                let inverseRelationshipDescription = entityRelationship.inverseRelationshipDescription
-            else {
-                // Object without inverse
-                return
-            }
-            
-            inverseRelationshipDescription.destinationEntity = Self.entityDescription
-            Self.entityDescription.properties.append(relationshipDescription)
+            return propertyCreatable.createPropertyDescription()
         }
+        
+        let entityDescription = NSEntityDescription()
+        entityDescription.name = Self.entityName
+        entityDescription.properties = properties
+        return entityDescription
     }
 }
 

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		467B36BC296F38DE0040721D /* PropertyDescriptionCreatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467B36BB296F38DE0040721D /* PropertyDescriptionCreatable.swift */; };
+		467B36C1296F56E80040721D /* InverseRelationshipDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467B36BF296F56D90040721D /* InverseRelationshipDescription.swift */; };
 		46F25440296C721200AEEC84 /* SwiftDatastoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F2543F296C721200AEEC84 /* SwiftDatastoreModel.swift */; };
 		81058397291EE4B8000A39C4 /* ManagedObjectContextProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81058372291EE4B8000A39C4 /* ManagedObjectContextProvider.swift */; };
 		81058398291EE4B8000A39C4 /* PropertyToFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81058374291EE4B8000A39C4 /* PropertyToFetch.swift */; };
@@ -116,6 +118,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		467B36BB296F38DE0040721D /* PropertyDescriptionCreatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyDescriptionCreatable.swift; sourceTree = "<group>"; };
+		467B36BF296F56D90040721D /* InverseRelationshipDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InverseRelationshipDescription.swift; sourceTree = "<group>"; };
+		467B36C2296F571E0040721D /* RelationshipProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelationshipProperty.swift; sourceTree = "<group>"; };
 		46F2543F296C721200AEEC84 /* SwiftDatastoreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDatastoreModel.swift; sourceTree = "<group>"; };
 		81058372291EE4B8000A39C4 /* ManagedObjectContextProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObjectContextProvider.swift; sourceTree = "<group>"; };
 		81058374291EE4B8000A39C4 /* PropertyToFetch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyToFetch.swift; sourceTree = "<group>"; };
@@ -278,11 +283,13 @@
 				81058374291EE4B8000A39C4 /* PropertyToFetch.swift */,
 				81058375291EE4B8000A39C4 /* OrderBy.swift */,
 				81058376291EE4B8000A39C4 /* DatastoreObject.swift */,
+				467B36BB296F38DE0040721D /* PropertyDescriptionCreatable.swift */,
 				81058377291EE4B8000A39C4 /* DatastoreObjectID.swift */,
 				81058378291EE4B8000A39C4 /* Where.swift */,
 				81058379291EE4B8000A39C4 /* SavedChanges.swift */,
 				8105837A291EE4B8000A39C4 /* PrimaryType.swift */,
 				8105837B291EE4B8000A39C4 /* PropertyToUpdate.swift */,
+				467B36BF296F56D90040721D /* InverseRelationshipDescription.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -303,6 +310,7 @@
 			isa = PBXGroup;
 			children = (
 				8105838D291EE4B8000A39C4 /* EntityProperty.swift */,
+				467B36C2296F571E0040721D /* RelationshipProperty.swift */,
 				46F25441296C780500AEEC84 /* Attributes */,
 				81058388291EE4B8000A39C4 /* Relationship */,
 			);
@@ -700,6 +708,7 @@
 				81058398291EE4B8000A39C4 /* PropertyToFetch.swift in Sources */,
 				8105839C291EE4B8000A39C4 /* Where.swift in Sources */,
 				810583A3291EE4B8000A39C4 /* MomController.swift in Sources */,
+				467B36C1296F56E80040721D /* InverseRelationshipDescription.swift in Sources */,
 				8105839E291EE4B8000A39C4 /* PrimaryType.swift in Sources */,
 				81058397291EE4B8000A39C4 /* ManagedObjectContextProvider.swift in Sources */,
 				810583B6291EE4B8000A39C4 /* DatastoreContext.swift in Sources */,
@@ -714,6 +723,7 @@
 				810583A6291EE4B8000A39C4 /* Logger.swift in Sources */,
 				810583A0291EE4B8000A39C4 /* FetchedObjectsController.swift in Sources */,
 				810583B2291EE4B8000A39C4 /* SwiftDatastoreError.swift in Sources */,
+				467B36C4296F57340040721D /* RelationshipProperty.swift in Sources */,
 				8105839D291EE4B8000A39C4 /* SavedChanges.swift in Sources */,
 				810583AF291EE4B8000A39C4 /* EnumAttribute.swift in Sources */,
 				810583A7291EE4B8000A39C4 /* SwiftDatastore.swift in Sources */,
@@ -728,6 +738,7 @@
 				810583B0291EE4B8000A39C4 /* KeyPath+KeyPathString.swift in Sources */,
 				810583A8291EE4B8000A39C4 /* OptionalAttribute.swift in Sources */,
 				810583A9291EE4B8000A39C4 /* EntityPropertyKeyPath.swift in Sources */,
+				467B36BC296F38DE0040721D /* PropertyDescriptionCreatable.swift in Sources */,
 				810583A2291EE4B8000A39C4 /* FetchedResultsControllerHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

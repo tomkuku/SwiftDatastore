@@ -11,5 +11,5 @@ import CoreData
 public protocol EntityPropertyKeyPath: AnyObject {
     associatedtype KeyPathType
     
-    var key: String! { get set }
+    var key: String { get set }
 }

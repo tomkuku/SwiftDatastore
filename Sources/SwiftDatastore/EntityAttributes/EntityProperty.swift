@@ -11,7 +11,7 @@ import CoreData
 
 protocol EntityPropertyLogic: AnyObject {
     var managedObject: ManagedObjectKeyValue! { get set }
-    var key: String! { get set }
+    var key: String { get set }
     var managedObjectObserver: ManagedObjectObserverLogic! { get set }
 }
 
@@ -20,14 +20,16 @@ public class EntityProperty<T>: EntityPropertyLogic, ManagedObjectObserverDelega
     var managedObject: ManagedObjectKeyValue!
     var managedObjectObserver: ManagedObjectObserverLogic!
     
-    public var key: String! = ""
-    
     var observervingBlocks: [(T) -> Void] = []
     var isObserving = false
     
 #if os(iOS)
     let newValuePassthroughSubject = PassthroughSubject<T, Never>()
-
+#endif
+    
+    public var key: String = ""
+    
+#if os(iOS)
     public lazy var newValuePublisher: AnyPublisher<T, Never> = {
         addObserverIfNeeded()
         

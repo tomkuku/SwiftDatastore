@@ -8,22 +8,15 @@
 import Foundation
 import CoreData
 
-public protocol EntityRelationship {
-    var relationshipDescription: NSRelationshipDescription? { get }
-    var inverseRelationshipDescription: NSRelationshipDescription? { get }
-    
-    func createRelationshipDescription() -> NSRelationshipDescription
-}
-
 public enum Relationship {
-        
+    
     @propertyWrapper
-    public final class ToOne<T>: EntityProperty<T?>, EntityPropertyKeyPath, EntityRelationship where T: DatastoreObject {
+    public final class ToOne<T>: EntityProperty<T?>, EntityRelationshipType where T: DatastoreObject {
         
         // swiftlint:disable:next nesting
         public typealias KeyPathType = T
-
-        // MARK: Properties        
+        
+        // MARK: Properties
         public var wrappedValue: T? {
             get {
                 guard let managedObject: NSManagedObject = getManagedObjectValueForKey() else {
@@ -41,42 +34,17 @@ public enum Relationship {
             self
         }
         
-        public init(_ name: String) {
-            super.init()
-            self.key = name
+        private var invsereObjectName: String?
+        private var inversePropertyName: String?
+        
+        override public init() {
+            // public init
         }
         
-        public private(set) var relationshipDescription: NSRelationshipDescription?
-        public private(set) var inverseRelationshipDescription: NSRelationshipDescription?
-        
-        public init<V>(_ name: String, inverse: KeyPath<T, V>) where V: EntityRelationship {
+        public init<V>(inverse: KeyPath<T, V>) where V: RelationshipProperty {
             super.init()
-            self.key = name
-            
-            let relationshipObject: V = {
-                let entityDescription = NSEntityDescription(name: "-")
-                let managedObject = NSManagedObject(entity: entityDescription, insertInto: nil)
-                let datastoreObject = T(managedObject: managedObject)
-                return datastoreObject[keyPath: inverse]
-            }()
-            
-            // Sets lacked values in relationshipDescription in inverse object.
-            let inverseRelationship = relationshipObject.createRelationshipDescription()
-            
-            // Creates relationshipDescription in current.
-            let relationship = NSRelationshipDescription()
-            relationship.name = key
-            relationship.destinationEntity = T.entityDescription
-            relationship.inverseRelationship = inverseRelationship
-            relationship.minCount = 0
-            relationship.maxCount = 1
-            
-            inverseRelationship.inverseRelationship = relationship
-            
-            // Appends new relationships into entityDescriptions in `EntityProprties` objects.
-            relationshipDescription = relationship
-            inverseRelationshipDescription = inverseRelationship
-            T.entityDescription.properties.append(inverseRelationship)
+            self.invsereObjectName = T.entityName
+            self.inversePropertyName = inverse.keyPathString
         }
         
         override func handleObservedPropertyDidChangeValue(_ newValue: Any?, change: NSKeyValueChange?) {
@@ -89,9 +57,16 @@ public enum Relationship {
             informAboutNewValue(object)
         }
         
-        // Creates relationshipDescription to use in init(name:, inverse: ).
-        public func createRelationshipDescription() -> NSRelationshipDescription {
-            let relationshipDescription = NSRelationshipDescription()
+        func createPropertyDescription() -> NSPropertyDescription {
+            let relationshipDescription: NSRelationshipDescription = {
+                guard let invsereObjectName, let inversePropertyName else {
+                    return NSRelationshipDescription()
+                }
+                
+                return InverseRelationshipDescription(invsereObjectName: invsereObjectName,
+                                                      inversePropertyName: inversePropertyName)
+            }()
+            
             relationshipDescription.name = key
             relationshipDescription.minCount = 0
             relationshipDescription.maxCount = 1
