@@ -88,7 +88,7 @@ class ManagedObjectContextProviderTests: XCTestCase {
     }
     
     // MARK: FileManagerMock
-    class FileManagerMock: FileManager {
+    final class FileManagerMock: FileManager {
         var _url: URL!
         
         override func urls(for directory: FileManager.SearchPathDirectory,
