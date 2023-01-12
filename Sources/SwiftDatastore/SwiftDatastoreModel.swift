@@ -31,6 +31,7 @@ public final class SwiftDatastoreModel {
         }
         
         handleRelationships()
+        validateRelationships()
     }
     
     private func handleRelationships() {
@@ -62,5 +63,15 @@ public final class SwiftDatastoreModel {
         }
         
         return relationship.value
+    }
+    
+    private func validateRelationships() {
+        entities.forEach { entity in
+            entity.relationshipsByName.forEach { (relationshipName, relationship) in
+                if relationship.destinationEntity == nil, relationship.inverseRelationship == nil {
+                    fatalError("No inverse for relationship: \"\(relationshipName)\" of object: \"\(entity.name ?? "-")\"")
+                }
+            }
+        }
     }
 }
