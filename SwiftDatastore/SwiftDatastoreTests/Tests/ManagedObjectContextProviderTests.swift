@@ -15,11 +15,8 @@ class ManagedObjectContextProviderTests: XCTestCase {
     
     var sut: ManagedObjectContextProvider!
     var fileManagerMock: FileManagerMock!
-    var bundleMock: BundleMock!
-    var momControllerMock: MomControllerMock!
     var pocMock: PersistentStoreCoordinatorMock!
     
-    let modelName = "model_name"
     let storeName = "store_name"
     let storeURL = URL(string: "file:///Test/")!
     
@@ -27,25 +24,18 @@ class ManagedObjectContextProviderTests: XCTestCase {
     
     override func setUpWithError() throws {
         super.setUp()
-        momControllerMock = MomControllerMock()
-        bundleMock = BundleMock()
         fileManagerMock = FileManagerMock()
         fileManagerMock._url = storeURL
         
-        sut = try ManagedObjectContextProvider(
-            persistentStoreCoordinatorType: PersistentStoreCoordinatorMock.self,
-            storeName: storeName,
-            managedObjectModelName: modelName,
-            fileManager: fileManagerMock,
-            bundle: bundleMock,
-            momController: momControllerMock)
+        sut = try ManagedObjectContextProvider(persistentStoreCoordinatorType: PersistentStoreCoordinatorMock.self,
+                                               managedObjectModel: NSManagedObjectModel(),
+                                               storeName: storeName,
+                                               fileManager: fileManagerMock)
         
         pocMock = sut.poc as? PersistentStoreCoordinatorMock
     }
     
     override func tearDown() {
-        momControllerMock = nil
-        bundleMock = nil
         fileManagerMock = nil
         sut = nil
         pocMock = nil
@@ -63,20 +53,16 @@ class ManagedObjectContextProviderTests: XCTestCase {
     
     func test_create_with_destoryStoreDuringCreating() throws {
         // when
-        sut = try ManagedObjectContextProvider(
-            persistentStoreCoordinatorType: PersistentStoreCoordinatorMock.self,
-            storeName: storeName,
-            managedObjectModelName: modelName,
-            destoryStoreDuringCreating: true,
-            fileManager: fileManagerMock,
-            bundle: bundleMock,
-            momController: momControllerMock)
+        sut = try ManagedObjectContextProvider(persistentStoreCoordinatorType: PersistentStoreCoordinatorMock.self,
+                                               managedObjectModel: NSManagedObjectModel(),
+                                               storeName: storeName,
+                                               destoryStoreDuringCreating: true,
+                                               fileManager: fileManagerMock)
+
         
         pocMock = sut.poc as? PersistentStoreCoordinatorMock
         
         // then
-        XCTAssertEqual(bundleMock._resourceName, modelName)
-        XCTAssertEqual(bundleMock._extension, "momd")
         XCTAssertTrue(pocMock.destroyPersistentStoreCalled)
         XCTAssertEqual(pocMock._destroyStoreURL, expectedStoreURL)
         XCTAssertEqual(pocMock._destroyStoreType, NSSQLiteStoreType)
@@ -101,19 +87,6 @@ class ManagedObjectContextProviderTests: XCTestCase {
         XCTAssertEqual(context.persistentStoreCoordinator, pocMock)
     }
     
-    // MARK: BundleMock
-    class BundleMock: Bundle {
-        var _resourceName: String!
-        var _extension: String!
-        
-        override func url(forResource name: String?, withExtension ext: String?) -> URL? {
-            _resourceName = name
-            _extension = ext
-            
-            return URL(string: "https://www.apple.com")!
-        }
-    }
-    
     // MARK: FileManagerMock
     class FileManagerMock: FileManager {
         var _url: URL!
@@ -121,13 +94,6 @@ class ManagedObjectContextProviderTests: XCTestCase {
         override func urls(for directory: FileManager.SearchPathDirectory,
                            in domainMask: FileManager.SearchPathDomainMask) -> [URL] {
             [_url]
-        }
-    }
-    
-    // MARK: MomControllerMock
-    class MomControllerMock: MomController {
-        override func createModel(contentsOf url: URL) -> NSManagedObjectModel? {
-            NSManagedObjectModel()
         }
     }
     

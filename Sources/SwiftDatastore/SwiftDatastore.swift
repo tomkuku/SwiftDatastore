@@ -17,14 +17,8 @@ public final class SwiftDatastore {
     
     public private(set) lazy var sharedViewContext = SwiftDatastoreViewContext(context: contextProvider.viewContext)
     
-    public init(storingType: StoringType = .app, storeName: String, datamodelName: String) throws {
-        contextProvider = try ManagedObjectContextProvider(storeName: storeName,
-                                                           managedObjectModelName: datamodelName,
-                                                           destoryStoreDuringCreating: storingType == .test)
-    }
-    
     public init(storingType: StoringType = .app, storeName: String, datastoreModel: SwiftDatastoreModel) throws {
-        contextProvider = try ManagedObjectContextProvider(datastoreModel: datastoreModel,
+        contextProvider = try ManagedObjectContextProvider(managedObjectModel: datastoreModel.managedObjectModel,
                                                            storeName: storeName,
                                                            destoryStoreDuringCreating: storingType == .test)
     }

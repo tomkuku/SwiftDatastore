@@ -28,7 +28,6 @@
 		810583A0291EE4B8000A39C4 /* FetchedObjectsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8105837C291EE4B8000A39C4 /* FetchedObjectsController.swift */; };
 		810583A1291EE4B8000A39C4 /* ManagedObjectObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8105837D291EE4B8000A39C4 /* ManagedObjectObserver.swift */; };
 		810583A2291EE4B8000A39C4 /* FetchedResultsControllerHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8105837F291EE4B8000A39C4 /* FetchedResultsControllerHandler.swift */; };
-		810583A3291EE4B8000A39C4 /* MomController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81058380291EE4B8000A39C4 /* MomController.swift */; };
 		810583A4291EE4B8000A39C4 /* ManagedObjectKeyValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81058381291EE4B8000A39C4 /* ManagedObjectKeyValue.swift */; };
 		810583A5291EE4B8000A39C4 /* ManagedObjectContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81058382291EE4B8000A39C4 /* ManagedObjectContext.swift */; };
 		810583A6291EE4B8000A39C4 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81058383291EE4B8000A39C4 /* Logger.swift */; };
@@ -145,7 +144,6 @@
 		8105837C291EE4B8000A39C4 /* FetchedObjectsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedObjectsController.swift; sourceTree = "<group>"; };
 		8105837D291EE4B8000A39C4 /* ManagedObjectObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObjectObserver.swift; sourceTree = "<group>"; };
 		8105837F291EE4B8000A39C4 /* FetchedResultsControllerHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedResultsControllerHandler.swift; sourceTree = "<group>"; };
-		81058380291EE4B8000A39C4 /* MomController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomController.swift; sourceTree = "<group>"; };
 		81058381291EE4B8000A39C4 /* ManagedObjectKeyValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObjectKeyValue.swift; sourceTree = "<group>"; };
 		81058382291EE4B8000A39C4 /* ManagedObjectContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObjectContext.swift; sourceTree = "<group>"; };
 		81058383291EE4B8000A39C4 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
@@ -310,7 +308,6 @@
 			children = (
 				81058387291EE4B8000A39C4 /* EntityPropertyKeyPath.swift */,
 				8105837F291EE4B8000A39C4 /* FetchedResultsControllerHandler.swift */,
-				81058380291EE4B8000A39C4 /* MomController.swift */,
 				81058381291EE4B8000A39C4 /* ManagedObjectKeyValue.swift */,
 				81058382291EE4B8000A39C4 /* ManagedObjectContext.swift */,
 			);
@@ -724,7 +721,6 @@
 				81058398291EE4B8000A39C4 /* PropertyToFetch.swift in Sources */,
 				464EB37229700007009961C9 /* AttributeValueType.swift in Sources */,
 				8105839C291EE4B8000A39C4 /* Where.swift in Sources */,
-				810583A3291EE4B8000A39C4 /* MomController.swift in Sources */,
 				467B36C1296F56E80040721D /* InverseRelationshipDescription.swift in Sources */,
 				464EB37429700054009961C9 /* Relationship.swift in Sources */,
 				8105839E291EE4B8000A39C4 /* PrimaryType.swift in Sources */,

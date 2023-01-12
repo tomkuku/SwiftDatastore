@@ -12,7 +12,6 @@ final class ManagedObjectContextProvider {
     private enum Constant {
         static let sqliteStoreType = NSSQLiteStoreType
         static let sqliteFileExtension = "sqlite"
-        static let managedObjectModelExtension = "momd"
     }
     
     // MARK: Properties
@@ -26,32 +25,11 @@ final class ManagedObjectContextProvider {
     let poc: NSPersistentStoreCoordinator // Internal access for tests
     
     init<T>(persistentStoreCoordinatorType: T.Type = NSPersistentStoreCoordinator.self,
-            storeName: String,
-            managedObjectModelName: String,
-            destoryStoreDuringCreating: Bool = false,
-            fileManager: FileManager = .default,
-            bundle: Bundle = .main,
-            momController: MomController = MomController()
-    ) throws where T: NSPersistentStoreCoordinator {
-        let mom = try Self.createManagedObjectModel(momController: momController,
-                                                    bundle: bundle,
-                                                    modelFileName: managedObjectModelName)
-        
-        let storeURL = Self.createPersistentStoreURL(fileManager: fileManager, storeFileName: storeName)
-        
-        self.poc = persistentStoreCoordinatorType.init(managedObjectModel: mom)
-        
-        try setupPoc(destroyPersistentStore: destoryStoreDuringCreating, storeURL: storeURL)
-    }
-    
-    init<T>(persistentStoreCoordinatorType: T.Type = NSPersistentStoreCoordinator.self,
-            datastoreModel: SwiftDatastoreModel,
+            managedObjectModel: NSManagedObjectModel,
             storeName: String,
             destoryStoreDuringCreating: Bool = false,
             fileManager: FileManager = .default
-    ) throws where T: NSPersistentStoreCoordinator {
-        let managedObjectModel = datastoreModel.managedObjectModel
-        
+    ) throws where T: NSPersistentStoreCoordinator {        
         let storeURL = Self.createPersistentStoreURL(fileManager: fileManager, storeFileName: storeName)
         
         self.poc = persistentStoreCoordinatorType.init(managedObjectModel: managedObjectModel)
@@ -67,20 +45,6 @@ final class ManagedObjectContextProvider {
     }
     
     // MARK: Private
-    private static func createManagedObjectModel(momController: MomController,
-                                                 bundle: Bundle,
-                                                 modelFileName: String) throws -> NSManagedObjectModel {
-        guard
-            let url = bundle.url(forResource: modelFileName,
-                                 withExtension: Constant.managedObjectModelExtension),
-            let mom = momController.createModel(contentsOf: url)
-        else {
-            throw SwiftDatastoreError.managedObjectModelNotFound
-        }
-        
-        return mom
-    }
-    
     private static func createPersistentStoreURL(fileManager: FileManager, storeFileName: String) -> URL {
         var storeUrl = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
         storeUrl.appendPathComponent(storeFileName)
