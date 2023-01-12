@@ -11,7 +11,7 @@ import CoreData
 extension Relationship {
     
     @propertyWrapper
-    public final class ToMany<T>: EntityProperty<Set<T>>, EntityPropertyKeyPath where T: DatastoreObject {
+    public final class ToMany<T>: EntityProperty<Set<T>>, RelationshipProperty where T: DatastoreObject {
         
         // swiftlint:disable:next nesting
         public typealias KeyPathType = T
@@ -56,9 +56,17 @@ extension Relationship {
         }
         
         private var changedManagedObjects: Set<NSManagedObject> = []
+        private var invsereObjectName: String?
+        private var inversePropertyName: String?
         
         public override init() {
             // Public init
+        }
+        
+        public init<V>(inverse: KeyPath<T, V>) where V: RelationshipProperty {
+            super.init()
+            self.invsereObjectName = T.entityName
+            self.inversePropertyName = inverse.keyPathString
         }
         
         override func handleObservedPropertyDidChangeValue(_ newValue: Any?, change: NSKeyValueChange?) {
@@ -81,5 +89,26 @@ extension Relationship {
                 changedManagedObjects = objects
             }
         }
+    }
+}
+
+// MARK: PropertyDescriptionCreatable
+extension Relationship.ToMany: PropertyDescriptionCreatable {
+    func createPropertyDescription() -> NSPropertyDescription {
+        let relationshipDescription: NSRelationshipDescription = {
+            guard let invsereObjectName, let inversePropertyName else {
+                return NSRelationshipDescription()
+            }
+            
+            return InverseRelationshipDescription(invsereObjectName: invsereObjectName,
+                                                  inversePropertyName: inversePropertyName)
+        }()
+        
+        relationshipDescription.name = key
+        relationshipDescription.minCount = 0
+        relationshipDescription.maxCount = 0
+        relationshipDescription.isOptional = false
+        relationshipDescription.isOrdered = false
+        return relationshipDescription
     }
 }

@@ -8,10 +8,10 @@
 import Foundation
 import CoreData
 
-public enum Relationship {
+extension Relationship {
     
     @propertyWrapper
-    public final class ToOne<T>: EntityProperty<T?>, EntityRelationshipType where T: DatastoreObject {
+    public final class ToOne<T>: EntityProperty<T?>, RelationshipProperty where T: DatastoreObject {
         
         // swiftlint:disable:next nesting
         public typealias KeyPathType = T
@@ -56,23 +56,26 @@ public enum Relationship {
             
             informAboutNewValue(object)
         }
-        
-        func createPropertyDescription() -> NSPropertyDescription {
-            let relationshipDescription: NSRelationshipDescription = {
-                guard let invsereObjectName, let inversePropertyName else {
-                    return NSRelationshipDescription()
-                }
-                
-                return InverseRelationshipDescription(invsereObjectName: invsereObjectName,
-                                                      inversePropertyName: inversePropertyName)
-            }()
+    }
+}
+
+// MARK: PropertyDescriptionCreatable
+extension Relationship.ToOne: PropertyDescriptionCreatable {
+    func createPropertyDescription() -> NSPropertyDescription {
+        let relationshipDescription: NSRelationshipDescription = {
+            guard let invsereObjectName, let inversePropertyName else {
+                return NSRelationshipDescription()
+            }
             
-            relationshipDescription.name = key
-            relationshipDescription.minCount = 0
-            relationshipDescription.maxCount = 1
-            relationshipDescription.isOptional = true
-            return relationshipDescription
-        }
+            return InverseRelationshipDescription(invsereObjectName: invsereObjectName,
+                                                  inversePropertyName: inversePropertyName)
+        }()
+        
+        relationshipDescription.name = key
+        relationshipDescription.minCount = 0
+        relationshipDescription.maxCount = 1
+        relationshipDescription.isOptional = true
+        return relationshipDescription
     }
 }
 

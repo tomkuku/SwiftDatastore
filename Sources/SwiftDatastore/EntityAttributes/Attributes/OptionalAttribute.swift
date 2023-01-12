@@ -9,12 +9,10 @@ import Foundation
 import Combine
 import CoreData
 
-typealias OptionalAttributeType = EntityPropertyKeyPath & EntityPropertyValueType & PropertyDescriptionCreatable
-
 extension Attribute {
  
     @propertyWrapper
-    public final class Optional<T>: EntityProperty<T?>, OptionalAttributeType where T: AttributeValueType {
+    public final class Optional<T>: EntityProperty<T?>, EntityPropertyKeyPath & EntityPropertyValueType where T: AttributeValueType {
         // swiftlint:disable nesting
         public typealias KeyPathType = T
         public typealias ValueType = T
@@ -43,13 +41,16 @@ extension Attribute {
             
             informAboutNewValue(value)
         }
-        
-        func createPropertyDescription() -> NSPropertyDescription {
-            let attribute = NSAttributeDescription()
-            attribute.isOptional = true
-            attribute.attributeType = T.attributeType
-            attribute.name = key
-            return attribute
-        }
+    }
+}
+
+// MARK: PropertyDescriptionCreatable
+extension Attribute.Optional: PropertyDescriptionCreatable {
+    func createPropertyDescription() -> NSPropertyDescription {
+        let attribute = NSAttributeDescription()
+        attribute.isOptional = true
+        attribute.attributeType = T.attributeType
+        attribute.name = key
+        return attribute
     }
 }

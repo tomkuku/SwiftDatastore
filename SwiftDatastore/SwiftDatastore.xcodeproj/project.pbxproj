@@ -7,11 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		464EB37229700007009961C9 /* AttributeValueType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464EB37129700007009961C9 /* AttributeValueType.swift */; };
+		464EB37429700054009961C9 /* Relationship.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464EB37329700054009961C9 /* Relationship.swift */; };
 		467B36BC296F38DE0040721D /* PropertyDescriptionCreatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467B36BB296F38DE0040721D /* PropertyDescriptionCreatable.swift */; };
 		467B36BE296F4E1A0040721D /* SwiftDatastoreModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467B36BD296F4E1A0040721D /* SwiftDatastoreModelTests.swift */; };
 		467B36C1296F56E80040721D /* InverseRelationshipDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467B36BF296F56D90040721D /* InverseRelationshipDescription.swift */; };
 		467B36C4296F57340040721D /* RelationshipProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467B36C2296F571E0040721D /* RelationshipProperty.swift */; };
-		467B36C7296F58BB0040721D /* AttributeProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467B36C5296F58B90040721D /* AttributeProperty.swift */; };
+		467B36C7296F58BB0040721D /* Attribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467B36C5296F58B90040721D /* Attribute.swift */; };
 		467B36C9296F61850040721D /* TestEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467B36C8296F61850040721D /* TestEnum.swift */; };
 		46F25440296C721200AEEC84 /* SwiftDatastoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F2543F296C721200AEEC84 /* SwiftDatastoreModel.swift */; };
 		81058397291EE4B8000A39C4 /* ManagedObjectContextProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81058372291EE4B8000A39C4 /* ManagedObjectContextProvider.swift */; };
@@ -122,11 +124,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		464EB37129700007009961C9 /* AttributeValueType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributeValueType.swift; sourceTree = "<group>"; };
+		464EB37329700054009961C9 /* Relationship.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Relationship.swift; sourceTree = "<group>"; };
 		467B36BB296F38DE0040721D /* PropertyDescriptionCreatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyDescriptionCreatable.swift; sourceTree = "<group>"; };
 		467B36BD296F4E1A0040721D /* SwiftDatastoreModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDatastoreModelTests.swift; sourceTree = "<group>"; };
 		467B36BF296F56D90040721D /* InverseRelationshipDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InverseRelationshipDescription.swift; sourceTree = "<group>"; };
 		467B36C2296F571E0040721D /* RelationshipProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelationshipProperty.swift; sourceTree = "<group>"; };
-		467B36C5296F58B90040721D /* AttributeProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributeProperty.swift; sourceTree = "<group>"; };
+		467B36C5296F58B90040721D /* Attribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attribute.swift; sourceTree = "<group>"; };
 		467B36C8296F61850040721D /* TestEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestEnum.swift; sourceTree = "<group>"; };
 		46F2543F296C721200AEEC84 /* SwiftDatastoreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDatastoreModel.swift; sourceTree = "<group>"; };
 		81058372291EE4B8000A39C4 /* ManagedObjectContextProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObjectContextProvider.swift; sourceTree = "<group>"; };
@@ -317,7 +321,9 @@
 			isa = PBXGroup;
 			children = (
 				8105838D291EE4B8000A39C4 /* EntityProperty.swift */,
-				467B36C5296F58B90040721D /* AttributeProperty.swift */,
+				467B36C5296F58B90040721D /* Attribute.swift */,
+				464EB37129700007009961C9 /* AttributeValueType.swift */,
+				464EB37329700054009961C9 /* Relationship.swift */,
 				467B36C2296F571E0040721D /* RelationshipProperty.swift */,
 				46F25441296C780500AEEC84 /* Attributes */,
 				81058388291EE4B8000A39C4 /* Relationship */,
@@ -716,9 +722,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				81058398291EE4B8000A39C4 /* PropertyToFetch.swift in Sources */,
+				464EB37229700007009961C9 /* AttributeValueType.swift in Sources */,
 				8105839C291EE4B8000A39C4 /* Where.swift in Sources */,
 				810583A3291EE4B8000A39C4 /* MomController.swift in Sources */,
 				467B36C1296F56E80040721D /* InverseRelationshipDescription.swift in Sources */,
+				464EB37429700054009961C9 /* Relationship.swift in Sources */,
 				8105839E291EE4B8000A39C4 /* PrimaryType.swift in Sources */,
 				81058397291EE4B8000A39C4 /* ManagedObjectContextProvider.swift in Sources */,
 				810583B6291EE4B8000A39C4 /* DatastoreContext.swift in Sources */,
@@ -750,7 +758,7 @@
 				810583A9291EE4B8000A39C4 /* EntityPropertyKeyPath.swift in Sources */,
 				467B36BC296F38DE0040721D /* PropertyDescriptionCreatable.swift in Sources */,
 				810583A2291EE4B8000A39C4 /* FetchedResultsControllerHandler.swift in Sources */,
-				467B36C7296F58BB0040721D /* AttributeProperty.swift in Sources */,
+				467B36C7296F58BB0040721D /* Attribute.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

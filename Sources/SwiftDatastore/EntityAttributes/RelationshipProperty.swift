@@ -8,5 +8,3 @@
 import Foundation
 
 public protocol RelationshipProperty: EntityPropertyKeyPath { }
-
-typealias EntityRelationshipType = PropertyDescriptionCreatable & RelationshipProperty

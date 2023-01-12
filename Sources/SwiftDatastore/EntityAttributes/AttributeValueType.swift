@@ -1,8 +1,8 @@
 //
-//  AttributeProperty.swift
-//  SwiftDatastoreTests
+//  AttributeValueType.swift
+//  SwiftDatastore
 //
-//  Created by Tomasz Kukułka on 11/01/2023.
+//  Created by Tomasz Kukułka on 12/01/2023.
 //
 
 import Foundation

@@ -126,10 +126,6 @@ class EntityPropertyTests: XCTestCase {
         XCTAssertTrue(subclassMock.handleObservedPropertyDidChangeValueCalled)
     }
     
-    func testAaaa() {
-        let model = SwiftDatastoreModel(from: TestObject.self, MockRelationshipObject.self)
-    }
-    
     final class EntityPropertySubclassMock: EntityProperty<Int> {
         var handleObservedPropertyDidChangeValueCalled = false
         
