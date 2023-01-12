@@ -9,7 +9,7 @@ import Foundation
 import SwiftDatastore
 
 final class TestRelationshipObject: DatastoreObject {
-//    @Relationship.ToOne var toOne: TestOptionalObject?
+    @Relationship.ToOne var toOne: TestOptionalObject?
     @Relationship.ToMany var toMany: Set<TestOptionalObject>
     
     override class var entityName: String {

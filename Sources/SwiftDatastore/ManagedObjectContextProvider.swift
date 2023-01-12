@@ -24,11 +24,11 @@ final class ManagedObjectContextProvider {
     
     let poc: NSPersistentStoreCoordinator // Internal access for tests
     
-    init<T>(persistentStoreCoordinatorType: T.Type = NSPersistentStoreCoordinator.self,
-            managedObjectModel: NSManagedObjectModel,
+    init<T>(managedObjectModel: NSManagedObjectModel,
             storeName: String,
-            destoryStoreDuringCreating: Bool = false,
-            fileManager: FileManager = .default
+            destoryStoreDuringCreating: Bool,
+            fileManager: FileManager = .default,
+            persistentStoreCoordinatorType: T.Type = NSPersistentStoreCoordinator.self
     ) throws where T: NSPersistentStoreCoordinator {        
         let storeURL = Self.createPersistentStoreURL(fileManager: fileManager, storeFileName: storeName)
         

@@ -26,9 +26,10 @@ class ObserveEntityAttributeTests: XCTestCase {
     override func setUpWithError() throws {
         try super.setUpWithError()
         
-        let datastore = try SwiftDatastore(storingType: .test,
+        let model = SwiftDatastoreModel(from: Employee.self, Company.self, Car.self)
+        let datastore = try SwiftDatastore(datastoreModel: model,
                                            storeName: "demoapp.background.context.tests",
-                                           datamodelName: "TestApp")
+                                           storingType: .test)
         
         viewContext = datastore.sharedViewContext
         sut = datastore.createNewContext()

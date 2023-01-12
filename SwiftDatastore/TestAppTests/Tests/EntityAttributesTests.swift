@@ -28,7 +28,10 @@ class EntityAttributesTests: XCTestCase {
     override func setUpWithError() throws {
         try super.setUpWithError()
         
-        let datastore = try SwiftDatastore(storingType: .test, storeName: "EntityAttributesTests", datamodelName: "TestModel")
+        let model = SwiftDatastoreModel(from: TestOptionalObject.self, TestNotOptionalObject.self, TestRelationshipObject.self)
+        let datastore = try SwiftDatastore(datastoreModel: model,
+                                           storeName: "entity.attributes.tests",
+                                           storingType: .test)
         context = datastore.createNewContext()
     }
     

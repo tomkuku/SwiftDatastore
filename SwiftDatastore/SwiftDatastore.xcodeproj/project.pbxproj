@@ -61,8 +61,6 @@
 		813F0A4D2906011F007469DF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 813F0A4B2906011F007469DF /* Main.storyboard */; };
 		813F0A4F29060120007469DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 813F0A4E29060120007469DF /* Assets.xcassets */; };
 		813F0A5229060120007469DF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 813F0A5029060120007469DF /* LaunchScreen.storyboard */; };
-		813F0A7B2906016A007469DF /* TestApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 813F0A772906016A007469DF /* TestApp.xcdatamodeld */; };
-		813F0A7C2906016A007469DF /* TestModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 813F0A792906016A007469DF /* TestModel.xcdatamodeld */; };
 		813F0A8029060171007469DF /* TestRelationshipObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813F0A7E29060171007469DF /* TestRelationshipObject.swift */; };
 		813F0A8129060171007469DF /* TestOptionalObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813F0A7F29060171007469DF /* TestOptionalObject.swift */; };
 		813F0A8229060171007469DF /* TestNotOptionalObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813F0A7D29060171007469DF /* TestNotOptionalObject.swift */; };
@@ -181,8 +179,6 @@
 		813F0A5129060120007469DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		813F0A5329060120007469DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		813F0A5829060120007469DF /* TestAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TestAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		813F0A782906016A007469DF /* DemoApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DemoApp.xcdatamodel; sourceTree = "<group>"; };
-		813F0A7A2906016A007469DF /* TestModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TestModel.xcdatamodel; sourceTree = "<group>"; };
 		813F0A7D29060171007469DF /* TestNotOptionalObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestNotOptionalObject.swift; sourceTree = "<group>"; };
 		813F0A7E29060171007469DF /* TestRelationshipObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestRelationshipObject.swift; sourceTree = "<group>"; };
 		813F0A7F29060171007469DF /* TestOptionalObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestOptionalObject.swift; sourceTree = "<group>"; };
@@ -319,8 +315,8 @@
 			children = (
 				8105838D291EE4B8000A39C4 /* EntityProperty.swift */,
 				467B36C5296F58B90040721D /* Attribute.swift */,
-				464EB37129700007009961C9 /* AttributeValueType.swift */,
 				464EB37329700054009961C9 /* Relationship.swift */,
+				464EB37129700007009961C9 /* AttributeValueType.swift */,
 				467B36C2296F571E0040721D /* RelationshipProperty.swift */,
 				46F25441296C780500AEEC84 /* Attributes */,
 				81058388291EE4B8000A39C4 /* Relationship */,
@@ -441,8 +437,6 @@
 			isa = PBXGroup;
 			children = (
 				813F0A9E29060330007469DF /* Requireds */,
-				813F0A772906016A007469DF /* TestApp.xcdatamodeld */,
-				813F0A792906016A007469DF /* TestModel.xcdatamodeld */,
 				813F0A832906017A007469DF /* Models */,
 			);
 			path = TestApp;
@@ -798,11 +792,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				813F0A4A2906011F007469DF /* ViewController.swift in Sources */,
-				813F0A7C2906016A007469DF /* TestModel.xcdatamodeld in Sources */,
 				813F0A462906011F007469DF /* AppDelegate.swift in Sources */,
 				81C9623B29060F4C006A0068 /* Employee.swift in Sources */,
 				813F0A882906018B007469DF /* Company.swift in Sources */,
-				813F0A7B2906016A007469DF /* TestApp.xcdatamodeld in Sources */,
 				813F0A8229060171007469DF /* TestNotOptionalObject.swift in Sources */,
 				813F0A872906018B007469DF /* Car.swift in Sources */,
 				813F0A8029060171007469DF /* TestRelationshipObject.swift in Sources */,
@@ -1275,29 +1267,6 @@
 			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		813F0A772906016A007469DF /* TestApp.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				813F0A782906016A007469DF /* DemoApp.xcdatamodel */,
-			);
-			currentVersion = 813F0A782906016A007469DF /* DemoApp.xcdatamodel */;
-			path = TestApp.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-		813F0A792906016A007469DF /* TestModel.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				813F0A7A2906016A007469DF /* TestModel.xcdatamodel */,
-			);
-			currentVersion = 813F0A7A2906016A007469DF /* TestModel.xcdatamodel */;
-			path = TestModel.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 813D96632881F7F600292BE5 /* Project object */;
 }

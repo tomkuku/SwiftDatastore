@@ -23,9 +23,10 @@ class FetchedObjectsControllerTests: XCTestCase {
     override func setUpWithError() throws {
         super.setUp()
         
-        let datastore = try SwiftDatastore(storingType: .test,
+        let model = SwiftDatastoreModel(from: Employee.self, Company.self, Car.self)
+        let datastore = try SwiftDatastore(datastoreModel: model,
                                            storeName: "demoapp.fetched.objects.controller.tests",
-                                           datamodelName: "TestApp")
+                                           storingType: .test)
         
         viewContext = datastore.sharedViewContext
         datastoreContext = datastore.createNewContext()

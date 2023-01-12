@@ -1,6 +1,4 @@
 excluded:
-  - Dangerfile.swift
-  - FAKE_OBJ.swift
   - TestApps
   - SwiftDatastore
 
@@ -52,7 +50,7 @@ opt_in_rules:
   - unused_closure_parameter
   - unneeded_break_in_switch
   - weak_delegate
-  # - modifier_order
+  - function_default_parameter_at_end
 
 disabled_rules: 
   - trailing_whitespace

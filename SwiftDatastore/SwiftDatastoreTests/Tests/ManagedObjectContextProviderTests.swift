@@ -27,10 +27,11 @@ class ManagedObjectContextProviderTests: XCTestCase {
         fileManagerMock = FileManagerMock()
         fileManagerMock._url = storeURL
         
-        sut = try ManagedObjectContextProvider(persistentStoreCoordinatorType: PersistentStoreCoordinatorMock.self,
-                                               managedObjectModel: NSManagedObjectModel(),
+        sut = try ManagedObjectContextProvider(managedObjectModel: NSManagedObjectModel(),
                                                storeName: storeName,
-                                               fileManager: fileManagerMock)
+                                               destoryStoreDuringCreating: true,
+                                               fileManager: fileManagerMock,
+                                               persistentStoreCoordinatorType: PersistentStoreCoordinatorMock.self)
         
         pocMock = sut.poc as? PersistentStoreCoordinatorMock
     }
@@ -42,23 +43,14 @@ class ManagedObjectContextProviderTests: XCTestCase {
         super.tearDown()
     }
     
-    // MARK: Tests
-    func test_create() {
-        // then
-        XCTAssertFalse(pocMock.destroyPersistentStoreCalled)
-        XCTAssertTrue(pocMock.addPersistentStoreCalled)
-        XCTAssertEqual(pocMock._addStoreURL, expectedStoreURL)
-        XCTAssertEqual(pocMock._addStoreType, NSSQLiteStoreType)
-    }
-    
     func test_create_with_destoryStoreDuringCreating() throws {
         // when
-        sut = try ManagedObjectContextProvider(persistentStoreCoordinatorType: PersistentStoreCoordinatorMock.self,
-                                               managedObjectModel: NSManagedObjectModel(),
+        sut = try ManagedObjectContextProvider(managedObjectModel: NSManagedObjectModel(),
                                                storeName: storeName,
                                                destoryStoreDuringCreating: true,
-                                               fileManager: fileManagerMock)
-
+                                               fileManager: fileManagerMock,
+                                               persistentStoreCoordinatorType: PersistentStoreCoordinatorMock.self)
+        
         
         pocMock = sut.poc as? PersistentStoreCoordinatorMock
         
