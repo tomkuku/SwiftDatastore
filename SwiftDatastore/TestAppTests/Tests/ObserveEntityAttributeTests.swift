@@ -388,7 +388,7 @@ class ObserveEntityAttributeTests: XCTestCase {
         } success: {
             self.expectation.fulfill()
         } failure: { error in
-            fatalError(error.localizedDescription)
+            XCTFail(error.localizedDescription)
         }
         
         wait(for: [expectation], timeout: 2)
@@ -434,7 +434,7 @@ class ObserveEntityAttributeTests: XCTestCase {
         } success: {
             self.expectation.fulfill()
         } failure: { error in
-            fatalError(error.localizedDescription)
+            XCTFail(error.localizedDescription)
         }
         
         wait(for: [expectation], timeout: 2)
@@ -480,7 +480,7 @@ class ObserveEntityAttributeTests: XCTestCase {
         } success: {
             self.expectation.fulfill()
         } failure: { error in
-            fatalError(error.localizedDescription)
+            XCTFail(error.localizedDescription)
         }
         
         wait(for: [expectation], timeout: 2)

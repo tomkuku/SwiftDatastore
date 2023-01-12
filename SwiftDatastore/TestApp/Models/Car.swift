@@ -10,6 +10,7 @@ import SwiftDatastore
 
 final class Car: DatastoreObject {
     @Attribute.NotOptional var id: UUID
+    @Relationship.ToOne var employee: Employee?
     
     override func objectDidCreate() {
         id = UUID()
