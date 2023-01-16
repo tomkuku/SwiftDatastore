@@ -33,11 +33,9 @@
 </br>
 
 ### What is SwiftDatastore and why should I use it?
-`SwiftDatastore` is a wrapper to CoreData. It has been created to add opportunity to use `CoreData` methods and objects in easy way. For example to store value of person's age in CoreData's datamodel we need to choose Int16-64 but then in code we want use this property in easy way - as Int so every time we need to convert it to Int what is uncomfortable.
-
-`SwiftDatastore` has set of `PropertyWrappers` which allow you for getting and setting value without converting types manually every time. You decide what type you want, `SwiftDatastore` does the rest for you.
-
-`SwiftDatastore` also has wide set of prepared generic methods so you don't need to make any own implementations. What is import each method is tested ✅. Full list of methods is below.
+* It is a wrapper to CoreData which adds additional layer of adstraction. It has been created to add opportunity to use `CoreData` in easy and safe way. In opposite to `CoreData`, `SwiftDatastore` is typed. It means that you can not have access to properties and entities by string keys.
+* `SwiftDatastore` has set of `PropertyWrappers` which allow you for getting and setting value without converting types manually every time. You decide what type you want, `SwiftDatastore` does the rest for you.
+* You don't need to create xcdatamodel. `SwiftDatastore` create model for you.
 
 Just try it 😊!
 
@@ -47,17 +45,17 @@ Just try it 😊!
 - [Installation](#installation)
     - [Swift Package Manager](#swift-package-manager)
     - [CocoaPods](#cocoapods)
-- [Overview](#overview)
 - [Create DatastoreObject](#create-datastoreobject)
+- [DatastoreObject Properties](#datastoreobject-properties)
     - [Attributes](#attributes)
         - [`NotOptional`](#notoptional)
         - [`Optional`](#optional)
         - [`Enum`](#enum)
-    - [Relationship](#relationship)
+    - [Relationships](#relationships)
         - [`ToOne`](#toone)
         - [`ToMany`](#tomany)
         - [`ToMany.Ordered`](#tomanyordered)
-- [Using SwiftDatastore's](#using-swiftdatastores)
+- [Setup](#setup)
 - [SwiftDatastore’s operations](#swiftdatastores-operations)
     - [`perform`](#perform)
     - [`createObject`](#createobject)
@@ -81,7 +79,8 @@ Just try it 😊!
     - [`observeChanges`](#observechanges)
 - [`OrderBy`](#orderby)
 - [`Where`](#where)
-- [Observe](#observe)
+- [Observing DatastoreObject Properties](#observing-datastoreobject-properties)
+- [Testing](#Tesing)
 
 </br>
 </br>
@@ -108,32 +107,22 @@ pod install
 
 </br>
 
-***
-
-</br>
-
-## Overview
-In the `CoreData` you create `NSManagedObject` on specific `NSManagedObjectContext`. And then you can use these objects on theirs contexts.
-In the `SwiftDatastore` you create `DatastoreObject` (counterpart of `NSManagedObject`) on specific `Datastore's Context` (counterpart of `NSManagedObjectContext`).
-
-### Context
-- It allows you to perform operations on datastore.
-You should create new, spearate Context for each operation like: upload data, download data etc. Such action increase performance.
-
-### ViewContext
-- It's single instance, created to cowork with UI components. This `Context` is read only so you don't able to create, save or delete object on this context.
-
-### FetchedObjectsController
-- It is counterpart of `NSFetchedResultsController` and is used for fetching objects in grouped, ordered way on UI componenets.
-
-***
-
-## Create DatastoreObject
-To create class which represents an entity this class must inherite after `DatastoreObject` class.
-
-Your class should have the same name as `Entity` in `datamodel`.
+# Create DatastoreObject
+To create `DatastoreObject` create class which inherites after `DatastoreObject`.
 ``` Swift
 class Employee: DatastoreObject {
+}
+```
+
+If you need to do something after the object is created, you can override the `objectDidCreate` method, which is only called after the object is created.
+This method does nothing by default.
+``` Swift
+class Employee: DatastoreObject {
+    @Attribute.NotOptional var id: UUID
+
+    override func objectDidCreate() {
+        id = UUID()
+    }
 }
 ```
 
@@ -150,45 +139,20 @@ class Employee: DatastoreObject {
 }
 ```
 
-⚠️ If for some reason your class has a name other than the `Entity` that this class represents, you must override `entityName` the class  property.
+</br>
 
-``` Swift
-class Employee: DatastoreObject {
-    override class var entityName: String {
-        "EntityName"
-    }
-}
-```
+# DatastoreObject Properties
+Each property is `property wrapper`.
 
-If you need to do something after the object is created, you can override the `objectDidCreate` method, which is only called after the object is created.
-
-
-
-This method does nothing by default.
-``` Swift
-class Employee: DatastoreObject {
-    @Attribute.NotOptional var id: UUID
-
-    override func objectDidCreate() {
-        id = UUID()
-    }
-}
-```
-
-***
-
-## Attributes
-Each attribute is `property wrapper`.
-
-⚠️ Name of variable must be the same as name of this attribute in `datamodel`.
+## `Attributes`
 
 ### `NotOptional`
-It represents single attribute of entity which mustn't return nil value.
+It represents single attribute which **must not** return nil value.
 Use this Attribute when you are sure that stored value is never nil.
 
 ⛔️ If this attribute returns nil value it will crash your app.
 
-You can use it with all attribute types e.g: Int16, Int, Double, String, UUID, URL, Date etc.
+You can use it with all attribute value types. Full list of types which meet with `AttributeValueType` is below.
 
 ``` Swift
 class Employee: DatastoreObject {
@@ -200,6 +164,7 @@ class Employee: DatastoreObject {
 ```
 
 👌 You can use `objectDidCreate()` method to set default value.
+
 ``` Swift
 class Employee: DatastoreObject {
     @Attribute.NotOptional var id: UUID
@@ -211,19 +176,16 @@ class Employee: DatastoreObject {
 ```
 
 👌 If you need to have **constant (`let`)** property of `Attribute` you can set it as `private(set)`.
+
 ``` Swift
 class Employee: DatastoreObject {
     @Attribute.NotOptional private(set) var id: UUID
 }
 ```
 
-⛔️ Be careful when setting the type of an attribute in the DatastoreObject. For example: in a datamodel you set the name width attribute to the type Double, in the DatastoreObject class you set the same name attribute with the type Float. It will crash your application!
-
 ### `Optional`
 It represents single attribute of entity which can return or store nil value.
-Use this Attribute when you aren't sure that stored value is never nil.
 
-You can use it with all attribute types e.g: Int16, Int, Double, String, UUID, URL, Date etc.
 ``` Swift
 class Employee: DatastoreObject {
     @Attribute.Optional var secondName: String? // The question mark at the end is required.
@@ -233,11 +195,11 @@ class Employee: DatastoreObject {
 
 ### `Enum`
 It represents an `enum` value.
-This `enum` must meet the `RawRepresentable` protocol because it's `rawValue` is saved in `SQLite dtatbase`.
+This `enum` must meet the `RawRepresentable` and `AttributeValueType` protocol because it's `RawValue` is saved in `SQLite database`.
 
-⚠️ You must use the same `RawValue` type (e.g: Int16) as attribute's type set in `datamodel`.
+You can use it with all attribute value types.
+This type of Attribute is optional.
 
-This type of Attribute always returns an optional values.
 ``` Swift
 enum Position: Int16 {
     case developer
@@ -254,24 +216,22 @@ class Employee: DatastoreObject {
 employee.position = .developer
 ```
 
-***
+</br>
 
-## Relationship
-Each attribute is `property wrapper`.
-
-⚠️ Name of variable must be the same as name of this attribute in `datamodel`.
+## `Relationships`
 
 ### `ToOne`
-It represents `one-to-one` relationship beetwen SwiftDatastore's entities.
+It represents `one-to-one` relationship beetwen `SwiftDatastoreObjects`.
 
-There can to be passed an optional and nonoptional `Object`.
+There can be passed an optional and nonoptional `Object`.
+
 ``` Swift
 class Office: DatastoreObject {
-    @Relationship.ToOne var emplyee: Employee
+    @Relationship.ToOne(inverse: \.$office) var owner: Employee?
 }
 
 class Employee: DatastoreObject {
-    @Relationship.ToOne var office: Office
+    @Relationship.ToOne var office: Office? // inverse: Office.owner
 }
 
 // ...
@@ -281,16 +241,20 @@ office.employee = employee
 employee.office = office
 ```
 
+⚠️ You must pass an inverse relationship in the declaration. Due Swift "Reference cycle" error, you can do it only one time. 
+
+👌 Add info comment about the inverse to make code more readable.
+
 ### `ToMany`
 It represents `one-to-many` relationship which is `Set<Object>`.
 
 ``` Swift
 class Company: DatastoreObject {
-    @Relationship.ToMany var emplyees: Employee
+    @Relationship.ToMany var emplyees: Set<Employee> // inverse: Employee.company
 }
 
 class Employee: DatastoreObject {
-    @Relationship.ToOne var company: Company
+    @Relationship.ToOne(inverse: \.$emplyees) var company: Company
 }
 
 // ...
@@ -301,16 +265,12 @@ company.employess.insert(employee3)
 employee.company = company
 ```
 
-⚠️ There mustn't to be passed an optional value. You can only remove object from the set.
-
-``` Swift
-company.employess.remove(employee)
-```
+⚠️ This type of property must not be nil in saving moment.
 
 ### `ToMany.Ordered`
 It represents `one-to-many` relationship where objects are stored in ordered which is `Array<Object>`.
 
-Whay Array instead of OrederedSet? By default Swift doesn't have OrderedSet collection. You can use it by adding other frameworks which supply ordered collections. To avoid names conflicts SwiftDatastore uses Array. 
+#### Whay Array instead of OrederedSet? By default Swift doesn't have OrderedSet collection. You can use it by adding other frameworks which supply ordered collections.
 
 ``` Swift
 class Employee: DatastoreObject {
@@ -327,19 +287,32 @@ company.tasks = [task1, task2, ...]
 company.employee = employee
 ```
 
-***
+⚠️ Please, remember that this array can not have repetitions.
 
-## Using SwiftDatastore's
-You must create SwiftDatastore instacne. One instacne represents one store which stores objects from one datamodel.
+⚠️ This type of property must not be nil in saving moment.
+
+</br>
+
+# Setup
+Firstly you must create dataModel by passing types of `DatastoreObjects` which you want to use within it.
+
 ``` Swift
-let swiftDatastore = try SwiftDatastore(storeName: "yourAppStoreName", datamodelName: "MyAppDatamodel")
+let dataModel = SwiftDatastoreModel(from: Employee.self, Company.self, Office.self)
+```
+
+⛔️ If you don't pass all required objects for relationships, you will get fatal error with information about a lack of objects.
+
+It creates `SQLite file` with name: `"myapp.store"` which stores objects from  passed model.
+``` Swift
+let datastore = try SwiftDatastore(dataModel: dataModel, storeName: "myapp.store")
 ```
 ⚠️ Creating SwiftDatastore instance may throw an exception.
 
-It creates `SQLite file` with name: `"yourAppStoreName"` which stores objects from `xcdatamodel` with name `"MyAppDatamodel"`.
-It allows you to create more than one store for different model in one app.
+👌 You can create separate model and separate store for different project configurations.
 
-### SwiftDatastoreContext
+</br>
+
+# SwiftDatastoreContext
 To create `SwiftDatastoreContext` instance you must:
 ``` Swift
 let datastoreContext = swiftDatastore.newContext()
@@ -769,7 +742,9 @@ let persons: [Person] = context.fetch(where: \.$age >= 18 && (\.$name ^= "T") ||
 // It returns array of Persosns where age is great than 18 and name begins with "T" or ends with "e".
 ```
 
-## Observe
+</br>
+
+# Observing DatastoreObject Properties
 You can observe changes of any `Attribute` and `Relationship`.
 The closure is performed every time when a value of observed property changes no matter either the change is done on observed instance of `DatastoreObject` or on another instance but with the same `DatastoreObjectID` in the same `SwiftDatastoreContext`.
 
@@ -791,3 +766,15 @@ employee.$position
     }
     .store(in: &cancellable)
 ```
+
+</br>
+
+# Testing
+You can use SwiftDatastore in your tests.
+All what you need to do is set `storingType` to `test` as example below:
+
+``` Swift
+let datastore = try SwiftDatastore(dataModel: dataModel, storeName: "myapp.store.test", storingType: .test)
+```
+
+In that configuration `SwiftDatastore` create normal sqlite file but it will **delete it** when your test will end or when you call test again (eg. in the case when you got crash). As a result, in every test you work on totally **new data**.
