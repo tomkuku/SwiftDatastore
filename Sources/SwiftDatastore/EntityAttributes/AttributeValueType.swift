@@ -59,4 +59,3 @@ extension UUID: AttributeValueType {
 extension URL: AttributeValueType {
     public private(set) static var attributeType: NSAttributeType = .URIAttributeType
 }
-

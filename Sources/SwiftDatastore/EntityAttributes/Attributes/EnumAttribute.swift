@@ -11,11 +11,7 @@ import CoreData
 extension Attribute {
         
     @propertyWrapper
-    public final class Enum<T>: EntityProperty<T?>, EntityPropertyKeyPath where T: RawRepresentable, T.RawValue: AttributeValueType {
-        
-        // swiftlint:disable:next nesting
-        public typealias KeyPathType = T
-        
+    public final class Enum<T>: EntityProperty<T?> where T: RawRepresentable, T.RawValue: AttributeValueType {
         // MARK: Properties
         public var wrappedValue: T? {
             get {
@@ -48,6 +44,11 @@ extension Attribute {
             informAboutNewValue(value)
         }
     }
+}
+
+// MARK: EntityPropertyKeyPath
+extension Attribute.Enum: EntityPropertyKeyPath {
+    public typealias KeyPathType = T
 }
 
 // MARK: PropertyDescriptionCreatable

@@ -19,17 +19,14 @@ public class EntityProperty<T>: EntityPropertyLogic, ManagedObjectObserverDelega
     // Properties which are set after init in DatastoreObject's config method.
     var managedObject: ManagedObjectKeyValue!
     var managedObjectObserver: ManagedObjectObserverLogic!
+    public var key: String = ""
     
     var observervingBlocks: [(T) -> Void] = []
     var isObserving = false
     
 #if os(iOS)
     let newValuePassthroughSubject = PassthroughSubject<T, Never>()
-#endif
     
-    public var key: String = ""
-    
-#if os(iOS)
     public lazy var newValuePublisher: AnyPublisher<T, Never> = {
         addObserverIfNeeded()
         
