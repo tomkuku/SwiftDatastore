@@ -26,7 +26,7 @@ class BackgroundContextTests: XCTestCase {
         
         let model = SwiftDatastoreModel(from: Employee.self, Company.self, Car.self)
         
-        datastore = try SwiftDatastore(datastoreModel: model,
+        datastore = try SwiftDatastore(dataModel: model,
                                            storeName: "demoapp.background.context.tests",
                                            storingType: .test)
         

@@ -27,7 +27,7 @@ class ObserveEntityAttributeTests: XCTestCase {
         try super.setUpWithError()
         
         let model = SwiftDatastoreModel(from: Employee.self, Company.self, Car.self)
-        let datastore = try SwiftDatastore(datastoreModel: model,
+        let datastore = try SwiftDatastore(dataModel: model,
                                            storeName: "demoapp.background.context.tests",
                                            storingType: .test)
         
