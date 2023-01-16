@@ -24,7 +24,7 @@ class FetchedObjectsControllerTests: XCTestCase {
         super.setUp()
         
         let model = SwiftDatastoreModel(from: Employee.self, Company.self, Car.self)
-        let datastore = try SwiftDatastore(datastoreModel: model,
+        let datastore = try SwiftDatastore(dataModel: model,
                                            storeName: "demoapp.fetched.objects.controller.tests",
                                            storingType: .test)
         
