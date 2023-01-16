@@ -54,7 +54,11 @@ public final class SwiftDatastoreModel {
     }
     
     private func findRelationship(forEntityName entityName: String, propertyName: String) -> NSRelationshipDescription {
-        guard let entity = entities.first(where: { $0.name == entityName }) else {
+        let entity = entities.first(where: {
+            $0.name == entityName
+        })
+        
+        guard let entity else {
             Logger.log.fatal("No entity for name: \(entityName)")
         }
         
