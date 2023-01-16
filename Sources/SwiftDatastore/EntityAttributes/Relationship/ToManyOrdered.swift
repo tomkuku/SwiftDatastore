@@ -65,8 +65,8 @@ extension Relationship.ToMany {
         
         public init<V>(inverse: KeyPath<T, V>) where V: RelationshipProperty {
             super.init()
-            self.invsereObjectName = T.entityName
-            self.inversePropertyName = inverse.keyPathString
+            invsereObjectName = T.entityName
+            inversePropertyName = inverse.keyPathString
         }
         
         override func handleObservedPropertyDidChangeValue(_ newValue: Any?, change: NSKeyValueChange?) {

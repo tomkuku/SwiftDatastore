@@ -32,7 +32,7 @@ final class ManagedObjectContextProvider {
     ) throws where T: NSPersistentStoreCoordinator {        
         let storeURL = Self.createPersistentStoreURL(fileManager: fileManager, storeFileName: storeName)
         
-        self.poc = persistentStoreCoordinatorType.init(managedObjectModel: managedObjectModel)
+        poc = persistentStoreCoordinatorType.init(managedObjectModel: managedObjectModel)
         
         try setupPoc(destroyPersistentStore: destoryStoreDuringCreating, storeURL: storeURL)
     }
