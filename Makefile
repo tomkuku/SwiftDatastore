@@ -7,7 +7,7 @@
 
 DEVICE = 'iPhone 14'
 PLATFORM = 'iOS Simulator'
-IOS_VERSION = 16.0
+IOS_VERSION = 16.2
 ENABLE_CODE_COVERGAE = -enableCodeCoverage YES
 PROJECT = -project
 WORKSPACE = -workspace
