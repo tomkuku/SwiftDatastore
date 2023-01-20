@@ -6,17 +6,12 @@
 //
 
 import Foundation
+import CoreData
 
-public enum Attribute {
+extension Attribute {
     
     @propertyWrapper
-    public final class NotOptional<T>: EntityProperty<T>, EntityPropertyKeyPath, EntityPropertyValueType {
-        
-        // swiftlint:disable nesting
-        public typealias KeyPathType = T
-        public typealias ValueType = T
-        // swiftlint:enable nesting
-        
+    public final class NotOptional<T>: EntityProperty<T> where T: AttributeValueType {
         // MARK: Properties
         public var wrappedValue: T {
             get {
@@ -43,5 +38,26 @@ public enum Attribute {
             
             informAboutNewValue(newValue)
         }
+    }
+}
+
+// MARK: EntityPropertyKeyPath
+extension Attribute.NotOptional: EntityPropertyKeyPath {
+    public typealias KeyPathType = T
+}
+
+// MARK: EntityPropertyValueType
+extension Attribute.NotOptional: EntityPropertyValueType {
+    public typealias ValueType = T
+}
+
+// MARK: PropertyDescriptionCreatable
+extension Attribute.NotOptional: PropertyDescriptionCreatable {
+    func createPropertyDescription() -> NSPropertyDescription {
+        let attribute = NSAttributeDescription()
+        attribute.isOptional = false
+        attribute.attributeType = T.attributeType
+        attribute.name = key
+        return attribute
     }
 }

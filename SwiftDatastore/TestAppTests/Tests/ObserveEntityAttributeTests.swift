@@ -26,9 +26,10 @@ class ObserveEntityAttributeTests: XCTestCase {
     override func setUpWithError() throws {
         try super.setUpWithError()
         
-        let datastore = try SwiftDatastore(storingType: .test,
+        let model = SwiftDatastoreModel(from: Employee.self, Company.self, Car.self)
+        let datastore = try SwiftDatastore(dataModel: model,
                                            storeName: "demoapp.background.context.tests",
-                                           datamodelName: "TestApp")
+                                           storingType: .test)
         
         viewContext = datastore.sharedViewContext
         sut = datastore.createNewContext()
@@ -387,7 +388,7 @@ class ObserveEntityAttributeTests: XCTestCase {
         } success: {
             self.expectation.fulfill()
         } failure: { error in
-            fatalError(error.localizedDescription)
+            XCTFail(error.localizedDescription)
         }
         
         wait(for: [expectation], timeout: 2)
@@ -433,7 +434,7 @@ class ObserveEntityAttributeTests: XCTestCase {
         } success: {
             self.expectation.fulfill()
         } failure: { error in
-            fatalError(error.localizedDescription)
+            XCTFail(error.localizedDescription)
         }
         
         wait(for: [expectation], timeout: 2)
@@ -479,7 +480,7 @@ class ObserveEntityAttributeTests: XCTestCase {
         } success: {
             self.expectation.fulfill()
         } failure: { error in
-            fatalError(error.localizedDescription)
+            XCTFail(error.localizedDescription)
         }
         
         wait(for: [expectation], timeout: 2)

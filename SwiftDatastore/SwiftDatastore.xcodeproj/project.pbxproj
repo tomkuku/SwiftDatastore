@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		464EB37229700007009961C9 /* AttributeValueType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464EB37129700007009961C9 /* AttributeValueType.swift */; };
+		464EB37429700054009961C9 /* Relationship.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464EB37329700054009961C9 /* Relationship.swift */; };
+		467B36BC296F38DE0040721D /* PropertyDescriptionCreatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467B36BB296F38DE0040721D /* PropertyDescriptionCreatable.swift */; };
+		467B36BE296F4E1A0040721D /* SwiftDatastoreModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467B36BD296F4E1A0040721D /* SwiftDatastoreModelTests.swift */; };
+		467B36C1296F56E80040721D /* InverseRelationshipDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467B36BF296F56D90040721D /* InverseRelationshipDescription.swift */; };
+		467B36C4296F57340040721D /* RelationshipProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467B36C2296F571E0040721D /* RelationshipProperty.swift */; };
+		467B36C7296F58BB0040721D /* Attribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467B36C5296F58B90040721D /* Attribute.swift */; };
+		467B36C9296F61850040721D /* TestEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467B36C8296F61850040721D /* TestEnum.swift */; };
+		46F25440296C721200AEEC84 /* SwiftDatastoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F2543F296C721200AEEC84 /* SwiftDatastoreModel.swift */; };
 		81058397291EE4B8000A39C4 /* ManagedObjectContextProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81058372291EE4B8000A39C4 /* ManagedObjectContextProvider.swift */; };
 		81058398291EE4B8000A39C4 /* PropertyToFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81058374291EE4B8000A39C4 /* PropertyToFetch.swift */; };
 		81058399291EE4B8000A39C4 /* OrderBy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81058375291EE4B8000A39C4 /* OrderBy.swift */; };
@@ -19,7 +28,6 @@
 		810583A0291EE4B8000A39C4 /* FetchedObjectsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8105837C291EE4B8000A39C4 /* FetchedObjectsController.swift */; };
 		810583A1291EE4B8000A39C4 /* ManagedObjectObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8105837D291EE4B8000A39C4 /* ManagedObjectObserver.swift */; };
 		810583A2291EE4B8000A39C4 /* FetchedResultsControllerHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8105837F291EE4B8000A39C4 /* FetchedResultsControllerHandler.swift */; };
-		810583A3291EE4B8000A39C4 /* MomController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81058380291EE4B8000A39C4 /* MomController.swift */; };
 		810583A4291EE4B8000A39C4 /* ManagedObjectKeyValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81058381291EE4B8000A39C4 /* ManagedObjectKeyValue.swift */; };
 		810583A5291EE4B8000A39C4 /* ManagedObjectContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81058382291EE4B8000A39C4 /* ManagedObjectContext.swift */; };
 		810583A6291EE4B8000A39C4 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81058383291EE4B8000A39C4 /* Logger.swift */; };
@@ -53,8 +61,6 @@
 		813F0A4D2906011F007469DF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 813F0A4B2906011F007469DF /* Main.storyboard */; };
 		813F0A4F29060120007469DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 813F0A4E29060120007469DF /* Assets.xcassets */; };
 		813F0A5229060120007469DF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 813F0A5029060120007469DF /* LaunchScreen.storyboard */; };
-		813F0A7B2906016A007469DF /* TestApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 813F0A772906016A007469DF /* TestApp.xcdatamodeld */; };
-		813F0A7C2906016A007469DF /* TestModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 813F0A792906016A007469DF /* TestModel.xcdatamodeld */; };
 		813F0A8029060171007469DF /* TestRelationshipObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813F0A7E29060171007469DF /* TestRelationshipObject.swift */; };
 		813F0A8129060171007469DF /* TestOptionalObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813F0A7F29060171007469DF /* TestOptionalObject.swift */; };
 		813F0A8229060171007469DF /* TestNotOptionalObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813F0A7D29060171007469DF /* TestNotOptionalObject.swift */; };
@@ -115,6 +121,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		464EB37129700007009961C9 /* AttributeValueType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributeValueType.swift; sourceTree = "<group>"; };
+		464EB37329700054009961C9 /* Relationship.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Relationship.swift; sourceTree = "<group>"; };
+		467B36BB296F38DE0040721D /* PropertyDescriptionCreatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyDescriptionCreatable.swift; sourceTree = "<group>"; };
+		467B36BD296F4E1A0040721D /* SwiftDatastoreModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDatastoreModelTests.swift; sourceTree = "<group>"; };
+		467B36BF296F56D90040721D /* InverseRelationshipDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InverseRelationshipDescription.swift; sourceTree = "<group>"; };
+		467B36C2296F571E0040721D /* RelationshipProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelationshipProperty.swift; sourceTree = "<group>"; };
+		467B36C5296F58B90040721D /* Attribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attribute.swift; sourceTree = "<group>"; };
+		467B36C8296F61850040721D /* TestEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestEnum.swift; sourceTree = "<group>"; };
+		46F2543F296C721200AEEC84 /* SwiftDatastoreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDatastoreModel.swift; sourceTree = "<group>"; };
 		81058372291EE4B8000A39C4 /* ManagedObjectContextProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObjectContextProvider.swift; sourceTree = "<group>"; };
 		81058374291EE4B8000A39C4 /* PropertyToFetch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyToFetch.swift; sourceTree = "<group>"; };
 		81058375291EE4B8000A39C4 /* OrderBy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderBy.swift; sourceTree = "<group>"; };
@@ -127,7 +142,6 @@
 		8105837C291EE4B8000A39C4 /* FetchedObjectsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedObjectsController.swift; sourceTree = "<group>"; };
 		8105837D291EE4B8000A39C4 /* ManagedObjectObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObjectObserver.swift; sourceTree = "<group>"; };
 		8105837F291EE4B8000A39C4 /* FetchedResultsControllerHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedResultsControllerHandler.swift; sourceTree = "<group>"; };
-		81058380291EE4B8000A39C4 /* MomController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomController.swift; sourceTree = "<group>"; };
 		81058381291EE4B8000A39C4 /* ManagedObjectKeyValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObjectKeyValue.swift; sourceTree = "<group>"; };
 		81058382291EE4B8000A39C4 /* ManagedObjectContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObjectContext.swift; sourceTree = "<group>"; };
 		81058383291EE4B8000A39C4 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
@@ -165,8 +179,6 @@
 		813F0A5129060120007469DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		813F0A5329060120007469DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		813F0A5829060120007469DF /* TestAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TestAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		813F0A782906016A007469DF /* DemoApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DemoApp.xcdatamodel; sourceTree = "<group>"; };
-		813F0A7A2906016A007469DF /* TestModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TestModel.xcdatamodel; sourceTree = "<group>"; };
 		813F0A7D29060171007469DF /* TestNotOptionalObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestNotOptionalObject.swift; sourceTree = "<group>"; };
 		813F0A7E29060171007469DF /* TestRelationshipObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestRelationshipObject.swift; sourceTree = "<group>"; };
 		813F0A7F29060171007469DF /* TestOptionalObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestOptionalObject.swift; sourceTree = "<group>"; };
@@ -237,12 +249,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		46F25441296C780500AEEC84 /* Attributes */ = {
+			isa = PBXGroup;
+			children = (
+				81058386291EE4B8000A39C4 /* OptionalAttribute.swift */,
+				8105838C291EE4B8000A39C4 /* NotOptionalAttribute.swift */,
+				8105838E291EE4B8000A39C4 /* EnumAttribute.swift */,
+			);
+			path = Attributes;
+			sourceTree = "<group>";
+		};
 		81058371291EE4B8000A39C4 /* SwiftDatastore */ = {
 			isa = PBXGroup;
 			children = (
 				81058394291EE4B8000A39C4 /* SwiftDatastore.h */,
 				81058383291EE4B8000A39C4 /* Logger.swift */,
 				81058384291EE4B8000A39C4 /* SwiftDatastore.swift */,
+				46F2543F296C721200AEEC84 /* SwiftDatastoreModel.swift */,
 				81058392291EE4B8000A39C4 /* SwiftDatastoreError.swift */,
 				8105837D291EE4B8000A39C4 /* ManagedObjectObserver.swift */,
 				81058372291EE4B8000A39C4 /* ManagedObjectContextProvider.swift */,
@@ -265,11 +288,13 @@
 				81058374291EE4B8000A39C4 /* PropertyToFetch.swift */,
 				81058375291EE4B8000A39C4 /* OrderBy.swift */,
 				81058376291EE4B8000A39C4 /* DatastoreObject.swift */,
+				467B36BB296F38DE0040721D /* PropertyDescriptionCreatable.swift */,
 				81058377291EE4B8000A39C4 /* DatastoreObjectID.swift */,
 				81058378291EE4B8000A39C4 /* Where.swift */,
 				81058379291EE4B8000A39C4 /* SavedChanges.swift */,
 				8105837A291EE4B8000A39C4 /* PrimaryType.swift */,
 				8105837B291EE4B8000A39C4 /* PropertyToUpdate.swift */,
+				467B36BF296F56D90040721D /* InverseRelationshipDescription.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -277,8 +302,8 @@
 		8105837E291EE4B8000A39C4 /* Config */ = {
 			isa = PBXGroup;
 			children = (
+				81058387291EE4B8000A39C4 /* EntityPropertyKeyPath.swift */,
 				8105837F291EE4B8000A39C4 /* FetchedResultsControllerHandler.swift */,
-				81058380291EE4B8000A39C4 /* MomController.swift */,
 				81058381291EE4B8000A39C4 /* ManagedObjectKeyValue.swift */,
 				81058382291EE4B8000A39C4 /* ManagedObjectContext.swift */,
 			);
@@ -288,12 +313,13 @@
 		81058385291EE4B8000A39C4 /* EntityAttributes */ = {
 			isa = PBXGroup;
 			children = (
-				81058386291EE4B8000A39C4 /* OptionalAttribute.swift */,
-				81058387291EE4B8000A39C4 /* EntityPropertyKeyPath.swift */,
-				81058388291EE4B8000A39C4 /* Relationship */,
-				8105838C291EE4B8000A39C4 /* NotOptionalAttribute.swift */,
 				8105838D291EE4B8000A39C4 /* EntityProperty.swift */,
-				8105838E291EE4B8000A39C4 /* EnumAttribute.swift */,
+				467B36C5296F58B90040721D /* Attribute.swift */,
+				464EB37329700054009961C9 /* Relationship.swift */,
+				464EB37129700007009961C9 /* AttributeValueType.swift */,
+				467B36C2296F571E0040721D /* RelationshipProperty.swift */,
+				46F25441296C780500AEEC84 /* Attributes */,
+				81058388291EE4B8000A39C4 /* Relationship */,
 			);
 			path = EntityAttributes;
 			sourceTree = "<group>";
@@ -370,6 +396,7 @@
 			isa = PBXGroup;
 			children = (
 				813D96AC2882E74A00292BE5 /* TestObject.swift */,
+				467B36C8296F61850040721D /* TestEnum.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -400,6 +427,7 @@
 				81E3C31128EBAE3F00927613 /* ManagedObjectObserverTests.swift */,
 				81B3E34628AAD57900EF87D3 /* OrderByTests.swift */,
 				81B3E34428AAD07100EF87D3 /* WhereTests.swift */,
+				467B36BD296F4E1A0040721D /* SwiftDatastoreModelTests.swift */,
 				813D96B528837FD400292BE5 /* EntityAttributes */,
 			);
 			path = Tests;
@@ -409,8 +437,6 @@
 			isa = PBXGroup;
 			children = (
 				813F0A9E29060330007469DF /* Requireds */,
-				813F0A772906016A007469DF /* TestApp.xcdatamodeld */,
-				813F0A792906016A007469DF /* TestModel.xcdatamodeld */,
 				813F0A832906017A007469DF /* Models */,
 			);
 			path = TestApp;
@@ -687,8 +713,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				81058398291EE4B8000A39C4 /* PropertyToFetch.swift in Sources */,
+				464EB37229700007009961C9 /* AttributeValueType.swift in Sources */,
 				8105839C291EE4B8000A39C4 /* Where.swift in Sources */,
-				810583A3291EE4B8000A39C4 /* MomController.swift in Sources */,
+				467B36C1296F56E80040721D /* InverseRelationshipDescription.swift in Sources */,
+				464EB37429700054009961C9 /* Relationship.swift in Sources */,
 				8105839E291EE4B8000A39C4 /* PrimaryType.swift in Sources */,
 				81058397291EE4B8000A39C4 /* ManagedObjectContextProvider.swift in Sources */,
 				810583B6291EE4B8000A39C4 /* DatastoreContext.swift in Sources */,
@@ -703,6 +731,7 @@
 				810583A6291EE4B8000A39C4 /* Logger.swift in Sources */,
 				810583A0291EE4B8000A39C4 /* FetchedObjectsController.swift in Sources */,
 				810583B2291EE4B8000A39C4 /* SwiftDatastoreError.swift in Sources */,
+				467B36C4296F57340040721D /* RelationshipProperty.swift in Sources */,
 				8105839D291EE4B8000A39C4 /* SavedChanges.swift in Sources */,
 				810583AF291EE4B8000A39C4 /* EnumAttribute.swift in Sources */,
 				810583A7291EE4B8000A39C4 /* SwiftDatastore.swift in Sources */,
@@ -711,12 +740,15 @@
 				81058399291EE4B8000A39C4 /* OrderBy.swift in Sources */,
 				810583A1291EE4B8000A39C4 /* ManagedObjectObserver.swift in Sources */,
 				810583A4291EE4B8000A39C4 /* ManagedObjectKeyValue.swift in Sources */,
+				46F25440296C721200AEEC84 /* SwiftDatastoreModel.swift in Sources */,
 				810583A5291EE4B8000A39C4 /* ManagedObjectContext.swift in Sources */,
 				810583B5291EE4B8000A39C4 /* DatastoreContextClosure.swift in Sources */,
 				810583B0291EE4B8000A39C4 /* KeyPath+KeyPathString.swift in Sources */,
 				810583A8291EE4B8000A39C4 /* OptionalAttribute.swift in Sources */,
 				810583A9291EE4B8000A39C4 /* EntityPropertyKeyPath.swift in Sources */,
+				467B36BC296F38DE0040721D /* PropertyDescriptionCreatable.swift in Sources */,
 				810583A2291EE4B8000A39C4 /* FetchedResultsControllerHandler.swift in Sources */,
+				467B36C7296F58BB0040721D /* Attribute.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -730,11 +762,13 @@
 				813D9698288202B300292BE5 /* OptionalAttributeTests.swift in Sources */,
 				8176663D289DD93C00123071 /* ViewContextTests.swift in Sources */,
 				8164078029107BBF004057BC /* ManagedObjectKeyValueMock.swift in Sources */,
+				467B36C9296F61850040721D /* TestEnum.swift in Sources */,
 				813D969C2882188D00292BE5 /* ToOneRelationshipTests.swift in Sources */,
 				81D99802290EC65100FC180A /* DatastoreObjectIDTests.swift in Sources */,
 				81B3E34528AAD07100EF87D3 /* WhereTests.swift in Sources */,
 				81F41957289AD1C100146133 /* XCTestCase+createNewManagedObject.swift in Sources */,
 				818C1B9229143D5500B930D2 /* ToManyOrderedRelationshipTests.swift in Sources */,
+				467B36BE296F4E1A0040721D /* SwiftDatastoreModelTests.swift in Sources */,
 				813D96AD2882E74A00292BE5 /* TestObject.swift in Sources */,
 				818FDF9928A13ED90060CEE5 /* FetchedObjectsControllerTests.swift in Sources */,
 				81AE3FE728D0AA53002E2560 /* DatastoreContextClosureTests.swift in Sources */,
@@ -758,11 +792,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				813F0A4A2906011F007469DF /* ViewController.swift in Sources */,
-				813F0A7C2906016A007469DF /* TestModel.xcdatamodeld in Sources */,
 				813F0A462906011F007469DF /* AppDelegate.swift in Sources */,
 				81C9623B29060F4C006A0068 /* Employee.swift in Sources */,
 				813F0A882906018B007469DF /* Company.swift in Sources */,
-				813F0A7B2906016A007469DF /* TestApp.xcdatamodeld in Sources */,
 				813F0A8229060171007469DF /* TestNotOptionalObject.swift in Sources */,
 				813F0A872906018B007469DF /* Car.swift in Sources */,
 				813F0A8029060171007469DF /* TestRelationshipObject.swift in Sources */,
@@ -1235,29 +1267,6 @@
 			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		813F0A772906016A007469DF /* TestApp.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				813F0A782906016A007469DF /* DemoApp.xcdatamodel */,
-			);
-			currentVersion = 813F0A782906016A007469DF /* DemoApp.xcdatamodel */;
-			path = TestApp.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-		813F0A792906016A007469DF /* TestModel.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				813F0A7A2906016A007469DF /* TestModel.xcdatamodel */,
-			);
-			currentVersion = 813F0A7A2906016A007469DF /* TestModel.xcdatamodel */;
-			path = TestModel.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 813D96632881F7F600292BE5 /* Project object */;
 }

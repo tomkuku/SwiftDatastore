@@ -10,6 +10,10 @@ import CoreData
 
 @testable import SwiftDatastore
 
+final class MockRelationshipObject: DatastoreObject {
+    @Relationship.ToOne var aaaa: TestObject?
+}
+
 final class TestObject: DatastoreObject {
     @Attribute.Optional var name: String?
     @Attribute.NotOptional var age: Int
@@ -19,6 +23,7 @@ final class TestObject: DatastoreObject {
     @Attribute.NotOptional var height: Double
     @Attribute.NotOptional var isDefective: Bool
     @Attribute.Optional var dateBirth: Date?
+    @Relationship.ToOne(inverse: \MockRelationshipObject.$aaaa) var toOne: MockRelationshipObject?
     
     required init(managedObject: NSManagedObject) {
         super.init(managedObject: managedObject)

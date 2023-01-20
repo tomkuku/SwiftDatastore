@@ -8,6 +8,11 @@
 import Foundation
 import CoreData
 
+struct EntityPropertiesContainer {
+    let entityName: String
+    let relationships: [(description: NSRelationshipDescription, inverse: (objectName: String, propertyName: String)?)]
+}
+
 open class DatastoreObject {
     
     // MARK: Properties
@@ -15,7 +20,7 @@ open class DatastoreObject {
         String(describing: Self.self)
     }
     
-    internal let managedObject: NSManagedObject
+    let managedObject: NSManagedObject
     
     private let managedObjectObserver: ManagedObjectObserverLogic
     
@@ -52,6 +57,25 @@ open class DatastoreObject {
                 attribute.key = String(childName.dropFirst()) // delete '_' prefix
             }
         }
+    }
+    
+    func createEntityDescription() -> NSEntityDescription {
+        let mirrored = Mirror(reflecting: self)
+        let properties: [NSPropertyDescription] = mirrored.children.compactMap {
+            guard
+                let childName = $0.label,
+                let propertyCreatable = mirrored.descendant(childName) as? PropertyDescriptionCreatable
+            else {
+                return nil
+            }
+            
+            return propertyCreatable.createPropertyDescription()
+        }
+        
+        let entityDescription = NSEntityDescription()
+        entityDescription.name = Self.entityName
+        entityDescription.properties = properties
+        return entityDescription
     }
 }
 

@@ -11,7 +11,7 @@ import CoreData
 extension Relationship.ToMany {
     
     @propertyWrapper
-    public final class Ordered<T>: EntityProperty<Array<T>>, EntityPropertyKeyPath where T: DatastoreObject {
+    public final class Ordered<T>: EntityProperty<Array<T>>, RelationshipProperty where T: DatastoreObject {
         
         // swiftlint:disable:next nesting
         public typealias KeyPathType = T
@@ -56,9 +56,17 @@ extension Relationship.ToMany {
         }
         
         private var changedManagedObjects: [NSManagedObject] = []
+        private var invsereObjectName: String?
+        private var inversePropertyName: String?
         
         public override init() {
             // public init
+        }
+        
+        public init<V>(inverse: KeyPath<T, V>) where V: RelationshipProperty {
+            super.init()
+            invsereObjectName = T.entityName
+            inversePropertyName = inverse.keyPathString
         }
         
         override func handleObservedPropertyDidChangeValue(_ newValue: Any?, change: NSKeyValueChange?) {
@@ -82,6 +90,27 @@ extension Relationship.ToMany {
                 changedManagedObjects = objects
             }
         }
+    }
+}
+
+// MARK: PropertyDescriptionCreatable
+extension Relationship.ToMany.Ordered: PropertyDescriptionCreatable {
+    func createPropertyDescription() -> NSPropertyDescription {
+        let relationshipDescription: NSRelationshipDescription = {
+            guard let invsereObjectName, let inversePropertyName else {
+                return NSRelationshipDescription()
+            }
+            
+            return InverseRelationshipDescription(invsereObjectName: invsereObjectName,
+                                                  inversePropertyName: inversePropertyName)
+        }()
+        
+        relationshipDescription.name = key
+        relationshipDescription.minCount = 0
+        relationshipDescription.maxCount = 0
+        relationshipDescription.isOptional = false
+        relationshipDescription.isOrdered = true
+        return relationshipDescription
     }
 }
 

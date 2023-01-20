@@ -26,6 +26,7 @@ class EntityPropertyTests: XCTestCase {
         observerMock = ManagedObjectObserverMock()
         
         sut = SutType()
+        sut.key = "test-key"
         sut.managedObject = PersistentStoreCoordinatorMock.shared.managedObject
         sut.managedObjectObserver = observerMock
     }

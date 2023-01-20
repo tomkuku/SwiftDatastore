@@ -28,7 +28,15 @@ class EntityAttributesTests: XCTestCase {
     override func setUpWithError() throws {
         try super.setUpWithError()
         
-        let datastore = try SwiftDatastore(storingType: .test, storeName: "EntityAttributesTests", datamodelName: "TestModel")
+        let model = SwiftDatastoreModel(from: TestOptionalObject.self,
+                                        TestNotOptionalObject.self,
+                                        TestRelationshipObject.self,
+                                        TestToOneRelationshipObject.self,
+                                        TestToManyRelationshipObject.self)
+        
+        let datastore = try SwiftDatastore(dataModel: model,
+                                           storeName: "entity.attributes.tests",
+                                           storingType: .test)
         context = datastore.createNewContext()
     }
     
@@ -44,8 +52,9 @@ class EntityAttributesTests: XCTestCase {
             let optionalObject: TestOptionalObject = try context.createObject()
             let notOptionalObject: TestNotOptionalObject = try context.createObject()
             let relationshipObject: TestRelationshipObject = try context.createObject()
+            let toOneRelationshipObject: TestToOneRelationshipObject = try context.createObject()
             
-            let optionalObjects = try Set<TestOptionalObject>(repating: 3) {
+            let toManyObjects = try Set<TestToManyRelationshipObject>(repating: 3) {
                 try context.createObject()
             }
             
@@ -53,13 +62,13 @@ class EntityAttributesTests: XCTestCase {
             self.get_optionalAttributes_nilValues(of: optionalObject)
             
             self.set_relationshipToMany_values(of: relationshipObject,
-                                               toOneObject: optionalObject,
-                                               toManyObjects: optionalObjects)
+                                               toOneObject: toOneRelationshipObject,
+                                               toManyObjects: toManyObjects)
             self.get_relationshipToMany_values(of: relationshipObject)
-
+            
             self.set_optionalAttributes_values(of: optionalObject)
             self.get_optionalAttributes_values(of: optionalObject)
-
+            
             self.set_notOptionalAttributes_values(of: notOptionalObject)
             self.get_notOptionalAttributes_values(of: notOptionalObject)
         } success: {
@@ -144,8 +153,8 @@ class EntityAttributesTests: XCTestCase {
     }
     
     private func set_relationshipToMany_values(of relationshipObject: TestRelationshipObject,
-                                               toOneObject: TestOptionalObject,
-                                               toManyObjects: Set<TestOptionalObject>) {
+                                               toOneObject: TestToOneRelationshipObject,
+                                               toManyObjects: Set<TestToManyRelationshipObject>) {
         relationshipObject.toOne = toOneObject
         relationshipObject.toMany = toManyObjects
     }

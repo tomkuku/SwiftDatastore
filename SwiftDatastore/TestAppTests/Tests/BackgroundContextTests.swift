@@ -24,9 +24,11 @@ class BackgroundContextTests: XCTestCase {
     override func setUpWithError() throws {
         super.setUp()
         
-        datastore = try SwiftDatastore(storingType: .test,
-                                       storeName: "demoapp.background.context.tests",
-                                       datamodelName: "TestApp")
+        let model = SwiftDatastoreModel(from: Employee.self, Company.self, Car.self)
+        
+        datastore = try SwiftDatastore(dataModel: model,
+                                           storeName: "demoapp.background.context.tests",
+                                           storingType: .test)
         
         viewContext = datastore.sharedViewContext
         sut = datastore.createNewContext()

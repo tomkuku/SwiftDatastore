@@ -7,17 +7,12 @@
 
 import Foundation
 import Combine
+import CoreData
 
 extension Attribute {
  
     @propertyWrapper
-    public final class Optional<T>: EntityProperty<T?>, EntityPropertyKeyPath, EntityPropertyValueType {
-        
-        // swiftlint:disable nesting
-        public typealias KeyPathType = T
-        public typealias ValueType = T
-        // swiftlint:enable nesting
-        
+    public final class Optional<T>: EntityProperty<T?> where T: AttributeValueType {
         // MARK: Properties
         public var wrappedValue: T? {
             get {
@@ -41,5 +36,26 @@ extension Attribute {
             
             informAboutNewValue(value)
         }
+    }
+}
+
+// MARK: EntityPropertyKeyPath
+extension Attribute.Optional: EntityPropertyKeyPath {
+    public typealias KeyPathType = T
+}
+
+// MARK: EntityPropertyValueType
+extension Attribute.Optional: EntityPropertyValueType {
+    public typealias ValueType = T
+}
+
+// MARK: PropertyDescriptionCreatable
+extension Attribute.Optional: PropertyDescriptionCreatable {
+    func createPropertyDescription() -> NSPropertyDescription {
+        let attribute = NSAttributeDescription()
+        attribute.isOptional = true
+        attribute.attributeType = T.attributeType
+        attribute.name = key
+        return attribute
     }
 }
