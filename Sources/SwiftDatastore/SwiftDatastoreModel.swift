@@ -31,7 +31,7 @@ public final class SwiftDatastoreModel {
         }
         
         handleRelationships()
-        validateRelationships()
+        checkRelationshipsAllHaveInverse()
     }
     
     private func handleRelationships() {
@@ -62,14 +62,18 @@ public final class SwiftDatastoreModel {
             Logger.log.fatal("No entity for name: \(entityName)")
         }
         
-        guard let relationship = entity.relationshipsByName.first(where: { $0.key == propertyName }) else {
+        let relationship = entity.relationshipsByName.first(where: {
+            $0.key == propertyName
+        })
+        
+        guard let relationship else {
             Logger.log.fatal("No relationship for name: \(propertyName)")
         }
         
         return relationship.value
     }
     
-    private func validateRelationships() {
+    private func checkRelationshipsAllHaveInverse() {
         entities.forEach { entity in
             entity.relationshipsByName.forEach { (relationshipName, relationship) in
                 if relationship.destinationEntity == nil, relationship.inverseRelationship == nil {
